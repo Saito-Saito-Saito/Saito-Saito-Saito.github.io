@@ -1,0 +1,242 @@
+/*
+    smartphone
+    480px    
+    smartphone laid
+    600
+    tablet
+    960
+    little PC
+    1280
+    big PC
+*/
+
+body
+{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+
+    header
+    {
+        width: inherit;
+        background-color: darkslategray;
+        color: white;
+        
+        @media screen and (max-width: 600px) // for smartphone and tablets
+        {
+            height: 100px;
+            
+            h1
+            {
+                margin: 0;
+                font-size: 100px;
+                float: left;
+                text-align: left;
+            }
+
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width: 600px)    // for pc and tablets
+        {
+            height: 150px;
+
+            h1
+            {
+                margin: 0;
+                font-size: 150px;
+                float: left;
+                text-align: left;
+
+                &:hover
+                {
+                    cursor: default;
+                }
+            }
+
+            ul
+            {
+                float: right;
+                font-size: 18px;
+                margin: 40px 50px;
+                
+                li
+                {
+                    list-style: none;
+                    float: left;
+                    margin: 30px;
+    
+                    a
+                    {
+                        color: white;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
+                        &:active
+                        {
+                            opacity: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    main
+    {
+        width: inherit;
+
+        section
+        {
+            width: 60%;
+            height: auto;
+            background-color: #f5faff;
+            color: black;
+            padding: 5%;
+
+            @media screen and(max-width: 600px)
+            {
+                margin: 15%;
+
+                a
+                {
+                    display: none;
+                }
+
+                button
+                {
+                    width: 70%;
+                    text-align: center;
+                    margin: 5px 15%;
+                    padding: 2px 0;
+                    background-color: #0066cc;
+                    color: white;
+                    display: inline-block;
+                    border: unset;
+                    border-radius: 2px;
+                    
+                    &:active
+                    {
+                        opacity: 70%;
+                    }
+                }
+            }
+
+            @media screen and (min-width:600px) 
+            {
+                margin: 10% 30% 10% 10%;
+                border-radius: 30px;
+                
+                h1
+                {
+                    margin: 0 15px;
+                    text-align: left;
+                    padding: 0;
+                }
+
+                p
+                {
+                    margin: 0;
+                    padding: 2% 5%;
+                }
+                
+                #link a
+                {
+                    color: #0066cc;
+                    margin: 1% 0;
+                    padding: 0 5%;
+    
+                    &:hover
+                    {
+                        opacity: 80%;
+                    }
+                    &:active
+                    {
+                        opacity: 70%;
+                    }
+                }
+                
+                button  // for smartphone
+                {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    footer
+    {
+        background-color: darkslategray;
+        width: inherit;
+        margin: 0;
+        padding: 1px;
+
+        @media screen and(max-width: 480px) // for spartphones
+        {
+            height: 180px;
+    
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+    
+                li
+                {
+                    margin: 10px;
+                    text-align: center;
+    
+                    a
+                    {
+                        color: white;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and(min-width: 480px) // for tablets and PCs
+        {
+            height: 180px;
+    
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+                float: right;
+    
+                li
+                {
+                    margin: 10px 30px;
+                    text-align: center;
+                    float: left;
+    
+                    a
+                    {
+                        color: white;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}

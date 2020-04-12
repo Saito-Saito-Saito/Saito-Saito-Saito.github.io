@@ -1,0 +1,192 @@
+/*
+    smartphone
+    480px    
+    smartphone laid
+    600
+    tablet
+    960
+    little PC
+    1280
+    big PC
+*/
+body {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+body header {
+  width: inherit;
+  background-color: darkslategray;
+  color: white;
+}
+
+@media screen and (max-width: 600px) {
+  body header {
+    height: 100px;
+  }
+  body header h1 {
+    margin: 0;
+    font-size: 100px;
+    float: left;
+    text-align: left;
+  }
+  body header ul {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body header {
+    height: 150px;
+  }
+  body header h1 {
+    margin: 0;
+    font-size: 150px;
+    float: left;
+    text-align: left;
+  }
+  body header h1:hover {
+    cursor: default;
+  }
+  body header ul {
+    float: right;
+    font-size: 18px;
+    margin: 40px 50px;
+  }
+  body header ul li {
+    list-style: none;
+    float: left;
+    margin: 30px;
+  }
+  body header ul li a {
+    color: white;
+  }
+  body header ul li a:hover {
+    opacity: 80%;
+  }
+  body header ul li a:active {
+    opacity: 50%;
+  }
+}
+
+body main {
+  width: inherit;
+}
+
+body main section {
+  width: 60%;
+  height: auto;
+  background-color: #f5faff;
+  color: black;
+  padding: 5%;
+}
+
+@media screen and (max-width: 600px) {
+  body main section {
+    margin: 15%;
+  }
+  body main section a {
+    display: none;
+  }
+  body main section button {
+    width: 70%;
+    text-align: center;
+    margin: 5px 15%;
+    padding: 2px 0;
+    background-color: #0066cc;
+    color: white;
+    display: inline-block;
+    border: unset;
+    border-radius: 2px;
+  }
+  body main section button:active {
+    opacity: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body main section {
+    margin: 10% 30% 10% 10%;
+    border-radius: 30px;
+  }
+  body main section h1 {
+    margin: 0 15px;
+    text-align: left;
+    padding: 0;
+  }
+  body main section p {
+    margin: 0;
+    padding: 2% 5%;
+  }
+  body main section #link a {
+    color: #0066cc;
+    margin: 1% 0;
+    padding: 0 5%;
+  }
+  body main section #link a:hover {
+    opacity: 80%;
+  }
+  body main section #link a:active {
+    opacity: 70%;
+  }
+  body main section button {
+    display: none;
+  }
+}
+
+body footer {
+  background-color: darkslategray;
+  width: inherit;
+  margin: 0;
+  padding: 1px;
+}
+
+@media screen and (max-width: 480px) {
+  body footer {
+    height: 180px;
+  }
+  body footer ul {
+    list-style: none;
+    margin: 30px;
+    padding: 2%;
+    text-align: center;
+  }
+  body footer ul li {
+    margin: 10px;
+    text-align: center;
+  }
+  body footer ul li a {
+    color: white;
+  }
+  body footer ul li a:active {
+    opacity: 70%;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  body footer {
+    height: 180px;
+  }
+  body footer ul {
+    list-style: none;
+    margin: 30px;
+    padding: 2%;
+    text-align: center;
+    float: right;
+  }
+  body footer ul li {
+    margin: 10px 30px;
+    text-align: center;
+    float: left;
+  }
+  body footer ul li a {
+    color: white;
+  }
+  body footer ul li a:active {
+    opacity: 70%;
+  }
+}
+/*# sourceMappingURL=stylesheet.css.map */
