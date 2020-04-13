@@ -102,35 +102,38 @@ body
             color: black;
             padding: 5%;
 
-            @media screen and(max-width: 600px)
+            @media screen and(max-width: 600px) // for smartphones
             {
                 margin: 15%;
 
-                a
+                .link
                 {
-                    display: none;
-                }
-
-                button
-                {
-                    width: 70%;
-                    text-align: center;
-                    margin: 5px 15%;
-                    padding: 2px 0;
-                    background-color: #0066cc;
-                    color: white;
-                    display: inline-block;
-                    border: unset;
-                    border-radius: 2px;
-                    
-                    &:active
+                    a
                     {
-                        opacity: 70%;
+                        display: none;
+                    }
+
+                    button
+                    {
+                        width: 70%;
+                        text-align: center;
+                        margin: 5px 15%;
+                        padding: 2px 0;
+                        background-color: #0066cc;
+                        color: white;
+                        display: inline-block;
+                        border: unset;
+                        border-radius: 2px;
+                        
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
                     }
                 }
             }
 
-            @media screen and (min-width:600px) 
+            @media screen and (min-width:600px) // for tablets and PCs
             {
                 margin: 10% 30% 10% 10%;
                 border-radius: 30px;
@@ -146,21 +149,37 @@ body
                 {
                     margin: 0;
                     padding: 2% 5%;
+
+                    a
+                    {
+                        color: #0066cc;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
                 }
                 
-                #link a
+                .link
                 {
-                    color: #0066cc;
-                    margin: 1% 0;
+                    margin: 0;
                     padding: 0 5%;
-    
-                    &:hover
+                    
+                    a
                     {
-                        opacity: 80%;
-                    }
-                    &:active
-                    {
-                        opacity: 70%;
+                        color: #0066cc;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
                     }
                 }
                 

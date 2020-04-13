@@ -88,10 +88,10 @@ body main section {
   body main section {
     margin: 15%;
   }
-  body main section a {
+  body main section .link a {
     display: none;
   }
-  body main section button {
+  body main section .link button {
     width: 70%;
     text-align: center;
     margin: 5px 15%;
@@ -102,7 +102,7 @@ body main section {
     border: unset;
     border-radius: 2px;
   }
-  body main section button:active {
+  body main section .link button:active {
     opacity: 70%;
   }
 }
@@ -121,15 +121,26 @@ body main section {
     margin: 0;
     padding: 2% 5%;
   }
-  body main section #link a {
+  body main section p a {
     color: #0066cc;
-    margin: 1% 0;
-    padding: 0 5%;
   }
-  body main section #link a:hover {
+  body main section p a:hover {
     opacity: 80%;
   }
-  body main section #link a:active {
+  body main section p a:active {
+    opacity: 70%;
+  }
+  body main section .link {
+    margin: 0;
+    padding: 0 5%;
+  }
+  body main section .link a {
+    color: #0066cc;
+  }
+  body main section .link a:hover {
+    opacity: 80%;
+  }
+  body main section .link a:active {
     opacity: 70%;
   }
   body main section button {

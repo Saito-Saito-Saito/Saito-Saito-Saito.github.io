@@ -1,0 +1,235 @@
+body
+{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+
+    header
+    {
+        width: 100%;
+        background-color: darkslateblue;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: static;
+
+        @media screen and (max-width: 960px)
+        {
+            height: 100px;
+            
+            #title
+            {
+                width: 100%;
+                h1
+                {
+                    margin: 0;
+                    font-size: 40px;
+                    text-align: left;
+                }
+            }
+            
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and(min-width:550px) and(max-width:960px)
+        {
+            height: 100px;
+
+            #title
+            {
+                width: 60%;
+                font-size: 40px;
+            }
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and(min-width:960px)
+        {
+            height: 190px;
+
+            #title
+            {
+                width: 60%;
+                height: 200px;
+                margin: 0;
+                padding: 0;
+                float: left;
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 75px;
+                    text-align: left;
+    
+                    &:hover
+                    {
+                        cursor: default;
+                    }
+                }
+            }
+
+            ul
+            {
+                float: right;
+                font-size: 18px;
+                margin: 40px 50px;
+                
+                li
+                {
+                    list-style: none;
+                    float: left;
+                    margin: 30px;
+
+                    a
+                    {
+                        color: white;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+            
+    }
+
+    main
+    {
+        padding-top: 5%;
+        width: inherit;
+
+        section
+        {
+            height: auto;
+            color: black;
+            padding: 5% 10% 0 10%; 
+            
+            @media screen and (max-width:600px) // for smartphones
+            {
+                width: 60%;
+                margin: 10%;
+            }
+            
+            @media screen and (min-width:600px) // for PCs and tablets 
+            {
+                width: 50%;
+                margin: 2% 30% 5% 10%;
+            }
+
+            p
+            {
+                padding: 0 2%; 
+            }
+
+            .stress
+            {
+                text-align: center;
+                font-weight: bold;
+                font-size: larger;
+                color: red;
+            }
+
+            .code
+            {
+                text-align: center;
+            }
+            
+            a
+            {
+                padding-top: 2%;
+                color: blue;
+                &:hover
+                {
+                    opacity: 80%;
+                }
+                &:active
+                {
+                    opacity: 70%;
+                }
+            }
+
+            ul
+            {
+                list-style: none;
+                padding: 0 10%;
+            }
+        }
+    }
+
+    footer
+    {
+        background-color: darkslateblue;
+        width: inherit;
+        margin: 10% 0 0 0;
+        padding: 1px;
+
+        @media screen and(max-width:480px)  // for smartphones 
+        {
+            height: 180px;
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+    
+                li
+                {
+                    margin: 10px;
+                    text-align: center;
+    
+                    a
+                    {
+                        color: white;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and(min-width: 480px) // for tablets and PCs
+        {
+            height: 180px;
+    
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+                float: right;
+    
+                li
+                {
+                    margin: 10px 30px;
+                    text-align: center;
+                    float: left;
+    
+                    a
+                    {
+                        color: white;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
