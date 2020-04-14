@@ -5,6 +5,7 @@ body
     background-color: white;
     margin: 0;
     padding: 0;
+    font-family: inherit;
 
     header
     {
@@ -16,7 +17,7 @@ body
 
         @media screen and (max-width: 960px)
         {
-            height: 100px;
+            height: 110px;
             
             #title
             {
@@ -120,17 +121,53 @@ body
             {
                 width: 60%;
                 margin: 10%;
+
+                .link
+                {
+                    a
+                    {
+                        display: none;
+                    }
+
+                    button
+                    {
+                        width: 70%;
+                        text-align: center;
+                        margin: 5px 15%;
+                        padding: 2px 0;
+                        background-color: #0066cc;
+                        color: white;
+                        display: inline-block;
+                        border: unset;
+                        border-radius: 2px;
+                    }
+                }
             }
             
             @media screen and (min-width:600px) // for PCs and tablets 
             {
                 width: 50%;
                 margin: 2% 30% 5% 10%;
+
+                .link
+                {
+                    padding: 0 2%;
+                    
+                    button
+                    {
+                        display: none;
+                    }
+                }
             }
 
             p
             {
                 padding: 0 2%; 
+            }
+
+            pre
+            {
+                padding: 0 4%;
             }
 
             .stress

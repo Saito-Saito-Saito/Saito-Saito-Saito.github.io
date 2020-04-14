@@ -1,0 +1,67 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 4</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>チェスが作れる</h1>
+        </div>
+        <ul>
+            <li><a href="../index.html">Stage 0・1</a></li>
+            <li><a href="../stage2/index.html">Stage 2</a></li>
+            <li><a href="../stage3/index.html">Stage 3</a></li>
+            <li><a href="#stage4">Stage 4</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section id="staeg4">
+            <h1>Stage 4　駒をうごかす</h1>
+            <p>さあ、やっとチェスっぽくなってきましたね。今回使うファイルは board.py だけです。しかもすべて Board クラスの中だけです。なんでこんなにクラスでっかくするんだって思うかもしれませんが、ゲームをデザインしたときその威力に気づくことになるでしょう。</p>
+        </section>
+
+        <section>
+            <h2>4-1　駒の動きを判定する</h2>
+            <h3>4-1-1　前段階</h3>
+            <p>BOARDprint 直下に、その名のとおり motionjudge というメソッドがありますよね。これで「駒が正しい動きをしているか」を判定しています。正しければ True を、間違っていれば False を返します。引数は</p>
+            <ul>
+                <li><code>frFILE</code>　→　元のfile</li>
+                <li><code>frRANK</code>　→　元のrank</li>
+                <li><code>toFILE</code>　→　先のfile</li>
+                <li><code>toRANK</code>　→　先のrank</li>
+                <li><code>promote</code> 　→　プロモーションでなる駒の種類（駒番号）</li>
+            </ul>
+            <p>を表しています。元と先の座標およびプロモーションの情報ですね。 motionjudge 関数だけでなく、ありとあらゆる場面でこの形をガンガン使いますので、今のうちに慣れていってください。from と to と考えれば難しいことはないと思いますが。</p>
+            <p>最初の if 文は「座標がちゃんと盤面の中におさまっているか」を判定しています。8マス×8マスの盤面のインデックスに15とか入ったらマズいでしょ。ここで引っかかったらどう考えても間違った動きなので False をリターンします。</p>
+            <p>次に動かそうとしているプレーヤーはだれか、その駒の種類は何かを取得しておきます。</p>
+            <p>次の if は「自分の駒が置いてる場所に動かそうとした」場合です。当然それはアウトですから、 False を返します。</p>
+            <p>今度は動かそうとしているマス ([frFILE][frRANK]) に何も置いていない場合です。当然動かすものがないんですから、 False を返さなければいけません。</p>
+            <p>ここまででとりあえず「駒の動きを見るまでもなく」アウトな動かし方をひととおり排除できました。次は1種類ずつ駒の動きを確認していきます。</p>
+        </section>
+
+        <section>
+            <h3>4-1-2　ポーン</h3>
+            <p>ポーンは実に多彩な動きをみせてくれます。しかも白黒あわせて16個もありますからね、戦いにおいてもかなり重要な駒になるわけですよ。ええ、ですから</p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
