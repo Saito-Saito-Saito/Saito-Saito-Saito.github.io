@@ -5,7 +5,7 @@ body
     background-color: white;
     margin: 0;
     padding: 0;
-    font-family: inherit;
+    font-family: sans-serif;
 
     header
     {
@@ -15,9 +15,10 @@ body
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         position: static;
 
-        @media screen and (max-width: 960px)
+        @media screen and (max-width: 550px)
         {
             height: 110px;
+            height: auto;
             
             #title
             {
@@ -25,6 +26,7 @@ body
                 h1
                 {
                     margin: 0;
+                    padding: 0;
                     font-size: 40px;
                     text-align: left;
                 }
@@ -38,12 +40,18 @@ body
 
         @media screen and(min-width:550px) and(max-width:960px)
         {
-            height: 100px;
+            height: 110px;
+            height: auto;
 
             #title
             {
-                width: 60%;
+                width: auto;
                 font-size: 40px;
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                }
             }
             ul
             {
@@ -53,11 +61,12 @@ body
 
         @media screen and(min-width:960px)
         {
-            height: 190px;
+            height: 200px;
 
             #title
             {
                 width: 60%;
+                width: auto;
                 height: 200px;
                 margin: 0;
                 padding: 0;
@@ -80,13 +89,15 @@ body
             {
                 float: right;
                 font-size: 18px;
-                margin: 40px 50px;
+                margin: 40px 50px 40px 0;
+                width: auto;
                 
                 li
                 {
+                    text-align: right;
                     list-style: none;
                     float: left;
-                    margin: 30px;
+                    margin: 30px 10px;
 
                     a
                     {
@@ -119,8 +130,8 @@ body
             
             @media screen and (max-width:600px) // for smartphones
             {
-                width: 60%;
-                margin: 10%;
+                width: 70%;
+                margin: 5%;
 
                 .link
                 {
@@ -185,7 +196,6 @@ body
             
             a
             {
-                padding-top: 2%;
                 color: blue;
                 &:hover
                 {
@@ -196,11 +206,36 @@ body
                     opacity: 70%;
                 }
             }
+            
+            img
+            {
+                margin: 0 5%;
+                text-align: center;
+            }
+        }
 
+        .index
+        {
             ul
             {
-                list-style: none;
                 padding: 0 10%;
+                list-style: none;
+                
+                @media screen and (max-width:600px)
+                {
+                    li
+                    {
+                        line-height: 250%;
+                    }
+                }
+            }
+        }
+        :not(.index)
+        {
+            ul
+            {
+                padding: 0 10%;
+                list-style: square;
             }
         }
     }

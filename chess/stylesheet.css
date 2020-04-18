@@ -4,7 +4,7 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  font-family: inherit;
+  font-family: sans-serif;
 }
 
 body header {
@@ -15,15 +15,17 @@ body header {
   position: static;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 550px) {
   body header {
     height: 110px;
+    height: auto;
   }
   body header #title {
     width: 100%;
   }
   body header #title h1 {
     margin: 0;
+    padding: 0;
     font-size: 40px;
     text-align: left;
   }
@@ -34,11 +36,16 @@ body header {
 
 @media screen and (min-width: 550px) and (max-width: 960px) {
   body header {
-    height: 100px;
+    height: 110px;
+    height: auto;
   }
   body header #title {
-    width: 60%;
+    width: auto;
     font-size: 40px;
+  }
+  body header #title h1 {
+    margin: 0;
+    padding: 0;
   }
   body header ul {
     display: none;
@@ -47,10 +54,11 @@ body header {
 
 @media screen and (min-width: 960px) {
   body header {
-    height: 190px;
+    height: 200px;
   }
   body header #title {
     width: 60%;
+    width: auto;
     height: 200px;
     margin: 0;
     padding: 0;
@@ -68,12 +76,14 @@ body header {
   body header ul {
     float: right;
     font-size: 18px;
-    margin: 40px 50px;
+    margin: 40px 50px 40px 0;
+    width: auto;
   }
   body header ul li {
+    text-align: right;
     list-style: none;
     float: left;
-    margin: 30px;
+    margin: 30px 10px;
   }
   body header ul li a {
     color: white;
@@ -99,8 +109,8 @@ body main section {
 
 @media screen and (max-width: 600px) {
   body main section {
-    width: 60%;
-    margin: 10%;
+    width: 70%;
+    margin: 5%;
   }
   body main section .link a {
     display: none;
@@ -151,7 +161,6 @@ body main section .code {
 }
 
 body main section a {
-  padding-top: 2%;
   color: blue;
 }
 
@@ -163,9 +172,25 @@ body main section a:active {
   opacity: 70%;
 }
 
-body main section ul {
-  list-style: none;
+body main section img {
+  margin: 0 5%;
+  text-align: center;
+}
+
+body main .index ul {
   padding: 0 10%;
+  list-style: none;
+}
+
+@media screen and (max-width: 600px) {
+  body main .index ul li {
+    line-height: 250%;
+  }
+}
+
+body main :not(.index) ul {
+  padding: 0 10%;
+  list-style: square;
 }
 
 body footer {
