@@ -15,7 +15,7 @@ body header {
   position: static;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
   body header {
     height: 110px;
     height: auto;
@@ -34,7 +34,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 550px) and (max-width: 960px) {
+@media screen and (min-width: 600px) and (max-width: 960px) {
   body header {
     height: 110px;
     height: auto;
@@ -76,7 +76,8 @@ body header {
   body header ul {
     float: right;
     font-size: 18px;
-    margin: 40px 50px 40px 0;
+    margin: 50px 50px 50px 1px;
+    padding: 0;
     width: auto;
   }
   body header ul li {

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたもチェスが作れる 4</title>
+    <title>これであなたもチェスが作れる 4-1</title>
     <link rel="stylesheet" href="../stylesheet.css">
 </head>
 <body>
@@ -15,12 +15,13 @@
             <li><a href="../index.html">Stage 0&1</a></li>
             <li><a href="../stage2/index.html">Stage 2</a></li>
             <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="#s4">Stage 4-1</a></li>
+            <li><a href="#s4-1">Stage 4-1</a></li>
+            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
         </ul>
     </header>
 
     <main>
-        <section id="s4">
+        <section id="s4-1">
             <h1>Stage 4-1　駒をうごかす〜判定編〜</h1>
             <p>さあ、やっとチェスっぽくなってきましたね。今回使うファイルは board.py だけです。しかもすべて Board クラスの中だけです。なんでこんなにクラスでっかくするんだって思うかもしれませんが、ゲームをデザインしたときその威力に気づくことになるでしょう。</p>
         </section>
@@ -197,7 +198,7 @@ if abs(...) &lt;= 1 ...
             <p>キングまで終わったからって気を緩めてはいけません。さっきルークやビショップなど、放置したまんまでしょう。ケリをつけます。</p>
             <p>まず私のコードではリスト direction を定義していますね。文字通り駒の進む方向を表しています。この方向は [+1, +1], [-1, 0], ... といった具合に、「一歩先のマスに行くとき加える値」を表しています。白側からみて、左に行くのであれば [-1, 0], 右後ろへは [+1, -1] といったように。これは file, rank それぞれに対し、差をとって絶対値を１にする、つまり PosNeg(to - fr) とすればできますね。</p>
             <p>その次は focused です。これは「注目しているマス」を表しています。まだ focused が移動先までたどり着いていないのに board[focused[FILE]][focused[RANK]] が EMPTY でなければ、入力された動きは途中でその駒にでくわしたことになりますから False をリターンします。それが while 文の中身となるわけです。先ほども申しました通り、次のマスへ行くには direction を focused の各座標に加えればよいので、while の中では駒がないか確認し、focused を動かし、という作業を繰り返していますね。また私は非常に用心深いですから、下手して focused が盤面を突き破ったときにエラーを吐かないように(吐かないのもどうかと思いますが) InSize で確認を入れています。</p>
-            <p>while ループをすべてクリアしたら、もう確認することはありませんから、 True を返して問題ないでしょう。お疲れ様でした。これにて駒の動きの判定は終了です。</p>
+            <p>while ループをすべてクリアしたら、もう確認することはありませんから、True を返して問題ないでしょう。お疲れ様でした。これにて駒の動きの判定は終了です。</p>
         </section>
 
         <section>
