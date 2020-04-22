@@ -18,6 +18,7 @@
             <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
             <li><a href="#s4-2">Stage 4-2</a></li>
             <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="../stage6/index.html">Stage 6</a></li>
         </ul>
     </header>
 
@@ -47,6 +48,7 @@
             <p>まずは入力した動きができるかを確かめます。万が一変な動きをされたら盤面がグッチャグチャになりますから、クラスの秩序を保つためになんとしてもやっておかなければなりません。</p>
             <p>具体的には move メソッドの一番上の if にある通り、move でもらった引数をそのまま motionjudge に通します。この値が False, つまり「移動不可能」であれば move も「実行不可能」False を返すという仕組みです。</p>
             <p>逆に、この関門を突破した移動は可能ですから、なんのためらいもなく駒を動かせます。</p>
+            <p>また「動かしているのが自分の駒か」も確認します。これが違っていたら当然 False です。</p>
         </section>
 
         <section id="s4-2-2">

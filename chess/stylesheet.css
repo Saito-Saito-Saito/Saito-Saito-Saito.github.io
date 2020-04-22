@@ -76,7 +76,7 @@ body header {
   body header ul {
     float: right;
     font-size: 18px;
-    margin: 50px 5px 0px 1px;
+    margin: 50px 2px 0px 1px;
     padding: 0;
     width: auto;
     max-width: 40%;
@@ -85,7 +85,7 @@ body header {
     text-align: right;
     list-style: none;
     float: left;
-    margin: 30px 10px;
+    margin: 30px 5px;
   }
   body header ul li a {
     color: white;
