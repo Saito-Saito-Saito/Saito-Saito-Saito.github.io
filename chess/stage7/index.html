@@ -13,13 +13,14 @@
         </div>
         <ul>
             <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="stage2/index.html">Stage 2</a></li>
-            <li><a href="stage3/index.html">Stage 3</a></li>
-            <li><a href="stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="stage5/index.html">Stage 5</a></li>
-            <li><a href="stage6/index.html">Stage 6</a></li>
+            <li><a href="../stage2/index.html">Stage 2</a></li>
+            <li><a href="../stage3/index.html">Stage 3</a></li>
+            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
+            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
+            <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="../stage6/index.html">Stage 6</a></li>
             <li><a href="#">Stage 7</a></li>
+            <li><a href="../stage8/index.html">Stage 8</a></li>
         </ul>
     </header>
 
@@ -67,7 +68,7 @@
 
         <section id="s7-3">
             <h2>7-3　動作入力</h2>
-            <p>ついにプレーヤーサイドの一番の醍醐味、動作の入力へと移りましょう。まずは「今どちら側の手番なのか」を表示します。皆さんだってこういうのプレーしている間に「あれ、今どっちの番だっけ」ってなるでしょ。そして他にもリザイン・ヘルプ(プラスやり直し。Stage 8 で)のイベントコードを書いてます。</p>
+            <p>ついにプレーヤーサイドの一番の醍醐味、動作の入力へと移りましょう。まずは「今どちら側の手番なのか」を表示します。皆さんだってこういうのプレーしている間に「あれ、今どっちの番だっけ」ってなるでしょ。そして他にもリザイン・ヘルプ(プラスやり直し。Stage 9 で)のイベントコードを書いてます。</p>
             <p>ヘルプは IO.py の instruction 関数に書きました。ほぼほぼ <a href="https://www.chessstrategyonline.com/content/tutorials/basic-chess-concepts-chess-notation" target="_blank">www.chessstrategyonline.com</a> の記述です。許してください。一応解説を入れておくと、ヘルプを確認し終わった後にプレーヤーサイドでエンターを押さないと次にはいかないシステムになっています。逆にこれがあるおかげで「あれ、今ヘルプ出したのになんで駒動かせって催促されてんの」と混乱を引き起こしかねません。これが思いやりってやつですよ。わかったかい、坊や。</p>
             <p>playmode に戻りましょう。実際にプレーヤーが何か入力するのは main_board.s = input()... の部分。格納と同時に空白文字の削除と小文字 o の大文字変換を行っています。大文字の O はキャスリングで使いますが、小文字は使い道がありません。プレーヤーがキャスリングを意図して "o-o-o" などと書いた場合に許容するためです。これも思いやり。</p>
         </section>
@@ -76,8 +77,8 @@
             <h2>7-4　特殊イベント</h2>
             <p>7-3 で登場したイベントコード "X/H(/Z)" に対処します。まずはリザイン(投了)を表す "X" です。小文字も許してあげてください。これが入力された時は main_board.player が負けを認めていますから、winner は -main_board.player ですし、break で while ループを脱出します。</p>
             <p>ヘルプ "H" またはその小文字 "h" が入力されたら、先ほど 7-3 にて後出しで作った IO.py の instruction 関数を発動させます。この解説を見て次も同じプレーヤーが入力しますから、continue でもう一度ループ上端に戻ってください。</p>
-            <p>"Z" は Stage 8 でやります。</p>
-            <p class="stress">Stage 8 でやります。</p>
+            <p>"Z" は Stage 9 でやります。</p>
+            <p class="stress">Stage 9 でやります。</p>
             <p>これ以外の正規の入力は s_analyze メソッドで対処できますから、返り値を motion に格納して様子を探ります。まず、motion が int 型であれば返り値としてありうるのは勝者のプレーヤー番号(含 EMPTY)です。覚えてないですって。そりゃいけませんな。<a href="../stage6/index.html#s6-8">ここですよここ</a>。あとは大体 "X" を入力した時と変わらないんですが、引き分けの時はしっかり相手の許可をとりましょう。いやね、「ちょっとこの感じ負ける気しかしないから引き分けにしとくわ」って乱発されたらたまったもんじゃないでしょう。だから必ず相手に同意するか聞いてください。</p>
         </section>
 
@@ -111,7 +112,7 @@
             <h2>次回予告</h2>
             <p>ここまでで私のチェスのプログラム第 1 段にあった機能はおそらくすべて完装されていると思います。つまりは「これだけでチェスは楽しめるよ」ってこと。「もうこれ以上はコード書きたくない」という方のために申し上げますと、ここで中断しても十分ゲームとして完成しています。お疲れ様でした。</p>
             <p>さて、まだまだ機能を増やしたい物好きの方は次回、記録をとっていきます。「えー、プレーヤーが棋譜入れてんだから記録取らなくていいじゃーん」いや、その通りですよ。その通りだからプレーヤーの入力を記録に横流 ... じゃねえや「拝借」するんです。次回はファイルに書き込みしていきますから、もし「そんなもんわかんねーよ」という方々は一度勉強してきてください。</p>
-            <p>次回　Stage 8　ゲーム進行を記録する</p>
+            <p><a href="../stage8/index.html">次回　Stage 8　ゲーム進行を記録する</a></p>
         </section>
     </main>
 
