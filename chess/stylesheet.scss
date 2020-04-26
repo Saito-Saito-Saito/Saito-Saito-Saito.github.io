@@ -6,6 +6,7 @@ body
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    cursor: auto;
 
     header
     {
@@ -89,10 +90,10 @@ body
             {
                 float: right;
                 font-size: 18px;
-                margin: 50px 2px 0px 1px;
+                margin: 20px 2px 0px 1px;
                 padding: 0;
                 width: auto;
-                max-width: 40%;
+                max-width: 400px;
                 
                 li
                 {
@@ -104,13 +105,16 @@ body
                     a
                     {
                         color: white;
+                        cursor: pointer;
                         &:hover
                         {
                             opacity: 80%;
+                            cursor: pointer;
                         }
                         &:active
                         {
                             opacity: 70%;
+                            cursor: pointer;
                         }
                     }
                 }
@@ -170,6 +174,11 @@ body
                     {
                         display: none;
                     }
+
+                    a
+                    {
+                        cursor: pointer;
+                    }
                 }
             }
 
@@ -199,13 +208,16 @@ body
             a
             {
                 color: blue;
+                cursor: pointer;
                 &:hover
                 {
                     opacity: 80%;
+                    cursor: pointer;
                 }
                 &:active
                 {
                     opacity: 70%;
+                    cursor: pointer;
                 }
             }
             
@@ -223,7 +235,7 @@ body
                 padding: 0 10%;
                 list-style: none;
                 
-                @media screen and (max-width:600px)
+                @media screen and (max-width:960px)
                 {
                     li
                     {
@@ -248,10 +260,19 @@ body
         width: inherit;
         margin: 10% 0 0 0;
         padding: 1px;
+        color: white;
 
-        @media screen and(max-width:480px)  // for smartphones 
+        @media screen and(max-width: 1200px)  // for smartphones 
         {
-            height: 180px;
+            height: 230px;
+
+            .edit
+            {
+                margin: 10px;
+                text-align: center;
+                color: white;
+            }
+
             ul
             {
                 list-style: none;
@@ -267,6 +288,7 @@ body
                     a
                     {
                         color: white;
+                        cursor: pointer;
                         &:active
                         {
                             opacity: 70%;
@@ -276,9 +298,19 @@ body
             }
         }
 
-        @media screen and(min-width: 480px) // for tablets and PCs
+        @media screen and(min-width: 1200px) // for tablets and PCs
         {
             height: 180px;
+
+            .edit
+            {
+                margin: 30px;
+                padding: 2%;
+                text-align: left;
+                float: left;
+                color: white;
+                width: auto;
+            }
     
             ul
             {
@@ -296,6 +328,7 @@ body
     
                     a
                     {
+                        cursor: pointer;
                         color: white;
                         &:active
                         {

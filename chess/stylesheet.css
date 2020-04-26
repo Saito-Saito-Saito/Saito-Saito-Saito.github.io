@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  cursor: auto;
 }
 
 body header {
@@ -76,10 +77,10 @@ body header {
   body header ul {
     float: right;
     font-size: 18px;
-    margin: 50px 2px 0px 1px;
+    margin: 20px 2px 0px 1px;
     padding: 0;
     width: auto;
-    max-width: 40%;
+    max-width: 400px;
   }
   body header ul li {
     text-align: right;
@@ -89,12 +90,15 @@ body header {
   }
   body header ul li a {
     color: white;
+    cursor: pointer;
   }
   body header ul li a:hover {
     opacity: 80%;
+    cursor: pointer;
   }
   body header ul li a:active {
     opacity: 70%;
+    cursor: pointer;
   }
 }
 
@@ -141,6 +145,9 @@ body main section {
   body main section .link button {
     display: none;
   }
+  body main section .link a {
+    cursor: pointer;
+  }
 }
 
 body main section p {
@@ -164,14 +171,17 @@ body main section .code {
 
 body main section a {
   color: blue;
+  cursor: pointer;
 }
 
 body main section a:hover {
   opacity: 80%;
+  cursor: pointer;
 }
 
 body main section a:active {
   opacity: 70%;
+  cursor: pointer;
 }
 
 body main section img {
@@ -184,7 +194,7 @@ body main .index ul {
   list-style: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 960px) {
   body main .index ul li {
     line-height: 250%;
   }
@@ -200,11 +210,17 @@ body footer {
   width: inherit;
   margin: 10% 0 0 0;
   padding: 1px;
+  color: white;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1200px) {
   body footer {
-    height: 180px;
+    height: 230px;
+  }
+  body footer .edit {
+    margin: 10px;
+    text-align: center;
+    color: white;
   }
   body footer ul {
     list-style: none;
@@ -218,15 +234,24 @@ body footer {
   }
   body footer ul li a {
     color: white;
+    cursor: pointer;
   }
   body footer ul li a:active {
     opacity: 70%;
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1200px) {
   body footer {
     height: 180px;
+  }
+  body footer .edit {
+    margin: 30px;
+    padding: 2%;
+    text-align: left;
+    float: left;
+    color: white;
+    width: auto;
   }
   body footer ul {
     list-style: none;
@@ -241,6 +266,7 @@ body footer {
     float: left;
   }
   body footer ul li a {
+    cursor: pointer;
     color: white;
   }
   body footer ul li a:active {

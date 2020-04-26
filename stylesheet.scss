@@ -52,11 +52,7 @@ body
                 font-size: 150px;
                 float: left;
                 text-align: left;
-
-                &:hover
-                {
-                    cursor: default;
-                }
+                cursor: default;
             }
 
             ul
@@ -74,6 +70,8 @@ body
                     a
                     {
                         color: white;
+                        cursor: pointer;
+
                         &:hover
                         {
                             opacity: 80%;
@@ -124,10 +122,12 @@ body
                         display: inline-block;
                         border: unset;
                         border-radius: 2px;
+                        cursor: pointer;
                         
                         &:active
                         {
                             opacity: 70%;
+                            cursor: pointer;
                         }
                     }
                 }
@@ -153,6 +153,7 @@ body
                     a
                     {
                         color: #0066cc;
+                        cursor: pointer;
                         &:hover
                         {
                             opacity: 80%;
@@ -172,6 +173,8 @@ body
                     a
                     {
                         color: #0066cc;
+                        cursor: pointer;
+
                         &:hover
                         {
                             opacity: 80%;
@@ -217,6 +220,8 @@ body
                     a
                     {
                         color: white;
+                        cursor: pointer;
+                        
                         &:active
                         {
                             opacity: 70%;
@@ -247,6 +252,7 @@ body
                     a
                     {
                         color: white;
+                        cursor: pointer;
                         &:active
                         {
                             opacity: 70%;
