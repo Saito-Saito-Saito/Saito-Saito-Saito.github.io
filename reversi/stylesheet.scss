@@ -1,5 +1,339 @@
 body
 {
+    width: 100%;
+    height: auto;
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    cursor: auto;
+
+    header
+    {
+        width: 100%;
+        background-color: maroon;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: static;
+
+        @media screen and (max-width: 600px)
+        {
+            height: 110px;
+            height: auto;
+            
+            #title
+            {
+                width: 100%;
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 40px;
+                    text-align: left;
+                }
+            }
+            
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and(min-width:600px) and(max-width:960px)
+        {
+            height: 110px;
+            height: auto;
+
+            #title
+            {
+                width: auto;
+                font-size: 40px;
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and(min-width:960px)
+        {
+            height: 200px;
+
+            #title
+            {
+                width: 60%;
+                width: auto;
+                height: 200px;
+                margin: 0;
+                padding: 0;
+                float: left;
+                
+                h1
+                {
+                    font-size: 75px;
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    cursor: default;
+                }
+            }
+
+            ul
+            {
+                float: right;
+                font-size: 18px;
+                margin: 20px 2px 0px 1px;
+                padding: 0;
+                width: auto;
+                max-width: 400px;
+                
+                li
+                {
+                    text-align: right;
+                    list-style: none;
+                    float: left;
+                    margin: 30px 5px;
+
+                    a
+                    {
+                        color: white;
+                        cursor: pointer;
+                        &:hover
+                        {
+                            opacity: 80%;
+                            cursor: pointer;
+                        }
+                        &:active
+                        {
+                            opacity: 70%;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+            
+    }
+
+    main
+    {
+        padding-top: 5%;
+        width: inherit;
+
+        section
+        {
+            height: auto;
+            color: black;
+            padding: 5% 10% 0 10%; 
+            
+            @media screen and (max-width:600px) // for smartphones
+            {
+                width: 70%;
+                margin: 5%;
+
+                .link
+                {
+                    a
+                    {
+                        display: none;
+                    }
+
+                    button
+                    {
+                        width: 70%;
+                        text-align: center;
+                        margin: 5px 15%;
+                        padding: 2px 0;
+                        background-color: #0066cc;
+                        color: white;
+                        display: inline-block;
+                        border: unset;
+                        border-radius: 2px;
+                    }
+                }
+            }
+            
+            @media screen and (min-width:600px) // for PCs and tablets 
+            {
+                width: 50%;
+                margin: 2% 30% 5% 10%;
+
+                .link
+                {
+                    padding: 0 2%;
+                    
+                    button
+                    {
+                        display: none;
+                    }
+
+                    a
+                    {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            p
+            {
+                padding: 0 2%; 
+            }
+
+            pre
+            {
+                padding: 0 4%;
+            }
+
+            .stress
+            {
+                text-align: center;
+                font-weight: bold;
+                font-size: larger;
+                color: red;
+            }
+
+            .code
+            {
+                text-align: center;
+            }
+            
+            a
+            {
+                color: blue;
+                cursor: pointer;
+                &:hover
+                {
+                    opacity: 80%;
+                    cursor: pointer;
+                }
+                &:active
+                {
+                    opacity: 70%;
+                    cursor: pointer;
+                }
+            }
+            
+            img
+            {
+                margin: 0 5%;
+                text-align: center;
+            }
+        }
+
+        & .index
+        {
+            ul
+            {
+                padding: 0 10%;
+                list-style: none;
+                
+                @media screen and (max-width:960px)
+                {
+                    li
+                    {
+                        line-height: 250%;
+                    }
+                }
+            }
+        }
+        & :not(.index)
+        {
+            ul
+            {
+                padding: 0 10%;
+                list-style: square;
+            }
+        }
+    }
+
+    footer
+    {
+        background-color: maroon;
+        width: inherit;
+        margin: 10% 0 0 0;
+        padding: 1px;
+        color: white;
+
+        @media screen and(max-width: 1200px)  // for smartphones 
+        {
+            height: 230px;
+
+            .edit
+            {
+                margin: 10px;
+                text-align: center;
+                color: white;
+            }
+
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+    
+                li
+                {
+                    margin: 10px;
+                    text-align: center;
+    
+                    a
+                    {
+                        color: white;
+                        cursor: pointer;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and(min-width: 1200px) // for tablets and PCs
+        {
+            height: 180px;
+
+            .edit
+            {
+                margin: 30px;
+                padding: 2%;
+                text-align: left;
+                float: left;
+                color: white;
+                width: auto;
+            }
+    
+            ul
+            {
+                list-style: none;
+                margin: 30px;
+                padding: 2%;
+                text-align: center;
+                float: right;
+    
+                li
+                {
+                    margin: 10px 30px;
+                    text-align: center;
+                    float: left;
+    
+                    a
+                    {
+                        cursor: pointer;
+                        color: white;
+                        &:active
+                        {
+                            opacity: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
