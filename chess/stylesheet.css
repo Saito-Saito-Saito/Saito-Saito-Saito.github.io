@@ -118,35 +118,12 @@ body main section {
     width: 70%;
     margin: 5%;
   }
-  body main section .link a {
-    display: none;
-  }
-  body main section .link button {
-    width: 70%;
-    text-align: center;
-    margin: 5px 15%;
-    padding: 2px 0;
-    background-color: #0066cc;
-    color: white;
-    display: inline-block;
-    border: unset;
-    border-radius: 2px;
-  }
 }
 
 @media screen and (min-width: 600px) {
   body main section {
     width: 50%;
     margin: 2% 30% 5% 10%;
-  }
-  body main section .link {
-    padding: 0 2%;
-  }
-  body main section .link button {
-    display: none;
-  }
-  body main section .link a {
-    cursor: pointer;
   }
 }
 
