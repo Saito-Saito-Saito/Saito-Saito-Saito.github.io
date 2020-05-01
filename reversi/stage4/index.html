@@ -1,0 +1,100 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたもリバーシが作れる 4</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>リバーシが作れる</h1>
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Stage 0&1</a></li>
+            <li><a href="../stage2/index.html">Stage 2</a></li>
+            <li><a href="../stage3/index.html">Stage 3</a></li>
+            <li><a href="#">Stage 4</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section id="s4">
+            <h1>Stage 4　石を裏返す</h1>
+            <p>リバーシは石を裏返してナンボです。今回は裏返せるか判別し、そして実際に裏返す機能を作ります。</p>
+            <p>このステージでは再起処理が出てきます。慣れれば大したことはないんですが、初めてですと本当に混乱しますので、経験のない方は一度ほかの方の説明などを受けていただいて簡単な例をみてきてください。圧倒的に理解が変わりますし、何より自分で実装できるようになります。</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s4-1">4-1　裏返せるか判別する機能の指針</a></li>
+                    <li><a href="#s4-2">4-2　裏返せるか判別する機能の実装</a></li>
+                    <li><a href="#s4-3">4-3　裏返す機能の指針</a></li>
+                    <li><a href="#s4-4">4-4　裏返す機能の実装</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="#s4-1">
+            <h2>4-1　裏返せるか判別する機能の指針</h2>
+            <p>ここから先は Board クラスの turnjudge メソッドに入ります。まず player が石を置いたら direction 方向の隣のマスを [row, col] に代入します。そして置いた石から direction の方向に石を裏返せるか否かを bool 型でリターンします。</p>
+            <p>使い方はこうです。まず [R, C] に player が石をおく場合を考えてみましょう。まず board[R+direction[ROW]][C+direction[COL]]==-player を確かめます。つまり隣が相手の石かどうか。相手の石なら turnjudge(player, row+direction[ROW], col+direction[COL], direction) の値を見ます。True であれば [R, C] に石を置いたとき、direction の方向は石を裏返せます。False ならその方向の石を裏返すことできません。石を置けないんじゃないんですよ。その方向が裏返せないだけです。いいですか、</p>
+            <p class="stress">置けないんじゃないんです。</p>
+            <p>では turnjudge はどんな時に True を返しどんな時に False を返せばよろしいんでしょうか。まず、上で確認しましたが turnjudge を呼び出す時点で「自分が石を置くマスの direction 側の隣には相手の石がある」のは確定です。例えば player が ● で direction が右なら</p>
+            <p style="text-align: center;">● ○ ...</p>
+            <p>という状況であることは確定です。turnjudge の引数である row, col は、最初 ○ の位置を指しています。では、どのようにしたら右の石を裏返せることがわかるか。私の答えはこうです。</p>
+            <p>
+                <ul>
+                    <li>もし石が ○ なら、もう一つ隣をみればいい</li>
+                    <li>もし石が ● なら、置いたところから全部裏返せる</li>
+                    <li>もし石がないなら、右側へ裏返すことはできない</li>
+                </ul>
+            </p>
+            <p>意味わかりますか。例えば direction が右であって、状況が下のようになっている場合を考えてみましょう。player は ● で左端に石を置いた場合です。</p>
+            <p style="text-align: center;">● ○ ○ ●</p>
+            <p>まず最初に turnjudge の引数に入れるのは左端の ● のすぐ隣にある ○ です。これが ● にとっては相手の石なので、row, col を調節して右の ○ を指すようにします。これもまだ相手の石なので、もう一つ右に row, col を移動させます。今度は ● つまり player にとって自分の石に行き当たりましたので、player は石を置いた場所から右にある相手の石を裏返すことができます。もし自分の石にたどり着くことなく、何も置いていないマスに出くわしたり盤面の端に行き着いたりしてしまったら、当然裏返すことはできません。</p>
+        </section>
+        
+        <section id="#s4-2">
+            <h2>4-2　裏返せるか判別する機能の実装</h2>
+            <p>さて、4-1 の指針をもとに実際にコーディングしましょうか。まず row と col が board のインデックスにして問題ないかを InBoard で確認します。当然アウトなら False をリターンです。</p>
+            <p>その後に piece という値に [row, col] の石の色を格納します。この先は piece によって条件分岐します。</p>
+            <p>まずは piece が EMPTY つまり [row, col] に何も置いていない場合です。これでは石を裏返すことはできませんでしたよね。ですから False をリターンします。</p>
+            <p>piece が player の場合、自分の石にたどり着いたことになりますから、石を置いたところから direction の方向に裏返すことができます。したがってリターンは True ですね。</p>
+            <p>piece が -player つまり [row, col] にまだ相手の石がある場合は、もう一つ隣を見るんでしたね。隣というのは direction の方向ですから、row -> row + direction[ROW], col -> col + direction[COL] と変換して turnjudge を発動させます。この値が True であれば自分の石にたどり着いたことになりますし、False ならたどり着けなかったというわけです。ですから turnjudge(player, row+direction[ROW], col+direction[COL], direction) をリターンするんです。</p>
+            <p>piece がそのほかの値をとったら、そのマスに石がないわけでもないし石が白いわけでも黒いわけでもないという、まったく奇妙な状態になっています。こんなもの我々には手に負えませんから、エラーということで False を返します。</p>
+        </section>
+
+        <section id="s4-3">
+            <h2>4-3　裏返す機能の指針</h2>
+            <p>ここから先は turn メソッドへと移りましょう。文字通り石を裏返す機能です。引数は player が [row, col] に石を置いたことを意味します。</p>
+            <p>メソッドでやることはこうです。まず置いた石から 8 方向すべての隣のマスを見渡し、相手の石を探します。方向が direction で相手の石が隣に現れたとき、その石の座標つまり [row+direction[ROW], col+direction[COL]] を turnjudge に入れます。結果 True がリターンされ direction の方向の石を裏返せることがわかったら、今度は [row, col] から自分の石にたどり着くまですべてのマスの board の値を player に書き換えていきます。これをすべての方向でやったら、最後 board[row][col]=player としておしまいです。</p>
+            <p>では実際にコーディングしていきましょう。</p>
+        </section>
+
+        <section id="s4-4">
+            <h2>4-4　裏返す機能の実装</h2>
+            <p>turn メソッドの最上部では row と col が盤面の中にちゃんと収まっているか</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p></p>
+            <p>次回　Stage 5　入力を変換する</p>
+        </section>
+    </main>
+    
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/4/27</li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者の GitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者の Twitter</a></li>
+            <li><a href="#">トップへ</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
