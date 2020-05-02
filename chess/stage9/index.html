@@ -47,7 +47,7 @@
 
         <section id="s9-1">
             <h2>9-1　記録ファイルの読み込み</h2>
-            <p>これ以降は Board クラスの tracefile メソッドにコーディングします。指定のターン・プレーヤーの手番の直前までゲームを進める機能で、引数の destination_turn, destination_player, isrecwrite はそれぞれ指定ターン、指定プレーヤー、そして記録を書き換えるかを表しています。メソッド内で local_board という Board のインスタンスを作成し、これをいじります。</p>
+            <p>これ以降は Board クラスの tracefile メソッドにコーディングします。指定のターン・プレーヤーの手番の直前までゲームを進める機能で、引数の destination_turn, destination_player, isrecwrite はそれぞれ指定ターン、指定プレーヤー、そして記録を書き換えるかを表しています。メソッド内で local_board という Board の影武者インスタンスを作成し、これをいじります。</p>
             <p>まず第 1 ターンで白が駒を動かす直前で操作を止める場合、まだ駒は初期配置ですから、local_board を初期設定してすぐにリターンしてください。</p>
             <p>そのほか駒の動きを要する場合は、まず SUBRECADDRESS を書き込みモードで開いた後すぐに閉じて初期化、ついで MAINRECADDRESS の中身をすべて line に読み取ってしまいます。同時に両端にある空白文字と改行文字を strip メソッドですべて消します。line には棋譜として意味のある文だけでなく、例えばターン番号を表す数字が入っているなど、無視しなければいけない文があります。無視すべき文を無視し、拾うべき文を拾う。これが tracefile に求められる機能です。</p>
             <p>それでは local_board を宣言して一文一文に目を向けていきましょう。</p>
@@ -55,8 +55,9 @@
 
         <section id="s9-2">
             <h2>9-2　構文解析</h2>
-            <p>さて、構文解析の時間です。どうやるかって言いますと、for 文で 1 文字ずつ letter の中に line の文字を取り込んでいきます。とりあえず local_board.s (以下 loc...s) の中にブチ込んでって、空白や改行が割り込んだら打ち切り、loc...s に残った文字列が s_analyze にうまいこと引っかかってくれるかを見ます。打ち切ったのが if で条件分けしてるところ、loc...s に文字入れてくのが else で除外してるところです。</p>
-            <p>先に else の方を解説しましょう。''.join([loc...s, letter]) というのは loc...s と letter を、'' (空文字)を間に入れてつなげた文字列という意味です。つまりただ単に loc...s の後ろに letter をくっつけてるだけ。</p>
+            <p>さて、構文解析の時間です。どうやるかって言いますと、for 文で 1 文字ずつ letter の中に line の文字を取り込んでいきます。とりあえず local_board.s (loc...s) の中にブチ込んでって、空白や改行が割り込んだら打ち切り、loc...s に残った文字列が s_analyze にうまいこと引っかかってくれるかを見ます。打ち切ったのが if で条件分けしてるところ、loc...s に文字入れてくのが else で除外してるところです。</p>
+            <img src="traceforflowchart.jpg" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
+            <p>先に else (図の右上)の方を解説しましょう。''.join([loc...s, letter]) というのは loc...s と letter を、'' (空文字)を間に入れてつなげた文字列という意味です。つまりただ単に loc...s の後ろに letter をくっつけてるだけ。</p>
             <p>逆に if で分けられた方は loc...s が出来上がってるはずですから、s_analyze を発動、motion に返り値を格納します。駒を動かすときは list, 勝敗がついたときは int がリターンされますから、それによって場合分けしています。</p>
             <p>まずは駒を動かす場合です。実際に move メソッドで駒を動かし、記録を SUBRECADDRESS にとります。ここで、move におけるパラメーター変換の結果引数で要請されたターン、プレーヤーにたどり着いていれば、リターン作業に入ります。なお、isrecwrite が True の場合は MAINRECADDRESS に記録を転記しなければいけませんから、SUBRECADDRESS の内容をすべて MAINRECADDRESS へ書き込みます。そしてどちらの場合もリターンするのは local_board です。</p>
             <p>一方決着がついていれば駒を動かすことも記録をとることもしません。isrecwrite で転記が必要と判断されたら転記します。そして</p>
@@ -95,7 +96,7 @@
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/4/26</li>
+            <li>LAST EDITED: 2020/5/2</li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>
