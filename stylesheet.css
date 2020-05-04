@@ -1,36 +1,33 @@
-/*
-    smartphone
-    480px    
-    smartphone laid
-    600
-    tablet
-    960
-    little PC
-    1280
-    big PC
-*/
 body {
   width: 100%;
   height: auto;
   background-color: white;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+  cursor: auto;
 }
 
 body header {
-  width: inherit;
+  width: 100%;
   background-color: darkslategray;
   color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: static;
 }
 
 @media screen and (max-width: 600px) {
   body header {
-    height: 100px;
+    height: 110px;
+    height: auto;
   }
-  body header h1 {
+  body header #title {
+    width: 100%;
+  }
+  body header #title h1 {
     margin: 0;
-    font-size: 100px;
-    float: left;
+    padding: 0;
+    font-size: 40px;
     text-align: left;
   }
   body header ul {
@@ -38,26 +35,56 @@ body header {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 600px) and (max-width: 960px) {
   body header {
-    height: 150px;
+    height: 110px;
+    height: auto;
   }
-  body header h1 {
+  body header #title {
+    width: auto;
+    font-size: 40px;
+  }
+  body header #title h1 {
     margin: 0;
-    font-size: 150px;
+    padding: 0;
+  }
+  body header ul {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  body header {
+    height: 200px;
+  }
+  body header #title {
+    width: 60%;
+    width: auto;
+    height: 200px;
+    margin: 0;
+    padding: 0;
     float: left;
+  }
+  body header #title h1 {
+    font-size: 75px;
+    margin: 0;
+    padding: 0;
     text-align: left;
     cursor: default;
   }
   body header ul {
     float: right;
     font-size: 18px;
-    margin: 40px 50px;
+    margin: 20px 2px 0px 1px;
+    padding: 0;
+    width: auto;
+    max-width: 400px;
   }
   body header ul li {
+    text-align: right;
     list-style: none;
     float: left;
-    margin: 30px;
+    margin: 30px 5px;
   }
   body header ul li a {
     color: white;
@@ -65,27 +92,29 @@ body header {
   }
   body header ul li a:hover {
     opacity: 80%;
+    cursor: pointer;
   }
   body header ul li a:active {
-    opacity: 50%;
+    opacity: 70%;
+    cursor: pointer;
   }
 }
 
 body main {
+  padding-top: 5%;
   width: inherit;
 }
 
 body main section {
-  width: 60%;
   height: auto;
-  background-color: #f5faff;
   color: black;
-  padding: 5%;
+  padding: 5% 10% 0 10%;
 }
 
 @media screen and (max-width: 600px) {
   body main section {
-    margin: 15%;
+    width: 70%;
+    margin: 5%;
   }
   body main section .link a {
     display: none;
@@ -100,67 +129,96 @@ body main section {
     display: inline-block;
     border: unset;
     border-radius: 2px;
-    cursor: pointer;
-  }
-  body main section .link button:active {
-    opacity: 70%;
-    cursor: pointer;
   }
 }
 
 @media screen and (min-width: 600px) {
   body main section {
-    margin: 10% 30% 10% 10%;
-    border-radius: 30px;
-  }
-  body main section h1 {
-    margin: 0 15px;
-    text-align: left;
-    padding: 0;
-  }
-  body main section p {
-    margin: 0;
-    padding: 2% 5%;
-  }
-  body main section p a {
-    color: #0066cc;
-    cursor: pointer;
-  }
-  body main section p a:hover {
-    opacity: 80%;
-  }
-  body main section p a:active {
-    opacity: 70%;
+    width: 50%;
+    margin: 2% 30% 5% 10%;
   }
   body main section .link {
-    margin: 0;
-    padding: 0 5%;
+    padding: 0 2%;
   }
-  body main section .link a {
-    color: #0066cc;
-    cursor: pointer;
-  }
-  body main section .link a:hover {
-    opacity: 80%;
-  }
-  body main section .link a:active {
-    opacity: 70%;
-  }
-  body main section button {
+  body main section .link button {
     display: none;
   }
+  body main section .link a {
+    cursor: pointer;
+  }
+}
+
+body main section p {
+  padding: 0 2%;
+}
+
+body main section pre {
+  padding: 0 4%;
+}
+
+body main section .stress {
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  color: red;
+}
+
+body main section .code {
+  text-align: center;
+}
+
+body main section a {
+  color: blue;
+  cursor: pointer;
+}
+
+body main section a:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+body main section a:active {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+body main section img {
+  margin: 0 5%;
+  text-align: center;
+}
+
+body main .index ul {
+  padding: 0 10%;
+  list-style: none;
+}
+
+@media screen and (max-width: 960px) {
+  body main .index ul li {
+    line-height: 250%;
+  }
+}
+
+body main :not(.index) ul {
+  padding: 0 10%;
+  list-style: square;
 }
 
 body footer {
   background-color: darkslategray;
   width: inherit;
-  margin: 0;
+  margin: 10% 0 0 0;
   padding: 1px;
+  color: white;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1200px) {
   body footer {
-    height: 180px;
+    height: 230px;
+  }
+  body footer .edit {
+    margin: 10px;
+    text-align: center;
+    color: white;
   }
   body footer ul {
     list-style: none;
@@ -181,9 +239,17 @@ body footer {
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1200px) {
   body footer {
     height: 180px;
+  }
+  body footer .edit {
+    margin: 30px;
+    padding: 2%;
+    text-align: left;
+    float: left;
+    color: white;
+    width: auto;
   }
   body footer ul {
     list-style: none;
@@ -198,8 +264,8 @@ body footer {
     float: left;
   }
   body footer ul li a {
-    color: white;
     cursor: pointer;
+    color: white;
   }
   body footer ul li a:active {
     opacity: 70%;
