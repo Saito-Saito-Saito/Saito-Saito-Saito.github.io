@@ -100,6 +100,86 @@ body header {
   }
 }
 
+@media screen and (max-width: 961px) {
+  body .acd-menu {
+    color: white;
+    padding: 0;
+    width: 100%;
+    position: relative;
+  }
+  body .acd-menu #acd-check {
+    display: none;
+  }
+  body .acd-menu .acd-label {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: maroon;
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 15px;
+    line-height: 15px;
+    width: 60px;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .5s;
+            transition-delay: .5s;
+  }
+  body .acd-menu .acd-content {
+    background-color: maroon;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    text-align: left;
+    list-style: none;
+    line-height: 250%;
+    text-align: right;
+    -webkit-transition-delay: 0;
+            transition-delay: 0;
+  }
+  body .acd-menu .acd-content a {
+    color: white;
+    cursor: pointer;
+  }
+  body .acd-menu .acd-content a:hover {
+    opacity: 80%;
+  }
+  body .acd-menu .acd-content a:active {
+    opacity: 70%;
+  }
+  body .acd-menu #acd-check:checked + .acd-label {
+    width: 100%;
+    padding-right: 30px;
+    text-align: right;
+    -webkit-transition-delay: 0;
+            transition-delay: 0;
+    line-height: 200%;
+  }
+  body .acd-menu #acd-check:checked + .acd-label + .acd-content {
+    position: absolute;
+    width: 100%;
+    top: 25px;
+    right: 0;
+    visibility: visible;
+    text-align: right;
+    height: 250px;
+    padding-right: 30px;
+    -webkit-transition-delay: .5s;
+            transition-delay: .5s;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  body .acd-menu {
+    display: none;
+  }
+}
+
 body main {
   padding-top: 5%;
   width: inherit;
