@@ -66,6 +66,7 @@ body header {
     margin: 0;
     padding: 0;
     float: left;
+    font-weight: bold;
   }
   body header #title h1 {
     font-size: 75px;
@@ -294,7 +295,7 @@ body footer {
 
 @media screen and (max-width: 1200px) {
   body footer {
-    height: 230px;
+    height: 260px;
   }
   body footer .edit {
     margin: 10px;

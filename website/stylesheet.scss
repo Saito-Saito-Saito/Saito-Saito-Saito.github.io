@@ -74,6 +74,7 @@ body
                 margin: 0;
                 padding: 0;
                 float: left;
+                font-weight: bold;
                 
                 h1
                 {
@@ -347,7 +348,7 @@ body
 
         @media screen and(max-width: 1200px)  // for smartphones 
         {
-            height: 230px;
+            height: 260px;
 
             .edit
             {
