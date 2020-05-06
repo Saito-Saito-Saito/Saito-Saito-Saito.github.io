@@ -169,7 +169,7 @@ body header {
     right: 0;
     visibility: visible;
     text-align: right;
-    height: 420px;
+    height: 450px;
     padding-right: 30px;
     -webkit-transition-delay: .5s;
             transition-delay: .5s;
@@ -272,7 +272,7 @@ body footer {
 
 @media screen and (max-width: 1200px) {
   body footer {
-    height: 230px;
+    height: 250px;
   }
   body footer .edit {
     margin: 10px;

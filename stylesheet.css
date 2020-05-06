@@ -16,7 +16,7 @@ body header {
   position: static;
 }
 
-@media screen and (max-width: 601px) {
+@media screen and (max-width: 299px) {
   body header {
     height: 150px;
     height: auto;
@@ -36,7 +36,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 961px) {
+@media screen and (min-width: 300px) and (max-width: 599px) {
   body header {
     height: 110px;
     height: auto;
@@ -55,7 +55,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 600px) {
   body header {
     height: 200px;
   }
@@ -102,7 +102,7 @@ body header {
   }
 }
 
-@media screen and (max-width: 961px) {
+@media screen and (max-width: 629px) {
   body .acd-menu {
     color: white;
     padding: 0;
@@ -176,7 +176,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 630px) {
   body .acd-menu {
     display: none;
   }
@@ -294,7 +294,7 @@ body footer {
 
 @media screen and (max-width: 1200px) {
   body footer {
-    height: 230px;
+    height: 250px;
   }
   body footer .edit {
     margin: 10px;
