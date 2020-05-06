@@ -13,12 +13,12 @@
         </div>
 
         <ul>
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
             <li><a href="#">Stage 3</a></li>
-            <li><a href="../stage4/index.html">Stage 4</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage6">Stage 6</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">Code</a></li>
         </ul>
     </header>
@@ -27,12 +27,12 @@
         <input type="checkbox" id="acd-check">
         <label for="acd-check" class="acd-label">MENU</label>
         <ul class="acd-content">
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
             <li><a href="#">Stage 3</a></li>
-            <li><a href="../stage4/index.html">Stage 4</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage6">Stage 6</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">Code</a></li>
         </ul>
     </div>
@@ -65,7 +65,7 @@
             <p>まず一番最初に sys と logging をインポートします。直下で logging の初期設定を行います。ログと言って、ユーザーには見えないけどプログラムしている人には見える print 関数の役割をしてくれます。主にデバッグと言って「プログラムが意図した通りに動いているか」検査するのに使います。特筆すべきはこの機能、レベルを設定する事で「これより低いレベルのログは出さない」などと設定できます。詳しくは他の人の解説を当たってください。私より上手い解説がゴロゴロ転がっているので是非。</p>
             <p>ログを設定したら、今度は盤面の大きさを考えます。デフォルトでは SIZE = 8 としています。つまり 8 × 8 の盤面を使うという意味。もちろん増減させても動くようにはなっていますが、SIZE が奇数の時は有無を言わさず強制終了します。そのシステムが下にある if 文です。</p>
             <p>下っていくと、インデックスで使う用に ROW と COL という二つの定数を宣言しています。私のコードでは [row, column] という形の配列を多用しますので、list[ROW] とすれば list の row の値が、list[COL] とすれば column の値がえられるようにしています。</p>
-            <p>その下は board に入れる値です。<a href="../stage2/index.html#s2-2">2-2</a> で考えた仕組みを使うため、石なし・黒・白それぞれに名前を振っています。</p>
+            <p>その下は board に入れる値です。<a href="https://saito-saito-saito.github.io/reversi/stage2#s2-2">2-2</a> で考えた仕組みを使うため、石なし・黒・白それぞれに名前を振っています。</p>
             <p>その次はゲームが進行中か決着がついたかを表す値です。追々出てきます。</p>
             <p>0 と 1 だらけの 2 重配列になっている WHOLE_DIRECTION は、タテヨコナナメ 8 方向すべてを表します。このコードで方向は [上に移動するマス数, 右に移動するマス数] の形の配列で表します。例えば真上は [1, 0], 左下は [-1, -1] といったように。また、現在 [2, 3] にいる状態で左に 1 マス ([0, -1]) 移動したいと思ったら、[2, 3] → [2+0, 3-1] という操作で行くことができます。</p>
             <p>最後にある関数 InBoard は「インデックスが盤面の中に収まっているか」を判別する関数です。例えば「[row, col] にある石白黒どっちのですか」と言う問いかけに対して、row が SIZE + 2 とかなのに board[row]... としてしまうとエラーになりますよね。これを未然に防ぐために InBoard を使います。引数はリストのインデックスですから 0 スタートであることに注意してください。</p>
@@ -75,11 +75,11 @@
             <h2>3-2　初期設定</h2>
             <p>board.py というファイルに移ります。まず copy モジュールをインポートし、さらに 3-1 で作った config もインポートします。from config import * となってますよね。例えば上でインポートした copy にある copy 関数を使いたい場合、このファイルの中では copy.copy の形にしないといけませんが、from config import * とした config の中身はいちいち config. をつける必要がありません。特に config ファイルの中身はいやというほど使いますので、手間が少ないに越したことはないでしょう。</p>
             <p>さて、Board クラスです。一番上にある __init__ はコンストラクタと言って、このクラスを起動したときに実行されるメソッド(クラス内の関数)になります。平たく言えば初期設定。</p>
-            <p>盤面を表すリストを引数にしています。つまり <a href="../stage2/index.html#s2-1">2-1</a> でいう board ですね。もし board として適切な形であれば、このクラスの board にそっくりそのままコピーします。ここでは必ず copy.deepcopy 関数を使ってください。例えばリスト L == [1, 3] を M = L として M に代入し、M.remove(3) のように代入先のリストに手を加えると、代入元の L にも同じ操作がされてしまいます。というのもリストは参照渡しと言って、L に格納されているのはリストそのものではなく「リストがあるコンピューター上の場所」なんですね。ですから M = L というのは「L のある場所を M に格納」しているので、L も M も実質的に同じものを指しています。したがってどちらかをいじるともう片方もつられて変わってしまう。それを回避するために copy.deepcopy という機能で、中身は同じだけどコンピューター上の場所がまったく違うリストを作り直しているんです。</p>
+            <p>盤面を表すリストを引数にしています。つまり <a href="https://saito-saito-saito.github.io/reversi/stage2#s2-1">2-1</a> でいう board ですね。もし board として適切な形であれば、このクラスの board にそっくりそのままコピーします。ここでは必ず copy.deepcopy 関数を使ってください。例えばリスト L == [1, 3] を M = L として M に代入し、M.remove(3) のように代入先のリストに手を加えると、代入元の L にも同じ操作がされてしまいます。というのもリストは参照渡しと言って、L に格納されているのはリストそのものではなく「リストがあるコンピューター上の場所」なんですね。ですから M = L というのは「L のある場所を M に格納」しているので、L も M も実質的に同じものを指しています。したがってどちらかをいじるともう片方もつられて変わってしまう。それを回避するために copy.deepcopy という機能で、中身は同じだけどコンピューター上の場所がまったく違うリストを作り直しているんです。</p>
             <img src="list.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
             <p>もしコンストラクタ __init__ の引数のリストが有効なものでなければ、初期配置で盤面を作りましょう。まずは board という名前で 8 × 8 マスの値がすべて 0 のリストを作ります。それが for 文のところです。その次に、最初に並べる石を並べます。</p>
             <img src="img.png" alt="UNAVAILABLE" width="90%" style="max-width: 350px;"> 
-            <p>この写真の並べ方ですよ。<a href="../stage2/index.html#s2-2">2-2</a> で決め 3-1 で定義した通りに、board の指定の位置に白黒の石をおきます。必ず黒が右上と左下、白が左上と右下になるようにおいてください。ルールで決められています。</p>
+            <p>この写真の並べ方ですよ。<a href="https://saito-saito-saito.github.io/reversi/stage2#s2-2">2-2</a> で決め 3-1 で定義した通りに、board の指定の位置に白黒の石をおきます。必ず黒が右上と左下、白が左上と右下になるようにおいてください。ルールで決められています。</p>
             <p>あとは game_status に進行中 GAME_PRC を、勝者 winner に「決まっていない」EMPTY を格納したら、コンストラクタ __init__ は終わりです。</p>
         </section>
 
@@ -100,7 +100,7 @@
             <h2>次回予告</h2>
             <p>ここまでで盤面の初期設定と表示ができるようになりましたから、テストとして一度 BoardPrint を実行してみてください。それで上の写真のように表示されれば完璧です。これからもちょくちょくテストすることを強くお勧めします。ガーっとコードを書き終えてやっとテストしてみたら結局動きませんでしたじゃ、その後に地獄のバグ探しが待っていますから。</p>
             <p>次回はとうとう石を置けるか判断します。これが地味にめんどくさいんですよ。再起処理とか使いますので頭を柔らか〜くしておいてくださいね。</p>
-            <p><a href="../stage4/index.html">次回　Stage 4　駒を裏返す</a></p>
+            <p><a href="https://saito-saito-saito.github.io/reversi/stage4">次回　Stage 4　駒を裏返す</a></p>
         </section>
     </main>
 

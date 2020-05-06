@@ -12,16 +12,16 @@
             <h1>チェスが作れる</h1>
         </div>
         <ul>
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
             <li><a href="#">Stage 8</a></li>
-            <li><a href="../stage9/index.html">Stage 9</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage9">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
     </header>
@@ -30,16 +30,16 @@
         <input type="checkbox" id="acd-check">
         <label for="acd-check" class="acd-label">MENU</label>
         <ul class="acd-content">
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
             <li><a href="#">Stage 8</a></li>
-            <li><a href="../stage9/index.html">Stage 9</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage9">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
     </div>
@@ -71,7 +71,7 @@
         
         <section id="s8-2">
             <h2>8-2　棋譜の文字列操作</h2>
-            <p>board.py ファイルの Board クラスに record メソッドがありますね。ここで self.s を棋譜としてファイルに記述する作業を行います。そのために <a href="../stage6/index.html#s6-1">6-1</a> でやったように、self.s から不要な文字を取り除いて、棋譜として残すのにふさわしい形にします。ですから 6-1 と同じことをします。ほんとに同じです。コピペで結構です。私もコピペしました。</p>
+            <p>board.py ファイルの Board クラスに record メソッドがありますね。ここで self.s を棋譜としてファイルに記述する作業を行います。そのために <a href="https://saito-saito-saito.github.io/chess/stage6#s6-1">6-1</a> でやったように、self.s から不要な文字を取り除いて、棋譜として残すのにふさわしい形にします。ですから 6-1 と同じことをします。ほんとに同じです。コピペで結構です。私もコピペしました。</p>
             <p>それが終わったら s_record という文字列変数に棋譜を格納します。キャスリングは "O" を用いるのがが本来の形ですけれども、私のコードでは "0-0-0" や "o-o" と言った形も許容していますので、「キャスリング該当の場合に限り」"o" と "0" を "O" へ変換します。キャスリングでない場合に 0 → O (ゼロからオー)の変換をすると、勝敗を表す "1-0", "0-1" にまで影響が及びますので注意してください。</p>
         </section>
 
@@ -113,7 +113,7 @@
             <h2>8-4　ファイルへの書き込み</h2>
             <p>まずはファイルを開きましょうか。record メソッドの引数で入れた address を使ってファイルを f = open ... とします。playmode では駒を動かすたびにこの record メソッドを発動させることを想定していますから、モードは追記 "a" です。</p>
             <p>ここからは書き込む内容によってフォーマット調整が入ります。まず白が勝った時。この場合上の例でも確認しましたが、1-0 と書くのは黒側ですから、f.write でそのまま追記すれば問題ありません。一方黒が勝った時は新しくターン番号を入れています。self.turn は 1 スタートです。</p>
-            <p>その下にいきましょう。playmode では move の発動後に record を使います。<a href="../stage4-2/index.html#s4-2-6">4-2-6</a> でやりましたけれども、move ではパラメーターを変換するところで既にプレーヤーを入れ替えています。そのためコメントにも書いてある通り、</p>
+            <p>その下にいきましょう。playmode では move の発動後に record を使います。<a href="https://saito-saito-saito.github.io/chess/stage4-2#s4-2-6">4-2-6</a> でやりましたけれども、move ではパラメーターを変換するところで既にプレーヤーを入れ替えています。そのためコメントにも書いてある通り、</p>
             <p class="stress">self.player は相手</p>
             <p>です。したがって白の操作を記述するのは -self.player == WHITE の場合ですから、充分注意してください。白の場合は「ターン番号 + タブ + s_record (12 字)」を、黒のときは「s_record (12 字) + 改行」を書き込みます。これで上にあげたようなフォーマットになりますので確認してください。</p>
             <p>ファイルへの書き込みが終わったらファイルを閉じるのを忘れないでください。f.close です。</p>
@@ -132,14 +132,14 @@
             <h2>次回予告</h2>
             <p>冒頭でもお話ししましたが、記録機能をつけることで「前に戻る」という機能を加えることができます。次回はそれも含めて実装します。</p>
             <p>そもそも私がこの機能を装填したのは別の、もっと切実な理由があったからです。皆さんはどのようにデバッグなさっているか分かりませんけれども、私はチェスマスターの棋譜をいちいち手で入力して「どこかにバグはいねえか、どこかにバグはいねえか」と半ばナマハゲになってミスったとこ探してたんですが、これがまあ面倒で面倒で。なので「対局の棋譜が与えられたらゲームが完全再現できる」機能が欲しかったんです。ですから、最初はこの「全体の棋譜から対局を再現する」のに注力しています。戻る機能は副次的なものです。逆に言えば簡単なので、そう力まないで。</p>
-            <p><a href="../stage9/index.html">次回　Stage 9　記録からゲームをすすめる</a></p>
+            <p><a href="https://saito-saito-saito.github.io/chess/stage9">次回　Stage 9　記録からゲームをすすめる</a></p>
         </section>
     </main>
 
     <footer>
         <ul>
             <li>LAST EDITED: 2020/5/6</li>
-            <li><a href="../../index.html">解説一覧</a></li>
+            <li><a href="https://saito-saito-saito.github.io">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

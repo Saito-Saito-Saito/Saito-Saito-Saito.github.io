@@ -12,15 +12,15 @@
             <h1>チェスが作れる</h1>
         </div>
         <ul>
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
-            <li><a href="../stage8/index.html">Stage 8</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
             <li><a href="#">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
@@ -30,15 +30,15 @@
         <input type="checkbox" id="acd-check">
         <label for="acd-check" class="acd-label">MENU</label>
         <ul class="acd-content">
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
-            <li><a href="../stage6/index.html">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
-            <li><a href="../stage8/index.html">Stage 8</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
             <li><a href="#">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
@@ -88,7 +88,7 @@
 
         <section id="s9-3">
             <h2>9-3　戻る機能</h2>
-            <p>これでようやく「ひとつ戻る」の機能を実装できますね。<a href="../stage7/index.html#s7-4">7-4</a> で実装した部分、playmode で特殊イベントを扱ったところです。"X" や "H" の場合が書かれていますが、ここに "Z" の場合を追加します。</p>
+            <p>これでようやく「ひとつ戻る」の機能を実装できますね。<a href="https://saito-saito-saito.github.io/chess/stage7#s7-4">7-4</a> で実装した部分、playmode で特殊イベントを扱ったところです。"X" や "H" の場合が書かれていますが、ここに "Z" の場合を追加します。</p>
             <p>まず相手に確認をとります。本来こういうボードゲームでは待ったはなしなので、ここは外さないでください。もし了承しなければ当然 continue して同じプレーヤーにもう一度操作を考え直してもらいます。相手から了承 "y" が得られれば、new_board にひとつ前の自分のターンで駒を動かす直前の状態を代入します。ここまでの棋譜をもう一度はじめからたどって前の状態にするんです。</p>
             <p>もしこれが main_board と同じであれば、tracefile は定義したクラスでいう self をリターンしたことになりますから失敗です。そのほかの場合は成功していますから、new_board に乗り換え、要は main_board へ new_board を代入します。そして BOARDprint を忘れずに。プレーヤーとしてはこれがないと「あれ、本当に戻ったのかな」と不安になってしまいます。</p>
             <p>成功にせよ失敗にせよ、次の操作も同じ人が行いますので continue してループ先頭へ行ってください。</p>
@@ -111,14 +111,14 @@
             <p>もし「おいおい、てめーのコードバグってんじゃねーか」という場合は、このページのフッター(一番下のところ)にリンクが貼ってありますのでそちらにお問い合わせいただければと思います。この解説に不備や不明な点がある場合でも結構です。本当に気軽に連絡くださって結構ですよ。いや、「ケーキ奢れ」はダメですけど。</p>
             <p>我々はチェスのゲームを作るためにいろんなことを学びました。2 次元配列の扱い、オブジェクト指向、文字列操作、正規表現、ファイルの読み書きなどなど。「プログラミング初めてだった」なんて方もいるかもしれません。いや、ここまで読み切ってる人のなかにいるわけないか、そんな天才。とにかく苦労してこのコードを書き上げた皆さんは、書く前とは別人になっているはずです。大変だったでしょう。私ですか。大変でしたよ、この解説書くの。冗談ですって、チェスのコーディング大変でしたって。いや、解説も大変でしたけど。でもコーディングするの面白かったじゃないですか。ね、面白かったでしょ。面白かったよね。ね。いや、このご時世にパワハラなんてしませんよ。しませんって。してねーだろ、おい。</p>
             <p>それと、他にもコード作って解説あげてますから、ぜひそちらもご覧ください。チェスなんかより断然簡単なものもあったりします。</p>
-            <p><a href="../../index.html">これであなたもいろいろ作れる</a></p>
+            <p><a href="https://saito-saito-saito.github.io">これであなたもいろいろ作れる</a></p>
         </section>
     </main>
 
     <footer>
         <ul>
             <li>LAST EDITED: 2020/5/6</li>
-            <li><a href="../../index.html">解説一覧</a></li>
+            <li><a href="https://saito-saito-saito.github.io">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

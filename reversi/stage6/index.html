@@ -13,11 +13,11 @@
         </div>
 
         <ul>
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4/index.html">Stage 4</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage5">Stage 5</a></li>
             <li><a href="#">Stage 6</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">Code</a></li>
         </ul>
@@ -27,11 +27,11 @@
         <input type="checkbox" id="acd-check">
         <label for="acd-check" class="acd-label">MENU</label>
         <ul class="acd-content">
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4/index.html">Stage 4</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
+            <li><a href="https://saito-saito-saito.github.io/reversi/stage5">Stage 5</a></li>
             <li><a href="#">Stage 6</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">Code</a></li>
         </ul>
@@ -73,7 +73,7 @@
 
         <section id="s6-3">
             <h2>6-3　入力処理</h2>
-            <p><a href="../stage2/index.html#s2-1">2-1</a> で確認したとおり、入力は行と列の番号を使わせましょう。s という変数に入力の文字列を格納します。</p>
+            <p><a href="https://saito-saito-saito.github.io/reversi/stage2#s2-1">2-1</a> で確認したとおり、入力は行と列の番号を使わせましょう。s という変数に入力の文字列を格納します。</p>
             <p>ここでユーザーには投了(負けを自分で認める)機会を差し上げてください。私のコードでは "x" や "X" を入力してあげることで相手の勝ちとなるようになっています。ここでご注意いただきたいのですが、投了を発動して winner を相手にしても、game_status はまだ GAME_PRC の状態です。先ほどの gamesetjudge の場合と区別しているのはしっかり理由がありますので、ループを脱離したあとにもれなく確認してくださいね。</p>
             <p>s が "x" の類でなければ、プレーヤーは自分の石を置きたいマスを指定してきたものと受け取れます。行と列がそれぞれ数字とアルファベットで指定されますので、それを解析してコンピューターでもわかる形にしないといけません。それをするのが IO.py ファイルの InputFormat 関数です。s を引数にして有効な場合は [row, col] のインデックス(0 スタート)の形でリストを、無効の場合は False をリターンさせます。さて、この関数の中に ord 関数がありますね。一般にコンピューター上で識別できる文字には UNICODE といって一文字一文字に番号が振られているのですが、ord はその番号をリターンします。特にアルファベットは順番通りに UNICODE が振られていますので、文字が a から h の中にあるか、ご覧の通り単純な不等式で調べられます。</p>
             <p>この InputFormat 関数の返り値を square という変数に格納します。この値が False であれば、紛れもなく無効な入力なので、「入力がなってない」として、同じプレーヤーにもう一度マスを指定し直させるため continue を発動です。それ以外では一応 square は一丁前の形にはなっていますので、main_board.turn を実行してみて、これで False「石を一つも裏返せない」が出るようなら、やはりもう一度入力ですね。逆に True が返されれば「裏返し成功」ということで相手の番に移ります。</p>

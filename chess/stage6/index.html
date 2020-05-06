@@ -12,16 +12,16 @@
             <h1>チェスが作れる</h1>
         </div>
         <ul>
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
             <li><a href="#">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
-            <li><a href="../stage8/index.html">Stage 8</a></li>
-            <li><a href="../stage9/index.html">Stage 9</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage9">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
     </header>
@@ -30,16 +30,16 @@
         <input type="checkbox" id="acd-check">
         <label for="acd-check" class="acd-label">MENU</label>
         <ul class="acd-content">
-            <li><a href="../index.html">Stage 0&1</a></li>
-            <li><a href="../stage2/index.html">Stage 2</a></li>
-            <li><a href="../stage3/index.html">Stage 3</a></li>
-            <li><a href="../stage4-1/index.html">Stage 4-1</a></li>
-            <li><a href="../stage4-2/index.html">Stage 4-2</a></li>
-            <li><a href="../stage5/index.html">Stage 5</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
             <li><a href="#">Stage 6</a></li>
-            <li><a href="../stage7/index.html">Stage 7</a></li>
-            <li><a href="../stage8/index.html">Stage 8</a></li>
-            <li><a href="../stage9/index.html">Stage 9</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
+            <li><a href="https://saito-saito-saito.github.io/chess/stage9">Stage 9</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">Code</a></li>
         </ul>
     </div>
@@ -132,7 +132,7 @@
             <p>ここから先はざっとこんな形になっています。なんとなくでいいので頭の片隅にでも入れておいてください。</p>
             <img src="matchFlowchart.jpg" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
             <p>ではこれを踏まえてコーディングしましょうか。棋譜には動かした駒の種類が書かれています。ポーンの場合は省略ですが、逆に言えば省略されていればポーンなので、line を一眼見ただけで動かす駒の種類はわかります。その情報を取り込みましょう。</p>
-            <p>駒の種類は line の一番先頭に大文字で書かれます。その文字で場合分けして、新しく piece というパラメーターに駒の番号を入れます。IO.py の中で、この時のために ToggleType に str → int の変換機能をつけていますから、ぜひ有効活用しましょう(参照：<a href="../stage3/index.html#s3-3">3-3</a>)。</p>
+            <p>駒の種類は line の一番先頭に大文字で書かれます。その文字で場合分けして、新しく piece というパラメーターに駒の番号を入れます。IO.py の中で、この時のために ToggleType に str → int の変換機能をつけていますから、ぜひ有効活用しましょう(参照：<a href="https://saito-saito-saito.github.io/chess/stage3#s3-3">3-3</a>)。</p>
             <p>line の先頭文字が駒の種類を表す大文字だった場合は、後々の作業を簡単にするため大文字を消しておきます。不要な情報を大量に残しておくのは、かえって現場が錯乱するもとです。いらない情報は積極的に抹消していきます。line[0] が小文字の場合は piece = PAWN としたら、あとはこのブロックでやることはありません。</p>
         </section>
 
@@ -199,21 +199,21 @@
                 </ul>
             </p>
             <p>と表します。これで投了ないし了承による引き分けを判断しますので、ぜひ入れておいてください。リターンはそれぞれ WHITE, BLACK, EMPTY です。標準フォーマットと異なり int で返します。また、白か黒が勝つときは必ず負ける側が投了する形でのみ許容されるようにしてください。これないと早い者勝ちで勝利宣言の奪い合いになりますからね。</p>
-            <p>その次にキャスリングです。motionjudge でやったのと同じように、最初にプレーヤーから rank を判断し、あとでキングサイドとクイーンサイドの条件分岐を行います。リターンはキングの動きです。わからない場合は<a href="../stage4-1/index.html#s4-1-7">こちら</a>を参照してくださいね。</p>
+            <p>その次にキャスリングです。motionjudge でやったのと同じように、最初にプレーヤーから rank を判断し、あとでキングサイドとクイーンサイドの条件分岐を行います。リターンはキングの動きです。わからない場合は<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-7">こちら</a>を参照してくださいね。</p>
             <p>ついにここまでに引っかからなかったものは手の施しようがありませんから、実行不可 False をリターンしてください。</p>
         </section>
 
         <section>
             <h2>次回予告</h2>
             <p>プレーヤーからの入力にも応じられるようになりましたし、いい加減遊べるようにしましょう。次回で 2 人で遊べるチェスの機能は大方完成になります。</p>
-            <p><a href="../stage7/index.html">次回　Stage 7　ゲームを進める</a></p>
+            <p><a href="https://saito-saito-saito.github.io/chess/stage7">次回　Stage 7　ゲームを進める</a></p>
         </section>
     </main>
 
     <footer>
         <ul>
             <li>LAST EDITED: 2020/5/6</li>
-            <li><a href="../../index.html">解説一覧</a></li>
+            <li><a href="https://saito-saito-saito.github.io">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>
