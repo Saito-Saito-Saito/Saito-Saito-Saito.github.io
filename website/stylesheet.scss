@@ -1,3 +1,6 @@
+// coded by Saito-Saito-Saito
+// last edited: 9/5/2020
+
 body
 {
     width: 100%;
@@ -13,14 +16,35 @@ body
         width: 100%;
         background-color: dimgray;
         color: white;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        position: static;
 
-        @media screen and (max-width: 601px)
+        @media screen and (max-width: 600px)
         {
-            height: 150px;
-            height: auto;
+            height: 62px;
             
+            #title
+            {
+                width: 100%;
+
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                    line-height: 32px;
+                    font-size: 40px;
+                    cursor: default;
+                }
+            }
+            
+            ul
+            {
+                display: none;
+            }
+        }
+
+        @media screen and(min-width:601px) and(max-width:970px)
+        {
+            height: 84px;
+
             #title
             {
                 width: 100%;
@@ -28,60 +52,36 @@ body
                 {
                     margin: 0;
                     padding: 0;
-                    font-size: 40px;
-                    line-height: 32px;
-                    text-align: left;
+                    line-height: 42px;
+                    font-size: 50px;
+                    cursor: default;
                 }
             }
-            
+
             ul
             {
                 display: none;
             }
         }
 
-        @media screen and(min-width:600px) and(max-width:961px)
+        @media screen and(min-width:971px)
         {
-            height: 110px;
-            height: auto;
+            height: 130px;
 
             #title
             {
                 width: auto;
-                h1
-                {
-                    font-size: 40px;
-                    line-height: 32px;
-                    margin: 0;
-                    padding: 0;
-                }
-            }
-            ul
-            {
-                display: none;
-            }
-        }
-
-        @media screen and(min-width:960px)
-        {
-            height: 200px;
-
-            #title
-            {
-                width: 60%;
-                width: auto;
-                height: 200px;
+                height: 130px;
                 margin: 0;
                 padding: 0;
                 float: left;
-                font-weight: bold;
                 
                 h1
                 {
-                    font-size: 75px;
                     margin: 0;
                     padding: 0;
-                    text-align: left;
+                    line-height: 65px;
+                    font-size: 75px;
                     cursor: default;
                 }
             }
@@ -89,32 +89,28 @@ body
             ul
             {
                 float: right;
-                font-size: 18px;
-                margin: 20px 2px 0px 1px;
-                padding: 0;
                 width: auto;
-                max-width: 400px;
+                margin: 20px 2px;
+                padding: 0;
                 
                 li
                 {
                     text-align: right;
-                    list-style: none;
                     float: left;
+                    list-style: none;
                     margin: 30px 5px;
+                    padding: 0;
 
                     a
                     {
                         color: white;
-                        cursor: pointer;
                         &:hover
                         {
                             opacity: 80%;
-                            cursor: pointer;
                         }
                         &:active
                         {
                             opacity: 70%;
-                            cursor: pointer;
                         }
                     }
                 }
@@ -211,7 +207,7 @@ body
     
     main
     {
-        width: inherit;
+        width: 100%;
         section
         {
             height: auto;
@@ -222,48 +218,12 @@ body
             {
                 width: 70%;
                 margin: 5%;
-
-                .link
-                {
-                    a
-                    {
-                        display: none;
-                    }
-
-                    button
-                    {
-                        width: 70%;
-                        text-align: center;
-                        margin: 5px 15%;
-                        padding: 2px 0;
-                        background-color: #0066cc;
-                        color: white;
-                        display: inline-block;
-                        border: unset;
-                        border-radius: 2px;
-                    }
-                }
             }
             
-            @media screen and (min-width:600px) // for PCs and tablets 
+            @media screen and (min-width:601px) // for PCs and tablets 
             {
                 width: 50%;
                 margin: 2% 30% 5% 10%;
-
-                .link
-                {
-                    padding: 0 2%;
-                    
-                    button
-                    {
-                        display: none;
-                    }
-
-                    a
-                    {
-                        cursor: pointer;
-                    }
-                }
             }
 
             p
@@ -271,17 +231,12 @@ body
                 padding: 0 2%; 
             }
 
-            pre
-            {
-                padding: 0 4%;
-            }
-
             .stress
             {
-                text-align: center;
+                color: red;
                 font-weight: bold;
                 font-size: larger;
-                color: red;
+                text-align: center;
             }
 
             .code
@@ -292,7 +247,6 @@ body
             a
             {
                 color: blue;
-                cursor: pointer;
                 &:hover
                 {
                     opacity: 80%;
@@ -308,7 +262,6 @@ body
             img
             {
                 margin: 0 5%;
-                text-align: center;
             }
         }
 
@@ -340,29 +293,22 @@ body
 
     footer
     {
-        background-color: dimgray;
-        width: inherit;
+        width: 100%;
         margin: 10% 0 0 0;
         padding: 1px;
+        background-color: dimgray;
         color: white;
 
         @media screen and(max-width: 1200px)  // for smartphones 
         {
             height: 260px;
 
-            .edit
-            {
-                margin: 10px;
-                text-align: center;
-                color: white;
-            }
-
             ul
             {
                 list-style: none;
+                text-align: center;
                 margin: 30px;
                 padding: 2%;
-                text-align: center;
     
                 li
                 {
@@ -373,6 +319,10 @@ body
                     {
                         color: white;
                         cursor: pointer;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
                         &:active
                         {
                             opacity: 70%;
@@ -385,24 +335,13 @@ body
         @media screen and(min-width: 1200px) // for tablets and PCs
         {
             height: 180px;
-
-            .edit
-            {
-                margin: 30px;
-                padding: 2%;
-                text-align: left;
-                float: left;
-                color: white;
-                width: auto;
-            }
-    
+            
             ul
             {
                 list-style: none;
                 margin: 30px;
                 padding: 2%;
                 text-align: center;
-                float: right;
     
                 li
                 {
@@ -414,6 +353,10 @@ body
                     {
                         cursor: pointer;
                         color: white;
+                        &:hover
+                        {
+                            opacity: 80%;
+                        }
                         &:active
                         {
                             opacity: 70%;

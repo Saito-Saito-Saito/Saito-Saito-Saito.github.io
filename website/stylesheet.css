@@ -12,14 +12,11 @@ body header {
   width: 100%;
   background-color: dimgray;
   color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  position: static;
 }
 
-@media screen and (max-width: 601px) {
+@media screen and (max-width: 600px) {
   body header {
-    height: 150px;
-    height: auto;
+    height: 62px;
   }
   body header #title {
     width: 100%;
@@ -27,79 +24,73 @@ body header {
   body header #title h1 {
     margin: 0;
     padding: 0;
-    font-size: 40px;
     line-height: 32px;
-    text-align: left;
+    font-size: 40px;
+    cursor: default;
   }
   body header ul {
     display: none;
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 961px) {
+@media screen and (min-width: 601px) and (max-width: 970px) {
   body header {
-    height: 110px;
-    height: auto;
+    height: 84px;
   }
   body header #title {
-    width: auto;
+    width: 100%;
   }
   body header #title h1 {
-    font-size: 40px;
-    line-height: 32px;
     margin: 0;
     padding: 0;
+    line-height: 42px;
+    font-size: 50px;
+    cursor: default;
   }
   body header ul {
     display: none;
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 971px) {
   body header {
-    height: 200px;
+    height: 130px;
   }
   body header #title {
-    width: 60%;
     width: auto;
-    height: 200px;
+    height: 130px;
     margin: 0;
     padding: 0;
     float: left;
-    font-weight: bold;
   }
   body header #title h1 {
-    font-size: 75px;
     margin: 0;
     padding: 0;
-    text-align: left;
+    line-height: 65px;
+    font-size: 75px;
     cursor: default;
   }
   body header ul {
     float: right;
-    font-size: 18px;
-    margin: 20px 2px 0px 1px;
-    padding: 0;
     width: auto;
-    max-width: 400px;
+    margin: 20px 2px;
+    padding: 0;
   }
   body header ul li {
     text-align: right;
-    list-style: none;
     float: left;
+    list-style: none;
     margin: 30px 5px;
+    padding: 0;
   }
   body header ul li a {
     color: white;
-    cursor: pointer;
   }
   body header ul li a:hover {
     opacity: 80%;
-    cursor: pointer;
   }
   body header ul li a:active {
     opacity: 70%;
-    cursor: pointer;
   }
 }
 
@@ -184,7 +175,7 @@ body header {
 }
 
 body main {
-  width: inherit;
+  width: 100%;
 }
 
 body main section {
@@ -198,35 +189,12 @@ body main section {
     width: 70%;
     margin: 5%;
   }
-  body main section .link a {
-    display: none;
-  }
-  body main section .link button {
-    width: 70%;
-    text-align: center;
-    margin: 5px 15%;
-    padding: 2px 0;
-    background-color: #0066cc;
-    color: white;
-    display: inline-block;
-    border: unset;
-    border-radius: 2px;
-  }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 601px) {
   body main section {
     width: 50%;
     margin: 2% 30% 5% 10%;
-  }
-  body main section .link {
-    padding: 0 2%;
-  }
-  body main section .link button {
-    display: none;
-  }
-  body main section .link a {
-    cursor: pointer;
   }
 }
 
@@ -234,15 +202,11 @@ body main section p {
   padding: 0 2%;
 }
 
-body main section pre {
-  padding: 0 4%;
-}
-
 body main section .stress {
-  text-align: center;
+  color: red;
   font-weight: bold;
   font-size: larger;
-  color: red;
+  text-align: center;
 }
 
 body main section .code {
@@ -251,7 +215,6 @@ body main section .code {
 
 body main section a {
   color: blue;
-  cursor: pointer;
 }
 
 body main section a:hover {
@@ -266,7 +229,6 @@ body main section a:active {
 
 body main section img {
   margin: 0 5%;
-  text-align: center;
 }
 
 body main .index ul {
@@ -286,10 +248,10 @@ body main :not(.index) ul {
 }
 
 body footer {
-  background-color: dimgray;
-  width: inherit;
+  width: 100%;
   margin: 10% 0 0 0;
   padding: 1px;
+  background-color: dimgray;
   color: white;
 }
 
@@ -297,16 +259,11 @@ body footer {
   body footer {
     height: 260px;
   }
-  body footer .edit {
-    margin: 10px;
-    text-align: center;
-    color: white;
-  }
   body footer ul {
     list-style: none;
+    text-align: center;
     margin: 30px;
     padding: 2%;
-    text-align: center;
   }
   body footer ul li {
     margin: 10px;
@@ -315,6 +272,9 @@ body footer {
   body footer ul li a {
     color: white;
     cursor: pointer;
+  }
+  body footer ul li a:hover {
+    opacity: 80%;
   }
   body footer ul li a:active {
     opacity: 70%;
@@ -325,20 +285,11 @@ body footer {
   body footer {
     height: 180px;
   }
-  body footer .edit {
-    margin: 30px;
-    padding: 2%;
-    text-align: left;
-    float: left;
-    color: white;
-    width: auto;
-  }
   body footer ul {
     list-style: none;
     margin: 30px;
     padding: 2%;
     text-align: center;
-    float: right;
   }
   body footer ul li {
     margin: 10px 30px;
@@ -348,6 +299,9 @@ body footer {
   body footer ul li a {
     cursor: pointer;
     color: white;
+  }
+  body footer ul li a:hover {
+    opacity: 80%;
   }
   body footer ul li a:active {
     opacity: 70%;
