@@ -123,7 +123,7 @@ body
             
     }
 
-    @media screen and (max-width:961px) 
+    @media screen and (max-width:960px) 
     {
         .acd-menu
         {
@@ -131,43 +131,33 @@ body
             padding: 0;
             width: 100%;
             position: relative;
-            #acd-check
-            {
-                display: none;
-            }
+
             .acd-label
             {
                 position: absolute;
                 right: 0;
                 top: 0;
-                background-color: darkslateblue;
-                display: block;
                 margin: 0;
-                padding: 0;
+                padding: 0 15px 0 5px;
+                background-color: darkslateblue;
                 text-align: right;
-                font-size: 15px;
-                line-height: 15px;
-                width: 60px;
+                font-size: smaller;
                 transition: .5s;
-                transition-delay: .5s;
+                z-index: 1;
             }
             .acd-content
             {
-                background-color: darkslateblue;
-                visibility: hidden;
-                height: 0;
                 margin: 0;
                 padding: 0;
-                transition: .5s;
-                text-align: left;
-                list-style: none;
-                line-height: 250%;
+                padding-right: 30px;
                 text-align: right;
-                transition-delay: 0;
+                background-color: darkslateblue;
+                list-style: none;
+                transition: .5s;
+                z-index: 0;
                 a
                 {
                     color: white;
-                    cursor: pointer;
                     &:hover
                     {
                         opacity: 80%;
@@ -178,29 +168,44 @@ body
                     }
                 }
             }
-            #acd-check:checked + .acd-label
+            #acd-check
             {
-                width: 100%;
-                padding-right: 30px;
-                text-align: right;
-                transition-delay: 0;
-                line-height: 200%;
-            }
-            #acd-check:checked + .acd-label + .acd-content
-            {
-                position: absolute;
-                width: 100%;
-                top: 25px;
-                right: 0;
-                visibility: visible;
-                text-align: right;
-                height: 450px;
-                padding-right: 30px;
-                transition-delay: .5s;
+                display: none;
+
+                &:not(:checked) + .acd-label
+                {
+                    width: 60px;
+                    line-height: 12px;
+                    transition-delay: .5s;
+                }
+                &:checked + .acd-label
+                {
+                    width: 100%;
+                    padding-right: 30px;
+                    line-height: 250%;
+                    transition-delay: 0;
+                }
+                &:not(:checked) + .acd-label + .acd-content
+                {
+                    visibility: hidden;
+                    height: 0;
+                    transition-delay: 0;
+                }
+                &:checked + .acd-label + .acd-content
+                {
+                    position: absolute;
+                    top: 25px;
+                    right: 0;
+                    visibility: visible;
+                    width: 100%;
+                    height: 250px;
+                    line-height: 250%;
+                    transition-delay: .5s;
+                }
             }
         }
     }
-    @media screen and (min-width:960px) 
+    @media screen and (min-width:961px) 
     {
         .acd-menu
         {
