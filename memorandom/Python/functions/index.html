@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも... 関数のメモ</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなあたも</h1>
+            <h1>... 関数のメモ</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#interpreter">インタプリタの関数</a></li>
+                    <li><a href="#default">デフォルト引数</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="interpreter">
+            <h2>インタプリタの関数</h2>
+            <h3 id="abs">abs()</h3>
+            <p>int/float の引数の絶対値をリターンする。</p>
+            <p class="code">print("{}, {}, {}".format(abs(-4), abs(1.56), abs(3 + 4j)))</p>
+            <p class="code">4, 1.56, 5.0</p>
+            <h3 id="ord">ord()</h3>
+            <p>str 型の引数 1 文字の Unicode コードポイントをリターンする。</p>
+            <p class="code">print(ord('$'))</p>
+            <p class="code">36</p>
+
+        </section>
+
+        <section id="default">
+            <h2>デフォルト引数</h2>
+            <p>例えば引数の数字の値をふやす関数を作ったとします。</p>
+            <div class="code">
+                <pre>
+                    <code>
+def increase(target, sub):
+    return target + sub
+                    </code>
+                </pre>
+            </div>
+            <p>「こんな単純な機能関数にしてんじゃねえよ」って、まあその通りなんですが、ならこれを動かしたらどうなるかは大体予想がつきますよね。</p>
+        </section>
+        <div class="code">
+            <pre>
+                <code>
+def increase(target, sub):
+    return target + sub
+    
+print(increase(3, 5))
+                </code>
+            </pre>
+        </div>
+        <p class="code">8</p>
+        <p>当然の結果すぎて何も言えませんが、話はここからです。この increase を使う場面では基本的に sub=1 で動かすことが多いとしましょう。そんな時、いちいち第 2 引数を入れるのは面倒ですよね。そこで</p>
+        <p class="code">def increase(target, sub=1):</p>
+        <p>と書きます。第 2 引数の後ろに "=1" がついただけです。どのような挙動を示すか見てみましょう。</p>
+        <div class="code">
+            <pre>
+                <code>
+def increase(target, sub=1):
+    return target + sub
+    
+print("{}, {}".format(increase(3), increase(3, 5)))
+                </code>
+            </pre>
+        </div>
+        <p class="code">4, 8</p>
+        <p>つまり、</p>
+        <p>
+            <ul>
+                <li>第 2 引数を入れれば sub にその値が代入される</li>
+                <li>第 2 引数を入れなければ sub に 1 が代入される</li>
+            </ul>
+        </p>
+        <p>となります。</p>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

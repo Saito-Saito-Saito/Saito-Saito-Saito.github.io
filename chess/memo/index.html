@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMO for Chess</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>チェス...のメモ</h1>
+        </div>
+    </header>
+    <main>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#vocabulary">用語</a></li>
+                    <li><a href="#setup">初期配置</a></li>
+                    <li><a href="#how-to-move">駒の動かし方</a></li>
+                    <li><a href="#record">棋譜の書き方</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="vocabulary">
+            <h2>用語</h2>
+            <h3 id="castling_v">キャスリング</h3>
+            <p>キングとルークを交差させるように動かすこと。<a href="#how-to-move">駒の動かし方</a>参照。</p>
+            <h3 id="enpassan_v">アンパッサン</h3>
+            <p>相手の 2 マス進んだポーンを通過するように取ること。<a href="#how-to-move">駒の動かし方</a>参照。</p>
+            <h3 id="file_v">file; ファイル</h3>
+            <p>盤面の縦長の列。クイーンサイドの端から a, b, c, .., h と番号をふる。</p>
+            <h3 id="rank_v">rank; ランク</h3>
+            <p>盤面の横長の行。黒側の端から 1, 2, ..., 8 と番号をふる。</p>
+            <h3 id="check_v">チェック; 王手</h3>
+            <p>対処しなければ次のターンで相手にキングを取られる状態。</p>
+            <h3 id="checkmate_v">チェックメイト; 詰み</h3>
+            <p>このターンで自分がどんな手を打っても相手のターンで自分のキングが取られる状態。</p>
+            <h3 id="stalemate_v">ステイルメイト</h3>
+            <p>チェックはされていないが、自らチェックされにいく他に駒の動かしようがない状態。一般にこのとき引き分けとする。</p>
+            <h3 id="resign_v">リザイン; 投了</h3>
+            <p>自ら負けを認めること。盤面において優勢であってもプレーヤーのリザインを適用する。</p>
+            <h3 id="promotion_v">プロモーション</h3>
+            <p>ポーンが一番端の <a href="#rank_v">rank</a> までたどり着いたときに、ルーク・ナイト・ビショップ・クイーンのいずれかに成り上がること。よほどの理由がない限りクイーン。</p>
+        </section>
+
+        <section id="setup">
+            <h2>初期配置</h2>
+            <img src="setup.png" alt="UNAVAILABLE" width="90%" style="max-width: 380px;">
+        </section>
+
+        <section id="how-to-move">
+            <h2>駒の動かし方</h2>
+            <p>P ポーン</p>
+            <img src="pawn.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>R ルーク</p>
+            <img src="rook.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>N ナイト</p>
+            <img src="knight.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>B ビショップ</p>
+            <img src="bishop.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>Q クイーン</p>
+            <img src="queen.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>K キング</p>
+            <img src="king.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>ポーンの最初</p>
+            <img src="initial_pawn.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>アンパッサン</p>
+            <img src="enpassant.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
+            <p>キャスリング</p>
+            <img src="castling.png" alt="UNAVAILABLE" width="90%" style="max-width: 280px;">
+        </section>
+
+        <section id="record">
+            <h2>棋譜の書き方</h2>
+            <p></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

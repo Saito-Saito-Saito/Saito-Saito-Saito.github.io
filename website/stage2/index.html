@@ -12,6 +12,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywaords" content="webページ,webプログラミング,HTML">
     <title>これであなたもサイトが作れる 2</title>
     <link rel="stylesheet" href="../stylesheet.css">
 </head>
@@ -65,14 +66,10 @@
 
        <section id="s2-1">
            <h2>2-1　head のコーディング</h2>
-           <p>HTML ファイルで最初に書く head の部分、これは大体テンプレになっていますので、私のコードを常にマルパクリするくらいの気概で結構です。テキストエディタによっては "doc" と入力して tab キーを押すだけでテンプレを書き上げてくれたりします。ただし title タグだけはしっかり考えましょう。title の中身はこういうところに現れるんでしたね。</p>
+           <p>HTML ファイルで最初に書く <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#head_i" class="memo" target="_new">head</a> の部分、これは大体テンプレになっています。テキストエディタによっては "doc" と入力して tab キーを押すだけでテンプレを書き上げてくれたりします。なお、私のコードには Google 先生にサイトを認識してもらうためのタグなんかが入っていますので、丸写しはダメですよ。それと <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#title_i">title</a> タグだけはしっかり考えましょう。title の中身はブラウザのこういうところに現れるんでしたね。</p>
            <img src="tabs.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-           <p>
-               それにこういうところにも。
-           </p>
+           <p>それにこういうところにも。</p>
            <img src="bookmarks.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-           <p>
-           </p>
            <p>ですからここの名前は手を抜けません。一方で私のサイトのタイトル「これであなたもサイトが作れる」はこれ以上抜き差しならない文章になっていると思いますので、これをそのまま title タグの中に入れてしまいます。大概において head タグの title とサイトのタイトルは、要求される性質が</p>
            <p>
                <ul>
@@ -88,18 +85,18 @@
            <h2>2-2　ヘッダー</h2>
            <p>ヘッダーとはこの部分です。</p>
            <img src="header.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-           <p>これはチェスのコードを解説したサイトなのですが、やることはこれと同じで、</p>
+           <p>これはチェスのコードを解説したサイトから引っ張ってきたのですが、やることはこれと同じで、</p>
            <p>
                <ul>
                    <li>サイトのタイトル</li>
                    <li>サイトのリンク</li>
                </ul>
            </p>
-           <p>を入れます。またスマホなどの小さい画面で見る人のためにリンクは後々消せるようにしておきたいとも思っています。今時スマホ対応しないサイトなんてほぼ価値がないも同然ですから、レスポンシブデザイン(端末に応じて変わるデザイン)には気を配っておかないといけませんね。</p>
-           <p>では早速コーディングしていきましょうか。ここで div タグを使うのはあまりセンスがよろしくなくて、HTML には header というタグが用意されています。ということでまず body 内部に header タグを用意します。</p>
-           <p>さらにその中にヘッダーに入れる文字情報を書いていきます。タイトルはタイトルで、リンクはリンクで分けておきましょう。まずはタイトルを作ります。div タグを用意し id 属性を titile とします。id はタグの名前のようなもので、1 ページにつき 1 つしか指定できません。ここで title タグを使ってはいけませんよ。title はあくまで head の中に書くものです。なんでこんなこというかというと、私がやらかしたからです。</p>
-           <p>次のリンクはリスト形式で表示したいので、ul を使います。ul は順番のないリストに使うタグでしたね。一方順番が欲しいときは ol を使います。今回サイトに順番はありますけれども、ol を使うほどではないかなと。</p>
-           <p>リストの各要素は li で括ります。現在私のリンクは絶対パス(https:// から始まるアドレス)になっていますが、制作段階では相対パスが好ましいでしょう。こういうのを想像してみてください。ある程度作業が進んで「ちゃんと出来上がっているかな」とテストをするとします。そうしてブラウザなどで HTML ファイルを開き、実際にリンクをクリックしてみたくなったとしましょう。このとき絶対パスでリンクを設定していると、ネット上にアップロードされているウェブサイトにジャンプしてしまいます。この何が問題かと申しますと、リンクで飛ばされた先は編集前のサイトになっているわけです。</p>
+           <p>を入れます。またスマホなどの小さい画面で見る人のためにリンクは後々消せるようにしておきたいとも思っています。今時スマホ対応してないサイトなんてほぼ価値がないも同然ですから、レスポンシブデザイン(端末に応じて変わるデザイン)には気を配っておかないといけませんね。</p>
+           <p>では早速コーディングしていきましょうか。ここで <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#div_i" class="memo" target="_new">div</a> タグを使うのはあまりセンスがよろしくなくて、HTML には <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#header_i" class="memo" target="_new">header</a> というタグが用意されています。ということでまず body 内部に header タグを用意します。</p>
+           <p>さらにその中にヘッダーに入れる文字情報を書いていきます。タイトルはタイトルで、リンクはリンクで分けておきましょう。まずはタイトルを作ります。div タグを用意し id 属性を titile とします。id はタグの名前のようなもので、1 ページにつき 1 つしか指定できません。ここで <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#title_i" class="memo" target="_new">title</a> タグを使ってはいけませんよ。title はあくまで head の中に書くものです。なんでこんなこというかというと、私がやらかしたからです。</p>
+           <p>次のリンクはリスト形式で表示したいので、<a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#ul_i" class="memo" target="_new">ul</a> を使います。ul は順番のないリストに使うタグでしたね。一方順番が欲しいときは <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#ol_i" class="memo" target="_new">ol</a> を使います。今回サイトに順番はありますけれども、ol を使うほどではないかなと。</p>
+           <p>リストの各要素は <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#li_i" class="memo" target="_new">li</a> で括ります。現在私のリンクは絶対パス(https:// から始まるアドレス)になっていますが、制作段階では相対パスが好ましいでしょう。こういうのを想像してみてください。ある程度作業が進んで「ちゃんと出来上がっているかな」とテストをするとします。そうしてブラウザなどで HTML ファイルを開き、実際にリンクをクリックしてみたくなったとしましょう。このとき絶対パスでリンクを設定していると、ネット上にアップロードされているウェブサイトにジャンプしてしまいます。この何が問題かと申しますと、リンクで飛ばされた先は編集前のサイトになっているわけです。</p>
            <img src="fileslink.png" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
            <p>上の例で申しますと、すでにネットに上がっているのが A と B です。これを修正しようと作業ファイルで編集を加えたのがそれぞれ A' と B' になります。相対パスならその名の通りフォルダの中の相対位置からリンクを辿っていきますから、ネットであれ作業フォルダであれ同じようにお望みのファイルへたどり着くことができます。ということで、リンクの href には相対パスを入れましょう。</p>
        </section>
@@ -116,11 +113,11 @@
                    <li>ページ冒頭にイントロと目次をつける</li>
                </ul>
            </p>
-           <p>という基本のアウトラインができました。この小パートを section で担当します。</p>
-           <p>イントロはステージの顔となりますから、そのタイトルは最大の h1 タグが適切じゃないですか。で、ステージのイントロ以外は h2 タグで少し自重気味に見せてあげる。</p>
-           <p>目次はリンクにしてクリックしたらお望みの場所へ飛んで行けるようにしましょう。この考えをもとにして、各 section には目次から飛べるように id を振る必要があることがわかります。id 番号は s(Stage 番号)-(section 番号) とします。イントロに飛ぶ機会はありませんけれども、ここにも id をつけてあげましょうか。section 番号って柄でもないので Stage 1 なら s1, Stage 2 なら s2, ... という具合に。いずれも id は必ずアルファベットから始めるという命名規則がありますので、先頭の s をお忘れなく。</p>
-           <p>各 section でタイトルをつけ終わったら本文に入ります。この長さの文章を一段落で続けて読むのはかなり体力を使います。ただでさえ自分のわからないプログラミングのスキルの話が、長くて休みもないなんて、地獄でしょ。段落分けは必須ですね。段落は p タグで囲うことで表せます。私のコードをご覧ください。p タグだらけでしょう？</p>
-           <p>説明の間に写真や図が欲しいななんて思ったりするじゃないですか。こんな長い文章読んでると、「そろそろかわいい絵が出てきてもいい頃なのにな」とか、人間誰しもそう思うものです。そんな時には img タグ。例えば「癒されるネコの写真が欲しい」と思ったら</p>
+           <p>という基本のアウトラインができました。この小パートを <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#section_i" class="memo" target="_new">section</a> で担当します。</p>
+           <p>イントロはステージの顔となりますから、そのタイトルは最大の <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#h1_i" class="memo" target="_new">h1</a> タグが適切じゃないですか。で、ステージのイントロ以外は <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#h2_i" class="memo" target="_new">h2</a> タグで少し自重気味に見せてあげる。</p>
+           <p>目次はリンクにしてクリックしたらお望みの場所へ飛んで行けるようにしましょう。この考えをもとにして、各 section には目次から飛べるように id を振る必要があることがわかります。id 番号は "s(Stage 番号)-(section 番号)" とします。イントロに飛ぶ機会はありませんけれども、一応ここにも id をつけてあげましょうか。section 番号って柄でもないので Stage 1 なら s1, Stage 2 なら s2, ... という具合に。いずれも id は必ずアルファベットから始めるという命名規則がありますので、先頭の s をお忘れなく。</p>
+           <p>各 section でタイトルをつけ終わったら本文に入ります。この長さの文章を一段落で続けて読むのはかなり体力を使います。ただでさえ自分のわからないプログラミングのスキルの話が、長くて休みもないなんて、地獄でしょ。段落分けは必須ですね。段落は <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#p_i" class="memo" target="_new">p</a> タグで囲うことで表せます。私のコードをご覧ください。p タグだらけでしょう？</p>
+           <p>説明の間に写真や図が欲しいななんて思ったりするじゃないですか。こんな長い文章読んでると、「そろそろかわいい絵が出てきてもいい頃なのにな」とか、人間誰しもそう思うものです。そんな時には <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#img_i" class="memo" target="_new">img</a> タグ。例えば「癒されるネコの写真が欲しい」と思ったら</p>
            <p class="code">
                <code>&lt;img src="アドレス" alt="UNAVAILABLE" width="90%" style="max-width: 400px;"&gt;</code>
            </p>
@@ -141,7 +138,7 @@
 
        <section id="s2-4">
            <h2>2-4　フッター</h2>
-           <p>最後にフッターを片付けましょう。フッターって何かって？ページの一番下にあるこれですよ、これ。</p>
+           <p>最後に<a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#footer_i">フッター</a>を片付けましょう。フッターって何かって？ページの一番下にあるこれですよ、これ。</p>
            <img src="longfooter.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
            <p>画面の幅が小さい人はこう写っているでしょうね。</p>
            <img src="footer.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
@@ -159,7 +156,7 @@
     
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/5/13</li>
+            <li>LAST EDITED: 2020/6/11</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>

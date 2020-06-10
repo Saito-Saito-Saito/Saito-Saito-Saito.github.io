@@ -57,7 +57,7 @@
     <main>
         <section id="s7">
             <h1>Stage 7　ゲームをすすめる</h1>
-            <p>ようやっとここまできましたね。今回のコーディングが終われば一丁前にゲームになりますよ。なんならここで終わりにしてもいいくらいです。なんせ私のプログラムも最初はここまでで終える部分までだけだったんですから。</p>
+            <p>ようやっとここまできましたね。今回のコーディングが終われば一丁前にゲームになりますよ。なんならここで終わりにしてもいいくらいです。なんせ私のプログラムも最初はここまでで終わりだったんですから。</p>
             <p>このステージでは新たに playmode.py というファイルにコーディングしていきます。最初に python のシステム自体に入っている sys, そして Stage 6 までに作り上げた config, board, IO の 3 つのファイルをインポートします。特に config はいちいち config. ってつけんでいいようにファイル全部を宣言なしで使えるようにしておきます。</p>
         </section>
 
@@ -79,14 +79,14 @@
             <h2>7-1　初期設定</h2>
             <p>ここからはほぼすべて playmode 関数の中に記述していきます。しょっぱなの record とかは Stage 8 で扱いますので、まだ触らないでくださいね。触らないでくださいね。だから</p>
             <p class="stress">触らないでくださいね。</p>
-            <p>ここで最初に手をつけるのは main_board というインスタンス(クラスをオブジェクトの形に実体化したもの)の初期化部分です。この時点でコンストラクタ __init__ が実行され、board や player などの各種パラメーターが初期化されます。次いで盤面を表示します。後々出てきますけれども、このコードでは基本的に手番(ターン)が終了してから盤面を写し出しますので、これを入れておかないと、最初何もないところから「さあて、ゲームの始まりですよ。あなたどの駒動かします？」ってなります。「いや、まずは盤面見せろよ」って話ですから書き忘れないでくださいね。</p>
+            <p>ここで最初に手をつけるのは main_board という<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>の宣言です。この時点で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" target="_new" class="memo">コンストラクタ</a>が実行され、board や player などの各種パラメーターが初期化されます。次いで盤面を表示します。後々出てきますけれども、このコードでは基本的に手番(ターン)が終了してから盤面を写し出しますので、これを入れておかないと、最初何もないところから「さあて、ゲームの始まりですよ。あなたどの駒動かします？」ってなります。「いや、まずは盤面見せろよ」って話ですから書き忘れないでくださいね。</p>
             <p>ここから先は while でループさせます。基本的に決着が着くまでずっと白 → 黒 → 白 → ... と続きますから、for よりも while ループが適切でしょう。</p>
         </section>
 
         <section id="s7-2">
             <h2>7-2　ゲームセット</h2>
             <p>まず最初にゲームが終了しているか確認します。「えー、まだ始めたばっかでしょ」じゃないんですよ。ここ while ループの中ですよ。何度も何度もこの場所には訪れるんです。ゲームが進んでいって何回もここを訪ねたあと、「あれ、これまだ while の中にいていいのかな。決着ついてたら次のターンとかねーじゃん」と素面になって考え直すには、この位置がちょうどいいんじゃないですかね。</p>
-            <p><a href="https://saito-saito-saito.github.io/chess/stage2#s2-3">2-3</a> をはじめ、何度も確認していますが、チェスにおいてゲームセットの条件は 4 つ、キングを取られる・チェックメイト(詰み)・ステイルメイト・リザイン(投了)です。リザインはあとでやるとして、他の 3 つはここで済ませましょう。</p>
+            <p><a href="https://saito-saito-saito.github.io/chess/stage2#s2-3">2-3</a> をはじめ、何度も確認していますが、チェスにおいてゲームセットの条件は 4 つ、キングを取られる・<a href="https://Saito-Saito-Saito.github.io/chess/memo#checkmate_v" class="memo" target="_new">チェックメイト</a>(詰み)・<a href="https://Saito-Saito-Saito.github.io/chess/memo#stalemate_v" class="memo" target="_new">ステイルメイト</a>・<a href="https://Saito-Saito-Saito.github.io/chess/memo#resign_v" class="memo" target="_new">リザイン</a>(投了)です。リザインはあとでやるとして、他の 3 つはここで済ませましょう。</p>
             <p>キングが取られているかどうかは、手番のプレーヤーのキングを king_place で見れば事足りますね。相手が駒を動かした直後ですから、相手のキングが盤上から消えていることはありえません。king_place は引数のプレーヤーのキングが盤上にないとき False をリターンします。その時は新たに winner という変数を用意し、ここでの勝者つまり -main_board.player を格納してください。決着がついた以上ループにいてはいけませんから、break してください。</p>
             <p>次にチェックメイトへ移ります。<a href="https://saito-saito-saito.github.io/chess/stage5#s5-3">5-3</a> で散々確認しましたけども、checkmatejudge は引数がチェックメイト</p>
             <p class="stress">される側</p>
@@ -98,14 +98,14 @@
 
         <section id="s7-3">
             <h2>7-3　動作入力</h2>
-            <p>ついにプレーヤーサイドの一番の醍醐味、動作の入力へと移りましょう。まずは「今どちら側の手番なのか」を表示します。皆さんだってこういうのプレーしている間に「あれ、今どっちの番だっけ」ってなるでしょ。そして他にもリザイン・ヘルプ(プラスやり直し。Stage 9 で)のイベントコードを書いてます。</p>
-            <p>ヘルプは IO.py の instruction 関数に書きました。ほぼほぼ <a href="https://www.chessstrategyonline.com/content/tutorials/basic-chess-concepts-chess-notation" target="_blank">www.chessstrategyonline.com</a> の記述です。許してください。一応解説を入れておくと、ヘルプを確認し終わった後にプレーヤーサイドでエンターを押さないと次にはいかないシステムになっています。逆にこれがあるおかげで「あれ、今ヘルプ出したのになんで駒動かせって催促されてんの」と混乱を引き起こさないようになっています。これが思いやりってやつですよ。わかったかい、坊や。</p>
+            <p>ついにプレーヤーサイドの一番の醍醐味、動作の入力へと移りましょう。まずは「今どちら側の手番なのか」を表示します。皆さんだってこういうのプレーしている間に「あれ、今どっちの番だっけ」ってなるでしょ。そして他にも<a href="https://Saito-Saito-Saito.github.io/chess/memo#resign_v" class="memo" target="_new">リザイン</a>・ヘルプ(プラスやり直し。Stage 9 で)のイベントコードを書いてます。</p>
+            <p>ヘルプは IO.py の instruction 関数に書きました。ほぼほぼ <a href="https://www.chessstrategyonline.com/content/tutorials/basic-chess-concepts-chess-notation" target="_blank">www.chessstrategyonline.com</a> の記述です。一応解説を入れておくと、ヘルプを確認し終わった後にプレーヤーサイドでエンターを押さないと次にはいかないシステムになっています。逆にこれがあるおかげで「あれ、今ヘルプ出したのになんで駒動かせって催促されてんの」と混乱を引き起こさないようになっています。これが思いやりってやつですよ。わかったかい、坊や。</p>
             <p>playmode に戻りましょう。実際にプレーヤーが何か入力するのは main_board.s = input()... の部分。格納と同時に空白文字の削除と小文字 o の大文字変換を行っています。大文字の O はキャスリングで使いますが、小文字は使い道がありません。プレーヤーがキャスリングを意図して "o-o-o" などと書いた場合に許容するためです。これも思いやり。</p>
         </section>
         
         <section id="s7-4">
             <h2>7-4　特殊イベント</h2>
-            <p>7-3 で登場したイベントコード "X/H(/Z)" に対処します。まずはリザイン(投了)を表す "X" です。小文字も許してあげてください。これが入力された時は main_board.player が負けを認めていますから、winner は -main_board.player です。break で while ループを脱出します。</p>
+            <p>7-3 で登場したイベントコード "X/H(/Z)" に対処します。まずは<a href="https://Saito-Saito-Saito.github.io/chess/memo#resign_v" class="memo" target="_new">リザイン</a>を表す "X" です。小文字も許してあげてください。これが入力された時は main_board.player が負けを認めていますから、winner は -main_board.player です。break で while ループを脱出します。</p>
             <p>ヘルプ "H" またはその小文字 "h" が入力されたら、先ほど 7-3 にて後出しで作った IO.py の instruction 関数を発動させます。この解説を見て次も同じプレーヤーが入力しますから、continue でもう一度ループ上端に戻ってください。</p>
             <p>"Z" は Stage 9 でやります。</p>
             <p class="stress">Stage 9 でやります。</p>
@@ -114,7 +114,7 @@
 
         <section id="s7-5">
             <h2>7-5　通常イベント</h2>
-            <p>まず s_analyze の結果を格納している motion が False つまり「main_board.s は棋譜の体裁をなしていない」場合であれば、当然入力したプレーヤーが悪いので、「てめーがチゲーんだよ」とつっぱねてください。もちろん当人が再入力しますから、continue によってループ先頭に戻るようにします。また同様に、リストである motion の要素をひとつずつ move に入れたとき(move(*motion) は move(motion[0], motion[1], ..., motion[4]) と同義)、これが False「移動不可」をリターンした場合も同じ処置をします。私のコードではここまでを 1 つの if 文でまとめています。</p>
+            <p>まず s_analyze の結果を格納している motion が False つまり「main_board.s は棋譜の体裁をなしていない」場合であれば、当然入力したプレーヤーが悪いので、「てめーがチゲーんだよ」とつっぱねてください。もちろん当人が再入力しますから、continue によってループ先頭に戻るようにします。また同様に、リストである motion の要素をひとつずつ move に入れたとき(<code>move(*motion)</code> は <code>move(motion[0], motion[1], ..., motion[4])</code> と同義)、これが False「移動不可」をリターンした場合も同じ処置をします。私のコードではここまでを 1 つの if 文でまとめています。</p>
             <p>条件文内で move を発動した時点で駒は動いており、必要なパラメーター変換も済んでいますから、これ以上盤上をいじる必要はもうありません。最後に盤面をプレーヤーに見せてあげて、この手番はおしまいです。ここまでの while ループをちゃんと決着がつくまで続けます。</p>
             <p>だから言ってるでしょ、record 云々は Stage 8 でやるって。そんなにしつこいと</p>
             <p class="stress">モテないよ、君。</p>
@@ -148,8 +148,8 @@
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/5/6</li>
-            <li><a href="https://saito-saito-saito.github.io">解説一覧</a></li>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

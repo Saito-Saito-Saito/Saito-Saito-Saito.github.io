@@ -81,7 +81,7 @@
                <input type="checkbox" style="text-align: center;">
            </p>
            <p>ただここでは単にスイッチの役割をしています。閲覧者には見せません。詳しい話はあとでしましょう。</p>
-           <p>その次が label 要素。ここをクリックするとチェックボックスにチェックを入れたり外したりできます。ちょうどこんな具合に。</p>
+           <p>その次が <a href="https://Saito-Saito-Saito.github.io/memorandom/html/tag#label_i" class="memo" target="_new">label</a> タグ。ここをクリックするとチェックボックスにチェックを入れたり外したりできます。ちょうどこんな具合に。</p>
            <p>
                <input type="checkbox" id="example">
                <label for="example">CLICK HERE</label>
@@ -94,20 +94,20 @@
            <h2>4-2　css ファイルの設定</h2>
            <p>さて、css に移りましょう。stylesheet.scss に移っていただいて、まずはヘッダーにリンクが表示されなくなる 970 px で場合分けしましょう。ここまででわからないことがある方は <a href="https://saito-saito-saito.github.io/website/stage3">Stage 3</a> に戻って復習してくださいね。</p>
            <p>最初は画面幅が 970 px 以下、つまりヘッダーにリンクが表示されない場合を見ていきます。このときアコーディオンメニューでリンクを表示しますので、そのスタイルを設定しなければいけません。acd-menu クラス全体についてまずは考えましょう。雰囲気としてはヘッダーの一部っぽく見せたいので、文字色は白を引継ぎます。acd-menu クラス全体に背景をセットするとアコーディオンが開く前から背景色で塗り潰されますのでご注意を。背景は子要素にそれぞれ設定します。 position の意味はこのあとすぐに出てきます。</p>
-           <p>ここからは acd-label と acd-content の両クラスについて、閉じていても開いていても適用されるスタイルを書いていきます。まずは acd-label ですね。先頭の position: absolute; は relative に設定した acd-menu を基準にどんな位置に表示するかを決めています。ここでは right と top を 0 にしていますから、acd-label は acd-menu の上端と右端を合わせて配置されます。つまり右上の角が合うってこと。余白はやはり実験して調べてください。背景はヘッダーと同じにします。右寄せしたいので text-align も右に。フォントサイズは少し小さいくらいがちょうどいい。残った二つは 4-2 で取り扱います。</p>
+           <p>ここからは acd-label と acd-content の両クラスについて、閉じていても開いていても適用されるスタイルを書いていきます。まずは acd-label ですね。先頭の <code><a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#position_i">position</a>: absolute;</code> は relative に設定した acd-menu を基準にどんな位置に表示するかを決めています。ここでは <a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#right_i" class="memo" target="_new">right</a> と <a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#top_i">top</a> を 0 にしていますから、acd-label は acd-menu の上端と右端を合わせて配置されます。つまり右上の角が合うってこと。余白はやはり実験して調べてください。背景はヘッダーと同じにします。右寄せしたいので <a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#textalign_i" class="memo" target="_new">text-align</a> も右に。フォントサイズは少し小さいくらいがちょうどいい。残った二つは 4-2 で取り扱います。</p>
            <p>acd-content もやることは大差ありません。余白は実験で。文字は右揃え。背景はヘッダーと同色。リンクなのでリストスタイルはなし。残った二つは 4-2 で。加えて a をいつも通りに設定します。</p>
-           <p>今度は acd-check に入ります。これはあくまでスイッチとして扱うので、ユーザーには見せません。それが display: none; です。このスイッチとしての機能を使って、メニューの開閉に応じたスタイルの設定を施していきます。</p>
-           <p>最初にラベルをいじりましょう。:not(...) で ... ではないセレクタを表すので、そのまま「チェックの入っていない #acd-check」を意味します。その後の "+" は「直後の弟要素」です。つまり、カッコの中では #acd-check の直後にある弟要素の .acd-label のスタイルを書くことになります。要は「閉まっているときのラベル」ですね。幅や行間は実験してください。残りは 4-2 で。</p>
-           <p>次は「チェックの入っている #acd-check の直後にある弟要素の .acd-label」のスタイルですね。幅や余白は皆さんにお任せして、transition-delay はやっぱり 4-2 でやります。</p>
-           <p>今度は「チェックの入っていない #acd-check の直後にある弟要素の .acd-label の直後にある弟要素の .acd-content」です。大丈夫ですか。メニューが閉じているときのコンテンツですよ。メニューを閉じているので当然ユーザーに見せるわけにはいきませんから、visibility: hidden; を入れてください。height: 0; を設定しておかないと、ヘッダーと本文の間に不自然な余白ができます。transition-delay は...。説明不要ですね。</p>
-           <p>最後にチェックがついているときのコンテンツ、つまりは開いているときのスタイルです。トップを 25 px としているのは実験の賜物です。position: absolute; を入れないと動かせませんのでご注意を。今回はメニューを見せますから、visibility: visible; は必須です。高さや幅はしっかり設定しておくべきようです。どうもバグったりするようなので。transition-delay は（略）。</p>
+           <p>今度は acd-check に入ります。これはあくまでスイッチとして扱うので、ユーザーには見せません。それが <code><a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#display_i" class="memo" target="_new">display</a>: none;</code> です。このスイッチとしての機能を使って、メニューの開閉に応じたスタイルの設定を施していきます。</p>
+           <p>最初にラベルをいじりましょう。:<a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/pseudo#not_i" class="memo" target="_new">not</a>(...) で ... ではないセレクタを表すので、そのまま「チェックの入っていない #acd-check」を意味します。その後の "+" は「直後の弟要素」です。つまり、カッコの中では #acd-check の直後にある弟要素の .acd-label のスタイルを書くことになります。要は「閉まっているときのラベル」ですね。幅や行間は実験してください。残りは 4-2 で。</p>
+           <p>次は「チェックの入っている #acd-check の直後にある弟要素の .acd-label」のスタイルですね。幅や余白は皆さんにお任せして、<a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#transition-delay_i" class="memo" target="_new">transition-delay</a> はやっぱり 4-2 でやります。</p>
+           <p>今度は「チェックの入っていない #acd-check の直後にある弟要素の .acd-label の直後にある弟要素の .acd-content」です。大丈夫ですか。メニューが閉じているときのコンテンツですよ。メニューを閉じているので当然ユーザーに見せるわけにはいきませんから、<code><a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#visibility_i" class="memo" target="_new">visibility</a>: hidden;</code> を入れてください。<code><a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#height_i" class="memo" target="_new">height</a>: 0;</code> を設定しておかないと、ヘッダーと本文の間に不自然な余白ができます。transition-delay は...。説明不要ですね。</p>
+           <p>最後にチェックがついているときのコンテンツ、つまりは開いているときのスタイルです。トップを 25 px としているのは実験の賜物です。<code><a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#position_i">position</a>: absolute;</code> を入れないと動かせませんのでご注意を。今回はメニューを見せますから、visibility: visible; は必須です。高さや幅はしっかり設定しておくべきようです。どうもバグったりするようなので。transition-delay は（略）。</p>
            <p>ここまではヘッダーにメニューが表示されない場合のスタイルでした。ヘッダーに表示されるときは新しくメニューをつける必要がありませんので、display: none; ですね。</p>
        </section>
 
        <section id="s4-3">
            <h2>4-3　動作の設定</h2>
-           <p>さて、これで形はできました。ただ現時点ではカクカクと動いてどうも味気ないので、アニメーションをつけて動かしてみたいなと思います。なんというかヌルッと動かしてみたいですね。あまり手のこんだものを作るつもりはないので、animation の導入はしません。transition という機能を使います。開閉関係なしに適用するラベルとコンテンツのスタイルに transition: .5s; としてみてください。これで動かしてみると、なんとなくヌルッと動いてくれるようになりましたね。いい調子です。</p>
-           <p>ただ、ラベルとコンテンツが一緒に開くと若干パッとしないですよね。まずメニューを開くときは先にラベルの幅が伸びてからコンテンツが開くようにします。具体的には、チェックのついていない場合の acd-label に transition-delay: .5s; を、acd-content に transition-delay: 0; を書き加えます。これで一度実行してみてください。いい感じでしょ？</p>
+           <p>さて、これで形はできました。ただ現時点ではカクカクと動いてどうも味気ないので、アニメーションをつけて動かしてみたいなと思います。なんというかヌルッと動かしてみたいですね。あまり手のこんだものを作るつもりはないので、animation の導入はしません。<a href="https://Saito-Saito-Saito.github.io/memorandom/css-scss/property#transition_i">transition</a> という機能を使います。開閉関係なしに適用するラベルとコンテンツのスタイルに <code>transition: .5s;</code> としてみてください。これで動かしてみると、なんとなくヌルッと動いてくれるようになりましたね。いい調子です。</p>
+           <p>ただ、ラベルとコンテンツが一緒に開くと若干パッとしないですよね。まずメニューを開くときは先にラベルの幅が伸びてからコンテンツが開くようにします。具体的には、チェックのついていない場合の acd-label に <code>transition-delay: .5s;</code> を、acd-content に <code>transition-delay: 0;</code> を書き加えます。これで一度実行してみてください。いい感じでしょ？</p>
            <p>閉じる時も同じようにしましょう。まずはコンテンツを閉じて、それからラベルを縮めようと思います。コンマ 5 秒と 0 を入れ替えます。これでやると、なんということでしょう。うまくいっているではありませんか。</p>
            <p>ここで新しい問題が出てきました。メニューを閉じるときにコンテンツの文字が一瞬ヘッダーにかぶるんですよね。「ウソ!?」と思った方はよくみてください。これはどうにかしたいですね。そこで使うのが z-index です。これに整数を設定することで、「表に出す要素」の優先順位をつけることができるようになります。数字が大きいほど表です。今回、コンテンツを裏に回したいので acd-content で 0 に、acd-label と header で 1 にします。これでうまいことアコーディオンメニューが働くようになりましたね。</p>
        </section>
@@ -121,7 +121,7 @@
     
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/5/13</li>
+            <li>LAST EDITED: 2020/6/11</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>

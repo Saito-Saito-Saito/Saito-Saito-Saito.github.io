@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも... ログのメモ</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなあたも</h1>
+            <h1>... ログのメモ</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#levels">レベル</a></li>
+                    <li><a href="#basicConfig">basicConfig</a></li>
+                    <li><a href="#multimodules">複数モジュールでの使用</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="levels">
+            <h2>レベル</h2>
+            <table>
+                <tr><th>タスク</th><th>最適なレベル</th></tr>
+                <tr><td>問題を診断するときのみに関心のある詳細な情報</td><td><code>DEBUG</code></td></tr>
+                <tr><td>想定通りのことが起こったことの確認</td><td><code>INFO</code></td></tr>
+                <tr><td>想定外のことが起こった、もしくは起こりそうなことの警告</td><td><code>WARNING</code></td></tr>
+                <tr><td>より重大な問題によって、ソフトウェアがある機能を実行できないことの表示</td><td><code>ERROR</code></td></tr>
+                <tr><td>プログラム自体が実行できないような重大なエラー</td><td><code>CRITICAL</code></td></tr>
+            </table>
+            <p>デフォルトのレベルは WARNING です。つまり特段設定をしなければ WARNING, ERROR, CRITICAL のレベルのログが出力されます。</p>
+            <p>また、それぞれのレベルのログを出力するメソッドもあります。</p>
+            <table>
+                <tr><td>レベル</td><td>メソッド</td></tr>
+                <tr><td>DEBUG</td><td>logging.debug()</td></tr>
+                <tr><td>INFO</td><td>logging.info()</td></tr>
+                <tr><td>WARNING</td><td>logging.warning()</td></tr>
+                <tr><td>ERROR</td><td>logging.error()</td></tr>
+                <tr><td>CRITICAL</td><td>logging.critical()</td></tr>
+            </table>
+            <p>以下のコードを参考にして使ってください。</p>
+            <p class="code"><code>logging.warning('There is not enough memory')</code></p>
+        </section>
+
+        <section id="basicConfig">
+            <h2>basicConfig</h2>
+            <p>基本的にはこんなスタイルになります。</p>
+            <p class="code"><code>logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s - %(filename)s - %(lineno)d - %(message)s')</code></p>
+            <p>basicConfig は debug() や info() といった呼び出しよりも</p>
+            <p class="stress">前に</p>
+            <p>呼び出す必要があります。</p>
+        </section>
+
+        <section id="multimodules">
+            <h2>複数モジュールでの使用</h2>
+            <p>プログラムが複数のモジュール（ファイル）でできているなら、こんな感じに構成します。</p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

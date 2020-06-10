@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも... クラスのメモ</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなあたも</h1>
+            <h1>... クラスのメモ</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#vocabulary">用語一覧</a></li>
+                    <li><a href="#outline">アウトライン</a></li>
+                    <li><a href="#constructor">コンストラクタ</a></li>
+                    <li><a href="#self">self について</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="vocabulary">
+            <h2>用語一覧</h2>
+            <h3 id="class_v">クラス</h3>
+            <p>複数の文をひとまとめにしたもの。<code>class ClassName: ...</code> で定義する。ここでわからなくても<a href="#outline">アウトライン</a>をご覧くださってご理解いただければいいと思います。</p>
+            <h3 id="instance_v">インスタンス</h3>
+            <p>クラスのオブジェクト。<code>instance = class</code> とする。ここでわからなくても<a href="#outline">アウトライン</a>をご覧くださってご理解いただければいいと思います。</p>
+            <h3 id="method_v">メソッド</h3>
+            <p>クラスの中の関数にあたるもの。クラス内では <code>def method(self, ...)</code> で定義し、<code>class.method()</code> の形で呼び出す。</p>
+            <h3 id="constructor_v">コンストラクタ</h3>
+            <p>インスタンスを宣言したときに実行されるメソッド。つまりインスタンスの初期化メソッド。<a href="#constructor">コンストラクタの解説部分</a>をご覧ください。</p>
+        </section>
+
+        <section id="outline">
+            <h2>アウトライン</h2>
+            <p>「クラスとは何か」を考えると少し難しいので、実際に使って見るのがいいでしょう。</p>
+            <p>まずはこちらを写して実行してみてください。一文一文自分の手で模写してくださいね。何やってるかわからないままコード走らせたって意味ないでしょ。</p>
+            <p>
+                <div class="code">
+                    <code>
+                        <pre>
+class MyClass:
+    counter = 0
+    sum = 0
+                            
+def add(self, addition):
+    self.counter += 1
+    self.sum += addition
+                        
+Instance1 = MyClass()
+Instance2 = MyClass()
+        
+Instance1.add(1)
+Instance1.add(5)
+        
+Instance2.add(2)
+Instance2.add(-5)
+Instance2.add(1)
+        
+print('({}, {}), ({}, {})'.format(Instance1.counter, Instance1.sum, Instance2.counter, Instance2.sum))    
+                        </pre>
+                    </code>
+                </div>
+            </p>
+            <p>するとこうなりますね。</p>
+            <p class="code"><code>(2, 6), (3, -2)</code></p>
+            <p>これでクラスとインスタンスの関係はつかめたでしょう。</p>
+            <p>まずはクラスの設定です。<code>counter</code> と <code>sum</code> という二つの変数を用意してあげて、<code>add</code> <a href="#method_v">メソッド</a>を 2 回使います。これで <code>Instance1.counter</code> は 2 に、<code>Instance1.sum</code> は 6 になりました。</p>
+            <p>クラスの設定が終わったら <code>Instance1</code> と <code>Instance2</code> に <code>MyClass</code> を代入する形でインスタンスを宣言します。</p>
+            <p>この仕組みがまだわからない方は専門のサイトに行って勉強してください。一応ここは備忘録ですので。</p>
+            <p>つまりクラスは鋳型、インスタンスは鋳型から出てきた道具です。鋳型はそれ自体だと有用な道具としては使えませんが、インスタンスを宣言する、つまり鋳型に金属を流し込む作業をすることで、ちゃんと使える道具が出来上がります。</p>
+        </section>
+
+        <section id="constructor">
+            <h2>コンストラクタ</h2>
+            <p>クラスのコンストラクタはインストラクタの初期化メソッドとでも言えばいいでしょうか。とりあえず次のコードを写して実行してみてください。</p>
+            <div class="code">
+                <code>
+                    <pre>
+class MyClass:
+    def __init__(self, input_sum=0):
+        self.counter = 0
+        self.sum = input_sum
+    
+    def add(self, addition):
+        self.counter += 1
+        self.sum += addition
+    
+Instance1 = MyClass(5)
+Instance2 = MyClass()
+
+Instance1.add(1)
+Instance1.add(5)
+
+Instance2.add(2)
+Instance2.add(-5)
+Instance2.add(1)
+print('({}, {}), ({}, {})'.format(Instance1.counter, Instance1.sum, Instance2.counter, Instance2.sum))
+    
+                    </pre>
+                </code>
+            </div>
+            <p>出力はこうなるはずです。</p>
+            <p class="code">
+                <code>(2, 11), (3, -2)</code>
+            </p>
+            <p><a href="#outline">アウトライン</a>をご覧になった方なら「これさっきのコードとだいぶ似てるな」と思ったでしょう。まさしく、先ほどのコードをほぼコピペした物です。が、ご承知の通りクラスの冒頭に <code>__init__</code> というメソッドができていますね。また <code>Instance1</code> を定義するときに、引数として 5 が入れられています。どういうことでしょう？</p>
+            <p>このクラスの最初にあるメソッド <code>__init__</code> をコンストラクタといいます。インスタンスを宣言したときに実行されるメソッドです。つまり、<code>Instance1</code> を引数 5 で呼び出したとき、<code>__init__(self, 5)</code> を実行したことになるのです。同様に <code>Instance2()</code> を呼び出したときは <code>__init__(self, 0)</code> を実行しています。</p>
+            <p>したがって <code>Instance1</code> を呼び出したとき、<code>Instance1.counter == 0</code>, <code>Instance1.sum == 5</code>, <code>Instance2.counter == 0</code>, <code>Instance2.sum == 0</code> となっています。</p>
+            <p>クラスでいうところの第 2 引数 <code>input_sum</code> は、デフォルトで 0 と設定しています。この書き方をすることで、もしインスタンスを宣言するときに引数を入れてくれたら <code>input_sum</code> はその入力値にします。入力がなかったら <code>input_sum</code> は 0 です。</p>
+        </section>
+
+        <section id="self">
+            <h2>self について</h2>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも... 文字列のメモ</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなあたも</h1>
+            <h1>... 文字列のメモ</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#immutability">イミュータブルについて</a></li>
+                    <li><a href="#methods">各種メソッド</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="immutability">
+            <h2>イミュータブルについて</h2>
+            <p>試しに下のコードを動かしてみてください。</p>
+            <div class="code">
+                <pre>
+                    <code>
+s = 'abcdefg'
+s[2] = 'x'
+print(s)
+                    </code>
+                </pre>
+            </div>
+            <p><code>'abcdefg'</code> という文字列の 3 文字目を 'x' に変えようと思ってこのコードを書いたのですが、エラーが出てこんな表示が出てくると思います。</p>
+            <p class="code"><code>'str' object does not support item assignment</code></p>
+            <p>つまりは「str 型である s はその中身を変えることはできない」ってことが言いたいんです。これを「str 型はイミュータブルである」というふうに言います。だからもしこの文字列の 3 文字目を 'x' にしたいなら、後に出てくる replace メソッドなりなんなりを使わなければなりません。</p>
+            <p>str 型がイミュータブルだということは結構様々な場面でお世話になると思いますので、是非頭に叩き込んでおいてください。</p>
+        </section>
+
+        <section id="methods">
+            <h2>各種メソッド</h2>
+            <h3>upper()</h3>
+            <p>すべての文字を大文字にして文字列を返す。</p>
+            <p class="code"><code>print('Hello, World!'.upper())</code></p>
+            <p class="code"><code>HELLO, WORLD!</code></p>
+            <h3>lower()</h3>
+            <p>すべての文字を小文字にして文字列を返す。</p>
+            <p class="code"><code>print('Hello, World!'.lower())</code></p>
+            <p class="code"><code>hello, world!</code></p>
+            <h3>isupper()</h3>
+            <p>1 文字以上のすべてのアルファベットが大文字なら True, それ以外では False をリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('Hello'.isupper())
+print('WORLD!'.isupper())
+print('123'.isupper())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+False
+True
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>islower()</h3>
+            <p>1 文字以上のアルファベットがすべて小文字なら True, そうでなければ False をリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('hello,'.islower())
+print('World!'.islower())
+print('123'.islower())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+False
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>isalpha()</h3>
+            <p>1 文字以上のアルファベットのみで構成されていれば True, それ以外は False をリターン。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('Hello'.isalpha())
+print('World!'.isalpha())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>isalnum()</h3>
+            <p>1 文字以上のアルファベットか数字から構成されていれば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('1Hello'.isalnum())
+print('World!'.isalnum())
+print(' guys'.isalnum())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+False
+False
+                    </code>
+                </pre>
+            </div>
+            <h3 id="isdecimal">isdecimal()</h3>
+            <p>1 文字以上の数字のみから構成されていれば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('123'.isdecimal())
+print('7days'.isdecimal())
+print('5!'.isdecimal())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+False
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>isspace()</h3>
+            <p>スペース、タブ、改行のいずれかのみで構成されていれば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print(' \t\n'.isspace())
+print('　\n'.isspace())  # 全角スペース + 改行
+print('1\t'.isspace())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+True
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>istitle()</h3>
+            <p>大文字始まりで他がすべて小文字の英単語から構成されていれば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('Hello World'.istitle())
+print('Hello, World!'.istitle())
+print("It's New World Order".istitle())
+print('It is New World Order'.istitle())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+True
+False
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>startswith()</h3>
+            <p>引数の文字列から始まれば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('Hello, world!'.startswith('Hello'))
+print('Hello, world!'.startswith('Hell'))
+print('Hello, world!'.startswith('Hello, world!'))
+print('Hello, world!'.startswith('hello'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+True
+True
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>endswith()</h3>
+            <p>引数の文字列で終われば True</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('Hello, world!'.endswith('world!'))
+print('Hello, world!'.endswith('orld!'))
+print('Hello, world!'.endswith('world'))
+print('Hello, world!'.endswith('World!'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+True
+True
+False
+False
+                    </code>
+                </pre>
+            </div>
+            <h3>join()</h3>
+            <p>引数の文字列のリストを一つに連結してリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print(', '.join(['dogs', 'cats', 'hamsters']))
+print(' and '.join(['dogs', 'cats', 'hamsters']))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+dogs, cats, hamsters
+dogs and cats and hamsters
+                    </code>
+                </pre>
+            </div>
+            <h3>split()</h3>
+            <p>文字列を分割してリスト化したものをリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print('I love NY'.split())
+print('I love NY'.split('lo'))
+spam = '''Paul, called to be an apostle of Christ Jesus by the will of God, and our brother Sosthenes, 
+
+To the chrch of God in Corinth, to those sanctified in Christ Jesus and called to be his holy people, together with all those everywhere who call on the name of our Lord Jesus Christ—their Lord and ours:
+
+Grace and peace to you from God our Father and the Lord Jesus Christ. '''   # Corinthians 1
+print(spam.split('\n'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+['I', 'love', 'NY']
+['I ', 've NY']
+['Paul, called to be an apostle of Christ Jesus by the will of God, and our brother Sosthenes, ', '', 'To the chrch of God in Corinth, to those sanctified in Christ Jesus and called to be his holy people, together with all those everywhere who call on the name of our Lord Jesus Christ—their Lord and ours:', '', 'Grace and peace to you from God our Father and the Lord Jesus Christ. ']
+                    </code>
+                </pre>
+            </div>
+            <h3 id="ljust">ljust()</h3>
+            <p>引数の文字数内で左に寄せてリターンする。</p>
+            <p class="code"><code>print('O Romeo, Romeo,'.ljust(20) + 'wherefore art thou Romeo')</code></p>
+            <p class="code"><code>O Romeo, Romeo,     wherefore art thou Romeo</code></p>
+            </div>
+            <h3 id="rjust">rjust()</h3>
+            <p>引数の文字数内で右に寄せてリターンする。</p>
+            <p class="code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.rjust(50))</code></p>
+            <p class="code"><code>          O Romeo, Romeo, wherefore art thou Romeo</code></p>
+            <h3 id="center">center()</h3>
+            <p>引数の文字数内で中央に寄せてリターンする。</p>
+            <p class="code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.center(50) + '?')</code></p>
+            <p class="code"><code>     O Romeo, Romeo, wherefore art thou Romeo     ?</code></p>
+            <h3 id="strip">strip()</h3>
+            <p>引数の文字列を両端から削除し続けてリターンする。デフォルトは空白文字。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print("   ...... Who's there!? ... \n".strip())
+print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.strip('Kabaddi'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+...... Who's there!? ...
+TouchKabaddiCatching
+                    </code>
+                </pre>
+            </div>
+            <h3 id="lstrip">lstrip()</h3>
+            <p>文字列左側から引数の文字列を削除し続ける。デフォルトは空白文字。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print("   ...... Who's there!? ... \n".lstrip())
+print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.lstrip('Kabaddi'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+...... Who's there!? ... 
+
+TouchKabaddiCatchingKabbadi
+                    </code>
+                </pre>
+            </div>
+            <h3 id="rstrip">rstrip()</h3>
+            <p>文字列右側から引数の文字列を削除し続ける。デフォルトは空白文字。</p>
+            <div class="code">
+                <pre>
+                    <code>
+print("   ...... Who's there!? ... \n".rstrip())
+print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.rstrip('Kabaddi'))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+...... Who's there!? ...
+KabaddiKabaddiKabaddiTouchKabaddiCatching 
+                    </code>
+                </pre>
+            </div>
+            <h3 id="replace">replace()</h3>
+            <p>第 1 引数の文字列を第 2 引数の文字列に置き換えてリターンする。</p>
+            <p class="code"><code>print('Do not enter while I am sleeping! Do not!'.replace('not', ''))</code></p>
+            <p class="code"><code>Do  enter while I am sleeping! Do !</code></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -58,7 +58,7 @@
         <section>
             <h1>Stage 8　ゲーム進行を記録する</h1>
             <p>今回はゲームの棋譜を別ファイルに記録していきます。「えー、んなもんいらねーよ」そうですか。せっかく「1 手戻る」とかできるようになるのになー。お？食いついてきたな。いや、正確には Stage 9 でできるようになるんですが、Stage 8 は 9 への導入の役割も果たしてくれますから、せっかく餌に引っかかった皆さんはぜひ日の目を見られるように頑張って欲しいものです。</p>
-            <p>なお、ここからはファイルへの書き込みの知識が必要になります。これできないと絶望的ですので、知らない人は回れ右。いや、ムズくないから。そんな顔しないで。</p>
+            <p>なお、ここからは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/file" target="_new">ファイル利用</a>の知識が必要になります。これできないと絶望的ですので、知らない人は回れ右。いや、ムズくないから。そんな顔しないで。もちろん初見さんはしっかりした説明を受けてください。</p>
         </section>
 
         <section class="index">
@@ -76,7 +76,7 @@
 
         <section id="s8-1">
             <h2>8-1　下準備</h2>
-            <p>大前提として、ファイルを操作するにはファイルの名前がわからないと手の施しようがありません。この名前を config.py で一律に決めてしまいます。ログの設定を行った後にコメントで records とある部分がそれです。MAINRECADDRESS という定数にファイルの名前 mainrecord.txt を格納しています。また Stage 9 で扱う SUBRECADDRESS も定義しています。playmode.py に移って、playmode 関数の最初の記述、ここでファイルを書き込みモードで open することにより、playmode 起動時点でひょっとすると存在しないかもしれない MAINRECADDRESS (及び SUBRECADDRESS) を新規作成します。</p>
+            <p>大前提として、ファイルを操作するにはファイルの名前がわからないと手の施しようがありません。この名前を config.py で一律に決めてしまいます。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>の設定を行った後にコメントで records とある部分がそれです。MAINRECADDRESS という定数にファイルの名前 mainrecord.txt を格納しています。また Stage 9 で扱う SUBRECADDRESS も定義しています。playmode.py に移って、playmode 関数の最初の記述、ここでファイルを書き込みモードで open することにより、playmode 起動時点でひょっとすると存在しないかもしれない MAINRECADDRESS (及び SUBRECADDRESS) を新規作成します。</p>
         </section>
         
         <section id="s8-2">
@@ -121,11 +121,11 @@
         
         <section id="s8-4">
             <h2>8-4　ファイルへの書き込み</h2>
-            <p>まずはファイルを開きましょうか。record メソッドの引数で入れた address を使ってファイルを f = open ... とします。playmode では駒を動かすたびにこの record メソッドを発動させることを想定していますから、モードは追記 "a" です。</p>
+            <p>まずはファイルを開きましょうか。record メソッドの引数で入れた address を使ってファイルを <code>f = open ...</code> とします。playmode では駒を動かすたびにこの record メソッドを発動させることを想定していますから、モードは追記 "a" です。</p>
             <p>ここからは書き込む内容によってフォーマット調整が入ります。まず白が勝った時。この場合上の例でも確認しましたが、1-0 と書くのは黒側ですから、f.write でそのまま追記すれば問題ありません。一方黒が勝った時は新しくターン番号を入れています。self.turn は 1 スタートです。</p>
             <p>その下にいきましょう。playmode では move の発動後に record を使います。<a href="https://saito-saito-saito.github.io/chess/stage4-2#s4-2-6">4-2-6</a> でやりましたけれども、move ではパラメーターを変換するところで既にプレーヤーを入れ替えています。そのためコメントにも書いてある通り、</p>
             <p class="stress">self.player は相手</p>
-            <p>です。したがって白の操作を記述するのは -self.player == WHITE の場合ですから、充分注意してください。白の場合は「ターン番号 + タブ + s_record (12 字)」を、黒のときは「s_record (12 字) + 改行」を書き込みます。これで上にあげたようなフォーマットになりますので確認してください。</p>
+            <p>です。したがって白の操作を記述するのは <code>-self.player == WHITE</code> の場合ですから、充分注意してください。白の場合は「ターン番号 + タブ + s_record (12 字)」を、黒のときは「s_record (12 字) + 改行」を書き込みます。12 文字の設定は <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str#ljust" class="memo" target="_new">ljust()</a> メソッドでできます。これで上にあげたようなフォーマットになりますので確認してください。</p>
             <p>ファイルへの書き込みが終わったらファイルを閉じるのを忘れないでください。f.close です。</p>
         </section>
 
@@ -148,8 +148,8 @@
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/5/6</li>
-            <li><a href="https://saito-saito-saito.github.io">解説一覧</a></li>
+            <li>LAST EDITED: 2020/6/11</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>
