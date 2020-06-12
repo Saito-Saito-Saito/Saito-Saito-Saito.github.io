@@ -266,7 +266,13 @@ body main section img {
   margin: 0 5%;
 }
 
-@media screen and (min-width: 961px) {
+@media screen and (max-width: 600px) {
+  body main .memo {
+    color: gray;
+  }
+}
+
+@media screen and (min-width: 601px) {
   body main .memo {
     color: black;
     text-decoration: none;
@@ -274,12 +280,6 @@ body main section img {
   body main .memo:hover {
     cursor: pointer;
     opacity: 50%;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  body main .memo {
-    color: gray;
   }
 }
 
