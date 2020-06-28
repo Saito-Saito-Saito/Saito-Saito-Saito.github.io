@@ -21,7 +21,7 @@ body
 
         @media screen and (max-width: 600px)
         {
-            height: 62px;
+            height: 64px;
             
             #title
             {
@@ -45,7 +45,7 @@ body
 
         @media screen and(min-width:601px) and(max-width:970px)
         {
-            height: 84px;
+            height: 80px;
 
             #title
             {
@@ -54,7 +54,7 @@ body
                 {
                     margin: 0;
                     padding: 0;
-                    line-height: 42px;
+                    line-height: 40px;
                     font-size: 50px;
                     cursor: default;
                 }
@@ -68,12 +68,12 @@ body
 
         @media screen and(min-width:971px)
         {
-            height: 130px;
+            height: 120px;
 
             #title
             {
                 width: auto;
-                height: 130px;
+                height: 120px;
                 margin: 0;
                 padding: 0;
                 float: left;
@@ -82,7 +82,7 @@ body
                 {
                     margin: 0;
                     padding: 0;
-                    line-height: 65px;
+                    line-height: 60px;
                     font-size: 75px;
                     cursor: default;
                 }

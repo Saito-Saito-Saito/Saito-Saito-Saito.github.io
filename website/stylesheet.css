@@ -18,7 +18,7 @@ body header {
 
 @media screen and (max-width: 600px) {
   body header {
-    height: 62px;
+    height: 64px;
   }
   body header #title {
     width: 100%;
@@ -37,7 +37,7 @@ body header {
 
 @media screen and (min-width: 601px) and (max-width: 970px) {
   body header {
-    height: 84px;
+    height: 80px;
   }
   body header #title {
     width: 100%;
@@ -45,7 +45,7 @@ body header {
   body header #title h1 {
     margin: 0;
     padding: 0;
-    line-height: 42px;
+    line-height: 40px;
     font-size: 50px;
     cursor: default;
   }
@@ -56,11 +56,11 @@ body header {
 
 @media screen and (min-width: 971px) {
   body header {
-    height: 130px;
+    height: 120px;
   }
   body header #title {
     width: auto;
-    height: 130px;
+    height: 120px;
     margin: 0;
     padding: 0;
     float: left;
@@ -68,7 +68,7 @@ body header {
   body header #title h1 {
     margin: 0;
     padding: 0;
-    line-height: 65px;
+    line-height: 60px;
     font-size: 75px;
     cursor: default;
   }
