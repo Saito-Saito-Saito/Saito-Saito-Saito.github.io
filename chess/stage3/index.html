@@ -57,7 +57,7 @@
     <main>
         <section id="s3">
             <h1>Stage 3　盤面をつくる</h1>
-            <p>大枠は Stage 2 のところでお話しした通りです。 board という 2 次元配列に、プラスかマイナスで表されるプレーヤー情報と、1 から 8 で表される駒の種類の情報を突っ込んでいきます。board のインデックスは <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> の値を 0 スタートで使います。それでは早速コーディングしていきましょうか。</p>
+            <p>みなさま、ようこそ。チェスのプログラミング第 3 ステージです。大枠は Stage 2 のところでお話しした通りです。 board という 2 次元配列に、プラスかマイナスで表されるプレーヤー情報と、1 から 8 で表される駒の種類の情報を突っ込んでいきます。board のインデックスは <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> の値を 0 スタートで使います。それでは早速コーディングしていきましょうか。</p>
         </section>
 
         <section class="index">
@@ -75,15 +75,11 @@
             <h2>3-1　定数決め</h2>
             <p>私のコードにいくつかファイルがあるでしょう。え？お前のコードなんてもってないって？しょうがないなあ。パソコンの人はこのリンクにある緑のボタンで "Clone or download" って書いてるところクリックして、"Download ZIP" って押せばもらえるから、</p>
             <p>
-                <a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">全部コピペなさい。</a>
+                <a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">全部ダウンロードなさい。</a>
             </p>
             <p>この赤く囲ったところですよ。</p>
             <img src="github.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-            <p>スマホの場合はまずこの画面になりますから</p>
-            <img src="mobilefront.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
-            <p>枠で囲ったところをタップするとファイルが一覧で出てきます。</p>
-            <img src="mobileeach.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
-            <p>ファイルを選択してコードをご覧になれます。もし迷ったら「GitHub コード ダウンロード」とかでググればやり方出てきますよ。そこ、Yahoo はどうすればとか言わない。</p>
+            <p>スマホの方はダウンロードしても見辛いので、ぜひパソコンでご覧になるのをお勧めします。もし迷ったら「GitHub コード ダウンロード」とかでググればやり方出てきますよ。そこ、Yahoo はどうすればとか言わない。</p>
             <p>で、特にその中でも config.py というところに注目してください。ろくにプログラムっぽいことが書いてなくて「ほとんど値入れてるだけじゃん」となると思います。いや、それでいいんですよ。configure って英単語は「～を設定する」って意味なんですから、全体に関わるような、大事な大事な変数と定数の設定を全部ここでやっちゃおうということなんです。</p>
             <p>まずいちばん上の #! から始まるヤツは「シバン」と言います。どうやら OS によっては必要らしいです。これはよその説明の方が詳しいので、ぜひそちらを参照なさってください。下にいって logging とか書いてるのありますよね。ログといって、一言でいうと、開発者だけが見える print といったところでしょうか。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" target="_new">こちら</a>に備忘録くらいの情報は入れておきましたが、初見さんはよその解説をご覧になることをお勧めします。言葉足らずな私よりよっぽどわかりやすいですよ。さらに下の records は Stage 7 で使います。だから早く教えろなんていってないで、ちょっと黙ってなさい。</p>
             <div class="stress"><p>説明には順番ってもんがあるんですよ、旦那。</p></div>
@@ -141,7 +137,7 @@
  
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/11</li>
+            <li>LAST EDITED: 2020/6/28</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>

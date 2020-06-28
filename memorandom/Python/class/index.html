@@ -36,6 +36,8 @@
             <p>クラスの中の関数にあたるもの。クラス内では <code>def method(self, ...)</code> で定義し、<code>class.method()</code> の形で呼び出す。</p>
             <h3 id="constructor_v">コンストラクタ</h3>
             <p>インスタンスを宣言したときに実行されるメソッド。つまりインスタンスの初期化メソッド。<a href="#constructor">コンストラクタの解説部分</a>をご覧ください。</p>
+            <h3 id="inheritance_v">継承</h3>
+            <p>とあるクラスの付加的な機能として新たにクラスを設けること。<a href="#inheritance">継承の解説部分</a>をご覧ください。</p>
         </section>
 
         <section id="outline">
@@ -117,6 +119,81 @@ print('({}, {}), ({}, {})'.format(Instance1.counter, Instance1.sum, Instance2.co
             <p>クラスでいうところの第 2 引数 <code>input_sum</code> は、デフォルトで 0 と設定しています。この書き方をすることで、もしインスタンスを宣言するときに引数を入れてくれたら <code>input_sum</code> はその入力値にします。入力がなかったら <code>input_sum</code> は 0 です。</p>
         </section>
 
+        <section id="inheritance">
+            <h2>継承</h2>
+            <p>とりあえず一つクラスを普通に宣言したとします。</p>
+            <div class="code">
+                <pre>
+                    <code>
+class MyClass:
+    def __init__(self):
+        self.base = 1
+        self.addition = 1
+        self.count = 5
+        
+    def add(self):
+        x = self.base
+        for i in range(self.count):
+            x += self.addition
+        return x
+                    </code>
+                </pre>
+            </div>
+            <p>この MyClass クラスに加えてもう一つクラスを作りたいのですが、できることなら MyClass のメソッドをそのまま使いたい。こんな時に「クラスの継承」という技を使います。</p>
+            <div class="code">
+                <pre>
+                    <code>
+class MyClass:
+    def __init__(self):
+        self.base = 1
+        self.addition = 1
+        self.count = 5
+        
+    def add(self):
+        x = self.base
+        for i in range(self.count):
+            x += self.addition
+        return x
+
+
+class SubClass(MyClass):
+    def sub(self):
+        x = self.base
+        for i in range(self.count):
+            x -= self.addition
+        return x
+
+
+instance = SubClass()
+print(instance.sub())
+print(instance.add())
+                    </code>
+                </pre>
+            </div>
+            <p>新しく SubClass でやった中でこれまでと違うのは、クラスを定義する時に</p>
+            <p class="stress">class 新クラス名(継承するクラス名)</p>
+            <p>ってしたことだけですよね。ですがよくご覧ください。SubClass の中では base や count といった変数を定義していないのに、何食わぬ顔で使っている。実際これを動かしてみましょうか。</p>
+            <div class="code">
+                <pre>
+                    <code>
+-4
+6
+                    </code>
+                </pre>
+            </div>
+            <p>何も問題なく動きましたよね。ではコードの末尾にこう付け加えたらどうなるか。</p>
+            <div class="code">
+                <pre>
+                    <code>
+instance2 = MyClass()
+print(instance2.sub())
+                    </code>
+                </pre>
+            </div>
+            <p>当然エラーがでますね。</p>
+            <p class="code"><code>'MyClass' object has no attribute 'sub'</code></p>
+        </section>
+
         <section id="self">
             <h2>self について</h2>
         </section>
@@ -124,7 +201,7 @@ print('({}, {}), ({}, {})'.format(Instance1.counter, Instance1.sum, Instance2.co
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/11</li>
+            <li>LAST EDITED: 2020/6/28</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>

@@ -1,0 +1,243 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも2048が作れる 5</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048が作れる</h1>
+        </div>
+        <ul>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="#">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="#">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="s5">
+            <h1>Stage 5　盤面を動かす</h1>
+            <p>みなさま、ようこそ。2048 のプログラミング第 5 ステージ、今回はこのコード全体の中でも一番のミソとなる「盤面の動かし方」をコーディングしていきます。なんてったって 2048 ってのは盤面を動かしてナンボのゲームですからねぇ、ここしっかりしないとちゃんとしたもん作れませんよ。</p>
+            <p>で、今回はいつもと違ってかなり変なことやります。まず、このコードをちゃんと実行するには main.py を走らせるのですが、我々が最初に扱う move.py は全くもって必要ありません。完全にメモ書きです。でも、これがないと board.py の move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>で何をやっているのかほとんどわからなくなると思います。なので、最初は全く無用であることを知りながら、move.py の解説をします。そのあとで board.py に戻って何をやっているかしっかりみてみましょう。</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s5-1">5-1　概観</a></li>
+                    <li><a href="#s5-2">5-2　４通りの場合わけをしたメソッド</a></li>
+                    <li><a href="#s5-3">5-3　場合わけを統合したメソッド</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s5-1">
+            <h2>5-1　概観</h2>
+            <p>まずは <a href="https://Saito-Saito-Saito.github.io/2048/stage2#s2-2" target="_blank">2-2</a> でやったことを思い出してください。重なるところが多くなるので「お前がリンク貼るからしっかり読んできちゃったじゃねえか」という方はもう <a href="#s5-2">5-2</a> に行ってもらっても結構ですが、リンクすら押す気になれない方のためにここで盤面をどうやって動かすか、その概要をもう一度おさらいしたいと思います。</p>
+            <section class="sub-section">
+                <p>盤面を動かす向きは上下左右の 4 通り、ここでは簡単のために上を考えようと思います。下図をご覧ください。</p>
+                <img src="pre-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>これを上に動かすとこうなることはもうわかりますよね？</p>
+                <img src="pro-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+            </section>
+            <section class="sub-section">
+                <p>で、問題はこれをコンピューターにやってもらうかです。まずは一番左上、<code>[<a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">col</a>] == [0, 0]</code> から着目しましょう。この数字 2 について、まずは下のマス [1, 0] との関係を考えます。このマスには数字がありませんから、[0, 0] のマスは何の影響も受けません。その次に [2, 0] のマスに着目します。同じ 2 がいらっしゃいますね。ということでこいつを [0, 0] にもってきてとりあえずは下のようになるわけです。</p>
+                <img src="mid-move1.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>ここまでで [0, 0] についてできる操作は終わりました。今度は同じように [1, 0] に注目します。まず [2, 0] つまり真下のマスと比べるわけですが、こいつも EMPTY なので何もできません。次のマス、[3, 0] は 2 が居座っていますよね。盤面を上に動かすとこの 2 が [1, 0] にくるはずですから、この操作でとりあえず下のようになりますよね。</p>
+                <img src="mid-move2.png" alt="UNAVAILABLE" style="max-width: 300px;" width="90%">
+                <p>今着目している [3, 0] よりも下にマスはありませんから、第 1 <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">column</a> でこれ以上することはありません。</p>
+            </section>
+            <section class="sub-section">
+                <p>さて、ここまでの流れをフローチャートにしてみましょうか。まずは簡単のために盤面を上に動かす場合で [0, 0] に着目している状態を考えましょう。</p>
+                <img src="flow-00-10.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
+                <p>root が数字をもってこようとしているマス、focused がもってきたい数字を探しているマスです。この 2 つのマスには</p>
+                <p>
+                    <ul>
+                        <li><code>EMPTY == root == focused == EMPTY</code>：何もしないで次の focused へ</li>
+                        <li><code>EMPTY == root != focused != EMPTY</code>：focused → root で次の focused へ</li>
+                        <li><code>EMPTY != root == focused != EMPTY</code>：focused → root で次の root へ</li>
+                        <li><code>EMPTY != root != focused == EMPTY</code>：何もしないで次の focused へ</li>
+                        <li><code>EMPTY != root != focused != EMPTY</code>：何もしないで次の root へ</li>
+                    </ul>
+                </p>
+                <p>の 5 パターンがあります。</p>
+                <p>まず root も focused も EMPTY なら何もできませんから、順当に次のステップへ進みます。</p>
+                <p>root が EMPTY で focused に数字が入っているとき、その数字は盤面が動くことで root へ来るはずですから、board 上でも focused → root という操作をします。また、この後に同じ数がやってきて 2 倍になること考えられますので、root はそのまま focused を動かします。</p>
+                <p>root に数字が入っていて focused と同じ場合、その数は root へ移動して足し合わせられますので、root の値を 2 倍することになります。一度数字が足し合わされたらこれ以上別の数を足し合わせることはできませんので、root を移動させます。</p>
+                <p>root に数字が入っていていて focused が EMPTY の場合、手のうちようがありません。順当に次へ進みます。</p>
+                <p>root にも focused にも数字が入っていても同じでない場合、この数字を飛び越えて何か操作をすることはできませんので、root を変えます。</p>
+                <p>ここまでを一般化すると、こういうフローチャートになります。</p>
+                <img src="flow-universal.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
+            </section>
+        </section>
+
+        <section id="s5-2">
+            <h2>5-2　４通りの場合わけをしたメソッド</h2>
+            <p>さて、ここからは実際のコーディングに入ります。5-1 で考えたフローチャートにのっとって上下左右全ての方向についてそれぞれ場合わけし、盤面の挙動をコーディングします。move.py のファイルをご覧ください。</p>
+            <p>まずいろいろ import 下のちに、Move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>という形で Board クラスを<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#inheritance_v" class="memo" target="_new">継承</a>しています。この中で Board_move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を定義します。</p>
+            <p>引数に方向を表す direction を入れます。<a href="https://Saito-Saito-Saito.github.io/2048/stage3#s3-2">3-2</a> で定義した UP, DOWN, LEFT, RIGHT のいずれかを代入します。またロガーの引数も用意します。</p>
+            <p>最初のロガーの設定は <a href="https://Saito-Saito-Saito.github.io/2048/stage3#s3-3">3-3</a> でやったのと全く同じです。その次の ever_moved という変数は「数字が動いたか」を記録しておくものです。例えばこんな場合を考えてみましょう。</p>
+            <img src="pro-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+            <p>この状態から盤面を上に動かそうと思っても、全ての数字が上に上がれませんから無理ですね。こんなとき FAILED をリターンしたいんですよ。そこでこの ever_moved を使うわけです。どこかしら数字が動いたらこの値を True に入れ替えて、最後に ever_moved をリターンする、そんな形を考えています。</p>
+            <section class="sub-section">
+                <p>まずは上に動かす場合です。まず最初に <a href="https://Saito-Saito-Saito.github.io/2048/memo#root_v" class="memo" target="_new">root</a> を [0, 0] にセットしておきます。root と focused の各 <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">column</a> 各 <a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a> は
+                こんな動き方にします。</p>
+                <img src="up-squares.gif" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>それを実装しているのが 2 重の for ループおよびその内側の while ループになるわけです。focused は必ず root の一つ下のマスからスタートさせます。盤面の下端まで来たら root を変更します。ただし、5-1 で見た通り、focused が盤面下端まで来なくても root を移動させる場面がありましたよね？そんなのも含めてコーディングしていきましょう。</p>
+                <p>まず root が EMPTY かつ focused に数字が入っている場合です。このときは focused の数字を root に移すんでした。focused はもぬけの殻になりますので EMPTY にするのを忘れないこと。また、ever_moved も True にしておきましょう。実際に数字を動かしているわけですから。</p>
+                <p>root と focused に入っている数字が同じで EMPTY ではない場合を考えます。root の値が 2 倍になり、focused はやっぱりもぬけの殻。また 5-1 で確認した通り、この root についてこれ以上手のうちようがないので focused を回す while ループを break します。</p>
+                <p>これ以外で focused に数字が入っていても、root は操作できませんから while を break しましょう。</p>
+                <p>最後まできたら focused[ROW] に 1 を足すことをお忘れなく。これで focused が 1 マス下に下がりますね。</p>
+            </section>
+            <section class="sub-section">
+                <p>同じように下・左右とやっていきましょう。下に盤面を動かす場合を見ていきます。column はどうでもいいのですが、今回 row は下から上がるように見ていかないといけません。つまりこういうこと。</p>
+                <img src="down-squares.gif" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>したがって root[ROW] に関する for ループの range の引数が変わります。インデックスは 0 に始まって self.size - 1 までですから、注意して引数を入れてください。</p>
+                <p>また focused の定義位置も異なります。最初は root の一つ上のマスですから、root[ROW] - 1 という値が出てきますよね。さらに while ループ末尾、focused の位置を変えるのにも注意が必要ですよ。一つ上のマスに上がるんですから、row の値が -1 されるはずですね。</p>
+            </section>
+            <section class="sub-section">
+                <p>左に動かす場合、右に動かす場合もそれぞれ for 文の挙動には気をつけなければなりません。左へ動かすときは root と focused はこうですね。</p>
+                <img src="down-squares.gif" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>つまり focused の column を動かさなければいけないんです。それも COL の値が増える方向にですよ。右に行くほど COL の値が増えるように print メソッドで実装しているんですから。忘れた方は <a href="https://Saito-Saito-Saito.github.io/2048/stage4#s4-3">4-3</a> でもう一度確認してください。</p>
+            </section>
+            <section class="sub-section">
+                <p>右に動かす時の root と focused の動きも欲しいんですか？仕方ないですね。</p>
+                <img src="right-squares.gif" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>このようにしたいので、COL は size - 1 から減るようにして動かしていきます。最後は 0 を含むように設定してください。</p>
+            </section>
+            <section class="sub-section">
+                <p>上下左右以外の値が direction に与えられている場合はどうやって動かせばいいかわかりませんから、「失敗」ということで FAILED をリターンします。</p>
+                <p>そして普通の場合もリターンしましょう。ここで、ever_moved を宣言した理由を思い出してください。動かせる数字がどこにもないかもしれなかったんですよね。ですから一つでも数字が動いていれば True を、数字が一切動いていなければ「失敗」False をリターンします。失敗したときはログでその理由を書いてあげるのがいいでしょう。</p>
+            </section>
+            <section class="sub-section">
+                <p>さて、ここまでで一通りコーディングはおわりました。バグがないか一応チェックしておきましょう。クラスの外、<code>if __name__ == ...</code> というところがありますよね。ここでは実際のゲームと同じように</p>
+                <p>
+                    <ul>
+                        <li>動かす</li>
+                        <li>入れる</li>
+                        <li>見せる</li>
+                    </ul>
+                </p>
+                <p>のスリーステップを実装しています。このようにして動かしてみて、「あれ？なんかちげーな」となったら今すぐにデバッグへ直行してください。</p>
+                <p>今回のコード、コピペ部分があまりにも多いですよね。これ、コードとしてはあまりよろしくないので、上下左右 4 方向を全て一つにまとめようと思います。そのため、ここでのデバッグは特に神経注いでください。こんなに具体的なコードでバグが発生するようだと、次に抽象化したら一気に「どこバグってんだ？？」と訳わからんくなりますよ。</p>
+            </section>
+        </section>
+
+        <section id="s5-3">
+            <h2>5-3　場合わけを統合したメソッド</h2>
+            <p>5-2 では上下左右全ての方向について場合わけを行いました。結果、あまりにもコードに同じ箇所が出てきてしまいましたので、これを全て一括で表そうと思います。ここが一番の難所です。抽象度が一気にバクあがりしますので、一つ一つ丁寧に読んでいってください。</p>
+            <section class="sub-section">
+                <p>それでは board.py ファイルの Board クラス move メソッドをご用意ください。引数や ever_moved の設定は 5-2 で行ったものと同じです。</p>
+                <p>さて、5-2 で見ましたが、上下左右の 4 方向で異なるのは root と focused の動きの違いだけです。それ以外は全てコピペでしたよね。ですから我々が本腰を入れて改良しなければいけないのは、for ループの変数設定部分と while ループの focused を動かす部分です。各方向での動きはこうなります。</p>
+                <table width="90%" border="1" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse;">
+                    <tr><th>direction</th><th>root</th><th>focused</th></tr>
+                    <tr><td>UP</td><td>row が増える方向</td><td>row が増える方向</td></tr>
+                    <tr><td>DOWN</td><td>row が減る方向</td><td>row が減る方向</td></tr>
+                    <tr><td>LEFT</td><td>column が増える方向</td><td>column が増える方向</td></tr>
+                    <tr><td>RIGHT</td><td>column が減る方向</td><td>column が減る方向</td></tr>
+                </table>
+                <p>UP と DOWN について column はどう動かしても問題ないですし、LEFT と RIGHT について row はどのように動かしても構いません。row と column どちらの for ループを内側にしても大丈夫です。不安な方は一度シミュレーションしてみてください。「確かにこれなら大丈夫だ」と納得してから次へ進んでくださいね。</p>
+            </section>
+            <section class="sub-section">
+                <p>ではこの root と focused の動きをどのように実装いたしましょうか。ここは上にあげた表の「増える」「減る」というところに注目していただきたいのですが、UP と LEFT, DOWN と RIGHT はそれぞれ一緒に扱えそうですよね。それこそ</p>
+                <p>
+                    <ul>
+                        <li>UP と LEFT は row も column も増えるように</li>
+                        <li>DOWN と RIGHT は row も column も減るように</li>
+                    </ul>
+                </p>
+                <p>コーディングすれば良さそうだ。row であれ column であれ、root の値が「増える」というのは 5-2 では</p>
+                <p class="code"><code>for root[ROW/COL] in range(self.size):</code></p>
+                <p>としていましたよね。また「減る」というのは</p>
+                <p class="code"><code>for root[ROW/COL] in range(self.size - 1, -1, -1):</code></p>
+                <p>としました。忘れたら必ず 5-2 に戻って確認してください。</p>
+                <p>さて、増える場合の <code>range(self.size)</code> って、要は <code>range(0, self.size, +1)</code> を略した形じゃないですか。こうしておいて UP/LEFT と DOWN/RIGHT で range の中身をスイッチのように切り替える、そんな風にしたいと考えています。range(start, stop, step) という形なので、</p>
+                <p>
+                    <ul>
+                        <li><code>start = [0, self.size - 1]</code></li>
+                        <li><code>step = [1, -1]</code></li>
+                        <li><code>stop = [self.size, -1]</code></li>
+                    </ul>
+                </p>
+                <p>としておいて、UP/LEFT なら前を、DOWN/RIGHT のときは後ろを使うようにします。そのスイッチの役割になっているのが名実ともに <code>switch = (direction in [DOWN, RIGHT])</code> ですね。switch は bool 型ですが、bool 型は True が 1, False が 0 に対応しますので、switch をそのままリストのインデックスに入れてもらって大丈夫です。結局、</p>
+                <p class="code"><code>for root[...] in range(start[switch], stop[switch], step[switch]):</code></p>
+                <p>となりますね。</p>
+            </section>
+            <section class="sub-section">
+                <p>さて、focused を操りましょう。ただ、ここでは direction がそれぞれどんな値だったかしっかり思い出してもらわなければいけません。<a href="https://Saito-Saito-Saito.github.io/2048/stage3#s3-2">3-2</a> で定義した通り、</p>
+                <table border="1" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse;">
+                    <tr><th>direction</th><th>value</th></tr>
+                    <tr><td>UP</td><td><code>[-1, 0]</code></td></tr>
+                    <tr><td>DOWN</td><td><code>[+1, 0]</code></td></tr>
+                    <tr><td>LEFT</td><td><code>[0, -1]</code></td></tr>
+                    <tr><td>RIGHT</td><td><code>[0, +1]</code></td></tr>
+                </table>
+                <p>ですね。これを使ってまずは focused の位置取りをします。具体的な方向で考えてみましょう。盤面を上に動かすときは focused は root のすぐ</p>
+                <p class="stress">下</p>
+                <p>でしたよね。下に動かすときは root のすぐ上、左に動かすなら root の右、右に動かすなら root の左。つまり focused は root からみて direction とは反対むきに 1 マス進んだところにあるんです。direcrion の向きに進みたいときは <code>[row + direction[ROW], col + direction[COL]]</code> としましたから、逆向きに進むときは <code>[row - direction[ROW], col - direction[COL]]</code> ですね。</p>
+                <p>while では isInBoard を row にも column にも使って focused が盤面の外に出ていないか検証します。かたっぽでも出てたらループを抜けないとですよ。</p>
+            </section>
+            <section class="sub-section">
+                <p>ここから先の if による条件分岐は 5-2 と全く変わりません。全てコピペで結構です。</p>
+                <p>最後に focused を動かします。これも direction とは逆向きに進めなければいけませんよね。したがって focused[ROW], focused[COL] それぞれから direction[ROW], direction[COL] を</p>
+                <p class="stress">引きます。</p>
+                <p>大丈夫ですよね？さっきと同じ仕組みですよ。わからなくなったら必ず戻って確認すること。</p>
+            </section>
+            <p>最後に、リターンするものは 5-2 と全く同じです。ever_moved が True つまり数字が一つでも動いていれば「成功」SUCCEEDED を、そうでなければ「失敗」FAILED をリターンです。失敗したときはログでその理由を教えてあげるのがいいでしょう。</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p>みなさま、お疲れ様でした。この 2048 のプログラミングで一番の山場、盤面の操作がようやく終わりました。これでプログラムの根幹部分が出来上がりましたので、ここで終わっても構いませんが、あとわずかで結構いいゲームが出来上がりますので、どうぞそこまでお付き合いください。</p>
+            <p>それと、ここまでのデバッグは抜かりなく。board.py ファイルの一番下で <code>if __name__ == ...</code> とありますが、そこでちゃんと動いているか確認してください。せっかく頑張ってコーディングしたのに、バグが会ったら元も子もないですよ。</p>
+            <p>次回は Board クラスの残りのメソッドを片付けます。今回に比べればほんとザルみたいなもんですから、気楽にみてってくださいな。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage6">次回　Stage 6　ゲーム終了を判定する</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

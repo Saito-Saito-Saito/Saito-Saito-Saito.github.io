@@ -50,7 +50,7 @@
     <main>
         <section id="s3">
             <h1>Stage 3　盤面をつくる</h1>
-            <p>前回の Stage 2 であらかた指針が決まりましたので、今回からはついにコーディングへ入っていきます。お待たせいたしました。</p>
+            <p>みなさま、ようこそ。リバーシのプログラミング第 3 ステージです。前回の Stage 2 であらかた指針が決まりましたので、今回からはついにコーディングへ入っていきます。お待たせいたしました。</p>
             <p>予告でも申し上げておりますが、このステージ以降ではオブジェクト指向をフルに使います。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" target="_new">クラス</a>の備忘録はこちらに置いておきます。経験ない方はまずしっかりと他所で勉強なさってからいらっしゃい。</p>
         </section>
 
@@ -69,14 +69,10 @@
             <h2>3-1　定数決め</h2>
             <p>まずは config.py をご覧ください。え？まさかまだ私のコード見てないんですか。それは困りましたね。仕方がない。パソコンの方はこのリンクの先に Clone or download ってボタンがあるはずだから、そこ押して ZIP ファイル形式なり何なりでダウンロードするとかして</p>
             <p>
-                <a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">全部コピペなさい。</a>
+                <a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">全部ダウンロードなさい。</a>
             </p>
             <img src="github.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-            <p>スマホの場合はまずこの画面になりますから</p>
-            <img src="mobilefront.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
-            <p>赤枠で囲ったところをタップしてみたいファイルを選ぶとコードがご覧になれます。</p>
-            <img src="mobileeach.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
-            <p>もしわからなければ 「github ダウンロード」とかで検索すれば出てきますよ。</p>
+            <p>赤枠のところをクリックすればダウンロードできます。もしわからなければ 「github ダウンロード」とかで検索すれば出てきますよ。</p>
             <p>で、その中に config.py というファイルがあります。そちらをご覧ください。あまりプログラミングらしい事せずに定義ばかりしているやつです。このファイルでは文字通り「設定 configure」が主目的ですから、基本的に定数や変数の宣言がメインです。</p>
             <p>まず一番最初に sys と logging をインポートします。直下で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>の初期設定を行います。初めての方は、私より上手い解説がゴロゴロ転がっているので是非他所へ。</p>
             <p>ログを設定したら、今度は盤面の大きさを考えます。デフォルトでは SIZE = 8 としています。つまり 8 × 8 の盤面を使うという意味。もちろん増減させても動くようにはなっていますが、SIZE が奇数の時はなんと言おうが強制終了します。そのシステムが下にある if 文です。</p>
@@ -120,7 +116,7 @@
 
     <footer>
         <ul>
-            <li>LAST UPDATE: 2020/6/11</li>
+            <li>LAST UPDATE: 2020/6/28</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者の GitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者の Twitter</a></li>

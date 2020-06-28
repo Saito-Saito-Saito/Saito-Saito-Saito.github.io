@@ -1,0 +1,124 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも2048が作れる 4</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048が作れる</h1>
+        </div>
+        <ul>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="#">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="#">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section>
+            <h1>Stage 4　クラスの初期設定と補助機能を実装する</h1>
+            <p>みなさま、ようこそ。2048 のプログラミング第 4 ステージ、今回は Stage 3 で導入した Board クラスの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>と一部の補助機能を実装します。前回色々とフライングで変数を紹介したのもあったので、ここと Stage 3 を相互に参照しながら見ていただけるといいかと思います。</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s4-1">4-1　コンストラクタ</a></li>
+                    <li><a href="#s4-2">4-2　インデックス確認</a></li>
+                    <li><a href="#s4-3">4-3　盤面表示</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s4-1">
+            <h2>4-1　コンストラクタ</h2>
+            <p>普通なら<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>の冒頭に持ってくるべきなんでしょうけれども、この 2048 では初期設定をする際に数字を 2 個ランダムに入れなければなりませんから、前回の <a href="https://Saito-Saito-Saito.github.io/2048/stage3#s3-3">3-3</a> で先にその機能を insert <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>として実装したんでした。覚えていない方は戻って確認してください。ということで Board クラスのコンストラクタを実装します。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage2#s2-2">2-2</a> でもわずかに触れましたが、各種パラメーターは変更が効く方がいいので、</p>
+            <p>
+                <ul>
+                    <li>盤面のサイズ</li>
+                    <li>盤面</li>
+                    <li>アガリの数</li>
+                    <li>ロガー</li>
+                    <li>4 が挿入される確率</li>
+                </ul>
+            </p>
+            <p>を引数に入れてしまいましょう。<a href="https://Saito-Saito-Saito.github.io/memorandom/functions#keyword" class="memo" target="_new">キーワード引数</a>にしてしまいました。</p>
+            <p>まずサイズと 4 が出る確率は引数をそのまま使います。基本的には <a href="https://Saito-Saito-Saito.github.io/2048/stage3#s3-2">3-2</a> で設定した定数をデフォルトに入れます。</p>
+            <p>さて、ここで調節が必要になってくる引数がいくつかありますが、先にアガリの数に取り掛かりましょう。3-2 で申し上げた通りこのあと扱う盤面表示のサイズの問題で使える数は最大で 5 桁です。なので取りうる値で一番大きい MAX_GOAL と比較して、これを上回るようなことがあれば無理やり MAC_GOAL にしてしまいます。それ以外は引数をそのまま使いましょう。</p>
+            <p>次に盤面を入力された場合の対処です。最初の方ですでに盤面のサイズは指定しましたから、「もしサイズを満たす配列が board として入力されたら」という条件分岐で対処します。ここで、盤面を引数から受け継ぐときは必ず deepcopy <a href="https://Saito-Saito-Saito.github.io/memorandom/class#method_v" class="memo" target="_new">メソッド</a>を使いましょう。Python でリスト型は<a href="https://Saito-Saito-Saito.github.io/memorandom/list#mutability" class="memo" target="_new">ミュータブル</a>なので、これがないとクラス内の変更が引数として入れただけのリストにまで及んでしまいます。</p>
+            <p>board として有効なリストが入力されていない場合、つまり引数に盤面を入力しなかった場合は我々の方で盤面を新しく用意してあげる必要があります。盤面のサイズに合わせてまずは全てのマスを EMPTY で埋めつくし、そのあと 2 回に分けて insert メソッドを使って数字を入力します。</p>
+        </section>
+
+        <section id="s4-2">
+            <h2>4-2　インデックス確認</h2>
+            <p>さて、ここでは InBoard <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>に取り掛かります。もう解説要らなそうなくらい単純ですが、一応つけておきましょう。「board リストのインデックスがエラーを起こすような値になっていないか」というのを確認する機能です。「規定値の中に入っている」場合であれば True, 「規定値外」の場合は False をリターンします。</p>
+        </section>
+
+        <section id="s4-3">
+            <h2>4-3　盤面表示</h2>
+            <p>おつぎは print <a href="https://Saito-Saito-Saito.github.io/memorandom/class#method_v" class="memo" target="_new">メソッド</a>です。文字通り盤面を表示する機能になります。とりあえずどのような形になるかご覧いただきましょうかね。</p>
+            <img src="board-example.png" alt="UNAVAILABLE" width="90%" style="max-width: 350px;">
+            <p>我々がこれから作るのはこういう盤面です。早速取り掛かりましょう。</p>
+            <p>まず他の行と分けて見やすくするため最初と最後には改行を入れます。冒頭の <code>print('\n')</code> がその役割をはたしてくれています。</p>
+            <p>続いて盤面の内外を仕切る横線です。これは盤面のサイズによって長さが変わるようにしなければいけません。例えば 6 × 6 マスになったらこんな感じに。</p>
+            <img src="board-ex6.png" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
+            <p>「じゃあどうやってコーディングするんだよ」っていうと、self.size に合わせて for 文で後ろにハイフンをつないでいく形になります。ここで print は改行がデフォルトですから、必ず <code>end=''</code> をつけてくださいね。最後まで終わったら <code>print('')</code> でただただ改行するだけ。</p>
+            <p>ここからは board のマスごとの作業をするつもりで進めていきます。まず最初に <a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a> を、その中に <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">col</a> を、という 2 重の for ループ構造にします。各 row のはじめに、盤面の内外を隔てる縦の仕切りを入れます。この時も <code>end=''</code>をお忘れなきよう。というか、ここから先は大体改行しませんので、書くくせをつけてしまってください。各 col のループに入ったら、マスに入っている数字で場合わけします。上の写真でお見せしましたけれども、EMPTY のマスには何も入れません。ですから空白を入れてください。右端の縦線はマスとマスを区切る仕切りになります。一方 board[col][row] の値が EMPTY ではない場合、その数字を具体的に表示しなければなりません。ただ、マスの端っこに申し訳なさそうにおいておくのではなくて、堂々とマスの中央に数字を書きたいじゃないですか。なので <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str#center" class="memo" target="_new">center</a> メソッドを使ってあげてください。ここでの文字数は私のものをコピペするのでもいいのですが、実際にご自分で「これくらいだろ」と数字を入れてみて、サイズが合わなかったら調節する、そんな実験的アプローチがいいと思います。一からコーディングするときはそうしますからね。</p>
+            <p>col ごとの for ループが終了したら、あとは上のマスと下のマスの間の仕切りとなる横棒を入れてあげておしまいです。冒頭でやったように board.size に合わせて長さを変えてください。改行して row のループを抜け、そして全て表示し終わったら最後にもう一度改行しましょう。これ以降に入ってくる文字列と盤面の間隔を開けるためです。</p>
+            <p>全部終わったら「表示成功」SUCCEED をリターンしてください。いや、別にリターン値使うことないからなんでもいいんですが。</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p>今回までで Board <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>の下ごしらえは終了しました。次回はこの 2048 のプログラミングのミソとなる「盤面を動かす機能」を実装します。ですから、ここまででバグがないか必ず確認してください。あとでコードの山に埋もれたバグを探すのイヤでしょ？コードが短いうちに、こういうイヤなことはさっさと終わらせておきなさい。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage5">次回　Stage 5　盤面を動かす</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

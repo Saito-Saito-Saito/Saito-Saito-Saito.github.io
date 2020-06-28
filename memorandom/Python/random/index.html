@@ -14,12 +14,58 @@
     </header>
 
     <main>
-
+        <section id="methods">
+            <h2>各種メソッド</h2>
+            <h3 id="random">random()</h3>
+            <p>0 から 1 の間から float 型をランダムにリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+import random
+for i in range(5):
+    print(random.random())
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+0.7935651373830874
+0.20218037021719304
+0.5168870571724608
+0.4512803860271539
+0.0012269679018672708
+                    </code>
+                </pre>
+            </div>
+            <h3 id="choice">choice()</h3>
+            <p>list 型の引数の中にある要素からひとつランダムに選択してリターンする。</p>
+            <div class="code">
+                <pre>
+                    <code>
+import random
+for i in range(5):
+    print(random.choice([1, 2, 3, 4, 5]))
+                    </code>
+                </pre>
+            </div>
+            <div class="code">
+                <pre>
+                    <code>
+2
+1
+1
+2
+5
+                    </code>
+                </pre>
+            </div>
+        </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/11</li>
+            <li>LAST EDITED: 2020/6/28</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>

@@ -18,55 +18,141 @@
             <h2>目次</h2>
             <p>
                 <ul>
+                    <li><a href="#vocabulary">語彙</a></li>
                     <li><a href="#levels">レベル</a></li>
-                    <li><a href="#basicConfig">basicConfig</a></li>
-                    <li><a href="#multimodules">複数モジュールでの使用</a></li>
+                    <li><a href="#logger">ロガー</a></li>
                 </ul>
             </p>
         </section>
 
+        <section id="vocabulary">
+            <h2>語彙</h2>
+            <h3 id="level_v">レベル</h3>
+            <p>ログにつける表示の優先順位。<a href="#levels">レベルについての解説</a>参照。</p>
+            <h3 id="logger_v">ロガー</h3>
+            <p>ログを分割してまとめ上げる<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
+            <h3 id="handler_v">ハンドラー</h3>
+            <p>ログを表示するターミナルやファイルなどの動態を記述する<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
+        </section>
+
         <section id="levels">
             <h2>レベル</h2>
-            <table>
+            <table width="90%" border="1" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse;">
                 <tr><th>タスク</th><th>最適なレベル</th></tr>
-                <tr><td>問題を診断するときのみに関心のある詳細な情報</td><td><code>DEBUG</code></td></tr>
-                <tr><td>想定通りのことが起こったことの確認</td><td><code>INFO</code></td></tr>
-                <tr><td>想定外のことが起こった、もしくは起こりそうなことの警告</td><td><code>WARNING</code></td></tr>
-                <tr><td>より重大な問題によって、ソフトウェアがある機能を実行できないことの表示</td><td><code>ERROR</code></td></tr>
-                <tr><td>プログラム自体が実行できないような重大なエラー</td><td><code>CRITICAL</code></td></tr>
+                <tr><td>問題を診断するときのみに関心のある詳細な情報</td><td><code>logging.DEBUG</code></td></tr>
+                <tr><td>想定通りのことが起こったことの確認</td><td><code>logging.INFO</code></td></tr>
+                <tr><td>想定外のことが起こった、もしくは起こりそうなことの警告</td><td><code>logging.WARNING</code></td></tr>
+                <tr><td>より重大な問題によって、ソフトウェアがある機能を実行できないことの表示</td><td><code>logging.ERROR</code></td></tr>
+                <tr><td>プログラム自体が実行できないような重大なエラー</td><td><code>logging.CRITICAL</code></td></tr>
             </table>
             <p>デフォルトのレベルは WARNING です。つまり特段設定をしなければ WARNING, ERROR, CRITICAL のレベルのログが出力されます。</p>
-            <p>また、それぞれのレベルのログを出力するメソッドもあります。</p>
-            <table>
-                <tr><td>レベル</td><td>メソッド</td></tr>
-                <tr><td>DEBUG</td><td>logging.debug()</td></tr>
-                <tr><td>INFO</td><td>logging.info()</td></tr>
-                <tr><td>WARNING</td><td>logging.warning()</td></tr>
-                <tr><td>ERROR</td><td>logging.error()</td></tr>
-                <tr><td>CRITICAL</td><td>logging.critical()</td></tr>
-            </table>
-            <p>以下のコードを参考にして使ってください。</p>
-            <p class="code"><code>logging.warning('There is not enough memory')</code></p>
         </section>
 
-        <section id="basicConfig">
-            <h2>basicConfig</h2>
-            <p>基本的にはこんなスタイルになります。</p>
-            <p class="code"><code>logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s - %(filename)s - %(lineno)d - %(message)s')</code></p>
-            <p>basicConfig は debug() や info() といった呼び出しよりも</p>
-            <p class="stress">前に</p>
-            <p>呼び出す必要があります。</p>
-        </section>
+        <section id="logger">
+            <h2>ロガー</h2>
+            <p>ログの機能は基本的にロガーという<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">インスタンス</a>を使って実装するのが望ましいとされています。というのは、ログを確認するときに用途別などカテゴライズができるからです。その有用性などについてはこちらのサイトで力説されていますので、ぜひ参考になさってください。</p>
+            <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701">ログ出力のための print と import logging はやめてほしい</a></p>
+            <p>ではどのようにロガーを使えばいいか。まずはこちらのコードをご覧ください。</p>
+            <div class="code">
+                <pre>
+                    <code>
+import logging
 
-        <section id="multimodules">
-            <h2>複数モジュールでの使用</h2>
-            <p>プログラムが複数のモジュール（ファイル）でできているなら、こんな感じに構成します。</p>
+# declaring the logger
+logger = logging.getLogger("logger1")
+logger.setLevel(logging.DEBUG)
+
+# getting stream handler (written on the terminal)
+handler_s = logging.StreamHandler()
+handler_s.setLevel(logging.DEBUG)
+logger.addHandler(handler_s)
+
+# getting file handler (written on the file)
+handler_f = logging.FileHandler('log.txt')
+handler_f.setLevel(logging.INFO)
+logger.addHandler(handler_f)
+
+logger.debug('DEBUG')
+logger.warning('WARNING')
+                    </code>
+                </pre>
+            </div>
+            <p>terminal</p>
+            <div class="code">
+                <pre>
+                    <code>
+DEBUG
+WARNING
+                    </code>
+                </pre>
+            </div>
+            <p>log.txt</p>
+            <p class="code"><code>WARNING</code></p>
+            <p>基本の表し方はこの通りです。</p>
+            <p>まずロガー本体を宣言します。getLogger の引数がログを表示して区別するときに確認できるロガーの名前となり、名前を logger1 としました。「でも logger1 なんて他にはどこにも出てきてないじゃん」となった方は、もう少し待っててください。ちゃんと説明します。</p>
+            <p>その次の setLevel はロガーが受け付けるログの最低レベルを設定しています。ここでは「DEBUG 以上（つまり全部）のログを記録しておきますよ」ということ。</p>
+            <p>その次が stream handler の設定です。コードの実行途中にターミナルで表示するログですね。setLevel でターミナルに表示するレベルの下限を設定します。addHandler でロガーに適用です。</p>
+            <p>その後に file handler を設定します。別ファイルにログをまとめて書き出すものです。今回は log.txt というファイルに書き出します。もしその名前のファイルが存在しなければ新規作成します。残りは stream handler とほぼ同じですね。レベルだけは INFO 以上、つまり DEBUG を表示しないようにしています。ターミナルとファイルのそれぞれの結果をよく照らし合わせてください。</p>
+            <p>これだけだとロガーの威力はほとんど感じられないでしょうから、もう一つ例を題しておきます。ちょいと長くなりますがその点はご勘弁を。</p>
+            <div class="code">
+                <pre>
+                    <code>
+import logging
+
+# declaring the loggers
+logger1 = logging.getLogger("Logger1")
+logger1.setLevel(logging.DEBUG)
+
+logger2 = logging.getLogger("Logger2")
+logger2.setLevel(logging.ERROR)
+
+# getting the stream handler (written on the terminal)
+handler_s = logging.StreamHandler()
+handler_s.setLevel(logging.INFO)
+handler_s.setFormatter(logging.Formatter('%(name)s - %(message)s'))
+logger1.addHandler(handler_s)
+logger2.addHandler(handler_s)
+
+# getting the file handler (written on the file)
+handler_f = logging.FileHandler('log.txt')
+handler_f.setLevel(logging.DEBUG)
+handler_f.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s'))
+logger1.addHandler(handler_f)
+logger2.addHandler(handler_f)
+
+logger1.debug('DEBUG')
+logger1.warning('WARNING')
+logger2.warning('WARNING')
+logger2.critical('CRITICAL')
+                    </code>
+                </pre>
+            </div>
+            <p>terminal</p>
+            <div class="code">
+                <pre>
+                    <code>
+Logger1 - WARNING
+Logger2 - CRITICAL
+                    </code>
+                </pre>
+            </div>
+            <p>log.txt</p>
+            <div class="code">
+                <pre>
+                    <code>
+2020-06-16 21:59:17,560 - DEBUG - Logger1 - DEBUG
+2020-06-16 21:59:17,560 - WARNING - Logger1 - WARNING
+2020-06-16 21:59:17,560 - CRITICAL - Logger2 - CRITICAL
+                    </code>
+                </pre>
+            </div>
+            <p>こうしてロガー別に名前を変えたりレベルを変えたりして、ログの整理を用意にすることができるようになります。</p>
         </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/11</li>
+            <li>LAST EDITED: 2020/6/28</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>

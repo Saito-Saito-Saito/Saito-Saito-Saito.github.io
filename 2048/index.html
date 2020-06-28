@@ -1,0 +1,119 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも 2048 が作れる</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048 が作れる</h1>
+        </div>
+        
+        <ul>
+            <li><a href="#">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+    
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="#">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="s">
+            <p>脱プログラミング入門を目指されるみなさま、ようこそ。2048 のプログラミングです。</p>
+        </section>
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s0">Stage 0　必要な知識を身につける</a></li>
+                    <li><a href="#s1">Stage 1　ルールを把握する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの機能を考える</a></li>
+                    <a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　定数設定と新しい数の挿入</a>
+                    <a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　Stage 4　クラスの初期設定と補助機能を実装する</a>
+                    <a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　盤面を動かす</a>
+                    <li><a href="stage6/index.html">Stage 6　ゲームを進める</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s0">
+            <h2>Stage 0　必要な知識を身につける</h2>
+            <p>このプログラムで必要になるのは</p>
+            <p>
+                <ul>
+                    <li>フロー制御</li>
+                    <li>関数</li>
+                    <li>リスト</li>
+                    <li>クラスとオブジェクト</li>
+                </ul>
+            </p>
+            <p>くらいでしょうかね。ここら辺の知識はどんなゲームを作るにしても割と必須ですので、「まったくわからねぇ」という方はぜひ勉強しに他のサイトさんへ足を運んでください。また、必要ではありませんが<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/loggong" class="memo" target="_new">ログ</a>をガンガン使っていきます。このサイトは</p>
+            <p class="stress">入門は終えたけど何やっていいかわからない</p>
+            <p>という方向けなので、こうした入門は他でお願いします。巷には私が説明するより遥かにわかりやすい解説がゴロゴロ転がっていますからね。</p>
+            <p>一応<a href="https://Saito-Saito-Saito.github.io/memorandom/Python" target="_new">備忘録</a>という形で経験者向けにメモ書きは残してあります。パソコンの方は「この言葉わかんねーな」というところにカーソルを置いてみると、色が薄くなるかもしれません。そのままクリックすると解説ページにジャンプすることができます。</p>
+            <img src="memo-cursor.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
+            <p>スマホの方は代わりに文字が薄くなっていますので、そちらをタップしていただければ同じように解説に飛べます。</p>
+            <img src="memo-smp.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
+            <p>繰り返しになりますが、</p>
+            <p class="stress">初見さんのみるものではありません。</p>
+            <p>どうぞよろしくお願いします。</p>
+        </section>
+
+        <section id="s1">
+            <h2>Stage 1　ルールを把握する</h2>
+            <p>コードを書くうえでルール知らないのは流石に大問題です。他所でしっかり身に付けてください。その時に必ず 2048 をプレーしてみること。自分で実際にやってみて「こういうルールがあったのか」と気づくことがあるかもしれません。</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p>今回はまったくと言っていいほど解説してませんが、次回からちゃんと説明が入ります。しっかり説明しますって。いや、大丈夫ですよ。そんな心配しなくても
+            </p>
+            <p class="stress">説明するって言ってんだろ</p>
+            <p>ということでお楽しみに。</p>
+            <p><a href="stage2/index.html">次回　Stage 2　新しい数を入れる</a></p>
+        </section>
+    </main>
+    
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="#">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

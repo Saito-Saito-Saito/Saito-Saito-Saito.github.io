@@ -221,6 +221,15 @@ body main section pre {
   margin: 1px;
 }
 
+body main section table {
+  border-collapse: collapse;
+  margin: 0 5%;
+}
+
+body main section table th, body main section table td {
+  border: solid black 1px;
+}
+
 body main section .stress {
   text-align: center;
   font-weight: bold;

@@ -248,8 +248,17 @@ body
 
             pre
             {
-                
                 margin: 1px;
+            }
+
+            table
+            {
+                border-collapse: collapse;
+                margin: 0 5%;
+            }
+            table th, table td
+            {
+                border: solid black 1px;
             }
 
             .stress

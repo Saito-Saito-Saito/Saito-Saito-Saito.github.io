@@ -1,0 +1,125 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも2048が作れる 7</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048が作れる</h1>
+        </div>
+        <ul>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="#">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="#">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="s7">
+            <h1>Stage 7　ゲームを進める</h1>
+            <p>みなさま、ようこそ。2048 プログラミング第７ステージ、最終回です。今回はプレーヤーを案内する機能を実装していきます。これで全て完成しますので、最後までぜひお付き合いください。</p>
+            <p>まずは今回使う main.py ファイルについて、初期設定をしておきましょう。諸々のモジュールをインポートして、ロガーを設定しておきます。これについては <a href="https://Saito-Saito-Saito.github.io/stage3">Stage 3</a> が参考になるでしょう。あとはこれからご説明しますよ。</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li>7-1　ゴールやサイズを設定する</li>
+                    <li>7-2　スタートメニューをコーディングする</li>
+                    <li>7-3　ゲーム進行をコーディングする</li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s7-1">
+            <h2>7-1　ゴールやサイズを設定する</h2>
+            <p>これまで盤面の大きさやゴールになる数字は変更が効くように全て変数として扱ってきました。せっかくですのでプレーヤーでも変更できるようにしてさしあげようじゃないですか。</p>
+            <p>ただ、一応デフォルトというのがありますから、辞書型でそれをセッティングしておきましょう。parameters ですね。これから書き上げる設定変更の関数の中で、この値をいじって Board の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>を宣言しますから、そのつもりで。</p>
+            <p>settings 関数をご覧ください。引数は、あとのスタートメニューで扱う command が「変更しろ」という意味で X とされたら、プレーヤーに設定を変更してもらおうじゃないかと、そういうわけです。</p>
+            <section class="sub-section">
+                <p>それでは実際にコーディングしていきます。まずサイズを変更するのか、ゴールを変更するのか、はたまたやっぱり気が変わって何も変更しないのか、お伺いをたてます。</p>
+                <p>サイズを変更する場合、プレーヤーにサイズはいくつがいいか、お伺いをたてます。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/isdecimal_i" class="memo" target="_new">isdecimai</a> <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を使って数字であると判定でき、またその値が 2 以上であることがわかったら、それを正式なサイズとして認めます。ちゃんと break してサイズを変更するループから脱出しましょう。1 × 1 マスって、最初に 2 つ数字を入れることすらできませんからね。</p>
+                <p>一方、入力値が数字でなかったり、適正な数字でなかったりしたら、「不適切な入力」ということでしっかりしたものを入れてくれるまで入力を要求し続けます。continue することによって再度サイズを変更するループを繰り返すわけです。</p>
+            </section>
+            <section class="sub-section">
+                <p>今度はゴールの設定に入りましょう。入力前から「8 ~ MAX_GOAL (ここにはしっかり具体的な数字を入れる)の間じゃないとダメですよ」という具合に、入力値の範囲を指定しておきます。8 以上にしたのはゲームが開始した瞬間からゴールして、結局プレーヤーが何もしていないのにクリアしてしまうという事態を避けるため。</p>
+                <p>で、入力してもらったものがまずは数字であるか、先ほど同様に isdecimai で判別します。数字だったら今度は適正な範囲、つまり 8 ~ MAX_GOAL の中にあるか、確認します。この 2 つの基準をクリアしたら正式なゴールとして parameters に適用してください。そして break してゴール変更のループから脱出します。</p>
+                <p>入力値がマズかったら continue してもう一度ちゃんとした値を入れてもらいましょう。</p>
+            </section>
+            <section class="sub-section">
+                <p>気が変わった場合、つまりコマンドが E の場合は何も考えずにリターンします。「もういじらなくていい」っておっしゃってんだから。</p>
+                <p>そうでなくて、設定画面に残っている間は、いま設定がどうなっているか確認できるように表示してあげてください。もちろん外側の while ループの中ですね。</p>
+            </section>
+        </section>
+
+        <section id="s7-2">
+            <h2>7-2　スタートメニューをコーディングする</h2>
+            <p>とりあえず 7-1 で初期設定の変更はカタがつきました。ただどうやって初期設定を変更できるようにするかという問題もあります。そこで、スタートメニューを作ってデフォルトのサイズ・ゴールをみてもらい、問題なければゲーム開始、変更したければ settings('x') を発動する。こんな形にしてみましょう。</p>
+            <p>とはいえここまで正解を言ってしまえば解説することはありませんね。ちなみに速攻でゲームを開始するには X でさえなければなんでもいいので、ここでは「エンターキーを押すだけで構わない」としています。</p>
+        </section>
+
+        <section id="s7-3">
+            <h2>7-3　ゲーム進行をコーディングする</h2>
+            <p>さあ、最後のチャプターです。あともう一踏ん張りですよ。</p>
+            <p><code>if __name__ == ...</code> とするかしないかはご自由ですけれども、最初に startmenu を実行します。この関数の中で初期設定の変更も済ませられるので、サイズやゴールは parameters をそのまま使って構いません。早速盤面の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>を宣言しましょう。宣言したらまずは盤面を表示します。どこにどんな数字があるかもわからないのに「早く動かせ」って言われてもしょうがないでしょ？</p>
+            <section class="sub-section">
+                <p>さて、ここからは while ループでゴールするかゲームオーバーになるまで同じことを繰り返し続けます。まずはプレーヤーに盤面を動かす方向を指示してもらいましょう。無難に 1 ~ 4 の数字で聞いていますが、裏コマンドとして W/S/D/A のキーでも扱えるようにしています。左手の矢印キー機能ですね。これ以外の入力があったら「その入力受け付けてません」と毅然とした態度でつっぱねてください。</p>
+                <p>次いで、入力してもらった方向に move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を発動して、FAILED「失敗」したらその向きには盤面を動かせないわけですから、「入力がやっぱりおかしい」と言ってつっぱねてあげましょう。continue してください。</p>
+                <p>新しい数を入れられなかったり、ゲームオーバーが確定していたら、盤面を表示して「ゲームオーバーです」と言って while ループを抜けます。</p>
+                <p>またゴールしていたら「ゲームクリア」ということで盤面を表示してプレーヤーをたたえてあげましょう。こちらも break してください。</p>
+                <p>最後まで残った場合には、まだ新しい盤面が見えていないので、しっかり盤面を見せてから while ループの先頭に戻してあげます。</p>
+            </section>
+            <section class="sub-section">
+                <p>さあ、これでコーディングは全て終了しました。みなさま、長らくお疲れ様でした。ぜひご自分で遊んでみて、ご友人にも遊ばせてみて、今後のコーディングのモチベーションとしていただければと思います。</p>
+                <p>この解説の中で矛盾や不明瞭な点、誤植などがございましたら、フッター（ページ最下部）からご連絡ください。</p>
+            </section>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

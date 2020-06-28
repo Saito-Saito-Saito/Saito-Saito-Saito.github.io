@@ -1,0 +1,114 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも2048が作れる 3</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048が作れる</h1>
+        </div>
+        <ul>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="#">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="#">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="s3">
+            <h1>Stage 3　定数設定と新しい数の挿入</h1>
+            <p>みなさま、ようこそ。2048 のプログラミング第 3 ステージ、今回はプログラム全体に大きく関わるような、基本的な定数の宣言と、盤面に新しい数を入れていく機能を実装します。そして、このステージ後半から Stage 6 にかけて、盤面の動態を表すために一つの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>にコードを記述していきますので、クラスについての理解が追いついていない人は必ず勉強してきてください。また、まだコードを手に入れていないという方は必ず<a href="https://github.com/Saito-Saito-Saito/2048">こちら</a>から入手してください。</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s3-1">3-1　ログを設定する</a></li>
+                    <li><a href="#s3-2">3-2　定数を設定する</a></li>
+                    <li><a href="#s3-3">3-3　新しい数を挿入する</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s3-1">
+            <h2>3-1　ログを設定する</h2>
+            <p>まずは私のコードの config.py というファイルをご覧ください。冒頭で <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">logging</a> からいろいろインポートしていますね。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">logger</a> と logging の違いを明確にするために、logging という文字を書かなくていいようにしています。その意義についてはこちらの記事で大いに力説されていますので、是非ご覧ください。</p>
+            <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701" target="_blank">ログ出力のための print と import logging はやめてほしい</a></p>
+            <p>まずはログの設定をします。ログを出力するファイルの名前、フォーマットを設定しておいて、各種<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#handler_v" class="memo">ハンドラー</a>のデフォルトを宣言します。その下に関数がありますよね。今後各ファイルでロガーを作ることになるわけですが、いちいち「ロガーを宣言して、ハンドラーを宣言して、ロガーに加えて、...」っていうのはあまりにも面倒。そこで「いっそのことロガーを作る機能を全部まとめちゃおうじゃないか」という魂胆です。楽になりますよ。関数の引数のところに =... とついているのは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function#default" class="memo" target="_new">デフォルトの指定</a>になります。また途中にアスタリスク * が一人でいるのは、後続の引数を<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function#keyword" class="memo" target="_new">キーワード引数</a>にするためです。ロガー、ハンドラーを宣言して、ロガーをリターンします。</p>
+        </section>
+        
+        <section id="s3-2">
+            <h2>3-2　定数を設定する</h2>
+            <p>ログの設定が終わったところで、ここからは主にコード全体に関わる定数を宣言していきます。まずこのコードではことあるごとに [<a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">col</a>] という形のリストを使っていきます。その際にリストのインデックスに名前あった方がわかりやすいでしょ？ということでインデックスにそれぞれ ROW, COL と名前をつけてあげてください。もちろん <code>ROW = 0, COL = 1</code> ですよ。</p>
+            <p>マスに数字がない場合の値を EMPTY とします。board に入れる値ですね。別に 0 でなくたって、盤面にあるはずのない数字であればなんだって構いませんよ。</p>
+            <p>上下左右の方向にも名前をつけてあげます。[row, col] のマスからある向きに動かしたいときは [row + direction[ROW], col + direction[COL]] とする、こんな形がいいんじゃないでしょうか。</p>
+            <p>次は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>のリターンに名前をつけます。「え？リターンって大体 True/False か数字くらいでしょ？なんで名前つけるの？」いい質問ですね。後々 Stage 5 でお目にかかる move メソッドを例にとってみましょうか。こいつはその名の通り盤面を動かす機能なのですが、同時に「その盤面を動かすことができるか」というのも確認しています。例えばこんな場合。</p>
+            <img src="up-exception.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+            <p>この盤面を「左！」っていったところで、動かそうにも動かせませんよね。これを判定するのもゆくゆくは move メソッドの役割になります。ではこんな時、何をリターンすればよろしいでしょう？Null ですか？はたまた 0？ここは False ですか？迷いますよね。しかもコーディングしていると「あれ、このメソッドでこうなった時、リターンは Null だっけ？ 0 だったかな？」となってしまいます。バグの元ですよ、そんなの。そこで FAILED という「リターン専用の」値を用意してあげることで、「あ、こいつ動かせなかったんだな」と一目瞭然に結果がわかるようにしています。</p>
+            <p>最後にゲーム設定のデフォルトを書いておきましょう。新しい数を入れていく中で 4 を出すのは確率にして 8 回に 1 回、盤面のサイズは 4 × 4, デフォルトのアガリは 2048, そして表示するスペースの問題がありますので 2 ^ 16 である 65536 を上限にとっています。</p>
+        </section>
+
+        <section id="s3-3">
+            <h2>3-3　新しい数を挿入する</h2>
+            <p>さて、これからは board.py ファイルに移りましょう。いろいろインポートして、このファイルのデフォルトの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を先ほど 3-1 でセッティングした logger_setup 関数で local_logger を宣言します。ここでいう __name__ は、このファイルの名前 board をそのまま入れてくれるものでしたね。</p>
+            <p>さて、ここからは Board という<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a>に入っていきます。クラスを使う理由はやはり「盤面の情報を一元管理しやすい」というのが大きいでしょうか。このようなゲームではクラスを使うのが常套手段と考えてもらってもいいくらいかもしれません。で、「クラスの最初は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>っしょ」と思われるかもしれませんが、よく考えてください。盤面は最初に 2 つ数字を入れるんでしたよね。どうやって入れるんですか？その機能必要でしょ？</p>
+            <p>ということで盤面に新しい数を入れていく機能を作ります。insert <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>です。キーワード引数に logger を入れているのは「この関数はさっき作った local_logger じゃなくてこのロガーを使って欲しい」と言われた時でも対応できるようにするためです。これ、バグチェック用にもう一つファイルを作ることになったときにすごく便利ですよ。</p>
+            <p>まずはロガーの整理をして、次の空のリストは emptied といって、「空いてるマスは全部ここに格納してやれ」っていうものです。2 重の for ループで巡回して空きマスがあったら <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list#append_i" class="memo" target="_new">append</a> メソッドで [row, col] の情報を次々入れていく。途中の self.board は盤面、self.InSize は「board のインデックスが取りうる値をオーバーしていないか」を見るメソッドで、共に Stage 4 で扱います。</p>
+            <p>そしてループを抜け切って、emptied に要素が何もなかったら「数字の追加失敗」FAILED をリターンします。空いてるところがなかったら追加もクソもないですからね。</p>
+            <p>その次に target と題して emptied の中からランダムに 1 つ空きマスを入れてしまいます。ここで使っている <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random#chioce" class="memo" target="_new">random.choice</a> メソッドは、リストの中から一つ要素をランダムに選んでリターンしてくれるものです。</p>
+            <p>数字を入れるマスが決まったので、今度は入れる数字を決めます。Stage 4 で self.prob4 と称し 4 を挿入する確率を決めますので、0 ~ 1 の間からランダムに出てきた数について「今回は prob4 より小さいから target には 4 入れるね」とか、「大きいから今回は 2 を入れよう」といった具合にしていきます。全ておわったら「挿入成功」SUCCEEDED をリターンです。</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p>ちょっと 3-3 ではいろんな変数をフライングして導入してしまいましたね。ここの意味がいまいちよくわからなくても、次回の解説で「なーんだ、そんな簡単なことかよ」と腑に落ちるかと思いますので、今回の内容が十分にわからなくてもとりあえず Stage 4 をご覧になることをお勧めします。今回ほったらかしてた<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>を中心に扱いますよ。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage4">次回　Stage 4　クラスの初期設定と補助機能を実装する</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

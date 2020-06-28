@@ -1,0 +1,99 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも2048が作れる 6</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048が作れる</h1>
+        </div>
+        <ul>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="#">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </header>
+
+    <div class="acd-menu">
+        <input type="checkbox" id="acd-check">
+        <label for="acd-check" class="acd-label">MENU</label>
+        <ul class="acd-content">
+            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
+            <li><a href="#">Stage 6</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
+            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="s6">
+            <h1>Stage 6　ゲーム終了を判定する</h1>
+            <p>みなさま、ようこそ。2048 のプログラミング第 6 ステージ、今回は Stage 5 までで扱いきれなかった余り物の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を消化します。goal までたどり着いているかを判定する isGoal メソッドと、ゲームオーバーか判別する isOver メソッドですね。もう聞いただけで大したもんじゃないってわかるでしょ？</p>
+        </section>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#s6-1">6-1　ゴール到達を判定する</a></li>
+                    <li><a href="#s6-2">6-2　ゲームオーバーを判定する</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="s6-1">
+            <h2>6-1　ゴール到達を判定する</h2>
+            <p>いや、Stage 5 を潜り抜けてきた皆さんならこんなもの説明不要だとは思うのですが、体裁としてやらないわけには行かないので少しばかりお付き合い願います。</p>
+            <p>要は全部マスを見てその中に goal</p>
+            <p class="stress">以上</p>
+            <p>の数があればいいんですよね。なぜ「以上」かって？まず goal のデフォルトを思い出してください。2048 でしたよね。これは「2048 を作れたらゲームクリア」って意味じゃないですか。ですから 2048 を含める必要があるんですよね。ここだけ注意すれば、あとは 2 重の for ループで全てのマスを回って、goal しているのがあれば「ゴール到達」True をリターンします。どこがゴールしたかログで教えてあげるのがいいですね。どこにも goal しているのがなければ「ゴール未達」False をリターンする。こんなに簡単なことがあるでしょうか。</p>
+        </section>
+
+        <section id="s6-2">
+            <h2>6-2　ゲームオーバーを判定する</h2>
+            <p>最後に isOver <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を見ていきましょう。上下左右いずれの方向にも動かすことができなくなればゲームオーバーですから、実際に全方向に動かしてみればいいんです。しかし、このコードでは <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#self" class="memo" target="_new">self</a> に相当する<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>は、これから先も使っていきますので、実際に動かすわけにはいきません。戻せませんから。</p>
+            <p>そこで、このメソッドの中では新しく local_board というインスタンスを作っています。ここに self の情報を全てコピーする、要はクローンを作っているんです。発想としては「危険な場所は影武者に行かせる」といったところでしょうか。インスタンスの宣言の際に全ての引数を呼び出して self と揃えます。というよりも流れとしては「この影武者システムができるように<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>を設定する」というのが妥当でしょう。</p>
+            <p>さて、for ループを使って影武者の盤面を全ての方向に動かしてみて、もし move メソッドが True を返すようであればその方向に動かせるわけですから「まだゲームオーバーじゃない」False をリターンします。ログで「この向きにはまだ動かせますよ」と言ってあげるのがいいでしょう。上下左右試してみて move メソッドが全部 False「動かせない」だったら、もう手のうちようがないので「ゲームオーバー」True をリターンです。</p>
+        </section>
+
+        <section>
+            <h2>次回予告</h2>
+            <p>このステージはもうおしまいです。お疲れ様でした。「えっ、もう終わり？」はい。もうおしまいです。早かったですね。次回はここまで短くはないものの、やっぱり簡単ですので、ぜひ最後までご覧いただいて、コーディングしてみて、「2048 ってこんな簡単に作れるんだ」と思っていただければ、また他のプログラムの制作意欲に繋がるでしょ？もう完成しますよ。お楽しみに。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage7">次回　最終回　Stage 7　ゲームを進める</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/28</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
