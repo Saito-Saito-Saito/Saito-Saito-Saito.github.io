@@ -1,0 +1,1273 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも チェス...のコード</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>チェス...のコード</h1>
+        </div>
+    </header>
+
+    <main>
+
+        <a href="https://github.com/Saito-Saito-Saito/chess" target="_blank">From GitHub</a>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#config">config.py</a></li>
+                    <li><a href="#fundam">fundam.py</a></li>
+                    <li><a href="#board">board.py</a></li>
+                    <li><a href="#IO">IO.py</a></li>
+                    <li><a href="#playmode">playmode.py</a></li>
+                    <li><a href="#readmode">readmode.py</a></li>
+                    <li><a href="#main">main.py</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <h1 id="config">config.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# config.py
+# programmed by Saito-Saito-Saito
+# explained on https://Saito-Saito-Saito.github.io/chess
+# last update: 28/4/2020
+
+
+
+import logging
+
+logging.basicConfig(level=logging.CRITICAL, format='%(levelname)s - %(filename)s - L%(lineno)d - %(message)s')
+
+# record files
+MAINRECADDRESS = 'mainrecord.txt'
+SUBRECADDRESS = 'subrecord.txt'
+
+# board size
+SIZE = 8
+# for if switches
+OVERSIZE = SIZE * SIZE
+
+# for index
+FILE = 0
+RANK = 1
+a, b, c, d, e, f, g, h = 1, 2, 3, 4, 5, 6, 7, 8
+
+EMPTY = 0
+P = PAWN = 1
+R = ROOK = 2
+N = KNIGHT = 3
+B = BISHOP = 4
+Q = QUEEN = 5
+K = KING = 6
+
+WHITE = 1
+BLACK = -1
+
+            </code>
+        </pre>
+
+        <h1 id="fundam">fundam.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# fundam.py
+# programmed by Saito-Saito-Saito
+# explained on https://saito-saito-saito.github.io/chess
+# last update: 28/4/2020
+
+
+import config
+
+# positive or negative (returning 1, -1, or 0)
+def PosNeg(subject):
+    if subject > 0:
+        return 1
+    elif subject &lt; 0:
+        return - 1
+    else:
+        return 0
+
+
+# whether the index is in the board (bool)
+def InSize(subject):
+    if 0 &lt;= subject &lt; config.SIZE:
+        return True
+    else:
+        return False
+
+
+if __name__=="__main__":
+    try:
+        print(PosNeg(int(input('Enter a posnegee '))))
+    except:
+        print('INVALID INPUT')
+    try:
+        print(InSize(int(input('Enter an InSizee '))))
+    except:
+        print('INVALID INPUT')
+            </code>
+        </pre>
+
+        <h1 id="board">board.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# board.py
+# programmed by Saito-Saito-Saito
+# explained on https://saito-saito-saito.github.io/chess
+# last update: 28/4/2020
+
+
+import copy
+import re
+import sys
+
+from config import *
+import fundam
+import IO
+
+
+class Board:    
+    def __init__(self, input_board=[], input_taget=[OVERSIZE, OVERSIZE], input_k=[WHITE, BLACK], input_q=[WHITE, BLACK], input_player=WHITE, input_turn=1, input_s=''):
+        # NOTE: when copying any list, you have to use copy.deepcopy
+        if len(input_board) == SIZE:
+            self.board = copy.deepcopy(input_board)
+        else:
+            # [0][0] is white's R, [0][1] is white's P, ...
+            self.board = [
+                [R, P, 0, 0, 0, 0, -P, -R],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [Q, P, 0, 0, 0, 0, -P, -Q],
+                [K, P, 0, 0, 0, 0, -P, -K],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [R, P, 0, 0, 0, 0, -P, -R]
+            ]
+        self.ep_target = copy.deepcopy(input_taget) # for en passan
+        self.castl_k = copy.deepcopy(input_k)   # for castling
+        self.castl_q = copy.deepcopy(input_q)   # for castling
+        self.turn = input_turn  # starts from 1
+        self.player = input_player
+        self.s = input_s
+                        
+
+    def BOARDprint(self):
+        print('\n')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for rank in range(SIZE - 1, -1, -1):    # down to less
+            print('\t{} |'.format(rank + 1), end='')
+            for file in range(SIZE):
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), end='')
+            print(' {}'.format(rank + 1))
+            print('\t   -------------------------------')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+    
+
+    def motionjudge(self, frFILE, frRANK, toFILE, toRANK, promote=EMPTY):
+        # inside / out of the board
+        if not (fundam.InSize(frFILE) and fundam.InSize(frRANK) and fundam.InSize(toFILE) and fundam.InSize(toRANK)):
+            logging.debug('OUT OF THE BOARD')
+            return False
+
+        player = fundam.PosNeg(self.board[frFILE][frRANK])
+        piece = abs(self.board[frFILE][frRANK])
+        
+        # moving to the square where there is  own piece
+        if fundam.PosNeg(self.board[toFILE][toRANK]) == player:
+            logging.debug('MOVING TO OWN SQUARE')
+            return False
+
+        # there is no piece at Fr
+        if piece == EMPTY:
+            logging.debug('MOVING EMPTY')
+            return False
+
+        # PAWN
+        elif piece == PAWN:
+            # not promoting at the edge
+            if (toRANK == 8 - 1 or toRANK == 1 - 1) and promote not in [R, N, B, Q]:
+                logging.info('NECESSARY TO PROMOTE')
+                return False
+            # normal motion (one step forward); the same FILE, appropriate RANK, TO = EMPTY
+            # NOTE: if player is WHITE (=1), the rank number has to increase. vice versa
+            if frFILE == toFILE and toRANK - frRANK == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # normal capturing; next FILE, appropriate RANK, TO = opponent
+            if abs(toFILE - frFILE) == 1 and toRANK - frRANK == player and fundam.PosNeg(self.board[toFILE][toRANK]) == -player:
+                return True
+            # first two steps; adequate frRANK the same FILE, appropriate RANK, passing squares are EMPTY
+            if ((player == WHITE and frRANK == 2 - 1) or (player == BLACK and frRANK == 7 - 1)) and frFILE == toFILE and toRANK - frRANK == 2 * player and self.board[frFILE][frRANK + player] == self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and toFILE == self.ep_target[FILE] and toRANK - self.ep_target[RANK] == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # all other pawn moves are invalid
+            logging.debug('INVALID MOTION of PAWN')
+            return False
+
+        # ROOK
+        elif piece == ROOK:
+            # invalid motion; not moving on the same file/rank
+            if frFILE != toFILE and frRANK != toRANK:
+                logging.debug('INVALID MOTION of ROOK')
+                return False
+            # else, necessary to check whether there is an obstacle in the way
+
+        # KNIGHT
+        elif piece == KNIGHT:
+            # valid motion
+            if (abs(toFILE - frFILE) == 1 and abs(toRANK - frRANK) == 2) or (abs(toFILE - frFILE) == 2 and abs(toRANK - frRANK) == 1):
+                return True
+            # all other motions are invalid
+            logging.debug('INVALID MOTION of KNIGHT')
+            return False
+
+        # BISHOP
+        elif piece == BISHOP:
+            # invalid motion; not moving on the same diagonal
+            if abs(toFILE - frFILE) != abs(toRANK - frRANK):
+                logging.debug('INVALID MOTION of BISHOP')
+                return False
+            # else, necessary to check an obstacle in the way
+
+        # QUEEN
+        elif piece == QUEEN:
+            # invalid motion (cf, B/R)
+            if frFILE != toFILE and frRANK != toRANK and abs(toFILE - frFILE) != abs(toRANK - frRANK):
+                logging.debug('INVALID MOTION of QUEEN')
+                return False
+            # else, necessary to check an obstacle in the way
+
+        # KING
+        elif piece == KING:
+            # normal motion (one step)
+            if abs(toFILE - frFILE) &lt;= 1 and abs(toRANK - frRANK) &lt;= 1:
+                logging.info('KING NORMAL')
+                return True
+            # preparinf for castling; setting rank
+            if player == WHITE:
+                rank = 1 - 1
+            elif player == BLACK:
+                rank = 8 - 1
+            else:
+                logging.error('UNEXPECTED PLAYER VALUE in motionjudge')
+                print('SYSTEM ERROR')
+                sys.exit()
+            # Q-side; adequate fr and to, all passing squares are EMPTY
+            if player in self.castl_q and frFILE == e - 1 and frRANK == rank and toFILE == c - 1 and toRANK == rank and self.board[b - 1][rank] == self.board[c - 1][rank] == self.board[d - 1][rank] == EMPTY:
+                # K must not be checked while castling
+                for ran in range(SIZE):
+                    for fil in range(SIZE):
+                        if fundam.PosNeg(self.board[fil][ran])==-player and (self.motionjudge(fil,ran,e-1,rank,Q) or self.motionjudge(fil,ran,d-1,rank,Q) or self.motionjudge(fil,ran,c-1,rank,Q)):
+                            logging.warning('CHECKED IN THE WAY')
+                            return False
+                logging.debug('KING Q-side')
+                return True
+            # K-side; adequate fr and to, all passing squares are EMPTY
+            if player in self.castl_k and frFILE == e - 1 and frRANK == rank and toFILE == g - 1 and toRANK == rank and self.board[f - 1][rank] == self.board[g - 1][rank] == EMPTY:
+                # K must be checked while castling
+                for ran in range(SIZE):
+                    for fil in range(SIZE):
+                        if fundam.PosNeg(self.board[fil][ran])==-player and (self.motionjudge(fil,ran,e-1,rank,Q) or self.motionjudge(fil,ran,d-1,rank,Q) or self.motionjudge(fil,ran,c-1,rank,Q)):
+                            logging.warning('CHECKED IN THE WAY')
+                            return False
+                logging.debug('KING K-side')
+                return True
+            # all other King's moves are invalid
+            logging.debug('INVALID MOTION of KING')
+            return False
+
+        # other piece values are invalid
+        else:
+            logging.error('UNEXPECTED VALUE of PIECE in motionjudge')
+            print('SYSTEM ERROR')
+            sys.exit()
+
+        # whether there is an obstacle in the wauy of R/B/Q
+        direction = [fundam.PosNeg(toFILE - frFILE), fundam.PosNeg(toRANK - frRANK)]
+        focused = [frFILE + direction[FILE], frRANK + direction[RANK]]  # focused square
+        while focused[FILE] != toFILE or focused[RANK] != toRANK:   # while not reaching TO
+            # out of the board
+            if not (fundam.InSize(focused[0]) and fundam.InSize(focused[1])):
+                break
+            # if there is a piece on the way
+            if self.board[focused[FILE]][focused[RANK]] != EMPTY:
+                logging.debug('THERE IS AN OBSTACLE in the way')
+                return False
+            # controlling parameters 
+            focused[FILE] += direction[FILE]
+            focused[RANK] += direction[RANK]
+        # there is nothing in the wauy
+        return True
+
+    
+    def move(self, frFILE, frRANK, toFILE, toRANK, promote=EMPTY):
+        ### INVALID MOTON
+        if self.motionjudge(frFILE, frRANK, toFILE, toRANK, promote) == False:
+            return False
+        
+        ### NOT OWN PIECE
+        if fundam.PosNeg(self.board[frFILE][frRANK])!=self.player:
+            return False
+
+        piece = abs(self.board[frFILE][frRANK])
+
+        ### SPECIAL EVENTS
+        # castling
+        if piece == KING and abs(toFILE - frFILE) > 1:
+            # preparing the rank
+            if self.player == WHITE:
+                rank = 1 - 1
+            elif self.player == BLACK:
+                rank = 8 - 1
+            else:
+                logging.error('UNEXPECTED VALUE of PLAYER in move')
+                print('SYSTEM ERROR')
+                sys.exit()
+            # moving rook
+            if toFILE == c - 1:
+                self.board[d - 1][rank] = self.player * ROOK
+                self.board[a - 1][rank] = EMPTY
+            elif toFILE == g - 1:
+                self.board[f - 1][rank] = self.player * ROOK
+                self.board[h - 1][rank] = EMPTY
+            else:
+                logging.error('UNEXPECTED VALUE of toFILE in move')
+                return False
+        # en passant; pawn moves diagonal and TO is EMPTY
+        if piece == PAWN and frFILE != toFILE and self.board[toFILE][toRANK] == EMPTY:
+            # capturing opponent's pawn
+            self.board[self.ep_target[FILE]][self.ep_target[RANK]] = EMPTY        
+        # promotion; changing the moving piece into promote
+        if piece == PAWN and (toRANK == 8 - 1 or toRANK == 1 - 1):
+            self.board[frFILE][frRANK] = self.player * promote
+        
+        ### MOVING OWN PIECE
+        self.board[toFILE][toRANK] = self.board[frFILE][frRANK]
+        self.board[frFILE][frRANK] = EMPTY
+        
+        ### PARAMETERS CONTROL
+        # for e.p.
+        if piece == PAWN and abs(toRANK - frRANK) > 1:
+            self.ep_target = [toFILE, toRANK]
+        else:
+            self.ep_target = [OVERSIZE, OVERSIZE]
+        # for castling q-side
+        if self.player in self.castl_q and (piece == KING or (piece == ROOK and frFILE == a - 1)):
+            self.castl_q.remove(self.player)
+        # for castling k-side
+        if self.player in self.castl_k and (piece == KING or (piece == ROOK and frFILE == h - 1)):
+            self.castl_k.remove(self.player)
+        # turn count
+        if self.player == BLACK:
+            self.turn += 1
+        # player change
+        self.player *= -1
+        
+        ### RETURN AS SUCCEEDED
+        return True
+
+
+    def king_place(self, searcher):
+        # searching for the searcher's king
+        for fil in range(SIZE):
+            if searcher * KING in self.board[fil]:
+                return [fil, self.board[fil].index(searcher * KING)]
+        else:
+            # there is no king
+            return EMPTY
+            
+
+    def checkcounter(self, checkee):
+        #if there is no king, impossible to check
+        TO = self.king_place(checkee)
+        try:
+            toFILE = TO[FILE]
+            toRANK = TO[RANK]
+        except:
+            logging.debug('THERE IS NO KING')
+            return False
+
+        # searching all the squares, count up the checking pieces
+        count = 0
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                # pawn might capture the king by promoting, so do not forget promote=Q or something
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == -checkee and self.motionjudge(frFILE, frRANK, toFILE, toRANK, Q):
+                    logging.warning('CHECK: {}, {} -> {}, {}'.format(frFILE, frRANK, toFILE, toRANK))
+                    count += 1
+        # if checkee is not checked, return 0
+        return count
+
+
+    def checkmatejudge(self, matee):
+        # if not checked, it's not checkmate
+        if self.checkcounter(matee) in [False, 0]:
+            return False
+        
+        # searching all the moves matee can
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # cloning board
+                            local_board = Board(self.board, self.ep_target, self.castl_k, self.castl_q, self.player, self.turn, self.s)
+                            # moving the local board and count up check
+                            if local_board.move(frFILE, frRANK, toFILE, toRANK, Q) and local_board.checkcounter(matee) == 0:
+                                logging.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                    logging.info('"FR = {}, {}" was unavailable'.format(frFILE, frRANK))
+
+        # completing the loop, there is no way to flee
+        return True
+
+    
+    def stalematejudge(self, matee):
+        # if checked, it's not stalemate
+        if self.checkcounter(matee) not in [0, False]:
+            logging.debug('CHECKED')
+            return False
+
+        # searching all the moves for one that can move without being checked
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # copying the board
+                            local_board = Board(self.board, self.ep_target, self.castl_k, self.castl_q, self.player, self.turn, self.s)
+                            motion = local_board.move(frFILE, frRANK, toFILE, toRANK, Q)
+                            count = local_board.checkcounter(matee)
+                            logging.debug('motion: {}, count: {}'.format(motion, count))
+                            # in case it is not checked after moving
+                            if motion and count in [0, False]:
+                                logging.info('THERE IS {}, {} -> {}, {}'.format(frFILE, frRANK, toFILE, toRANK))
+                                return False
+        # completing the loop, there is no way to avoid check when moving
+        return True
+    
+
+    def s_analyze(self):
+        # removing spaces
+        self.s = self.s.replace(' ', '')
+
+        # avoiding bugs
+        if len(self.s) == 0:
+            logging.debug('len(s) == 0')
+            return False
+
+        # deleting all of !? at the tail
+        while self.s[-1] in ['!', '?']:
+            self.s = self.s.rstrip(self.s[-1])
+            if len(self.s) == 0:
+                return False
+
+        # the pattern of the normal format
+        match = re.match(r'^[PRNBQK]?[a-h]?[1-8]?[x]?[a-h][1-8](=[RNBQ]|e.p.)?[\++#]?$', self.s)
+
+        # normal format
+        if match:
+            line = match.group()
+            logging.info('line = {}'.format(line))
+
+            # what piece is moving
+            if line[0] in ['P', 'R', 'N', 'B', 'Q', 'K']:
+                piece = IO.ToggleType(line[0])
+                line = line.lstrip(line[0])
+            else:
+                piece = PAWN
+            logging.info('PIECE == {}'.format(piece))
+
+            # written info of what rank the piece comes from; frRANK starts from 0
+            if line[0].isdecimal():
+                frFILE = OVERSIZE
+                frRANK = IO.ToggleType(line[0]) - 1
+                # deleting the number so that the sentence seems simpler
+                line = line.lstrip(line[0])
+            # written info of what file the piece comes from; frFILE starts from 0
+            elif ord('a') &lt;= ord(line[0]) &lt;= ord('h') and ord('a') &lt;= ord(line[1]) &lt;= ord('x'):
+                frFILE = IO.ToggleType(line[0]) - 1
+                frRANK = OVERSIZE
+                # deleting only the first character of line
+                line = line[1:]
+            # nothing is written about where the piece comes from
+            else:
+                frFILE = OVERSIZE
+                frRANK = OVERSIZE
+            logging.info('FR = {}, {}'.format(frFILE, frRANK))
+
+            # whether the piece has captured one of the opponent's pieces
+            if line[0] == 'x':
+                CAPTURED = True
+                line = line.lstrip(line[0])
+            else:
+                CAPTURED = False
+
+            # where the piece goes to; toFILE and toRANK starts from 0
+            toFILE = IO.ToggleType(line[0]) - 1
+            toRANK = IO.ToggleType(line[1]) - 1
+            logging.info('TO = {}, {}'.format(toFILE, toRANK))
+
+            # promotion
+            if '=' in line:
+                promote = IO.ToggleType(line[line.index('=') + 1])
+            else:
+                promote = EMPTY
+            logging.info('promote = {}'.format(promote))
+
+            # raising up all the available candidates
+            candidates = []
+            for fil in range(SIZE):
+                # when frFILE is written
+                if fundam.InSize(frFILE) and frFILE != fil:
+                    continue
+
+                for ran in range(SIZE):
+                    # when frRANK is written
+                    if fundam.InSize(frRANK) and frRANK != ran:
+                        continue
+
+                    # piece
+                    if self.board[fil][ran] != self.player * piece:
+                        continue
+
+                    # available motion
+                    if self.motionjudge(fil, ran, toFILE, toRANK, promote) == False:
+                        continue
+
+                    candidates.append([fil, ran])
+            logging.info('candidates = {}'.format(candidates))
+
+            # checking all the candidates
+            for reference in range(len(candidates)):
+                # copying and moving the board
+                local_board = Board(self.board, self.ep_target, self.castl_k, self.castl_q, self.player, self.turn, self.s)
+                local_board.move(candidates[reference][FILE], candidates[reference][RANK], toFILE, toRANK, promote)
+
+                # capture; searching for the opponent's piece that has disappeared
+                if CAPTURED or 'e.p.' in line:
+                    # normal capturing
+                    if fundam.PosNeg(self.board[toFILE][toRANK]) == -self.player:
+                        pass
+                    # en passan to Q-side
+                    elif fundam.InSize(toRANK - 1) and fundam.PosNeg(self.board[toFILE][toRANK - 1]) == -self.player and fundam.PosNeg(local_board.board[toFILE][toRANK - 1]) == EMPTY:
+                        pass
+                    # en passan to K-side
+                    elif fundam.InSize(toRANK + 1) and fundam.PosNeg(self.board[toFILE][toRANK + 1]) == -self.player and fundam.PosNeg(local_board.board[toFILE][toRANK + 1]) == EMPTY:
+                        pass
+                    # here no piece can capture a piece
+                    else:
+                        logging.info('{} does not capture any piece'.format(candidates[reference]))
+                        del candidates[reference]
+                        reference -= 1  # back to the for loop's head, reference increases
+                        continue
+                
+                # check
+                if line.count('+') > local_board.checkcounter(-self.player):
+                    logging.info('{} is short of the number of check'.format(candidates[reference]))
+                    del candidates[reference]
+                    reference -= 1  # back to the for loop's head, reference increases
+                    continue
+
+                # checkmate
+                if '#' in line and local_board.checkmatejudge(-self.player) == False:
+                    logging.info('{} does not checkmate'.format(candidates[reference]))
+                    del candidates[reference]
+                    reference -= 1  # back to the for loop's head, reference increases
+                    continue
+
+                # en passant
+                if 'e.p.' in line and self.board[toFILE][toRANK] != EMPTY:
+                    logging.info('{} does not en passant'.format(candidates[reference]))
+                    del candidates[reference]
+                    reference -= 1  # back to the for loop's head, reference increases
+                    continue
+
+            # normal return
+            if len(candidates) == 1:
+                logging.info('NORMALLY RETURNED from s_analyze')
+                return [candidates[0][FILE], candidates[0][RANK], toFILE, toRANK, promote]
+            # when some candidates are available
+            elif len(candidates) > 1:
+                logging.warning('THERE IS ANOTHER MOVE')
+                return [candidates[0][FILE], candidates[0][RANK], toFILE, toRANK, promote]
+            # no candidates are available
+            else:
+                logging.info('THERE IS NO MOVE')
+                return False
+
+        # in case the format does not match
+        else:
+            # game set; take note that player themselves cannot win by inputting these codes
+            if self.s == '1/2-1/2':
+                logging.info('DRAW GAME')
+                return EMPTY
+            elif self.s == '1-0' and self.player == BLACK:
+                logging.info('WHITE WINS')
+                return WHITE
+            elif self.s == '0-1' and self.player == WHITE:
+                logging.info('BLACK WINS')
+                return BLACK
+            
+            # check whether it represents castling
+            # rank setting
+            if self.player == WHITE:
+                rank = 1 - 1
+            elif self.player == BLACK:
+                rank = 8 - 1
+            else:
+                logging.error('UNEXPECTED PLAYER VALUE in s_analyze')
+                print('SYSTEM ERROR')
+                sys.exit()
+            # Q-side
+            if self.s in ['O-O-O', 'o-o-o', '0-0-0'] and self.board[e - 1][rank] == self.player * KING:
+                logging.info('format is {}, castl is {}'.format(self.s, self.castl_q))
+                return [e - 1, rank, c - 1, rank, EMPTY]
+            # K-side
+            elif self.s in ['O-O', 'o-o', '0-0'] and self.board[e - 1][rank] == self.player * KING:
+                logging.info('format is {}, castl is {}'.format(self.s, self.castl_k))
+                return [e - 1, rank, g - 1, rank, EMPTY]
+            
+            # invalid format
+            else:
+                logging.debug('INVALID FORMAT')
+                return False
+
+
+    def record(self, address):
+        # removing spaces
+        self.s = self.s.replace(' ', '')
+
+        # avoiding bugs
+        if len(self.s) == 0:
+            logging.debug('len(s) == 0')
+            return False
+
+        # deleting all of !? at the tail
+        while self.s[-1] in ['!', '?']:
+            self.s = self.s.rstrip(self.s[-1])
+            if len(self.s) == 0:
+                return False
+
+        # normal pattern
+        match = re.match(r'^[PRNBQK]?[a-h]?[1-8]?[x]?[a-h][1-8](=[RNBQ]|e.p.)?[\+#]?$', self.s)
+        # normal pattern matches
+        if match:
+            s_record = match.group()
+        # resign
+        elif self.s in ['1-0', '0-1', '1/2-1/2']:
+            s_record = self.s
+        # castling
+        elif self.s in ['O-O-O', 'O-O', 'o-o-o', 'o-o', '0-0-0', '0-0']:
+            s_record = self.s.replace('o', 'O').replace('0', 'O')
+        # invalid format
+        else:
+            logging.info('OUT OF FORMAT in record')
+            return False
+        
+        # open the recording file
+        f = open(address, 'a')
+
+        # WHITE WINS (BLACK DIDN'T MOVE)
+        if s_record == '1-0':
+            f.write('1-0')
+        # BLACK WINS (WHITE DIDN'T MOVE)
+        elif s_record == '0-1':
+            f.write('{}\t0-1'.format(self.turn))
+        # NOTE: after Board.move, parameter player is changed
+        # writing on WHITE side
+        elif -self.player == WHITE:
+            f.write('{}\t'.format(self.turn) + s_record.ljust(12))
+        # writing on BLACK side
+        elif -self.player == BLACK:
+            f.write(s_record.ljust(12) + '\n')
+        else:
+            logging.error('UNEXPECTED VALUE of PLAYER in record')
+            print('SYSTEM ERROR')
+            sys.exit()
+        
+        f.close()
+
+        # return as succeeded
+        return True
+
+
+    def tracefile(self, destination_turn, destination_player, isrecwrite=True):
+        # back to the first
+        if destination_turn == 1 and destination_player == WHITE:
+            local_board = Board()
+            return local_board
+
+        # preparing (initializing) the sub file; all the local moves are recorded on the sub file
+        open(SUBRECADDRESS, 'w').close()
+        # reading the main file
+        f = open(MAINRECADDRESS, 'r')
+        # deleting first and last spaces
+        line = f.read().strip(' ').strip('\n')
+        f.close()
+        logging.info('line is {}'.format(line))
+
+        # local Board
+        local_board = Board()
+        
+        # detectong each letter in line
+        for letter in line:
+            # when you come to the end of a sentence
+            if letter in [' ', '\t', '\n', ',']:
+                logging.warning('local_s is {}'.format(local_board.s))
+                motion = local_board.s_analyze()
+                # normal motion
+                if type(motion) is list:
+                    local_board.move(*motion)
+                    local_board.record(SUBRECADDRESS)   # all the local moves are recorded on the sub file
+                    # destination
+                    if local_board.turn == destination_turn and local_board.player == destination_player:
+                        logging.info('trace succeeded')
+                        if isrecwrite:
+                            # copying the file
+                            f = open(MAINRECADDRESS, 'w')
+                            g = open(SUBRECADDRESS, 'r')
+                            f.write(g.read())
+                            f.close()
+                            g.close()
+                        return local_board
+                # game set
+                elif type(motion) is int:
+                    print('GAME SET')
+                    if isrecwrite:
+                        # copying the record
+                        f = open(MAINRECADDRESS, 'w')
+                        g = open(SUBRECADDRESS, 'r')
+                        f.write(g.read())
+                        f.close()
+                        g.close()
+                    return motion
+                # initializing the local_s
+                local_board.s = ''
+            # the sentence does not end yet
+            else:
+                local_board.s = ''.join([local_board.s, letter])
+                logging.info('local_s = {}'.format(local_board.s))
+
+        # last one local_s; the same as in the for loop
+        logging.warning('local_s is {}'.format(local_board.s))
+        motion = local_board.s_analyze()
+        if type(motion) is list:
+            local_board.move(*motion)
+            local_board.record(SUBRECADDRESS)
+            if local_board.turn == destination_turn and local_board.player == destination_player:
+                logging.info('trace succeeded')
+                if isrecwrite:
+                    f = open(MAINRECADDRESS, 'w')
+                    g = open(SUBRECADDRESS, 'r')
+                    f.write(g.read())
+                    f.close()
+                    g.close()
+                return local_board
+        elif type(motion) is int:
+            if isrecwrite:
+                f = open(MAINRECADDRESS, 'w')
+                g = open(SUBRECADDRESS, 'r')
+                f.write(g.read())
+                f.close()
+                g.close()
+            return motion
+
+        # reaching here, you cannot trace
+        logging.warning('FAILED TO BACK')
+        return self
+
+
+            </code>
+        </pre>
+
+        <h1 id="IO">IO.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# IO.py
+# programmed by Saito-Saito-Saito
+# explained on https://Saito-Saito-Saito.github.io/chess
+# last update: 28/4/2020
+
+
+from config import *
+
+def ToggleType(target):
+    # piece ID -> piece letter
+    if type(target) is int:
+        if target == EMPTY:
+            return ' '
+        elif target == P * WHITE:
+            return '♙'
+        elif target == R * WHITE:
+            return '♖'
+        elif target == N * WHITE:
+            return '♘'
+        elif target == B * WHITE:
+            return '♗'
+        elif target == Q * WHITE:
+            return '♕'
+        elif target == K * WHITE:
+            return '♔'
+        elif target == P * BLACK:
+            return '♟'
+        elif target == R * BLACK:
+            return '♜'
+        elif target == N * BLACK:
+            return '♞'
+        elif target == B * BLACK:
+            return '♝'
+        elif target == Q * BLACK:
+            return '♛'
+        elif target == K * BLACK:
+            return '♚'
+        # invalid target value
+        else:
+            logging.error(
+                'UNEXPECTED INPUT VALUE of A PIECE into IO.ToggleType')
+            return False
+
+    # str, chr -> int
+    elif type(target) is str:
+        # a number -> int
+        if target.isdecimal():
+            return int(target)
+        # the kind of piece -> piece no.
+        elif target == 'P':
+            return P
+        elif target == 'R':
+            return R
+        elif target == 'N':
+            return N
+        elif target == 'B':
+            return B
+        elif target == 'Q':
+            return Q
+        elif target == 'K':
+            return K
+        # file id
+        elif ord('a') &lt;= ord(target) &lt;= ord('h'):
+            return ord(target) - ord('a') + 1
+        # invalid character
+        else:
+            logging.error('UNEXPECTED INPUT into IO.ToggleType')
+            return False
+
+    # unexpected type
+    else:
+        logging.error('UNEXPECTED INPUT TYPE into IO.ToggleType')
+        return False
+
+
+# for help in the playmode
+def instruction():
+    print('''
+    In order to study chess properly, and also to play in leagues and tournaments, you need to be able to read and write chess moves. There are a few ways to record chess moves, but on this site we will be using standard algebraic notation, which is the notation required by FIDE (the international chess federation).
+
+    -- The board
+    In algebraic notation, we use a system of alphanumeric co-ordinates to identify each square. The ranks (horizontal rows) are identified with numbers starting from white's side of the board, and the files (vertical columns) are identified by letters, starting from white's left. On the board below, co-ordinates are displayed for every square.
+
+            a   b   c   d   e   f   g   h
+           -------------------------------
+        8 | a8| b8| c8| d8| e8| f8| g8| h8| 8
+           -------------------------------
+        7 | a7| b7| c7| d7| e7| f7| g7| h7| 7
+           -------------------------------
+        6 | a6| b6| c6| d6| e6| f6| g6| h6| 6
+           -------------------------------
+        5 | a5| b5| c5| d5| e5| f5| g5| h5| 5
+           -------------------------------
+        4 | a4| b4| c4| d4| e4| f4| g4| h4| 4
+           -------------------------------
+        3 | a3| b3| c3| d3| e3| f3| g3| h3| 3
+           -------------------------------
+        2 | a2| b2| c2| d2| e2| f2| g2| h2| 2
+           -------------------------------
+        1 | a1| b1| c1| d1| e1| f1| g1| h1| 1
+           -------------------------------
+            a   b   c   d   e   f   g   h
+
+    The co-ordinates are the same whether you are looking at the board from white's perspective or black's.
+
+    -- Recording a move
+    With the exception of the knight, each piece is represented by the first letter of its name, capitalised. Knight starts with the same letter as king, so for the knights we use the letter N instead. When we record a move, we record the piece that is being moved, and the square that the piece is being moved to. For example:
+
+        Bc4 - Bishop moves to the c4 square.
+        Nf3 - Knight moves to the f3 square.
+        Qc7 - Queen moves to the c7 square.
+    
+    The only exception to this is pawn moves. When a pawn moves, we don't normally bother to record the P, just the square that the pawn is moving to. For example:
+
+        e4 - pawn moves to the e4 square.
+        g6 - pawn moves to the g6 square.
+    
+    If the pawn has reached the far side of the board and promoted, use an '=' sign to show which piece it was promoted to. For example:
+
+        b8=Q - pawn moves to the b8 square and promotes to a queen.
+        h1=N - pawn moves to the h1 square and promotes to a knight.
+    
+    Simple enough so far. There are also a couple of extra symbols used to indicate certain things about a move. To indicate a capture, we place an 'x' symbol beween the piece and the square, for example:
+
+        Rxf5 - Rook captures a piece on the f5 square.
+        Kxd2 - King captures a piece on the d2 square.
+    
+    When a pawn is capturing, we use the letter of the file it is moving from, then the x, then the square it is moving to. For example:
+
+        gxf6 - Pawn on the g-file captures a piece on the f6 square.
+        exd5 - Pawn on the e-file captures a piece on the d5 square.
+    
+    If the pawn is making an en passant capture, we record the square that the pawn finished on, not the square of the captured pawn. You can also add 'e.p.' after the move to indicate en passant if you want, but this isn't mandatory. For example:
+
+        exd6 - Pawn captures a pawn on d5 en passant. The pawn finishes its move on d6.
+        gxh6 e.p. - Pawn captures a pawn on h5 en passant. The pawn finishes its move on h6.
+    
+    To indicate that a move is check, just add a '+' symbol on the end. If it's a double check, you can add ++ if you like, but just one will do. If the it's a checkmate, use the '#' symbol instead. Here are some examples:
+
+        Ba3+ - Bishop moves to a3 and gives check.
+        Qxh7# - Queen captures a piece on h7 and checkmates the black king.
+        f3+ - Pawn moves to f3 and gives check.
+    
+    Sometimes, two different piece of the same type could move to the same square. To specify which piece is to move, add the letter of the file the piece is moving from. Here are some examples:
+
+        Rad1 - Rook on the a-file moves to d1.
+        Nbxd2 - Knight on the b-file captures a piece on d2.
+        Rfe1+ - Rook on the f-file moves to e1 and gives check.
+    
+    What about if both pieces are on the same file as well? In this case, put the number of the starting rank for the piece that is moving, instead of the file letter. Here are some examples:
+
+        R7e4 - Rook on the seventh rank moves to e4.
+        N1xc3 - Knight on the first rank captures a piece on c3.
+
+    Castling is recorded differently to the other moves. For kingside castling, record it as O-O and for queenside castling, record it as O-O-O.
+
+    When a game has been annotated, some symbols are used to indicate that a particular move is good or bad. We don't normally use these when recording a game in a tournament (it might be offputting to your opponent to see what you think of his moves). The symbols are as follows:
+
+        ! - Good move.
+        !! - Brilliant move.
+        ? - Poor move.
+        ?? - Terrible move.
+        !? - Interesting move.
+        ?! - Dubious move.
+
+    from www.chessstrategyonline.comcontent/tutorials/basic-chess-concepts-chess-notation
+
+    Did you get it?
+    Read the whole passage and press enter to next
+    ''')
+    input()
+
+
+if __name__=="__main__":
+    try:
+        print(ToggleType(input('enter a toffled str: ')))
+    except:
+        print('INVALID INPUT')
+    try:
+        print(ToggleType(int(input('Enter a toggled int: '))))
+    except:
+        print('INVALID INPUT')
+    input('ENTER TO INSTRUCT')
+    instruction()
+            </code>
+        </pre>
+
+        <h1 id="playmode">playmode.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# playmode.py
+# programmed by Saito-Saito-Saito
+# explained on https://saito-saito-saito.github.io/chess
+# last update: 28/4/2020
+
+
+import sys
+
+from config import *
+import board
+import IO
+
+def playmode():
+    # new file preparation
+    record = open(MAINRECADDRESS, 'w')
+    record.close()
+    record = open(SUBRECADDRESS, 'w')
+    record.close()
+
+    # initializing the board
+    main_board = board.Board()
+    main_board.BOARDprint()
+
+    while True:
+        ### GAME SET JUDGE
+        # king captured
+        if main_board.king_place(main_board.player) == False:
+            winner = -main_board.player
+            break
+        # checkmate
+        if main_board.checkmatejudge(main_board.player):
+            print('CHECKMATE')
+            winner = -main_board.player
+            # break
+        # stalemate
+        if main_board.stalematejudge(main_board.player):
+            print('STALEMATE')
+            winner = EMPTY  # stalemate is draw
+            break
+
+        ### PLAYER INTRODUCTION
+        if main_board.player == WHITE:
+            print('WHITE (X to resign / H to help / Z to back) >>> ', end='')
+        elif main_board.player == BLACK:
+            print('BLACK (X to resign / H to help / Z to back) >>> ', end='')
+        else:
+            logging.error('UNEXPECTED VALUE of PLAYER in while loop')
+            print('SYSTEM ERROR')
+            sys.exit()
+
+        ### INPUT ANALYSIS
+        # inputting and deleting all spaces, replacing 'o' into 'O'
+        main_board.s = input().replace(' ', '').replace('o', 'O')
+        # resign code
+        if main_board.s in ['X', 'x']:
+            winner = -main_board.player
+            break
+        # help code
+        if main_board.s in ['H', 'h']:
+            IO.instruction()
+            continue
+        # back code
+        if main_board.s in ['Z', 'z']:
+            # necessary for the opponent to allow the player to back
+            if main_board.player == WHITE:
+                print('Do you agree, BLACK (y/n)? >>> ', end='')
+            elif main_board.player == BLACK:
+                print('Do you agree, WHITE (y/n) >>> ', end='')
+            else:
+                logging.error('UNEXPECTED VALUE of PLAYER in the while loop')
+                sys.exit()
+            # in case rejected
+            if input() not in ['y', 'Y', 'Yes', 'YES', 'yes']:
+                continue
+            # in case allowed
+            new_board = main_board.tracefile(main_board.turn - 1, main_board.player, True)
+            # unavailable to back
+            if new_board == main_board:
+                logging.warning('IMPOSSIBLE TO BACK')
+                print('SORRY, NOW WE CANNOT BACK THE BOARD')
+            # available to back
+            else:
+                main_board = new_board
+                main_board.BOARDprint()
+            continue
+        # motion detection
+        motion = main_board.s_analyze()
+        # game set (resign)
+        if type(motion) is int:
+            if motion == EMPTY:
+                # necessary to agree to end the game
+                if main_board.player == WHITE:
+                    print('Do you agree, BLACK (y/n)? >>>', end=' ')
+                elif main_board.player == BLACK:
+                    print('Do you agree, WHITE (y/n)? >>>', end=' ')
+                else:
+                    logging.error('UNEXPECTED VALUE of PLAYER in the while loop')
+                    print('SYSTEM ERROR')
+                    sys.exit()
+                # when agreed
+                if input() in ['y', 'Y']:
+                    winner = EMPTY
+                    break
+                # when rejected
+                else:
+                    continue
+            elif motion == WHITE == -main_board.player:
+                winner = WHITE
+                break
+            elif motion == BLACK == -main_board.player:
+                winner = BLACK
+                break
+            else:
+                print('IVNALID INPUT')
+                continue
+        # invalid input (here, valid motion is conducted)
+        if motion == False or main_board.move(*motion) == False:
+            print('INVALID INPUT/MOTION')
+            continue
+
+        # board output
+        main_board.BOARDprint()
+
+        # recording the move
+        main_board.record(MAINRECADDRESS)
+
+
+    print('\nGAME SET')
+    if winner == EMPTY:
+        # for record
+        main_board.player *= -1
+        print('1/2 - 1/2\tDRAW')
+        main_board.s = '1/2-1/2 '
+        main_board.record(MAINRECADDRESS)
+    elif winner == WHITE:
+        print('1 - 0\tWHITE WINS')
+        # after white's move, 1-0 is written where black's move is written
+        main_board.s = '1-0 '
+        main_board.record(MAINRECADDRESS)
+    elif winner == BLACK:
+        print('0 - 1\tBLACK WINS')
+        # after white's move, 1-0 is written where black's move is written
+        main_board.s = '0-1 '
+        main_board.record(MAINRECADDRESS)
+    else:
+        logging.error('UNEXPECTED VALUE of PLAYER out of the loop')
+        print('SYSTEM ERROR')
+        sys.exit()
+
+
+    # record output
+    if input('\nDo you want the record (y/n)? >>> ') in ['y', 'Y', 'yes', 'YES', 'Yes']:
+        record = open(MAINRECADDRESS, 'r')
+        print('\n------------------------------------')
+        print(record.read())
+        print('------------------------------------')
+        record.close()
+
+
+    print('\nGAME OVER\n')
+
+
+if __name__=="__main__":
+    playmode()
+    
+            </code>
+        </pre>
+
+        <h1 id="readmode">readmode.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# readmode.py
+# programmed by Saito-Saito-Saito
+# explained on https://saito-saito-saito.github.io/chess
+# last update: 28/4/2020
+
+
+import sys
+
+from config import *
+import board
+
+def readmode():
+    # initializing the board
+    main_board = board.Board()
+    main_board.BOARDprint()
+    print('ENTER TO START')
+    input()
+    
+    while True:
+        # displaying turn number and player
+        if main_board.player == WHITE:
+            print('\n{}\tWHITE'.format(main_board.turn), end='\t')
+            new_board = main_board.tracefile(main_board.turn, BLACK, False)
+        elif main_board.player == BLACK:
+            print('\n{}\tBLACK'.format(main_board.turn), end='\t')
+            new_board = main_board.tracefile(main_board.turn + 1, WHITE, False)
+        else:
+            logging.error('UNEXPECTED VALUE of PLAYER in readmode')
+            print('SYSTEM ERROR')
+            sys.exit()
+
+        # unavailable to trace
+        if type(new_board) is bool:
+            print('NO WAY TO CONTINUE')
+            return
+        # game set
+        elif type(new_board) is int:
+            if new_board == EMPTY:
+                print('1/2-1/2\n\nDRAW')
+                return
+            elif new_board == WHITE:
+                print('1-0\n\nWHITE WINS')
+                return
+            elif new_board == BLACK:
+                print('0-1\n\nBLACK WINS')
+                return
+            else:
+                logging.error('UNEXPECTED VALUE of new_board in readmode')
+                print('SYSTEM ERROR')
+                sys.exit()
+        # moving a piece
+        else:
+            main_board = new_board
+            print(main_board.s)
+            main_board.BOARDprint()
+
+        # exit code
+        print('ENTER TO NEXT / X TO QUIT ', end='')
+        if input() in ['X', 'x']:
+            print('QUITTED')
+            return
+
+
+if __name__=="__main__":
+    readmode()
+            </code>
+        </pre>
+
+        <h1 id="main">main.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# main.py 
+# programmed by Saito-Saito-Saito
+# explained on https://Saito-Saito-Saito.github.io/chess
+# last update: 28/4/2020
+
+import playmode
+import readmode
+
+
+# choosing mode
+while True:
+    print('R to read mode / P to play mode >>>', end=' ')
+    ch = input()
+    
+    if ch in ['P', 'p' 'play', 'PLAY', 'Play']:
+        playmode.playmode()
+        break
+
+    elif ch in ['R', 'r', 'READ', 'read', 'Read']:
+        readmode.readmode()
+        break
+            </code>
+        </pre>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/29</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

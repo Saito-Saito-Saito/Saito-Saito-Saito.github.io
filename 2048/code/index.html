@@ -1,0 +1,547 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも 2048...のコード</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>2048... のコード</h1>
+        </div>
+    </header>
+
+    <main>
+        <a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">From GitHub</a>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#config">config.py</a></li>
+                    <li><a href="#board">board.py</a></li>
+                    <li><a href="#main">main.py</a></li>
+                    <li><a href="#move">move.py</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <h1 id="config">config.py</h1>
+        <pre>
+            <code>
+#! usr/bin/env/ Python3
+# config.py
+# coded by Saito-Saito-Saito
+# last edited: 28 June 2020
+
+
+
+from logging import getLogger, Formatter, StreamHandler, FileHandler, DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+
+
+### LOG SET UP
+DEFAULT_LOG_FILE_NAME = 'log.txt'
+DEFAULT_LOG_FORMAT = Formatter('%(asctime)s - %(levelname)s -　logger:%(name)s - %(filename)s - L%(lineno)d - %(funcName)s - %(message)s')
+
+# file handler
+DEFAULT_FHANDLER = FileHandler(DEFAULT_LOG_FILE_NAME, mode='w')
+DEFAULT_FHANDLER.setFormatter(DEFAULT_LOG_FORMAT)
+DEFAULT_FHANDLER.setLevel(DEBUG)
+# stream handler
+DEFAULT_SHANDLER = StreamHandler()
+DEFAULT_SHANDLER.setFormatter(DEFAULT_LOG_FORMAT)
+DEFAULT_SHANDLER.setLevel(WARNING)
+
+# set up function
+def logger_setup(logger_name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_FILE_NAME, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=WARNING, streamformat=DEFAULT_LOG_FORMAT):
+    logger = getLogger(logger_name)
+    logger.setLevel(level)
+    
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+    
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+    
+    return logger
+
+
+
+### INDEXES
+ROW = 0
+COL = 1
+
+
+
+### SQUARES STATUS
+EMPTY = 0
+
+
+
+### DIRECTIONS
+UP = [-1, 0]
+DOWN = [+1, 0]
+LEFT = [0, -1]
+RIGHT = [0, +1]
+
+
+
+### RETURN VALUES
+SUCCEEDED = True
+FAILED = False
+
+
+
+### DEFAULT VALUES
+DEFAULT_PROB4 = 1 / 8
+DEFAULT_SIZE = 4  # board size = 4 * 4
+DEFAULT_GOAL = 2048
+MAX_GOAL = 65536
+            </code>
+        </pre>
+        
+        <h1 id="board">board.py</h1>
+        <pre>
+            <code>
+#! usr/bin/env/ Python3
+# board.py
+# coded by Saito-Saito-Saito
+# last edited: 28 June 2020
+                
+                
+from config import *
+import copy
+import random
+                
+                
+local_logger = logger_setup(__name__, level=INFO)
+                
+                
+                
+class Board:
+    def insert(self, *, logger=None):
+        logger = logger or self.logger
+        # searching for empty square
+        emptied = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] == EMPTY:
+                    emptied.append([row, col])
+        # when there is no empty square, you cannot insert a number
+        if emptied == []:
+            logger.info('there is no empty square')
+            return FAILED
+        # selecting an empty square randomly
+        target = random.choice(emptied)
+        # inserting 4 if random No &lt; prob4
+        if random.random() &lt; self.prob4:
+            self.board[target[ROW]][target[COL]] = 4
+        else:
+            self.board[target[ROW]][target[COL]] = 2
+        logger.info('target {} &lt;- No. {}'.format(target, self.board[target[ROW]][target[COL]]))
+        return SUCCEEDED
+                
+                
+    def __init__(self, *, size=DEFAULT_SIZE, board=[], goal=DEFAULT_GOAL, logger=local_logger, prob4=DEFAULT_PROB4):
+        # copying the board
+        self.size = size
+        self.prob4 = prob4
+        self.logger = logger
+        if goal > MAX_GOAL:
+            self.goal = MAX_GOAL
+        else:
+            self.goal = goal
+        if len(board) == self.size:
+            self.board = copy.deepcopy(board)
+        else:
+            self.board = [[EMPTY for col in range(self.size)] for row in range(self.size)]
+            self.insert(logger=logger)
+            self.insert(logger=logger)
+        logger.debug('in {}, board is {}'.format(self, self.board))
+                    
+                    
+    # checking whether index is in the board 
+    def isInBoard(self, index:int):
+        if 0 &lt;= index &lt; self.size:
+            return True
+        else:
+            return False
+                    
+                    
+    def print(self):
+        print('\n-', end='')
+        for row in range(self.size):
+            print('--------', end='')
+        print('')   # to a new line
+        for row in range(self.size):
+            print('|', end='')
+            for col in range(self.size):
+                if self.board[row][col] == EMPTY:
+                    print('       |', end='')
+                else:
+                    print(' {} '.format(self.board[row][col]).center(7) + '|', end='')
+            print('\n-', end='')  # to new line
+            for col in range(self.size):
+                print('--------', end='')
+            print('')  # to a new line
+        print('')   # to a new line
+        return SUCCEEDED
+                
+                
+    def move(self, direction: list, *, logger=None):
+        logger = logger or self.logger
+        ever_moved = False
+        start = [0, self.size - 1]  # UP&LEFT: 0,  DOWN&RIGHT: size - 1
+        step = [1, -1]  # UP&LEFT: 1,  DOWN&RIGHT: -1
+        stop = [self.size, -1]  # UP&LEFT: size,  DOWN&RIGHT: -1
+        switch = (direction in [DOWN, RIGHT])   # UP&LEFT: False,  DOWN&RIGHT: True
+                            
+        # cf. move.py and https://Saito-Saito-Saito.github.io/2048/stage5
+        root = [0, 0]
+        for root[COL] in range(start[switch], stop[switch], step[switch]):
+            for root[ROW] in range(start[switch], stop[switch], step[switch]):
+                focused = [root[ROW] - direction[ROW], root[COL] - direction[COL]]
+                while self.isInBoard(focused[ROW]) and self.isInBoard(focused[COL]):
+                    # in case root == EMPTY
+                    if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
+                        logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                        self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
+                        self.board[focused[ROW]][focused[COL]] = EMPTY
+                        ever_moved = True
+                    # in case root == focused != EMPTY
+                    elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != EMPTY:
+                        logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                        self.board[root[ROW]][root[COL]] *= 2
+                        self.board[focused[ROW]][focused[COL]] = EMPTY
+                        ever_moved = True
+                        break
+                    # in case EMPTY != root != focuseed != EMPTY
+                    elif self.board[focused[ROW]][focused[COL]] != EMPTY:
+                        break
+                    # either is zero
+                    focused[ROW] -= direction[ROW]
+                    focused[COL] -= direction[COL]
+                    
+        if ever_moved == True:
+            return SUCCEEDED
+        else:
+            # if no number was moved, it is game over
+            logger.debug('ever_moved == False')
+            return FAILED
+                
+                
+    def isGoal(self, *, logger=None):
+        logger = logger or self.logger
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] >= self.goal:
+                    logger.info('{} is goaled'.format([row, col]))
+                    return True
+        # there is no goaled square
+        return False
+                
+                
+    def isOver(self, *, logger=None):
+        logger = logger or self.logger
+        local_board = Board(size=self.size, board=self.board, goal=self.goal, logger=self.logger, prob4=self.prob4)
+        for direction in [UP, DOWN, LEFT, RIGHT]:
+            if local_board.move(direction):
+                logger.info('direction {} is available'.format(direction))
+                return False
+        # here, no move is available
+        return True
+                
+                
+                
+if __name__ == "__main__":    
+    test_board = Board(logger=local_logger)
+    test_board.print()
+    # for count in range(16):
+    #     test_board.move(random.choice([UP, DOWN, LEFT, RIGHT]))
+    #     test_board.print()
+    test_board.move(random.choice([UP, DOWN, LEFT, RIGHT]))
+    test_board.insert()
+    test_board.print()
+            </code>
+        </pre>
+
+        <h1 id="main">main.py</h1>
+        <pre>
+            <code>
+#! usr/bin/env/ Python3
+# main.py
+# coded by Saito-Saito-Saito
+# last edited: 28 June 2020
+
+
+from config import *
+import board
+import random
+
+
+### LOG SET UP
+logger = logger_setup(__name__, level=DEBUG)
+logger.info('start')
+
+
+
+parameters = {'size': DEFAULT_SIZE, 'goal': DEFAULT_GOAL}
+
+
+
+### SET UP
+def settings(command: str):
+    while command in ['x', 'X']:
+        setcommand = input('ENTER THE COMMAND (BOARD SIZE: S,  GOAL: G,  EXIT: E) ---')
+        while setcommand in ['s', 'S']:
+            size_command = input('NEW SIZE --- ')
+            if size_command.isdecimal() == True and int(size_command) >= 2:
+                parameters['size'] = int(size_command)
+                break
+            else:
+                print('INVALID INPUT')
+                continue
+        while setcommand in ['G', 'g']:
+            goal_command = input('NEW GOAL (8 ~ {}) ---'.format(MAX_GOAL))
+            if goal_command.isdecimal() == True:
+                if 8 &lt;= int(goal_command) &lt; MAX_GOAL:
+                    parameters['goal'] = int(goal_command)
+                    break
+                else:
+                    print('INVALID VALUE')
+                    continue
+            else:
+                print('INVALID INPUT')
+                continue
+        if setcommand in ['E', 'e']:
+           return
+        print('''SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}      '''.format(parameters['size'],parameters['size'],parameters['goal']))
+
+ 
+def startmenu():
+    command = input('''
+SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}
+    
+ENTER TO SART(X TO CHANGE THE SETTINGS) - - - '''.format(parameters['size'],parameters['size'],parameters['goal']))
+    
+    settings(command)
+
+
+
+if __name__ == "__main__":
+    startmenu()
+    main_board = board.Board(size=parameters['size'], goal=parameters['goal'])
+    main_board.print()
+
+    while True:
+        input_d = input('DIRECTION: UP-1, DOWN-2, LEFT-3, RIGHT-4 : ')
+        logger.debug('input_d = {}'.format(input_d))
+        if input_d in ['1', 'w', 'W']:
+            direction = UP
+        elif input_d in ['2', 's', 'S']:
+            direction = DOWN
+        elif input_d in ['3', 'a', 'A']:
+            direction = LEFT
+        elif input_d in ['4', 'd', 'D']:
+            direction = RIGHT
+        else:
+            print('INVALID INPUT')
+            continue
+        if main_board.move(direction) == FAILED:
+            print('INVALID DIRECTION')
+            continue
+        if main_board.insert() == FAILED or main_board.isOver():
+            main_board.print()
+            print('GAME OVER...')
+            break
+        if main_board.isGoal() == True:
+            main_board.print()
+            print('You WIN!')
+            break
+        main_board.print()
+        
+
+    logger.info('end')
+            </code>
+        </pre>
+        
+        <h1 id="move">move.py</h1>
+        <pre>
+            <code>
+#! usr/bin/env/ Python3
+# move.py
+# coded by Saito-Saito-Saito
+# last edited: 28 June 2020
+# CAUTION: THIS CODE IS ONLY FOR MEMORANDOM OF move METHOD. YOU CAN RUN main.py WITHOUT THIS MODULE.
+
+
+import board
+from config import *
+
+
+class Move(board.Board):
+    def board_move(self, direction: list, *, logger=None):
+        logger = logger or self.logger
+        ever_moved = False
+        
+        # up
+        if direction == UP:
+            logger.debug('direction is UP')
+            root = [0, 0]
+            for root[COL] in range(self.size):
+                for root[ROW] in range(self.size):
+                    focused = [root[ROW] + 1, root[COL]]
+                    while self.isInBoard(focused[ROW]):
+                        # in case root == EMPTY      
+                        if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                        # in case board[root]==board[focused] (!= 0)
+                        elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] *= 2
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                            break
+                        elif self.board[focused[ROW]][focused[COL]] != EMPTY:
+                            break
+                        focused[ROW] += 1
+        elif direction == DOWN:
+            logger.debug('direction is DOWN')
+            root = [0, 0]
+            for root[COL] in range(self.size):
+                for root[ROW] in range(self.size - 1, -1, -1):
+                    focused = [root[ROW] - 1, root[COL]]
+                    while self.isInBoard(focused[ROW]):
+                        # in case root == EMPTY      
+                        if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                        # in case board[root]==board[focused] (!= 0)
+                        elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] *= 2
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                            break
+                        elif self.board[focused[ROW]][focused[COL]] != EMPTY:
+                            break
+                        focused[ROW] -= 1
+        elif direction == LEFT:
+            logger.debug('direction is UP')
+            root = [0, 0]
+            for root[ROW] in range(self.size):
+                for root[COL] in range(self.size):
+                    focused = [root[ROW], root[COL]+1]
+                    while self.isInBoard(focused[COL]):
+                        # in case root == EMPTY      
+                        if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                        # in case board[root]==board[focused] (!= 0)
+                        elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] *= 2
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                            break
+                        elif self.board[focused[ROW]][focused[COL]] != EMPTY:
+                            break
+                        focused[COL] += 1
+        elif direction == RIGHT:
+            logger.debug('direction is UP')
+            root = [0, 0]
+            for root[ROW] in range(self.size):
+                for root[COL] in range(self.size - 1, -1, -1):
+                    focused = [root[ROW], root[COL] - 1]
+                    while self.isInBoard(focused[COL]):
+                        # in case root == EMPTY      
+                        if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                        # in case board[root]==board[focused] (!= 0)
+                        elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
+                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            self.board[root[ROW]][root[COL]] *= 2
+                            self.board[focused[ROW]][focused[COL]] = EMPTY
+                            ever_moved = True
+                            break
+                        elif self.board[focused[ROW]][focused[COL]] != EMPTY:
+                            break
+                        focused[COL] -= 1
+        else:
+            logger.error('INPUT DIRECTION is INVALID VALUE')
+            return FAILED
+
+        if ever_moved == True:
+            return SUCCEEDED
+        else:
+            # if no number was moved, it is game over
+            logger.debug('ever_moved == False')
+            return FAILED
+
+
+if __name__ == "__main__":
+    test_board = Move()
+    test_board.print()
+
+    test_board.board_move(UP)
+    test_board.insert()
+    test_board.print()
+    test_board.board_move(DOWN)
+    test_board.insert()
+    test_board.print()
+    test_board.board_move(LEFT)
+    test_board.insert()
+    test_board.print()
+    test_board.board_move(RIGHT)
+    test_board.insert()
+    test_board.print()
+
+            </code>
+        </pre>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/29</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

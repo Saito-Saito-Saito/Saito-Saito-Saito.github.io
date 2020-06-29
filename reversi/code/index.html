@@ -1,0 +1,396 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これであなたも リバーシ...のコード</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>これであなたも</h1>
+            <h1>リバーシ... のコード</h1>
+        </div>
+    </header>
+
+    <main>
+
+        <a href="https://github.com/Saito-Saito-Saito/reversi" target="_blank">From GitHub</a>
+
+        <section class="index">
+            <h2>目次</h2>
+            <p>
+                <ul>
+                    <li><a href="#config">config.py</a></li>
+                    <li><a href="#IO">IO.py</a></li>
+                    <li><a href="#board">board.py</a></li>
+                    <li><a href="#main">main.py</a></li>
+                </ul>
+            </p>
+        </section>
+
+        <h1 id="config">config.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# config.py
+# programmed by Saito-Saito-Saito
+# last update: 4/5/2020
+
+
+import sys
+import logging
+
+logging.basicConfig(level=logging.WARNING, format='%(levelname)s - %(filename)s - L%(lineno)d - %(message)s')
+
+
+# board is 8 * 8
+SIZE = 8
+if int(SIZE / 2) != SIZE / 2:
+    logging.error('SIZE VALUE HAS TO BE EVEN')
+    sys.exit()
+
+
+# rows & columns index
+ROW = 0
+COL = 1
+
+EMPTY = 0
+B = BLACK = 1
+W = WHITE = -1
+
+
+# game processing/set
+GAME_PRC = 0
+GAME_SET = 1
+
+
+# direction is represented as follows: [toROW - frROW, toCOL - frCOL]
+WHOLE_DIRECTION = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1], [0, 1],
+    [1, -1], [1, 0], [1, 1]
+]
+
+
+# whether the index is in the board
+def InBoard(subject):
+    if 0 &lt;= subject &lt; SIZE:
+        return True
+    else:
+        return False
+            </code>
+        </pre>
+
+        <h1 id="IO">IO.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# IO.py
+# programmed by Saito-Saito-Saito
+# last update: 4/5/2020
+
+
+import config
+
+
+# translate user's input into the index of the square
+def InputFormat(s):
+    if len(s) != 2:
+        config.logging.info('len(s) == {}'.format(len(s)))
+        return False
+    elif s[0].isdecimal() and config.InBoard(int(s[0]) - 1) and ord('a') &lt;= ord(s[1]) &lt;= ord('h'):
+        return [int(s[0]) - 1, ord(s[1]) - ord('a')]
+    elif s[1].isdecimal() and config.InBoard(int(s[1]) - 1) and ord('a') &lt;= ord(s[0]) &lt;= ord('h'):
+        return [int(s[1]) - 1, ord(s[0]) - ord('a')]
+    else:
+        config.logging.info('OUT OF FORMAT')
+        return False
+
+            </code>
+        </pre>
+
+        <h1 id="board">board.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# board.py
+# programmed by Saito-Saito-Saito
+# last update: 4/5/2020
+
+import copy
+
+from config import *
+
+
+class Board:
+    def __init__(self, input_board=[]):
+        if len(input_board) == SIZE:
+            self.board = copy.deepcopy(input_board)
+        else:
+            self.board = []
+            for row in range(SIZE):
+                self.board.append([0 for col in range(SIZE)])
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2) - 1] = WHITE
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2)] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2) - 1] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2)] = WHITE
+            # 0:進行中(途中)PRC　1:決着SET
+            self.game_status = GAME_PRC
+            self.winner = EMPTY
+            
+
+    def BoardPrint(self):
+        print('\n')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for row in range(SIZE):
+            print('\t{} |'.format(row + 1), end='')
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    print('   |', end='')
+                elif self.board[row][col] == WHITE:
+                    print(' ● |', end='')
+                elif self.board[row][col] == BLACK:
+                    print(' ○ |', end='')
+                else:
+                    logging.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    return False
+            print(' {}'.format(row + 1))
+            print('\t   -------------------------------')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+
+    
+    """
+        turnjudge judges whether the piece can be turned
+        if player put a piece on [R, C] ...
+        1.  check whether [R+direc[ROW], C+direc[COL]]==-player
+        2.  if yes and turnjudge(player, R+direc..., C+direc..., direc)==True, you can turn the direction when you put a piece on [R,C]
+        3.  if yes but turnjudge(player, R+direc..., C+direc..., direc)==False, you cannot turn the direction when you put a piece on [R, C] (it does not always mean that you cannot put a piece there)
+    """
+    def turnjudge(self, player, row, col, direction: list):
+        # out of the board
+        if not (InBoard(row) and InBoard(col)):
+            logging.debug('{}, {}\tOUT OF THE BOARD'.format(row, col))
+            return False
+
+        # BLACK, WHITE or EMPTY
+        piece = self.board[row][col]
+        
+        # EMPTY
+        if piece == EMPTY:
+            logging.debug('{}, {}\tREACHED TO EMPTY'.format(row, col))
+            return False
+        # OWN
+        elif piece == player:
+            logging.debug('{}, {}\tREACHED TO OWN PIEE'.format(row, col))
+            return True
+        # OPPONENT'S
+        elif piece == -player:
+            return self.turnjudge(player, row + direction[ROW], col + direction[COL], direction)
+        # ERROR
+        else:
+            logging.error('UNEXPECTED VALUE of PLAYER in putjudge')
+            return False
+        
+    
+    def turn(self, player, row, col):
+        # out of the board
+        if not (InBoard(row) and InBoard(col)):
+            logging.info('OUT OF THE BOARD')
+            return False
+
+        # there is already a piece
+        if self.board[row][col] != EMPTY:
+            logging.info('THERE IS ALREADY A PIECE')
+            return False
+
+        turned = False
+        # searching all the direction for available one
+        for direction in WHOLE_DIRECTION:
+            focused = [row + direction[ROW], col + direction[COL]]
+            if not (InBoard(focused[ROW]) and InBoard(focused[COL])):
+                continue
+            next_piece = self.board[focused[ROW]][focused[COL]]
+            logging.debug('direc = {}, next_piece = {}'.format(direction, next_piece))
+            # in case available
+            if next_piece == -player and self.turnjudge(player, focused[ROW], focused[COL], direction):
+                while self.board[focused[ROW]][focused[COL]] == -player:
+                    self.board[focused[ROW]][focused[COL]] = player
+                    focused[ROW] += direction[ROW]
+                    focused[COL] += direction[COL]
+                    turned = True
+                
+        # in case a piece was turned
+        if turned:
+            self.board[row][col] = player
+            return True
+        # in case any piece was not turned
+        else:
+            logging.info('THERE IS NO DIRECTION AVAILABLE')
+            return False
+
+    
+    def passjudge(self, player):
+        # searching all EMPTY squares that can turn
+        for row in range(SIZE):
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    for direction in WHOLE_DIRECTION:
+                        focused = [row + direction[ROW], col + direction[COL]]
+                        if not (InBoard(focused[ROW]) and InBoard(focused[COL])):
+                            continue
+                        if self.board[focused[ROW]][focused[COL]] == -player and self.turnjudge(player, focused[ROW], focused[COL], direction):
+                            logging.info('THERE IS {}, {}'.format(row, col))
+                            return False
+        
+        # completing all the loop, there is no square that you can put a piece
+        return True
+
+
+    def countpiece(self):
+        # count up all pieces
+        self.b_count = 0
+        self.w_count = 0
+        for row in range(SIZE):
+            for col in range(SIZE):
+                if self.board[row][col] == BLACK:
+                    self.b_count += 1
+                elif self.board[row][col] == WHITE:
+                    self.w_count += 1
+        return [self.b_count, self.w_count]
+        
+
+    def gamesetjudge(self):
+        # if either can put, it's not gameset
+        if self.passjudge(BLACK) == False or self.passjudge(WHITE) == False:
+            logging.debug('either can put yet')
+            return False
+        else:
+            self.game_status = GAME_SET
+            return True
+
+            </code>
+        </pre>
+
+        <h1 id="main">main.py</h1>
+        <pre>
+            <code>
+#! /usr/bin/env python3
+# main.py
+# programmed by Saito-Saito-Saito
+# last update: 4/5/2020
+
+from config import *
+import IO
+import board
+
+# preset
+main_board = board.Board()
+player = BLACK
+
+main_board.BoardPrint()
+
+
+while True:
+    ### GAMESET JUDGE
+    # NOTE: you must not control game_status here because out of the loop it must be GAME_PRC
+    if main_board.gamesetjudge():
+        break
+
+    ### PLAYER OUTPUT
+    if player == BLACK:
+        print('○ TURN', end=' ')
+    elif player == WHITE:
+        print('● TURN', end=' ')
+    else:
+        logging.error('UNEXPECTED VALUE of PLAYER in the while loop')
+        break
+
+    ### PASS JUDGE
+    if main_board.passjudge(player):
+        print('BUT YOU CANNOT PUT ANYWHERE (PRESS ENTER TO PASS)')
+        input()
+        # player change
+        player *= -1
+        continue
+
+    ### INPUT
+    print('(X to give up) >>> ', end='')
+    s = input()
+    # give up
+    if s in ['X', 'x']:
+        main_board.winner = -player
+        break
+    else:
+        square = IO.InputFormat(s)
+        logging.info('motion = {}'.format(square))
+    
+    # invalid putting
+    if square == False:
+        print('INVALID INPUT')
+        continue
+    elif main_board.turn(player, *square) == False:
+        print('INVALID PUTTING')
+        continue
+    
+    ### PLAYER CHANGE
+    player *= -1
+
+    main_board.BoardPrint()
+
+
+
+print('\nGAME SET')
+counter = main_board.countpiece()
+
+# in case of give up
+if main_board.game_status == GAME_PRC:
+    print('INTERRUPTION')
+    if main_board.winner == BLACK:
+        print('BLACK WINS')
+    elif main_board.winner == WHITE:
+        print('WHITE WINS')
+    else:
+        print('SYSTEM ERROR: DRAW')
+# the other cases of game set
+else:
+    counter = main_board.countpiece()
+    print('{} - {}'.format(counter[0], counter[1]))
+    if counter[0] == counter[1]:
+        print('DRAW')
+    elif counter[0] > counter[1]:
+        print('BLACK WINS')
+    elif counter[0] &lt; counter[1]:
+        print('WHITE WINS')
+    else:
+        logging.error('ILLOGICAL ATTITUDE out of the while loop')
+
+print('\nGAME OVER\n')
+
+            </code>
+        </pre>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST EDITED: 2020/6/29</li>
+            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

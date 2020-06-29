@@ -29,7 +29,7 @@
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
-            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_blank">Code</a></li>
         </ul>
     </header>
 
@@ -43,8 +43,8 @@
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
             <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
-            <li><a href="https://github.io/Saito-Saito-Saito/2048" target="_blank">Code</a></li>
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>            
+            <li><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_blank">Code</a></li>
         </ul>
     </div>
 
@@ -67,10 +67,10 @@
 
         <section id="s2-1">
             <h2>2-1　盤面</h2>
-            <p>ノーマルの 2048 の盤面は 4 マス × 4 マスの正方形ですよね。ここはボードゲームのプログラミングの定石通りに多重配列でいきましょう。ここでいきなり 4 × 4 のリストを作るのではなく、あとでサイズ変更ができるように十難に設計しておくのがミソですね。8 × 8 とか、できないことはありませんから。</p>
+            <p>ノーマルの 2048 の盤面は 4 マス × 4 マスの正方形ですよね。ここはボードゲームのプログラミングの定石通りに多重配列でいきましょう。ここでいきなり 4 × 4 のリストを作るのではなく、あとでサイズ変更ができるように柔軟に設計しておくのがミソですね。8 × 8 とか、できないことはありませんから。</p>
             <p>ということで盤面は</p>
             <p class="code"><code>board = [row][col]</code></p>
-            <p>という形にします。ここで row は横長の行(row)、col は縦長の列(collumn)を表します。なぜこの順番にするかというと、強い意味はありませんが、盤面を表示するとき(Stage 4)に順当にできるという意味がないわけではない。</p>
+            <p>という形にします。ここで row は横長の行(row)、col は縦長の列(collumn)を表します。なぜこの順番にするかというと、強い意味はありませんが、盤面を表示するとき(Stage 4)に順当にできるという意味がないわけではない。ただ、一度順番を決めたら首尾一貫してこれを守ってください。</p>
             <p>盤面の上に乗る数字はそのまま <code>board[row][col]</code> の値にしてしまいましょう。「数字がないところはどうすんの？」って、そりゃ 0 がいいんじゃないですか？まあ、ゲームを進めていくうちに絶対に出てくることがないような数字であればなんだっていいですよ。</p>
         </section>
 
@@ -112,7 +112,7 @@
         <section id="s2-3">
             <h2>2-3　進行</h2>
             <p>ゲーム進行を考えましょう。2-1 でせっかくマスのサイズを拡張できるようにしたんですから、サイズとアガリになる数の設定くらいはできるようにしておきましょうか。そして最初の盤面を表示する。ここまでが初期設定です。</p>
-            <p>実際にゲームに入った後のでアインに移ります。当然ながら上下左右の方向を指定できるようにしてあげなければなりませんが、残念ながら我々はまだ上下左右キーなどの高等な技術を使うことはできません。そこで数字を使ってコマンド風に操縦する方策と、ゲームなんかで左手用に使う W/S/D/A のキーに対応できるようにしましょう。それぞれ上・下・右・左に対応します。入力を受け取ったら方向に変換、もし正当な入力でなければ「もう一度やり直せ」と突き返すことになります。また、その方向に動かすことができない場合でも、もう一度やり直してもらいます。うまくいったら移動後の盤面を表示して繰り返しです。</p>
+            <p>実際にゲームに入った後の動作に移ります。当然ながら上下左右の方向を指定できるようにしてあげなければなりませんが、残念ながら我々はまだ上下左右キーの扱いなどの高等な技術を使うことはできません。そこで数字を使ってコマンド風に操縦する方策と、ゲームなんかで左手用に使う W/S/D/A のキーに対応できるようにしましょう。左手の 4 つはそれぞれ上・下・右・左に対応します。入力を受け取ったら方向に変換、もし正当な入力でなければ「もう一度やり直せ」と突き返すことになります。また、その方向に動かすことができない場合でも、もう一度やり直してもらいます。うまくいったら移動後の盤面を表示して繰り返しです。</p>
             <p>ゲームが終了するのは</p>
             <p>
                 <ul>
@@ -125,17 +125,14 @@
 
         <section>
             <h2>次回予告</h2>
-            <p>次回からはマジでコード本文の説明になります。まだ私のコードを用意されていない方は、<a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">こちら</a>のページからコードを手に入れてください。</p>
-            <img src="github-front.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
-            <p>パソコンの方はこんなページがでてきて、右上の方に緑色で Clone って書いてるところをクリックすると、コードをダウンロードすることができます。</p>
-            <p>スマホの方は、かなり見づらいのですが github のページ上で私のコードを開いていただくほかに賢明な方法がないかもしれません。嫌ならパソコンで見てくれ。</p>
+            <p>次回からはマジでコード本文の説明になります。まだ私のコードを用意されていない方は、<a href="https://Saito-Saito-Saito.github.io/2048/code" target="_blank">こちら</a>のページからコードを手に入れてください。これがないと話になりません。ちなみに、<a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">GitHub</a> というシステムからダウンロードすることもできますので、合わせてご利用ください。</p>
             <p><a href="https://Saito-Saito-Saito.github.io/2048/stage3">次回　Stage 3　定数設定と新しい数の挿入</a></p>
         </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
+            <li>LAST EDITED: 2020/6/29</li>
             <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
