@@ -37,7 +37,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 301px) and (max-width: 850px) {
+@media screen and (min-width: 301px) and (max-width: 950px) {
   body header {
     height: 110px;
     height: auto;
@@ -56,20 +56,21 @@ body header {
   }
 }
 
-@media screen and (min-width: 851px) {
+@media screen and (min-width: 951px) {
   body header {
-    height: 200px;
+    height: 144px;
   }
   body header #title {
     width: 60%;
     width: auto;
-    height: 200px;
+    height: 144px;
     margin: 0;
     padding: 0;
     float: left;
   }
   body header #title h1 {
-    font-size: 75px;
+    font-size: 90px;
+    line-height: 72px;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -103,7 +104,7 @@ body header {
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 950px) {
   body .acd-menu {
     color: white;
     padding: 0;
@@ -178,7 +179,7 @@ body header {
   }
 }
 
-@media screen and (min-width: 851px) {
+@media screen and (min-width: 951px) {
   body .acd-menu {
     display: none;
   }
