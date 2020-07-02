@@ -76,11 +76,11 @@
                 <img src="pro-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
             </section>
             <section class="sub-section">
-                <p>で、問題はこれをコンピューターにやってもらうかです。まずは一番左上、<code>[<a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">col</a>] == [0, 0]</code> から着目しましょう。この数字 2 について、まずは下のマス [1, 0] との関係を考えます。このマスには数字がありませんから、[0, 0] のマスは何の影響も受けません。その次に [2, 0] のマスに着目します。同じ 2 がいらっしゃいますね。ということでこいつを [0, 0] にもってきてとりあえずは下のようになるわけです。</p>
+                <p>で、問題はこれをコンピューターにやってもらうかです。まずは一番左上、<code>[<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">col</a>] == [0, 0]</code> から着目しましょう。この数字 2 について、まずは下のマス [1, 0] との関係を考えます。このマスには数字がありませんから、[0, 0] のマスは何の影響も受けません。その次に [2, 0] のマスに着目します。同じ 2 がいらっしゃいますね。ということでこいつを [0, 0] にもってきてとりあえずは下のようになるわけです。</p>
                 <img src="mid-move1.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
                 <p>ここまでで [0, 0] についてできる操作は終わりました。今度は同じように [1, 0] に注目します。まず [2, 0] つまり真下のマスと比べるわけですが、こいつも EMPTY なので何もできません。次のマス、[3, 0] は 2 が居座っていますよね。盤面を上に動かすとこの 2 が [1, 0] にくるはずですから、この操作でとりあえず下のようになりますよね。</p>
                 <img src="mid-move2.png" alt="UNAVAILABLE" style="max-width: 300px;" width="90%">
-                <p>今着目している [3, 0] よりも下にマスはありませんから、第 1 <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">column</a> でこれ以上することはありません。</p>
+                <p>今着目している [3, 0] よりも下にマスはありませんから、第 1 <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">column</a> でこれ以上することはありません。</p>
             </section>
             <section class="sub-section">
                 <p>さて、ここまでの流れをフローチャートにしてみましょうか。まずは簡単のために盤面を上に動かす場合で [0, 0] に着目している状態を考えましょう。</p>
@@ -115,7 +115,7 @@
             <img src="pro-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
             <p>この状態から盤面を上に動かそうと思っても、全ての数字が上に上がれませんから無理ですね。こんなとき FAILED をリターンしたいんですよ。そこでこの ever_moved を使うわけです。どこかしら数字が動いたらこの値を True に入れ替えて、最後に ever_moved をリターンする、そんな形を考えています。</p>
             <section class="sub-section">
-                <p>まずは上に動かす場合です。まず最初に <a href="https://Saito-Saito-Saito.github.io/2048/memo#root_v" class="memo" target="_new">root</a> を [0, 0] にセットしておきます。root と focused の各 <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">column</a> 各 <a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a> は
+                <p>まずは上に動かす場合です。まず最初に <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> を [0, 0] にセットしておきます。root と focused の各 <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">column</a> 各 <a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a> は
                 こんな動き方にします。</p>
                 <img src="up-squares.gif" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
                 <p>それを実装しているのが 2 重の for ループおよびその内側の while ループになるわけです。focused は必ず root の一つ下のマスからスタートさせます。盤面の下端まで来たら root を変更します。ただし、5-1 で見た通り、focused が盤面下端まで来なくても root を移動させる場面がありましたよね？そんなのも含めてコーディングしていきましょう。</p>

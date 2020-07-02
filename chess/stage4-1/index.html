@@ -58,7 +58,7 @@
         <section id="s4-1">
             <h1>Stage 4-1　駒をうごかす〜判定編〜</h1>
             <p>みなさま、ようこそ。チェスのプログラミング第 4 ステージ、前半です。やっとチェスっぽくなってきましたね。今回使うファイルは board.py だけです。しかもすべて Board クラスの中だけです。なんでこんなにクラスでっかくするんだって思うかもしれませんが、ゲームをデザインしたときその威力に気づくことになるでしょう。</p>
-            <p>その前に確認ですけど、駒の動き覚えてますよね？これわからなかったら話がはじまりませんよ。不安な方は<a href="https://Saito-Saito-Saito.github.io/chess/memo#how-to-move" target="_new">こちら</a>の備忘録をご確認ください。</p>
+            <p>その前に確認ですけど、駒の動き覚えてますよね？これわからなかったら話がはじまりませんよ。不安な方は<a href="https://Saito-Saito-Saito.github.io/chess/memo/#how-to-move" target="_new">こちら</a>の備忘録をご確認ください。</p>
         </section>
 
         <section class="index">
@@ -106,12 +106,12 @@
                     <li>前のマスにどの駒も置かれていない</li>
                 </ul>
             </p>
-            <p>でした。そして、いちばん相手側、盤面の端まで来たら必ずクイーン・ルーク・ナイト・ビショップのいずれかに<a href="https://Saito-Saito-Saito.github.io/chess/memo#promotion_v" class="memo" target="_new">プロモーション</a>しなければいけません。これを早速コーディングしていきます。</p>
-            <p>ポーンの場合の最上部の if 文は「端についたのにプロモーションしてないロクデナシをしょっぴく」という意味です。プレーヤーの色で場合分けする必要はありません。白は第 1 <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> に、黒は第 8 rank にポーンを置くことがありませんから。</p>
+            <p>でした。そして、いちばん相手側、盤面の端まで来たら必ずクイーン・ルーク・ナイト・ビショップのいずれかに<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>しなければいけません。これを早速コーディングしていきます。</p>
+            <p>ポーンの場合の最上部の if 文は「端についたのにプロモーションしてないロクデナシをしょっぴく」という意味です。プレーヤーの色で場合分けする必要はありません。白は第 1 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> に、黒は第 8 rank にポーンを置くことがありませんから。</p>
             <p>次が基本動作です。ここで True を返す条件は、</p>
             <p>
                 <ul>
-                    <li><a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> が同じ</li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> が同じ</li>
                     <li>rank の移動が適切</li>
                     <li>移動先に何もない</li>
                 </ul>
@@ -125,7 +125,7 @@
             </ul></p>
             <p>です。ひとつ隣とは file の差が 1 か -1 かであることを意味しますから、絶対値を取れば両方 1 として処理できますね。</p>
             <p>次いで最初の 2 マス移動です。初めて動かすポーンにかぎり発動するこの条件では、白なら第 2 rank, 黒なら第 7 rank にあるポーンを動かした時のみ player * 2 のぶん rank が変化します。これはプロモーションが必要かのチェックとは違ってプレーヤーの色で場合分けが必要になりますよ。端からひとつ前はどちらのポーンもいる可能性があるので。それともうひとつ、移動先だけでなく通過するマスにもほかの駒があってはいけないことも忘れてはいけません。</p>
-            <p>ポーンの最後には厄介な<a href="https://Saito-Saito-Saito.github.io/chess/memo#enpassan_v" class="memo" target="_new">アンパッサン</a>が残っています。なんでこんなルール作りおったんでしょうね。まったく</p>
+            <p>ポーンの最後には厄介な<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>が残っています。なんでこんなルール作りおったんでしょうね。まったく</p>
             <p class="stress">余計なことしてくれやがって。</p>
             <p>アンパッサンの条件をもう一度確認しましょう。</p>
             <p>
@@ -155,7 +155,7 @@
         <section id="s4-1-3">
             <h2>4-1-3　ルーク</h2>
             <p>こいつについては「正しい動きについて True を返す」ポーン作戦より、「間違った動きに False を突きつける」戦法がいいでしょう。なぜそんなこというかって？コード見てみましょうか。</p>
-            <p>まず第一に、タテヨコバビューン(1 マスもバビューン)と動いていない場合、要はナナメに動いている場合は何がなんでも False ですな。タテなら <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> の値が、ヨコなら <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> の値が変わりませんので、「両方とも変わってるわ」って時は遠慮なく False を突きつけてください。</p>
+            <p>まず第一に、タテヨコバビューン(1 マスもバビューン)と動いていない場合、要はナナメに動いている場合は何がなんでも False ですな。タテなら <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> の値が、ヨコなら <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の値が変わりませんので、「両方とも変わってるわ」って時は遠慮なく False を突きつけてください。</p>
             <p>ところで、ここで False が突きつけられなかった場合でも、すべて True とはできません。ルークは途中にある駒を飛び越えることができませんから。ただ、ビショップやクイーンでも同じことを考えないといけませんから、この場合の実装は後回しにしておきましょう。まとめて書いた方が効率的でしょ？</p>
         </section>
 
@@ -163,7 +163,7 @@
             <h2>4-1-4　ナイト</h2>
             <p>ナイトほど変な動きをする駒はありません。ほらご覧くださいよこの訳わからない動き。</p>
             <img src="knight.png" alt="UNAVAILABLE" width="90%" style="max-width: 180px;">
-            <p>これはコーディングが難しそうだと思うのも無理ありません。ですが、<a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> を考えてみるとそう難しいことでもないですよ。True を返す条件は、</p>
+            <p>これはコーディングが難しそうだと思うのも無理ありません。ですが、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を考えてみるとそう難しいことでもないですよ。True を返す条件は、</p>
             <p><ul>
                 <li>rank の差が 1, file の差が 2</li>
                 <li>rank の差が 2, file の差が 1</li>
@@ -173,7 +173,7 @@
 
         <section id="s4-1-5">
             <h2>4-1-5　ビショップ</h2>
-            <p>ビショップはルークと同じように考えればいいでしょう。ナナメは「<a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> が 1 増えれば <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> は 1 減る」「file が 1 減ると rank が 1 減る」などといった挙動を示すので、True を返す条件は「file の差と rank の差の絶対値 <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions#abs" class="memo" target="_new">abs</a> が等しい」と表せます。駒を飛び越える場合の処理はルークと一緒にあとでやりましょう。</p>
+            <p>ビショップはルークと同じように考えればいいでしょう。ナナメは「<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> が 1 増えれば <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は 1 減る」「file が 1 減ると rank が 1 減る」などといった挙動を示すので、True を返す条件は「file の差と rank の差の絶対値 <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions#abs" class="memo" target="_new">abs</a> が等しい」と表せます。駒を飛び越える場合の処理はルークと一緒にあとでやりましょう。</p>
         </section>
 
         <section id="s4-1-6">
@@ -184,7 +184,7 @@
         <section id="s4-1-7">
             <h2>4-1-7　キング</h2>
             <p>「キングなんてタテヨコナナメに 1 マスしか動かねーんだから書くことねーだろ」って思ってます？困りますねえ。いや、半分はあたりなんですけど。ではその半分を先に片付けてしまいましょう。</p>
-            <p>基本動作の場合は <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> の差が 1 以下であれば構いません。「以下」ですよ「以下」、これがないとナナメしかいけませんから。ほら、タテに進むとき file の差は 0 じゃないですか。ということで</p>
+            <p>基本動作の場合は <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の差が 1 以下であれば構いません。「以下」ですよ「以下」、これがないとナナメしかいけませんから。ほら、タテに進むとき file の差は 0 じゃないですか。ということで</p>
             <pre>
                 <code>
 if abs(...) &lt;= 1 ...
@@ -192,7 +192,7 @@ if abs(...) &lt;= 1 ...
                 </code>
             </pre>
             <p>とコーディングします。</p>
-            <p>さて、簡単な方が終わりましたから厄介者をどうにかしましょう。何すんだって？<a href="https://Saito-Saito-Saito.github.io/chess/memo#castling_v" class="memo" target="_new">キャスリング</a>ですよ。こいつは基本的にキングの動きとて扱うのがいちばん楽ですからね。ルークで考えると、キャスリングの場合に加えて単純にルークを動かす場合がありますから、「あっ、今キング動かしたくないのに」ってなったりして面倒です。キャスリングの条件をもう一度確認してみましょうか。</p>
+            <p>さて、簡単な方が終わりましたから厄介者をどうにかしましょう。何すんだって？<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>ですよ。こいつは基本的にキングの動きとて扱うのがいちばん楽ですからね。ルークで考えると、キャスリングの場合に加えて単純にルークを動かす場合がありますから、「あっ、今キング動かしたくないのに」ってなったりして面倒です。キャスリングの条件をもう一度確認してみましょうか。</p>
             <p>
                 <ul>
                     <li>キングと動かすルークを一度も動かしたことがない</li>
@@ -234,7 +234,7 @@ if abs(...) &lt;= 1 ...
         <section id="s4-1-8">
             <h2>4-1-8　途中の駒の除外</h2>
             <p>キングまで終わったからって気を緩めてはいけません。さっきルークやビショップなど、放置したまんまでしょう。ケリをつけます。</p>
-            <p>まず私のコードではリスト direction を定義していますね。文字通り駒の進む方向を表しています。この方向は [+1, +1], [-1, 0], ... といった具合に、「一歩先のマスに行くとき加える値」を表しています。白側からみて、左に行くのであれば [-1, 0], 右後ろへは [+1, -1] といったように。これは <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a>, <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> それぞれに対し、差をとって絶対値を１にする、つまり PosNeg(to - fr) とすればできますね。</p>
+            <p>まず私のコードではリスト direction を定義していますね。文字通り駒の進む方向を表しています。この方向は [+1, +1], [-1, 0], ... といった具合に、「一歩先のマスに行くとき加える値」を表しています。白側からみて、左に行くのであれば [-1, 0], 右後ろへは [+1, -1] といったように。これは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>, <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> それぞれに対し、差をとって絶対値を１にする、つまり PosNeg(to - fr) とすればできますね。</p>
             <p>その次は focused です。これは「注目しているマス」を表しています。まだ focused が移動先までたどり着いていないのに board[focused[FILE]][focused[RANK]] が EMPTY でなければ、入力された動きは途中でその駒にでくわしたことになりますから False をリターンします。それが while 文の中身となるわけです。先ほども申しました通り、次のマスへ行くには direction の各要素を focused の各座標に加えればよいので、while の中では駒がないか確認し、focused を動かし、という作業を繰り返していますね。また私は非常に用心深いですから、下手して focused が盤面を突き破ったときにエラーを吐かないように(吐かないのもどうかと思いますが) InSize で確認を入れています。</p>
             <p>while ループをすべてクリアしたら、もう確認することはありませんから、True を返して問題ないでしょう。お疲れ様でした。これにて駒の動きの判定は終了です。</p>
         </section>

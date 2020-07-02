@@ -74,7 +74,7 @@
         
         <section id="s3-2">
             <h2>3-2　定数を設定する</h2>
-            <p>ログの設定が終わったところで、ここからは主にコード全体に関わる定数を宣言していきます。まずこのコードではことあるごとに [<a href="https://Saito-Saito-Saito.github.io/2048/memo#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo#column_v" class="memo" target="_new">col</a>] という形のリストを使っていきます。その際にリストのインデックスに名前あった方がわかりやすいでしょ？ということでインデックスにそれぞれ ROW, COL と名前をつけてあげてください。もちろん <code>ROW = 0, COL = 1</code> ですよ。</p>
+            <p>ログの設定が終わったところで、ここからは主にコード全体に関わる定数を宣言していきます。まずこのコードではことあるごとに [<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">col</a>] という形のリストを使っていきます。その際にリストのインデックスに名前あった方がわかりやすいでしょ？ということでインデックスにそれぞれ ROW, COL と名前をつけてあげてください。もちろん <code>ROW = 0, COL = 1</code> ですよ。</p>
             <p>マスに数字がない場合の値を EMPTY とします。board に入れる値ですね。別に 0 でなくたって、盤面にあるはずのない数字であればなんだって構いませんよ。</p>
             <p>上下左右の方向にも名前をつけてあげます。[row, col] のマスからある向きに動かしたいときは [row + direction[ROW], col + direction[COL]] とする、こんな形がいいんじゃないでしょうか。</p>
             <p>次は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>のリターンに名前をつけます。「え？リターンって大体 True/False か数字くらいでしょ？なんで名前つけるの？」いい質問ですね。後々 Stage 5 でお目にかかる move メソッドを例にとってみましょうか。こいつはその名の通り盤面を動かす機能なのですが、同時に「その盤面を動かすことができるか」というのも確認しています。例えばこんな場合。</p>

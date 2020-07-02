@@ -58,7 +58,7 @@
         <section id="s6">
             <h1>Stage 6　入力を変換する</h1>
             <p>みなさま、ようこそ。チェスのプログラミング第 6 ステージです。今回はプレーヤーに駒の動かし方のお伺いを立てていただいた情報から駒を動かす機能を作ります。前回の予告でも申し上げましたとおり、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str" target="_new">文字列操作</a>と<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/re" target="_new">正規表現</a>を使います。備忘録はそれぞれのリンクにございます。特に文字列の操作は必須の技能となりますので、知識が追いついていない人はまず勉強してから来てくださいな。初見さんはちゃんとした説明をみてしっかり勉強してくださいね。</p>
-            <p>それと<a href="https://Saito-Saito-Saito.github.io/chess/memo#record" class="memo" target="_new">棋譜の書き方</a>も今一度覚えてください。これを知らないと今回何もできませんからね。</p>
+            <p>それと<a href="https://Saito-Saito-Saito.github.io/chess/memo/#record" class="memo" target="_new">棋譜の書き方</a>も今一度覚えてください。これを知らないと今回何もできませんからね。</p>
             <p>今回扱うのは Board クラスの s_analyze メソッドです。プレーヤーが入れた棋譜は self.s に str 型で格納します。この self.s の文字列をもとに駒を動かしますよ。</p>
         </section>
 
@@ -107,7 +107,7 @@
                 <code>^[PRNBQK]?</code>
             </p>
             <p>とできます。私は P を入れましたが、入れなくても全く問題はありません。</p>
-            <p>お次は移動元のヒントです。<a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> は a から h の 8 つ、<a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> は 1 から 8 までのどれかで表しますので、動かす駒に続けて</p>
+            <p>お次は移動元のヒントです。<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> は a から h の 8 つ、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は 1 から 8 までのどれかで表しますので、動かす駒に続けて</p>
             <p class="code">
                 <code>[a-h]?[1-8]?</code>
             </p>
@@ -122,13 +122,13 @@
                 <code>[a-h][1-8]</code>
             </p>
             <p>と表せます。</p>
-            <p>さあ、<a href="https://Saito-Saito-Saito.github.io/chess/memo#promotion_v" class="memo" target="_new">プロモーション</a>です。「プロモーションはポーンの時だけ」とか難しいことは後で考えましょう。とりあえずこの正規表現は「書き方がなってない文字列を除外する」ためのものですから、とりあえずプロモーションだとわかればいい。それと、ポーンやキングには成り上がることはできませんから、その点お忘れなく。</p>
-            <p>プロモーションと同時に<a href="https://Saito-Saito-Saito.github.io/chess/memo#enpassan_v" class="memo" target="_new">アンパッサン</a>を表す e.p. も書いちゃいましょうか。プロモーションとアンパッサンを両方同時にはできませんから、</p>
+            <p>さあ、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>です。「プロモーションはポーンの時だけ」とか難しいことは後で考えましょう。とりあえずこの正規表現は「書き方がなってない文字列を除外する」ためのものですから、とりあえずプロモーションだとわかればいい。それと、ポーンやキングには成り上がることはできませんから、その点お忘れなく。</p>
+            <p>プロモーションと同時に<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>を表す e.p. も書いちゃいましょうか。プロモーションとアンパッサンを両方同時にはできませんから、</p>
             <p class="code">
                 <code>(=[RNBQ]|e.p.)</code>
             </p>
             <p>と、どちらか一方だけという形でいいんじゃないですか。</p>
-            <p>最後に<a href="https://Saito-Saito-Saito.github.io/chess/memo#check" class="memo" target="_new">チェック</a>と<a href="https://Saito-Saito-Saito.github.io/chess/memo#checkmate_v" class="memo" target="_new">チェックメイト</a>です。チェックは "+", チェックメイトは "#" で表します。ただ厄介なことに、ダブルチェック(2 箇所同時チェック)やトリプルチェックを "++", "+++" と表す流派があるようです。そいつらが</p>
+            <p>最後に<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check" class="memo" target="_new">チェック</a>と<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>です。チェックは "+", チェックメイトは "#" で表します。ただ厄介なことに、ダブルチェック(2 箇所同時チェック)やトリプルチェックを "++", "+++" と表す流派があるようです。そいつらが</p>
             <p class="stress">「俺の指示した駒の動きとまったくちげーじゃねえか」</p>
             <p>と腹を立てないよう配慮しないといけません。</p>
             <p>ここまでですべてです。これ以上後ろに文字は続きませんから、最終文字を表す "$" で蓋してあげるのがいいんじゃないでしょうか。すべてひっくるめて正規表現こうなりました。</p>
@@ -150,7 +150,7 @@
 
         <section id="s6-4">
             <h2>6-4　移動元のヒントとなる情報の整理</h2>
-            <p>次に現れる可能性があるのが移動元の <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> もしくは <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> を表す英数字です。基本は両方とも書いてませんし、あってもどちらか一方です。ということで、「ない方が自然、あった場合に備える」というスタンスで解読していきます。file や rank が指定されていればそれぞれ frFILE, frRANK に格納しますが、指定がなければここには OVERSIZE が入ります。</p>
+            <p>次に現れる可能性があるのが移動元の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> もしくは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を表す英数字です。基本は両方とも書いてませんし、あってもどちらか一方です。ということで、「ない方が自然、あった場合に備える」というスタンスで解読していきます。file や rank が指定されていればそれぞれ frFILE, frRANK に格納しますが、指定がなければここには OVERSIZE が入ります。</p>
             <p>まずは面倒の少ない rank の場合から。<a href="#s6-3">6-3</a> の処理ですでに駒を表す文字については削除されていますから、移動元の rank について指定があるときは line の先頭が数字です。そこで line[0] について「数字かどうか」<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str#isdecimal" class="memo" target="_new">isdecimal</a> を実行し、True であれば以下の操作を実行します。</p>
             <p>line 先頭が数字のときは、そこで指定されている rank 番号を frRANK に格納します。0 番スタートであることに注意してください。ToggleType の変換機能では、入力された数字をそのまま int にする以上に仕事しません。また file は指定なしですから、規定値は OVERSIZE です。最後に line を簡略化するために今解読した先頭文字を消去しておきます。直後に同じ文字が出現することはない(駒をとったことを表す "x" もしくは file を表すアルファベットが数字に先行)ため、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str#lstrip" class="memo" target="_new">lstrip</a> をつかいます。</p>
             <p>次は file が指定されている場合です。このとき直後にもう一度アルファベットが続きますから、単に「先頭文字がアルファベット」という理由だけでは話が通りません。その後ろの文字も見ないと判断できませんね。もし後ろの文字が数字だとしたら、それは間違いなく適用外です。なので、</p>
@@ -168,8 +168,8 @@
 
         <section id="s6-5">
             <h2>6-5　移動先とプロモーション</h2>
-            <p>さあ、駒の移動先を解読しましょう。6-4 までの作業によって、最初の line の形によらず、現時点で先頭 2 文字は移動先の <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> を表します。ですから toFILE と toRANK に 6-4 と同じ要領で解読した番号を格納します。</p>
-            <p>お次に<a href="https://Saito-Saito-Saito.github.io/chess/memo#promotion_v" class="memo" target="_new">プロモーション</a>です。何よりの証拠が "=" ですから、この文字の存在だけでプロモーションの有無を判別して構いません。"=" があれば次の文字が成り上がる駒の種類を表しますので ToggleType を使って promote に格納してください。プロモーションしなければ promote の規定値は EMPTY とします。</p>
+            <p>さあ、駒の移動先を解読しましょう。6-4 までの作業によって、最初の line の形によらず、現時点で先頭 2 文字は移動先の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を表します。ですから toFILE と toRANK に 6-4 と同じ要領で解読した番号を格納します。</p>
+            <p>お次に<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>です。何よりの証拠が "=" ですから、この文字の存在だけでプロモーションの有無を判別して構いません。"=" があれば次の文字が成り上がる駒の種類を表しますので ToggleType を使って promote に格納してください。プロモーションしなければ promote の規定値は EMPTY とします。</p>
             <p>ここまでで大方必要な解読は終了しました。他のチェックやアンパッサンなどの情報は追々「指定文字が line に含まれているか」によって確認しますので、もう line から文字を削ることはしなくて結構です。</p>
         </section>
 
@@ -211,7 +211,7 @@
                 </ul>
             </p>
             <p>と表します。これで投了ないし了承による引き分けを判断しますので、ぜひ入れておいてください。リターンはそれぞれ WHITE, BLACK, EMPTY です。標準フォーマットと異なり int で返します。また、白か黒が勝つときは必ず負ける側が投了する形でのみ許容されるようにしてください。これないと早い者勝ちで勝利宣言の奪い合いになりますからね。</p>
-            <p>その次に<a href="https://Saito-Saito-Saito.github.io/chess/memo#castling_v" class="memo" target="_new">キャスリング</a>です。motionjudge でやったのと同じように、最初にプレーヤーから <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v">rank</a> を判断し、あとでキングサイドとクイーンサイドの条件分岐を行います。リターンはキングの動きです。わからない場合は<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-7">こちら</a>を参照してくださいね。</p>
+            <p>その次に<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>です。motionjudge でやったのと同じように、最初にプレーヤーから <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v">rank</a> を判断し、あとでキングサイドとクイーンサイドの条件分岐を行います。リターンはキングの動きです。わからない場合は<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-7">こちら</a>を参照してくださいね。</p>
             <p>ついにここまでに引っかからなかったものは手の施しようがありませんから、実行不可 False をリターンしてください。</p>
         </section>
 

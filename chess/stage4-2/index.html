@@ -57,7 +57,7 @@
     <main>
         <section id="s4-2">
             <h1>Stage 4-2　駒をうごかす〜移動編〜</h1>
-            <p>みなさま、ようこそ。チェスのプログラミング第 4 ステージ、後半です。前回ようやく駒の動きを判定する機能ができたので、今度は実際に駒を動かしてしまいましょう。駒をうごかすと言っても、ご存知の通りチェスのやつめは<a href="https://Saito-Saito-Saito.github.io/chess/memo#enpassan_v" class="memo" target="_new">アンパッサン</a>だの<a href="https://Saito-Saito-Saito.github.io/chess/memo#castling_v" class="memo" target="_new">キャスリング</a>だの<a href="https://Saito-Saito-Saito.github.io/chess/memo#promotion_v" class="memo" target="_new">プロモーション</a>だの、プログラマー泣かせのルールをたくさんつけてきているので、「プレーヤーの駒をただ動かせばいいんだろ」という安直な考えはよしてください。まあ難易度自体は大したことありませんが。</p>
+            <p>みなさま、ようこそ。チェスのプログラミング第 4 ステージ、後半です。前回ようやく駒の動きを判定する機能ができたので、今度は実際に駒を動かしてしまいましょう。駒をうごかすと言っても、ご存知の通りチェスのやつめは<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>だの<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>だの<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>だの、プログラマー泣かせのルールをたくさんつけてきているので、「プレーヤーの駒をただ動かせばいいんだろ」という安直な考えはよしてください。まあ難易度自体は大したことありませんが。</p>
         </section>
 
         <section class="index">
@@ -85,15 +85,15 @@
 
         <section id="s4-2-2">
             <h2>4-2-2　キャスリング</h2>
-            <p>ここからは「ただ自分の駒をそのまま動かすだけじゃいけない動き」を扱って行きます。代表格が<a href="https://Saito-Saito-Saito.github.io/chess/memo#castling_v" class="memo" target="_new">キャスリング</a>ですね。キングだけじゃなくてルークも移動しなければいけませんから。</p>
-            <p>まず引数から「これはキャスリングしようとしているな」と判別できなければなりません。<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-2">Stage 4-1-2</a> でも確認した通り、キャスリングはキングの動きとして扱いますから、まずは「動かそうとしている駒がキングだ」ということを見極めます。そのために piece 変数を定義しています。player については不要です。実際に駒を動かすのは self.player ですから、新しく変数使う必要ないでしょ？「じゃあなんで motionjudge のときは self.player を使わなかったか」って？そんなに知りたいなら motionjudge のキャスリングでどうやって「相手に<a href="https://Saito-Saito-Saito.github.io/chess/memo#check_v" class="memo" target="_new">チェック</a>されているか」を調べたか思い出してください。忘れた？しゃーねーな、<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-7">ここだよここ</a>。</p>
-            <p>さて、直下の if 文によって piece がキングでヨコに 2 マス以上の移動をしていることが分かったとしましょう。間違いなくキャスリングです。さてキャスリングはすべて同じ rank 内で行われます。その番号は白と黒で異なりますので、このあと行う場合分けが少なく済むように <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> という変数を用意しておきます。白黒それぞれ第 1, 第 8 rank です。</p>
-            <p>今度は <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> の変化からクイーンサイドとキングサイドで場合分けします。移動先が c の file であればクイーンサイド、g の file であればキングサイドです。キングはあとで他の場合と一緒に動かしますから、ここではルークを移動させます。キャスリングが終われば移動元は何もないので、ルークのあった場所はしっかり EMPTY にしておきましょう。これ忘れると「あれれ？ルークが増えてるぞ？」なんて奇怪なことになりかねません。キングはあとで他の場合と一緒にして動かしますので、ここでは手をつける必要はありません。</p>
+            <p>ここからは「ただ自分の駒をそのまま動かすだけじゃいけない動き」を扱って行きます。代表格が<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>ですね。キングだけじゃなくてルークも移動しなければいけませんから。</p>
+            <p>まず引数から「これはキャスリングしようとしているな」と判別できなければなりません。<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-2">Stage 4-1-2</a> でも確認した通り、キャスリングはキングの動きとして扱いますから、まずは「動かそうとしている駒がキングだ」ということを見極めます。そのために piece 変数を定義しています。player については不要です。実際に駒を動かすのは self.player ですから、新しく変数使う必要ないでしょ？「じゃあなんで motionjudge のときは self.player を使わなかったか」って？そんなに知りたいなら motionjudge のキャスリングでどうやって「相手に<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されているか」を調べたか思い出してください。忘れた？しゃーねーな、<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-7">ここだよここ</a>。</p>
+            <p>さて、直下の if 文によって piece がキングでヨコに 2 マス以上の移動をしていることが分かったとしましょう。間違いなくキャスリングです。さてキャスリングはすべて同じ rank 内で行われます。その番号は白と黒で異なりますので、このあと行う場合分けが少なく済むように <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> という変数を用意しておきます。白黒それぞれ第 1, 第 8 rank です。</p>
+            <p>今度は <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> の変化からクイーンサイドとキングサイドで場合分けします。移動先が c の file であればクイーンサイド、g の file であればキングサイドです。キングはあとで他の場合と一緒に動かしますから、ここではルークを移動させます。キャスリングが終われば移動元は何もないので、ルークのあった場所はしっかり EMPTY にしておきましょう。これ忘れると「あれれ？ルークが増えてるぞ？」なんて奇怪なことになりかねません。キングはあとで他の場合と一緒にして動かしますので、ここでは手をつける必要はありません。</p>
         </section>
 
         <section id="s4-2-3">
             <h2>4-2-3　アンパッサン</h2>
-            <p><a href="https://Saito-Saito-Saito.github.io/chess/memo#empassan_v" class="memo" target="_new">アンパッサン</a>も例外処理が必要です。というのも、取る相手の駒が移動先ではないところにありますから、移動先と移動元をいじっただけでは対処できません。相手の駒を取るコーディングが要ります。</p>
+            <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#empassan_v" class="memo" target="_new">アンパッサン</a>も例外処理が必要です。というのも、取る相手の駒が移動先ではないところにありますから、移動先と移動元をいじっただけでは対処できません。相手の駒を取るコーディングが要ります。</p>
             <p>実際にやることは簡単です。まず入力された移動がアンパッサンをやろうとしていることを判別します。</p>
             <p>
                 <ul>
@@ -109,7 +109,7 @@
         <section id="s4-2-4">
             <h2>4-2-4　プロモーション</h2>
             <p>プロモーションも例外処理必要ですよ。動かす駒をただ動かすだけじゃ、駒の種類は変わりませんから。このあと他の場合と合わせてしっかり駒を動かすので、ここでは駒の種類だけを変えます。</p>
-            <p>ここで例外処理が必要な場合を判断するには少し注意が必要です。ただただ「promotion が EMPTY じゃない」ってだけだと、例えば piece がクイーンで promotion がナイトであったとしても、motionjudge 自体は True を返しますけれども、当然ルールとしてはアウトですよね。ポーンならいいということでもなく、例えば第 4 <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> とか盤面のど真ん中でプロモーションされたら無法地帯になってしまいます。ですからここで例外処理を発動する条件を</p>
+            <p>ここで例外処理が必要な場合を判断するには少し注意が必要です。ただただ「promotion が EMPTY じゃない」ってだけだと、例えば piece がクイーンで promotion がナイトであったとしても、motionjudge 自体は True を返しますけれども、当然ルールとしてはアウトですよね。ポーンならいいということでもなく、例えば第 4 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> とか盤面のど真ん中でプロモーションされたら無法地帯になってしまいます。ですからここで例外処理を発動する条件を</p>
             <p>
                 <ul>
                     <li>piece == PAWN</li>
@@ -139,7 +139,7 @@ board[toFILE][toRANK] = board[frFILE][frRANK]
             <h2>4-2-6　パラメーター操作</h2>
             <p>「駒動かしたから終わりだー!!」と思ってはいけません。皆さんにはまだ大事な作業が残っています。今までさんざんお世話になってきたパラメーターの皆さんを放置しないでください。どういうことかって？ほら、ep_target とか castl_k とか、駒動かしたら確認しなきゃいけないってこのまえ言ったでしょ。順に見ていきましょうか。</p>
             <p>まずはアンパッサンにむけて ep_target を調整していきます。<a href="https://saito-saito-saito.github.io/chess/stage4-1#s4-1-2">Stage 4-1-2</a> で確認した通り、「ポーンが 2 マス動いたら移動先の座標、それ以外は OVERSIZE」でしたね。ですから、toRANK と frRANK の差で分類して値を変えていきます。</p>
-            <p>次は<a href="https://Saito-Saito-Saito.github.io/chess/memo#castling_v" class="memo" target="_new">キャスリング</a>です。キングサイドとクイーンサイドをまとめていっぺんにとはいかないので、それぞれ場合分けしてあげましょう。リストからプレーヤーを抜く条件は</p>
+            <p>次は<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>です。キングサイドとクイーンサイドをまとめていっぺんにとはいかないので、それぞれ場合分けしてあげましょう。リストからプレーヤーを抜く条件は</p>
             <p>
                 <ul>
                     <li>キングを動かした</li>

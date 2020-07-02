@@ -57,7 +57,7 @@
     <main>
         <section id="s3">
             <h1>Stage 3　盤面をつくる</h1>
-            <p>みなさま、ようこそ。チェスのプログラミング第 3 ステージです。大枠は Stage 2 のところでお話しした通りです。 board という 2 次元配列に、プラスかマイナスで表されるプレーヤー情報と、1 から 8 で表される駒の種類の情報を突っ込んでいきます。board のインデックスは <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> の値を 0 スタートで使います。それでは早速コーディングしていきましょうか。</p>
+            <p>みなさま、ようこそ。チェスのプログラミング第 3 ステージです。大枠は Stage 2 のところでお話しした通りです。 board という 2 次元配列に、プラスかマイナスで表されるプレーヤー情報と、1 から 8 で表される駒の種類の情報を突っ込んでいきます。board のインデックスは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の値を 0 スタートで使います。それでは早速コーディングしていきましょうか。</p>
         </section>
 
         <section class="index">
@@ -78,7 +78,7 @@
             <p>まずいちばん上の #! から始まるヤツは「シバン」と言います。どうやら OS によっては必要らしいです。これはよその説明の方が詳しいので、ぜひそちらを参照なさってください。下にいって logging とか書いてるのありますよね。ログといって、一言でいうと、開発者だけが見える print といったところでしょうか。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" target="_new">こちら</a>に備忘録くらいの情報は入れておきましたが、初見さんはよその解説をご覧になることをお勧めします。言葉足らずな私よりよっぽどわかりやすいですよ。さらに下の records は Stage 7 で使います。だから早く教えろなんていってないで、ちょっと黙ってなさい。</p>
             <div class="stress"><p>説明には順番ってもんがあるんですよ、旦那。</p></div>
             <p>もっと下ってって SIZE ってのがありますよね。これは盤面の大きさを表しています。つまり 「SIZE × SIZE のボードを使っていますよ」という意味。「別に 8 って書けばいいじゃねえか」と思うかもしれませんが、「この 8 って何だっけ？」とならないようにあえて名前を付けてあげているんです。 OVERSIZE は後々出てきますが、 SIZE から圧倒的にはみ出る数を使うことで、意図的にバグ... じゃねえや「場合分け」をしやすくしています。</p>
-            <p>FILE と RANK は board など座標を使ってあらわすもののインデックスに使います。今回は board に限らず、いろんなところで盤面の座標を扱う機会があります。そのインデックスにやはり名前を付けてあげることで、コードがわかりやすく、そして読みやすくなります。a から h は棋譜の書き方にのっとった <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> の番号です。</p>
+            <p>FILE と RANK は board など座標を使ってあらわすもののインデックスに使います。今回は board に限らず、いろんなところで盤面の座標を扱う機会があります。そのインデックスにやはり名前を付けてあげることで、コードがわかりやすく、そして読みやすくなります。a から h は棋譜の書き方にのっとった <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> の番号です。</p>
             <p>さらに下には駒の番号とプレーヤーの番号が続きます。駒はぶっちゃけ数字がバラバラであればいいのですが、唯一 EMPTY 「駒なし」だけは 0 にしておく必要があります。何も置いてないマスは白黒どちら側のものでもありませんからね。 WHITE と BLACK は 1 と -1 がいいでしょう。 board の値が PLAYER * PIECE ですから、その絶対値 <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions#abs" class="memo" target="_new">abs</a> をとれば駒の番号に、正負をとればそのままプレーヤーの番号になるので、使い勝手がとてもいい。</p>
         </section>
 
@@ -91,7 +91,7 @@
 
         <section id="s3-3">
             <h2>3-3　入出力系</h2>
-            <p>IO.py ってファイルを見てください。シバンの下に from config import * ってのがあるでしょう。「config.py のファイルの中身は好き勝手つかっていいよ」って意味です。普通の import なら config. をつけなきゃいけないところを、つけなくていいんです。特に a, b, c, ... って <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> 番号を表すアルファベットがあるでしょう？あんなもんに config. って一々つけてちゃ気が持ちませんよ。せっかく書きやすく読みやすいように定数の名前つけたのに、 config.f - config.d とか、そんなん</p>
+            <p>IO.py ってファイルを見てください。シバンの下に from config import * ってのがあるでしょう。「config.py のファイルの中身は好き勝手つかっていいよ」って意味です。普通の import なら config. をつけなきゃいけないところを、つけなくていいんです。特に a, b, c, ... って <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号を表すアルファベットがあるでしょう？あんなもんに config. って一々つけてちゃ気が持ちませんよ。せっかく書きやすく読みやすいように定数の名前つけたのに、 config.f - config.d とか、そんなん</p>
             <div class="stress"><p>書いてられっか。</p></div>
             <p>その下、 ToggleType 関数は引数の target の型によって挙動が変わります。まず最初に target が int 型の場合。これは後で出てくる「盤面を表示したい」ってときに役立つアイテムです。board[file][rank] の値を入れるだけで、それが白黒どちらの駒で、駒の種類（ポーンとかナイトとか）は何なのか判断し、適切な絵文字をリターンします。何もないとき (EMPTY) では空白を返します。その圧倒的ともいえる威力は後ほど。</p>
             <p>target の型が str の場合は int にして吐き返します。最初の if は数字についてです。いくら高度な Python とはいえ str 型の数字で計算はできないので、ちゃんと int にしてあげましょう。なお、今回は小数を使うことはありません。よかったね。その次が駒の種類。例えばルークを表す 'R' の文字が入れられると、ルークの駒番号である R = 2 を返すわけです。そして file 番号を返す部分。c なら 3 とか。ord 関数は引数の文字の UNICODE (文字番号)を返してくれます。アルファベット順に番号がふられていますから、 UNICODE の差がそのまま file の差になります。</p>
@@ -118,7 +118,7 @@
             <img src="board.png" alt="UNAVAILABLE" width="90%" style="max-width: 350px;">
             <p>この盤面を表示するメソッドが BOARRDprint 関数になります。下にある程度のフローチャートをつけておきましょうか。</p>
             <img src="BpFlowchart.jpg" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
-            <p>for 文の外側は上下にある <a href="https://Saito-Saito-Saito.github.io/chess/memo#file_v" class="memo" target="_new">file</a> 番号をつけておくために設けています。最初の for ループは <a href="https://Saito-Saito-Saito.github.io/chess/memo#rank_v" class="memo" target="_new">rank</a> つまり横長の段に対応しています。上図のように表示するので、rank の番号は 8, 7, 6, ... と下るように range 内部を調節しなければなりません。そして各 rank のはじめと終わりに rank 番号（両端に書いてある番号）を書くようにします。パラメーター rank は 0 番スタートなので、表示する数字は rank + 1 です。</p>
+            <p>for 文の外側は上下にある <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号をつけておくために設けています。最初の for ループは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> つまり横長の段に対応しています。上図のように表示するので、rank の番号は 8, 7, 6, ... と下るように range 内部を調節しなければなりません。そして各 rank のはじめと終わりに rank 番号（両端に書いてある番号）を書くようにします。パラメーター rank は 0 番スタートなので、表示する数字は rank + 1 です。</p>
             <p>今度は内側の file ごとに見ていきます。こちらは左から a, b, c, ... と続けていくので range の中を特にいじる必要はありません。各マスの board の値について IO.py で作った ToggleType 関数を作用させると、駒が絵文字になってマスの上に現れるようになります。なお、何も置いていないマス EMPTY はスペースキー 1 回分の空白をリターンするようにしていますから、特段の場合分けも要りません。なんと素晴らしい関数だことか。あっ、今傲慢なこと言った。</p>
         </section>
 

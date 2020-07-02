@@ -45,19 +45,44 @@
 #! /usr/bin/env python3
 # config.py
 # programmed by Saito-Saito-Saito
-# last update: 4/5/2020
+# explained in https://Saito-Saito-Saito.github.io/reversi
+# last update: 2/7/2020
 
 
 import sys
-import logging
+from logging import getLogger, StreamHandler, FileHandler, Formatter, DEBUG, INFO, WARNING, ERROR, CRITICAL
 
-logging.basicConfig(level=logging.WARNING, format='%(levelname)s - %(filename)s - L%(lineno)d - %(message)s')
+
+DEFAULT_LOG_ADDRESS = 'log.txt'
+DEFAULT_LOG_FORMAT = Formatter('%(asctime)s - %(levelname)s - logger:%(name)s - %(filename)s - L%(lineno)d - %(funcName)s - %(message)s')
+
+# set up function
+def setLogger(name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+    logger = getLogger(name)
+    logger.setLevel(level)
+    
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+    
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+    
+    return logger
+
+
+logger = setLogger(__name__)
 
 
 # board is 8 * 8
 SIZE = 8
 if int(SIZE / 2) != SIZE / 2:
-    logging.error('SIZE VALUE HAS TO BE EVEN')
+    logger.error('SIZE VALUE HAS TO BE EVEN')
     sys.exit()
 
 
@@ -85,7 +110,7 @@ WHOLE_DIRECTION = [
 
 # whether the index is in the board
 def InBoard(subject):
-    if 0 &lt;= subject &lt; SIZE:
+    if 0 <= subject < SIZE:
         return True
     else:
         return False
@@ -98,25 +123,27 @@ def InBoard(subject):
 #! /usr/bin/env python3
 # IO.py
 # programmed by Saito-Saito-Saito
-# last update: 4/5/2020
+# explained in https://Saito-Saito-Saito.github.io/reversi
+# last update: 2/7/2020
 
 
 import config
+local_logger = config.setLogger(__name__)
+
 
 
 # translate user's input into the index of the square
 def InputFormat(s):
     if len(s) != 2:
-        config.logging.info('len(s) == {}'.format(len(s)))
+        local_logger.info('len(s) == {}'.format(len(s)))
         return False
-    elif s[0].isdecimal() and config.InBoard(int(s[0]) - 1) and ord('a') &lt;= ord(s[1]) &lt;= ord('h'):
+    elif s[0].isdecimal() and config.InBoard(int(s[0]) - 1) and ord('a') <= ord(s[1]) <= ord('h'):
         return [int(s[0]) - 1, ord(s[1]) - ord('a')]
-    elif s[1].isdecimal() and config.InBoard(int(s[1]) - 1) and ord('a') &lt;= ord(s[0]) &lt;= ord('h'):
+    elif s[1].isdecimal() and config.InBoard(int(s[1]) - 1) and ord('a') <= ord(s[0]) <= ord('h'):
         return [int(s[1]) - 1, ord(s[0]) - ord('a')]
     else:
-        config.logging.info('OUT OF FORMAT')
+        local_logger.info('OUT OF FORMAT')
         return False
-
             </code>
         </pre>
 
@@ -126,15 +153,18 @@ def InputFormat(s):
 #! /usr/bin/env python3
 # board.py
 # programmed by Saito-Saito-Saito
-# last update: 4/5/2020
+# explained in https://Saito-Saito-Saito.github.io/reversi
+# last update: 2/7/2020
 
 import copy
 
 from config import *
 
+local_logger = setLogger(__name__)
+
 
 class Board:
-    def __init__(self, input_board=[]):
+    def __init__(self, input_board=[], *, status=GAME_PRC, winner=EMPTY, logger=None):
         if len(input_board) == SIZE:
             self.board = copy.deepcopy(input_board)
         else:
@@ -146,11 +176,14 @@ class Board:
             self.board[int(SIZE / 2)][int(SIZE / 2) - 1] = BLACK
             self.board[int(SIZE / 2)][int(SIZE / 2)] = WHITE
             # 0:進行中(途中)PRC　1:決着SET
-            self.game_status = GAME_PRC
-            self.winner = EMPTY
+        self.game_status = status
+        self.winner = winner
+        self.logger = logger or local_logger
             
 
-    def BoardPrint(self):
+    def BoardPrint(self, logger=None):
+        logger = logger or self.logger
+        
         print('\n')
         print('\t    a   b   c   d   e   f   g   h')
         print('\t   -------------------------------')
@@ -164,7 +197,7 @@ class Board:
                 elif self.board[row][col] == BLACK:
                     print(' ○ |', end='')
                 else:
-                    logging.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    logger.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
                     return False
             print(' {}'.format(row + 1))
             print('\t   -------------------------------')
@@ -179,10 +212,12 @@ class Board:
         2.  if yes and turnjudge(player, R+direc..., C+direc..., direc)==True, you can turn the direction when you put a piece on [R,C]
         3.  if yes but turnjudge(player, R+direc..., C+direc..., direc)==False, you cannot turn the direction when you put a piece on [R, C] (it does not always mean that you cannot put a piece there)
     """
-    def turnjudge(self, player, row, col, direction: list):
+    def turnjudge(self, player, row, col, direction: list, logger=None):
+        logger = logger or self.logger
+        
         # out of the board
         if not (InBoard(row) and InBoard(col)):
-            logging.debug('{}, {}\tOUT OF THE BOARD'.format(row, col))
+            logger.debug('{}, {}\tOUT OF THE BOARD'.format(row, col))
             return False
 
         # BLACK, WHITE or EMPTY
@@ -190,30 +225,32 @@ class Board:
         
         # EMPTY
         if piece == EMPTY:
-            logging.debug('{}, {}\tREACHED TO EMPTY'.format(row, col))
+            logger.debug('{}, {}\tREACHED TO EMPTY'.format(row, col))
             return False
         # OWN
         elif piece == player:
-            logging.debug('{}, {}\tREACHED TO OWN PIEE'.format(row, col))
+            logger.debug('{}, {}\tREACHED TO OWN PIEE'.format(row, col))
             return True
         # OPPONENT'S
         elif piece == -player:
             return self.turnjudge(player, row + direction[ROW], col + direction[COL], direction)
         # ERROR
         else:
-            logging.error('UNEXPECTED VALUE of PLAYER in putjudge')
+            logger.error('UNEXPECTED VALUE of PLAYER in putjudge')
             return False
         
     
-    def turn(self, player, row, col):
+    def turn(self, player, row, col, logger=None):
+        logger = logger or local_logger
+        
         # out of the board
         if not (InBoard(row) and InBoard(col)):
-            logging.info('OUT OF THE BOARD')
+            logger.info('OUT OF THE BOARD')
             return False
 
         # there is already a piece
         if self.board[row][col] != EMPTY:
-            logging.info('THERE IS ALREADY A PIECE')
+            logger.info('THERE IS ALREADY A PIECE')
             return False
 
         turned = False
@@ -223,7 +260,7 @@ class Board:
             if not (InBoard(focused[ROW]) and InBoard(focused[COL])):
                 continue
             next_piece = self.board[focused[ROW]][focused[COL]]
-            logging.debug('direc = {}, next_piece = {}'.format(direction, next_piece))
+            logger.debug('direc = {}, next_piece = {}'.format(direction, next_piece))
             # in case available
             if next_piece == -player and self.turnjudge(player, focused[ROW], focused[COL], direction):
                 while self.board[focused[ROW]][focused[COL]] == -player:
@@ -238,11 +275,13 @@ class Board:
             return True
         # in case any piece was not turned
         else:
-            logging.info('THERE IS NO DIRECTION AVAILABLE')
+            logger.info('THERE IS NO DIRECTION AVAILABLE')
             return False
 
     
-    def passjudge(self, player):
+    def passjudge(self, player, logger=None):
+        logger = logger or self.logger
+        
         # searching all EMPTY squares that can turn
         for row in range(SIZE):
             for col in range(SIZE):
@@ -252,14 +291,16 @@ class Board:
                         if not (InBoard(focused[ROW]) and InBoard(focused[COL])):
                             continue
                         if self.board[focused[ROW]][focused[COL]] == -player and self.turnjudge(player, focused[ROW], focused[COL], direction):
-                            logging.info('THERE IS {}, {}'.format(row, col))
+                            logger.info('THERE IS {}, {}'.format(row, col))
                             return False
         
         # completing all the loop, there is no square that you can put a piece
         return True
 
 
-    def countpiece(self):
+    def countpiece(self, logger=None):
+        logger = logger or self.logger
+        
         # count up all pieces
         self.b_count = 0
         self.w_count = 0
@@ -272,15 +313,16 @@ class Board:
         return [self.b_count, self.w_count]
         
 
-    def gamesetjudge(self):
+    def gamesetjudge(self, logger=None):
+        logger = logger or self.logger
+        
         # if either can put, it's not gameset
         if self.passjudge(BLACK) == False or self.passjudge(WHITE) == False:
-            logging.debug('either can put yet')
+            logger.debug('either can put yet')
             return False
         else:
             self.game_status = GAME_SET
             return True
-
             </code>
         </pre>
 
@@ -290,13 +332,16 @@ class Board:
 #! /usr/bin/env python3
 # main.py
 # programmed by Saito-Saito-Saito
-# last update: 4/5/2020
+# explained in https://Saito-Saito-Saito.github.io/reversi
+# last update: 2/7/2020
 
 from config import *
 import IO
 import board
 
 # preset
+logger = setLogger(__name__)
+
 main_board = board.Board()
 player = BLACK
 
@@ -315,7 +360,7 @@ while True:
     elif player == WHITE:
         print('● TURN', end=' ')
     else:
-        logging.error('UNEXPECTED VALUE of PLAYER in the while loop')
+        logger.error('UNEXPECTED VALUE of PLAYER in the while loop')
         break
 
     ### PASS JUDGE
@@ -335,7 +380,7 @@ while True:
         break
     else:
         square = IO.InputFormat(s)
-        logging.info('motion = {}'.format(square))
+        logger.info('motion = {}'.format(square))
     
     # invalid putting
     if square == False:
@@ -372,13 +417,12 @@ else:
         print('DRAW')
     elif counter[0] > counter[1]:
         print('BLACK WINS')
-    elif counter[0] &lt; counter[1]:
+    elif counter[0] < counter[1]:
         print('WHITE WINS')
     else:
-        logging.error('ILLOGICAL ATTITUDE out of the while loop')
+        logger.error('ILLOGICAL ATTITUDE out of the while loop')
 
 print('\nGAME OVER\n')
-
             </code>
         </pre>
     </main>
