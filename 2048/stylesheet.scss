@@ -63,7 +63,7 @@ body
             }
         }
 
-        @media screen and(min-width:631px) and(max-width:930px)
+        @media screen and(min-width:631px) and(max-width:1055px)
         {
             height: 96px;
             #title
@@ -83,7 +83,7 @@ body
             }
         }
 
-        @media screen and(min-width:931px)
+        @media screen and(min-width:1056px)
         {
             height: 128px;
 
@@ -114,7 +114,7 @@ body
                 margin: 20px 2px 0px 1px;
                 padding: 0;
                 width: auto;
-                max-width: 400px;
+                max-width: 500px;
                 
                 li
                 {
@@ -144,7 +144,7 @@ body
             
     }
 
-    @media screen and (max-width:930px) 
+    @media screen and (max-width:1055px) 
     {
         .acd-menu
         {
@@ -226,7 +226,7 @@ body
             }
         }
     }
-    @media screen and (min-width:931px) 
+    @media screen and (min-width:1056px) 
     {
         .acd-menu
         {
