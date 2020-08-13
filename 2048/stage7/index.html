@@ -73,12 +73,12 @@
             <p>settings 関数をご覧ください。引数は、あとのスタートメニューで扱う command が「変更しろ」という意味で X とされたら、プレーヤーに設定を変更してもらおうじゃないかと、そういうわけです。</p>
             <section class="sub-section">
                 <p>それでは実際にコーディングしていきます。まずサイズを変更するのか、ゴールを変更するのか、はたまたやっぱり気が変わって何も変更しないのか、お伺いをたてます。</p>
-                <p>サイズを変更する場合、プレーヤーにサイズはいくつがいいか、お伺いをたてます。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/isdecimal_i" class="memo" target="_new">isdecimai</a> <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を使って数字であると判定でき、またその値が 2 以上であることがわかったら、それを正式なサイズとして認めます。ちゃんと break してサイズを変更するループから脱出しましょう。1 × 1 マスって、最初に 2 つ数字を入れることすらできませんからね。</p>
+                <p>サイズを変更する場合、プレーヤーにサイズはいくつがいいか、お伺いをたてます。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/isdecimal_i" class="memo" target="_new">isdecimal</a> <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を使って数字であると判定でき、またその値が 2 以上であることがわかったら、それを正式なサイズとして認めます。ちゃんと break してサイズを変更するループから脱出しましょう。1 × 1 マスって、最初に 2 つ数字を入れることすらできませんからね。</p>
                 <p>一方、入力値が数字でなかったり、適正な数字でなかったりしたら、「不適切な入力」ということでしっかりしたものを入れてくれるまで入力を要求し続けます。continue することによって再度サイズを変更するループを繰り返すわけです。</p>
             </section>
             <section class="sub-section">
                 <p>今度はゴールの設定に入りましょう。入力前から「8 ~ MAX_GOAL (ここにはしっかり具体的な数字を入れる)の間じゃないとダメですよ」という具合に、入力値の範囲を指定しておきます。8 以上にしたのはゲームが開始した瞬間からゴールして、結局プレーヤーが何もしていないのにクリアしてしまうという事態を避けるため。</p>
-                <p>で、入力してもらったものがまずは数字であるか、先ほど同様に isdecimai で判別します。数字だったら今度は適正な範囲、つまり 8 ~ MAX_GOAL の中にあるか、確認します。この 2 つの基準をクリアしたら正式なゴールとして parameters に適用してください。そして break してゴール変更のループから脱出します。</p>
+                <p>で、入力してもらったものがまずは数字であるか、先ほど同様に isdecimal で判別します。数字だったら今度は適正な範囲、つまり 8 ~ MAX_GOAL の中にあるか、確認します。この 2 つの基準をクリアしたら正式なゴールとして parameters に適用してください。そして break してゴール変更のループから脱出します。</p>
                 <p>入力値がマズかったら continue してもう一度ちゃんとした値を入れてもらいましょう。</p>
             </section>
             <section class="sub-section">
@@ -114,7 +114,7 @@
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/7/20</li>
+            <li>LAST EDITED: 2020/8/13</li>
             <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
