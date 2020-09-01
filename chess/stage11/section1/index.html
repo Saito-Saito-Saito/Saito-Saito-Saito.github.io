@@ -1,0 +1,492 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 11-1</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、画面表示機能の設定を変更する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s10-4">
+            <h1>Stage 11　全体の機能を統括する</h1>
+            <h2>11-1　各種設定を変更させる</h2>
+            <section class="sub-section">
+                <p>ここからは <a href="https://Saito-Saito-Saito.github.io/chess/code/#main" target="_new">main.py</a> をコーディングしていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+import playmode
+import readmode
+
+settings = {'turnmode_play': True, 'turnmode_read': False, 'reverse_read': False}
+
+def resetting():
+    ON_OFF = ['OFF', 'ON']
+
+    while True:
+        print('''
+    PLAY MODE
+        BOARD ROTATION IN BLACK'S TURN: {}
+
+    READ MODE
+        BOARD ROTATION IN BLACK'S TURN: {}
+
+        '''.format(ON_OFF[settings['turnmode_play']], ON_OFF[settings['turnmode_read']]))
+        command = input("ENTER A COMMAND (P to change playmode / R to change readmode / X to exit) >>> ")
+        if command in ['P', 'p', 'PLAY', 'play', 'Play', 'PLAYMODE', 'PlayMode', 'Playmode', 'playmode', 'PLAY MODE', 'Play Mode', 'Play mode', 'play mode']:
+            print('''
+            BOARD ROTATION IN BLACK'S TURN IN PLAY MODE: {}
+            '''.format(ON_OFF[settings['turnmode_play']]))
+            while True:
+                command = input("ENTER A COMMAND (ON / OFF / EXIT) >>> ")
+                if command in ['ON', 'on', 'On']:
+                    settings['turnmode_play'] = True
+                    break
+                elif command in ['OFF', 'Off', 'off']:
+                    settings['turnmode_play'] = False
+                    break
+                elif command in ['EXIT', 'Exit', 'exit', 'X', 'Ex', 'EX', 'ex']:
+                    break
+        elif command in ['R', 'r', 'READ', 'Read', 'read', 'READMODE', 'ReadMode', 'Readmode', 'readmode', 'READ MODE', 'Read Mode', 'Read mode', 'read mode']:
+            print('''
+            BOARD ROTATION IN BLACK'S TURN IN READ MODE: {}
+            '''.format(ON_OFF[settings['turnmode_read']]))
+            while True:
+                command = input("ENTER A COMMAND (ON / OFF / EXIT) >>> ")
+                if command in ['ON', 'on', 'On']:
+                    settings['turnmode_read'] = True
+                    settings['reverse_read'] = True
+                    break
+                elif command in ['OFF', 'Off', 'off']:
+                    settings['turnmode_read'] = False
+                    settings['reverse_read'] = False
+                    break
+                elif command in ['EXIT', 'Exit', 'exit', 'X', 'Ex', 'EX', 'ex']:
+                    break
+        elif command in ['X', 'x', 'Exit', 'EXIT', 'exit', 'EX', 'Ex', 'ex']:
+            return
+
+
+
+if __name__ == "__main__":
+    while True:
+        print("\n\nWELCOME TO CHESS\n")
+        command = input("ENTER A COMMAND (P to PLAYMODE / R to READMODE / S to SETTINGS / X to EXIT) >>> ")
+        if command in ['P', 'p', 'PLAY', 'play', 'Play', 'PLAYMODE', 'PlayMode', 'Playmode', 'playmode', 'PLAY MODE', 'Play Mode', 'Play mode', 'play mode']:
+            playmode.playmode(settings['turnmode_play'])
+            break
+
+        elif command in ['R', 'r', 'READ', 'Read', 'read', 'READMODE', 'ReadMode', 'Readmode', 'readmode', 'READ MODE', 'Read Mode', 'Read mode', 'read mode']:
+            readmode.readmode(settings['turnmode_read'], settings['reverse_read'])
+            break
+
+        elif command in ['S', 's', 'SETTINGS', 'settings', 'Settings', 'SETTING', 'Setting', 'setting']:
+            resetting()
+            
+        elif command in ['X', 'x', 'Exit', 'EXIT', 'exit', 'EX', 'Ex', 'ex']:
+            break
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>相変わらずなげーな</p>
+                    </div>
+                </div>
+                <p>ここでは盤面を回転させるかを設定し、また playmode と readmode を振り分けています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今回は盤面の回転に関する設定機能を実装しましょう。まずはデフォルトとして settings を辞書型で宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+settings = {'turnmode_play': True, 'turnmode_read': False, 'reverse_read': False}
+                        </code>
+                    </pre>
+                </div>
+                <p>それぞれ</p>
+                <table width="90%" cellpadding="10" border="1" style="max-width: 450px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><td>turnmode_play</td><td>playmode の引数 turnmode</td></tr>
+                    <tr><td>turnmode_read</td><td>readmode の引数 turnmode</td></tr>
+                    <tr><td>reverse_read</td><td>readmode の引数 reverse</td></tr>
+                </table>
+                <p>を表しています。詳細は <a href="../../stage8/section1/index.html" target="_new">8-1</a> や <a href="../../stage10/section4/index.html" target="_new">10-4</a> などを参照してください。</p>
+                <p>この値を変更する関数の名前を resetting として宣言しましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                            def resetting():
+                        </code>
+                    </pre>
+                </div>
+                <p>最初に ON と OFF の文字列をリストに格納しています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    ON_OFF = ['OFF', 'ON']
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>これ何やってんだ？</p>
+                    </div>
+                </div>
+                <p>ON_OFF[False] で 'OFF' が、ON_OFF[True] で ON が出てくるようにすることで、settings の各値を<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に突っ込むだけで適切な文字列を表示してくれるようにしています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>実際に使っているところを見た方が早いでしょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    while True:
+        print('''
+    PLAY MODE
+        BOARD ROTATION IN BLACK'S TURN: {}
+
+    READ MODE
+        BOARD ROTATION IN BLACK'S TURN: {}
+
+        '''.format(ON_OFF[settings['turnmode_play']], ON_OFF[settings['turnmode_read']]))
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>この一番上の while ってなんだ？</p>
+                    </div>
+                </div>
+                <p>あとで説明するから今は黙ってて。</p>
+                <p>デフォルト状態</p>
+                <p>
+                    <ul>
+                        <li><code>turnmode_play:    True</code></li>
+                        <li><code>turnmode_read:    False</code></li>
+                    </ul>
+                </p>
+                <p>でこれを実行してみるとこうなります。</p>
+                <img src="on-off-display.png" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>うまい具合に ON と OFF が使い分けられてるな</p>
+                    </div>
+                </div>
+                <p>さて、この状態からまずは playmode と readmode のどちらの設定を変更するか、コマンドを使って選んでもらいます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        command = input("ENTER A COMMAND (P to change playmode / R to change readmode / X to exit) >>> ")
+                        </code>
+                    </pre>
+                </div>
+                <p>この結果から場合わけしましょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず playmode の場合。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if command in ['P', 'p', 'PLAY', 'play', 'Play', 'PLAYMODE', 'PlayMode', 'Playmode', 'playmode', 'PLAY MODE', 'Play Mode', 'Play mode', 'play mode']:
+            print('''
+            BOARD ROTATION IN BLACK'S TURN IN PLAY MODE: {}
+            '''.format(ON_OFF[settings['turnmode_play']]))
+            while True:
+                command = input("ENTER A COMMAND (ON / OFF / EXIT) >>> ")
+                if command in ['ON', 'on', 'On']:
+                    settings['turnmode_play'] = True
+                    break
+                elif command in ['OFF', 'Off', 'off']:
+                    settings['turnmode_play'] = False
+                    break
+                elif command in ['EXIT', 'Exit', 'exit', 'X', 'Ex', 'EX', 'ex']:
+                    break
+                        </code>
+                    </pre>
+                </div>
+                <p>さらに内側に while を用意して turnmode_play を ON にするか OFF にするか、はたまた設定をやめて脱出するか選択させます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        <span style="font-weight: bold;">if command in ['P', 'p', 'PLAY', 'play', 'Play', 'PLAYMODE', 'PlayMode', 'Playmode', 'playmode', 'PLAY MODE', 'Play Mode', 'Play mode', 'play mode']:
+            print('''
+            BOARD ROTATION IN BLACK'S TURN IN PLAY MODE: {}
+            '''.format(ON_OFF[settings['turnmode_play']]))
+            while True:
+                command = input("ENTER A COMMAND (ON / OFF / EXIT) >>> ")</span> 
+                if command in ['ON', 'on', 'On']:
+                    settings['turnmode_play'] = True
+                    break
+                elif command in ['OFF', 'Off', 'off']:
+                    settings['turnmode_play'] = False
+                    break
+                elif command in ['EXIT', 'Exit', 'exit', 'X', 'Ex', 'EX', 'ex']:
+                    break
+                        </code>
+                    </pre>
+                </div>
+                <p>コマンド通りに設定を変更したら break で内側の while ループを脱出します。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>readmode もほぼ同じです。違うところだけハイライトを当てますね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        elif command in <span style="font-weight: bold;">['R', 'r', 'READ', 'Read', 'read', 'READMODE', 'ReadMode', 'Readmode', 'readmode', 'READ MODE', 'Read Mode', 'Read mode', 'read mode']:</span> 
+            print('''
+            BOARD ROTATION IN BLACK'S TURN IN <span style="font-weight: bold;">READ</span> MODE: {}
+            '''.format(ON_OFF[settings['<span style="font-weight: bold;">turnmode_read</span>']]))
+            while True:
+                command = input("ENTER A COMMAND (ON / OFF / EXIT) >>> ")
+                if command in ['ON', 'on', 'On']:
+                    <span style="font-weight: bold;">settings['turnmode_read'] = True
+                    settings['reverse_read'] = True</span>
+                    break
+                elif command in ['OFF', 'Off', 'off']:
+                    <span style="font-weight: bold;">settings['turnmode_read'] = False
+                    settings['reverse_read'] = False</span>
+                    break
+                elif command in ['EXIT', 'Exit', 'exit', 'X', 'Ex', 'EX', 'ex']:
+                    break
+                        </code>
+                    </pre>
+                </div>
+                <p>ただしここでは turnmode_read と reverse_read の値を合わせることをお忘れなく。<a href="../../stage10/section4/index.html" target="_new">10-4</a> でも申し上げていますが、これを合わせないと盤面を見たい向きからみることができません。</p>
+                <p>最後に EXIT の場合をコーディングします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        elif command in ['X', 'x', 'Exit', 'EXIT', 'exit', 'EX', 'Ex', 'ex']:
+            return
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>なんだよ、なんもねーじゃねえか</p>
+                    </div>
+                </div>
+                <p>あらら、長い方がよかったでしょうか。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>すいませんでした</p>
+                    </div>
+                </div>
+                <p>return の部分は単純に while 脱出すれば関数からも出られますので break でも構いません。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>で、while ループの説明どうなった？</p>
+                    </div>
+                </div>
+                <p>これからしますよ。もちろん忘れてなんかいません。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                </div>
+                <p>もし while ループがないとして、一度コマンドをしくじったらどうなります？</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>そのまま関数出ちゃうな</p>
+                    </div>
+                </div>
+                <p>と言うことで、関数のなかにとどまっているために無限ループの形をとっています。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="../section2/index.html">NEXT　11-2　ウェルカムページを作る</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

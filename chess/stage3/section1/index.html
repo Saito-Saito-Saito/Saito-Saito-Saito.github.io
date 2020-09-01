@@ -1,0 +1,392 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 3-1</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、盤面をあらわすクラスのコンストラクタを実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s3-1">
+            <h1>Stage 3　盤面のクラスの基本機能を作る</h1>
+            <h2>3-1　コンストラクタを作る</h2>
+            <section class="sub-section">
+                <p>このステージでは <a href="https://Saito-Saito-Saito.github.io/chess/code/#board" target="_new">board.py</a> ファイルを使っていきます。お手元にご用意ください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ファイルの頭で様々インポートを済ませたら、まずは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a> local_logger を宣言します。名前は __name__ つまりこのモジュール（ファイル）に合わせます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+local_logger = setLogger(__name__)
+                        </code>
+                    </pre>
+                </div>
+                <p>それではクラスに入りましょう。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>をコーディングしますよ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def __init__(self, *, board=[], target=[OVERSIZE, OVERSIZE], castl_k=[WHITE, BLACK], castl_q=[WHITE, BLACK], player=WHITE, turn=1, s='', logger=local_logger):
+        ### BORAD COPYING (NOTE: when copying any list, you have to use copy.deepcopy)
+        if len(board) == SIZE:
+            self.board = copy.deepcopy(board)
+        ### BOARD INITIALIZING
+        else:
+            # [0][0] is white's R, [0][1] is white's P, ...
+            self.board = [
+                [R, P, 0, 0, 0, 0, -P, -R],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [Q, P, 0, 0, 0, 0, -P, -Q],
+                [K, P, 0, 0, 0, 0, -P, -K],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [R, P, 0, 0, 0, 0, -P, -R]
+            ]
+        self.ep_target = copy.deepcopy(target) # for en passan
+        self.castl_k = copy.deepcopy(castl_k)   # for castling
+        self.castl_q = copy.deepcopy(castl_q)   # for castling
+        self.turn = turn  # starts from 1
+        self.player = player
+        self.s = s  # for motion analyzing and recording
+        self.logger = logger
+                        </code>
+                    </pre>
+                </div>
+                <p>引数はざっとこんな感じです。</p>
+                <table border="1" cellpadding="10" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse;">
+                    <tr><td>board</td><td>盤面</td></tr>
+                    <tr><td>target</td><td><a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>で使用</td></tr>
+                    <tr><td>castl_k</td><td><a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>で使用</td></tr>
+                    <tr><td>castl_q</td><td><a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>で使用</td></tr>
+                    <tr><td>player</td><td>手番のプレーヤー</td></tr>
+                    <tr><td>s</td><td>プレーヤーが入力した棋譜</td></tr>
+                    <tr><td>turn</td><td>手番のターン数</td></tr>
+                    <tr><td>logger</td><td>クラスで使う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a></td></tr>
+                </table>
+                <p>board はすでにある盤面を継続したいときに使います。代入するのは board[<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>][<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a>] の形をとるような board リストです。「この board を使いなさい」というときに使ってください。特に入力がなければ駒は初期配置にセッティングされます。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>このボード使えって、そんなことある？</p>
+                    </div>
+                </div>
+                <p>具体的には盤面を複製する場合を考えています。例えば</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>実際に駒動かしてみてどうなるかみてみたいけど、今の盤面は残しておきたい</p>
+                    </div>
+                </div>
+                <p>とか。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>よくわからんわ</p>
+                    </div>
+                </div>
+                <p>後々ありがたいくらいにわかりますよ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def __init__(self, *, board=[], <span style="font-weight: bold;">target=[OVERSIZE, OVERSIZE], castl_k=[WHITE, BLACK], castl_q=[WHITE, BLACK],</span> player=WHITE, turn=1, s='', logger=local_logger):
+                        </code>
+                    </pre>
+                </div>
+                <p>target は<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>で、castl_k/castl_q は<a href="https://Saito-Saito-Saito.github.io/chess/memo/#castling_v" class="memo" target="_new">キャスリング</a>で使いますので、今はこの通りにコーディングしてください。ちゃんとあとのステージで解説します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def __init__(self, *, board=[], target=[OVERSIZE, OVERSIZE], castl_k=[WHITE, BLACK], castl_q=[WHITE, BLACK], <span style="font-weight: bold;">player=WHITE, turn=1,</span> s='', logger=local_logger):
+                        </code>
+                    </pre>
+                </div>
+                <p>player は現在手番のプレーヤー、turn は手数を表します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def __init__(self, *, board=[], target=[OVERSIZE, OVERSIZE], castl_k=[WHITE, BLACK], castl_q=[WHITE, BLACK], player=WHITE, turn=1, <span style="font-weight: bold;">s=''</span>, logger=local_logger):
+                        </code>
+                    </pre>
+                </div>
+                <p>s はプレーヤーが入力した駒の動きを棋譜の形で入れます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def __init__(self, *, board=[], target=[OVERSIZE, OVERSIZE], castl_k=[WHITE, BLACK], castl_q=[WHITE, BLACK], player=WHITE, turn=1, s='', <span style="font-weight: bold;">logger=local_logger</span>):
+                        </code>
+                    </pre>
+                </div>
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a> logger は local_logger をデフォルトにとります。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>要は盤面の情報全部突っ込めってことやろ</p>
+                    </div>
+                </div>
+                <p>その通りです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>中身に入りましょう。まずは盤面を設定します。すでにある盤面を使うかどうかは、引数のリストの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>の数が <a href="../../stage2/section2/index.html" target="_new">2-2</a> で設定した SIZE と同じかどうかで判断できますね。ちゃんとした盤面を表していれば len(board) って <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>  の数と同じはずですから。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        ### BOARD COPYING (NOTE: when copying any list, you have to use copy.deepcopy)
+        <span style="font-weight: bold;">if len(board) == SIZE:</span>
+            self.board = copy.deepcopy(board)
+                        </code>
+                    </pre>
+                </div>
+                <p>また、リストの盤面を<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>に引き込むときは特に注意が必要ですよ。下手に代入なんかしないでください。</p>
+                <p>board はリスト型ですが、リスト型って<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#mutability" target="_new">ミュータブル</a>ですので、board に突っ込まれたリストをそのまま使ってこの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>で中身をいじってしまうと、入力元のクラス外のリストまで影響を受けてしまいますよ。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/cheating.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ああ、そういうことね。理解したわ</p>
+                    </div>
+                </div>
+                <p>わからなければ上のリンクから飛んで備忘録を見るか、他所で丁寧な説明を受けてきてくださいな。な？</p>
+                <p>ということですでにある盤面を引き込むときは copy モジュールの copy.deepcopy <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>を使います。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # NOTE: when copying any list, you have to use copy.deepcopy
+        if len(board) == SIZE:
+            <span style="font-weight: bold;">self.board = copy.deepcopy(board)</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>代入しないときは初期配置にしてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        ### BOARD INITIALIZING
+        else:
+            # [0][0] is white's R, [0][1] is white's P, ...
+            self.board = [
+                [R, P, 0, 0, 0, 0, -P, -R],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [Q, P, 0, 0, 0, 0, -P, -Q],
+                [K, P, 0, 0, 0, 0, -P, -K],
+                [B, P, 0, 0, 0, 0, -P, -B],
+                [N, P, 0, 0, 0, 0, -P, -N],
+                [R, P, 0, 0, 0, 0, -P, -R]
+            ]
+                        </code>
+                    </pre>
+                </div>
+                <p>board の外側の<a href="https://Saito-Saito-Saito.gothub.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>が <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> を、内側が <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を表しますから、[0, 0] (=[1 - 1, 1 - 1]) は 白のルークを、[0, 1] (=[1 - 1, 2 - 1]) は白のポーンを入れるんですよ。黒の駒にはマイナスを付け忘れないこと。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>target や castl_k, castl_q は今はコードをコピペしてください。実際使うときにならないと、説明があんまりよくわからないので。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        self.ep_target = copy.deepcopy(target) # for en passan
+        self.castl_k = copy.deepcopy(castl_k)   # for castling
+                        </code>
+                    </pre>
+                </div>
+                <p>turn や player, s, logger といった<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/#immutability" class="memo" target="_new">イミュータブル</a>のものは何の心配もせずとも代入しちゃって結構です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        self.turn = turn  # starts from 1
+        self.player = player
+        self.s = s  # for motion analyzing and recording
+        self.logger = logger
+                        </code>
+                    </pre>
+                </div>
+                <p>これで<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>は終わりました。お疲れ様です。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../section2/index.html">NEXT　3-2　盤面を表示する</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

@@ -1,0 +1,567 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 3-2</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、盤面をプレーヤーに見せる機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <main>
+        <section id="s3-2">
+            <h1>Stage 3　盤面のクラスの基本機能を作る</h1>
+            <h2>3-2　盤面を表示する</h2>
+            <section class="sub-section">
+                <p>print <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の説明に入ります。最初にどんなものを作るか、イメージを掴みましょうか。</p>
+                <img src="board-white.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px; padding-bottom: 15px;">
+                <img src="board-black.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>これ何がちげーんだ？</p>
+                    </div>
+                </div>
+                <p>上下での違いは盤面を白側から見てるか黒側から見てるかですね。両方できるようにコーディングしていきます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まずは print メソッドの引数の説明をしないといけませんね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def print(self, *, turnmode=True, reverse=False):
+                        </code>
+                    </pre>
+                </div>
+                <p>turnmode は「白のときは白側から、黒のときは黒側から見えるように、盤面を回転させるか」を bool 型で指定します。True なら回転させます。</p>
+                <p>reverse はこの向きを逆にするか否か。つまり黒番で <code>turnmode=True, reverse=False</code> のときはこうなります。</p>
+                <img src="board-black.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>これが <code>turnmode=False, reverse=False</code> だったり、白番で <code>turnmode=True, reverse=True</code> だったりすると</p>
+                <img src="board-white.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>のようになります。メインはこっちです。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>でも普通に引数には WHITE 側か BLACK 側かを入れればよくね？</p>
+                    </div>
+                </div>
+                <p>つまりこういう感じにするってことですね。</p>
+                <p class="code"><code>def print(self, *, side=WHITE):</code></p>
+                <p>もちろんそれでもいいですよ。ただ「ここで print を使うときは盤面を回転させるんだな」とか「ここだとずっと白側から見るんだな」と言った情報が一眼見てわかるので、個人的にはどちらかというとこっち</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def print(self, *, turnmode=True, reverse=False):
+                        </code>
+                    </pre>
+                </div>
+                <p>turnmode に bool 型を使うのをお勧めします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>では白側からでも黒側からでも、turnmode と reverse を設定すれば望みのように見えるようにするにはどうすればいいでしょう？</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>if で場合わけっしょ</p>
+                    </div>
+                </div>
+                <p>もちろんそれも可です。でも and とか or とかがいっぱい入ってきてコードが煩雑になりますよ。</p>
+                <p>ここではスイッチの機構を使いましょう。つまり「白側から見たいとき」と「黒側から見たいとき」を自動的に分けてくれる仕組みを作ろうというわけです。</p>
+                <p>ではどんな時に白側から見て、どんな時に黒側から見ればいいのか、みなさまお得意の場合わけをしてみましょう。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>イヤミかテメェ</p>
+                    </div>
+                </div>
+                <p>reverse=False の場合</p>
+                <table border="1" cellpadding="10" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse; text-align: center;">
+                    <tr><td colspan="2">self.player</td><td>WHITE</td><td>BLACK</td></tr>
+                    <tr><td rowspan="2">turnmode</td><td>True</td><td>白</td><td>黒</td></tr>
+                    <tr><td>False</td><td>白</td><td>白</td></tr>
+                </table>
+                <p>reverse=True では白と黒が逆になります。そりゃ reverse (反転する) って言ってんだから当たり前なんですが。</p>
+                <table border="1" cellpadding="10" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse; text-align: center;">
+                    <tr><td colspan="2">self.player</td><td>WHITE</td><td>BLACK</td></tr>
+                    <tr><td rowspan="2">turnmode</td><td>True</td><td>黒</td><td>白</td></tr>
+                    <tr><td>False</td><td>黒</td><td>黒</td></tr>
+                </table>
+                <p>まずは白側から見るときの盤面を書いてみましょう。</p>
+                <p>ここで説明のためだけにご用意したファイル <a href="https://Saito-Saito-Saito.github.io/chess/code/#print" target="_blank">print.py</a> をご覧ください。Board <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>を継承する形で BoardPrint を宣言し、その中に PrintWhiteSide <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>を設けています。白側から盤面を見る<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+class BoardPrint(Board):
+    def PrintWhiteSide(self):
+        '''
+        a   b   c   d   e   f   g   h
+       -------------------------------
+    8 | ♖ | ♘ | ♗ | ♕ | ♔ | ♗ | ♘ | ♖ | 8
+       -------------------------------
+    7 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | 7
+       -------------------------------
+    6 |   |   |   |   |   |   |   |   | 6
+       -------------------------------
+    5 |   |   |   |   |   |   |   |   | 5
+       -------------------------------
+    4 |   |   |   |   |   |   |   |   | 4
+       -------------------------------
+    3 |   |   |   |   |   |   |   |   | 3
+       -------------------------------
+    2 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | 2
+       -------------------------------
+    1 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ | 1
+       -------------------------------
+        a   b   c   d   e   f   g   h
+        '''
+        print('\n') # spacing
+        print('\t    a   b   c   d   e   f   g   h')    # the top file index
+        print('\t   -------------------------------')   # border
+        for rank in range(SIZE - 1, -1, -1):  # down to less
+            print('\t{} |'.format(rank + 1), end='')    # rank index and border
+            for file in range(SIZE):
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), end='')    # piece and border
+            print(' {}'.format(rank + 1))   # rank index
+            print('\t   -------------------------------')   # border
+        print('\t    a   b   c   d   e   f   g   h')    # file index
+        print('\n') # spacing
+                        </code>
+                    </pre>
+                </div>
+                <p>コーディングする時に注意することをいろいろ書き込んでみました。必要に応じて拡大してください。</p>
+                <img src="board-explain.png" alt="UNAVAILABLE" width="90%" style="max-width: 700px;">
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>コーディングに突入します。まずは最初の改行でスペーシング。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def PrintWhiteSide(self):
+        ...
+        <span style="font-weight: bold;">print('\n') # spacing</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>次の print でもタブ文字 \t でスペーシングしてから、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号を左から a, b, ..., とふっていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\t    a   b   c   d   e   f   g   h')    # the top file index
+                        </code>
+                    </pre>
+                </div>
+                <p>次の行でもタブでスペーシングして、盤面の周りを囲む横線を書きましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\t   -------------------------------')   # border
+                        </code>
+                    </pre>
+                </div>
+                <p>次の行からは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> に応じた操作をしていきます。<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> 番号は上から 8, 7, 6, ... となるようにしたいので、それに対応するように for 文の range の中身を調節してください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        for rank in range(SIZE - 1, -1, -1):  # down to less
+                        </code>
+                    </pre>
+                </div>
+                <p>ここで変数としてコードに書く <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は board[<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>][<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a>] という形をとりたいので、範囲が 0 ~ 7 つまり <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の挙動が 7, 6, ..., 1, 0 となるようにします。</p>
+                <p>for 文の中身に入ります。まずタブ文字でスペーシングしたら <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> 番号を書き入れます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            print('<span style="font-weight: bold;">\t{}</span> |'.format(rank + 1), end='')    # rank index and border
+                        </code>
+                    </pre>
+                </div>
+                <p>ここに書くのは 1 ~ 8 の番号ですよ。プレーヤーからしてみれば</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>コードの中では 0 ~ 7 じゃないといけないことなんざ、知ったことか</p>
+                    </div>
+                </div>
+                <p>って言われてしまいますよ。ですから表示する数字は <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> + 1 となりますよね。数字を入れたら盤面の内外を分ける縦線を入れてあげます。後ろのキーワード引数 end='' がないと改行されてしまいますので気をつけてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            print('\t{} <span style="font-weight: bold;">|'.format(rank + 1), end=''</span>)    # rank index and border
+                        </code>
+                    </pre>
+                </div>
+                <p>これがないとほんと無様になりますので。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今度は <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の中で <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> を動かして、各マスに適した文字を入れていきます。<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> は左から a, b, ..., h とするんでした。<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の時と同じように、コードに書く変数 file は 0 ~ 7 としたいので、for 文の range には注意してください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            for file in range(SIZE):
+                        </code>
+                    </pre>
+                </div>
+                <p>for ループの中ではまず <a href="../../stage2/section4/index.html" target="_new">2-4</a> で作った ToggleType を使って、board[<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>][<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a>] にある駒を表す特殊文字を入力します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), end='')
+                        </code>
+                    </pre>
+                </div>
+                <p>ToggleType の中で EMPTY のときは空白を出力することにしていましたので、ここでは駒のあるなしで場合わけする必要はございません。よかったな。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>どういうつもりだ。シバくぞコラ</p>
+                    </div>
+                </div>
+                <p>キーワード引数の end='' もお忘れなく。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), <span style="font-weight: bold;">end=''</span>)    # piece and border
+                        </code>
+                    </pre>
+                </div>
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> を a ~ h まで全部ループしたら、最後に <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> 番号を記入して、ようやく改行です。改行は end=... を放置しておけばいいんですよ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            print(' {}'.format(rank + 1))   # rank index
+                        </code>
+                    </pre>
+                </div>
+                <p>次の行ではタブ文字でスペーシングしたら <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を分ける横線を入れます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            print('\t   -------------------------------')   # border
+                        </code>
+                    </pre>
+                </div>
+                <p>ここまでが <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> 一つについて行う作業です。8 ~ 1 まで全ての <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> をループしたら、あとは下端となる <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号を記入して、改行してスペーシングすればおしまいです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\t    a   b   c   d   e   f   g   h')    # file index
+        print('\n') # spacing
+                        </code>
+                    </pre>
+                </div>
+                <p>いや、おしまいじゃないですね。まだ turnmode とかいじらなければいけませんから。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/cry.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>まだあんのかよ</p>
+                    </div>
+                </div>
+                <p>まあ、思ってるほどキツくはないと思います。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、<a href="https://Saito-Saito-Saito.github.io/chess/code/#board" target="_blank">board.py</a> に戻りますよ。まずはどこを変更するのか見てみましょう。</p>
+                <img src="code.png" alt="UNAVAILABLE" width="90%" style="max-width: 1000px;">
+                <p>青と緑の線が図の左端にほそぉ〜く書かれていますが、その行が変更や付け足しをしたところになります。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/sweat.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>うげ、ほとんどじゃねえか</p>
+                    </div>
+                </div>
+                <p>さて、これまで白側からこんな盤面を見てきました。</p>
+                <img src="board-white.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"> 
+                <p>一方黒側から見るとき、盤面はこうなりましたよね。</p>
+                <img src="board-black.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>よく見て欲しいのが <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の移り変わり。どうなってます？</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>どっちも順番逆になってるわ</p>
+                    </div>
+                </div>
+                <p>そう、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> は左から h, g, ..., b, a のように、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は上から 8, 7, ..., 2, 1 のようになってます。コードで変えなきゃいけないのは大きく分けて 2 つ。</p>
+                <p>
+                    <ul>
+                        <li>上下の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号の順番</li>
+                        <li>for 文の range の中身</li>
+                    </ul>
+                </p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>これっぽっちなら簡単そうだな</p>
+                    </div>
+                </div>
+                <p>で、<a href="https://Saito-Saito-Saito.github.io/chess/code/#print" class="memo" target="_new">print</a> <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の頭にあった start や stop, step といったリストは range の中身になります。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        start = [SIZE - 1, 0]  # WHITESIDE: start[0] BLACKSIDE: start[1]
+        stop = [-1, SIZE]  # WHITESIDE: stop[0] BLACKSIDE: stop[1]
+        step = [-1, +1] # WHITESIDE: step[0] BLACKSIDE: step[1]
+                        </code>
+                    </pre>
+                </div>
+                <p>それぞれのリストの前の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>が白から見たとき、後ろの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>が黒から見たときのものです。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>この前と後ろをスイッチで切り替えればいいんだな</p>
+                    </div>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まずは冒頭でお見せした表をもう一度みてみましょう。reverse=True のときですね。</p>
+                <table border="1" cellpadding="10" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse; text-align: center;">
+                    <tr><td colspan="2">self.player</td><td>WHITE</td><td>BLACK</td></tr>
+                    <tr><td rowspan="2">turnmode</td><td>True</td><td>白</td><td>黒</td></tr>
+                    <tr><td>False</td><td>白</td><td>白</td></tr>
+                </table>
+                <p>黒側から見てるのは turnmode が True で player が黒の時だけ。それ以外は今まで必死こいて書いてきたコードがそのまま使えます。ここのスイッチも簡単ですね。</p>
+                <p class="code"><code>turnmode == True and (self.player == BLACK)</code></p>
+                <p>の時だけ黒くすればいいんですから。これを bool 型の switch としておきます。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>reverse が True のときはどうすんだよ</p>
+                    </div>
+                </div>
+                <p>True と False をひっくり返すだけです。簡単でしょ？reverse の値で場合わけして</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if reverse:
+            switch = not switch
+                        </code>
+                    </pre>
+                </div>
+                <p>で真偽を反転させていますね。</p>
+                <p>こうやって得た switch と start, stop, step を早速 for の range に突っ込んでいきましょう。bool 型は True が 1, False が 0 に対応しますから、<a href="https://Saito-Saito-Saito.gothub.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に突っ込むだけで丸く収まってくれます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        for rank in range(<span style="font-weight: bold;">start[switch], stop[switch], step[switch]</span>):    # down to less
+            print('\t{} |'.format(rank + 1), end='')
+            for file in range(<span style="font-weight: bold;">start[not switch], stop[not switch], step[not switch]</span>):
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), end='')
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>最後に盤面が反転したときの <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号を逆向きにしておきましょう。switch が True なら黒側、つまり盤面を反転させるので、この場合では左から h, g, ..., b, a となるようにコーディングしてください。それ以外は白側です。a, b, ..., g, h のままで結構です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        <span style="font-weight: bold;">if switch:
+            print('\t    h   g   f   e   d   c   b   a')</span>
+        else:
+            print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for rank in range(start[switch], stop[switch], step[switch]):
+            print('\t{} |'.format(rank + 1), end='')
+            for file in range(start[not switch], stop[not switch], step[not switch]):
+                print(' {} |'.format(IO.ToggleType(self.board[file][rank])), end='')
+            print(' {}'.format(rank + 1))
+            print('\t   -------------------------------')
+        <span style="font-weight: bold;">if switch:
+            print('\t    h   g   f   e   d   c   b   a')</span>
+        else:
+            print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+                        </code>
+                    </pre>
+                </div>
+                <p>これで print <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>は全ておしまいです。お疲れ様でした。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="../../stage4/index.html">NEXT　Stage 4　駒の動きを判定する</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

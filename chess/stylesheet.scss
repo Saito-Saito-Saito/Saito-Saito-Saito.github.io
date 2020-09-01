@@ -8,214 +8,213 @@ body
     font-family: sans-serif;
     cursor: auto;
 
+
     header
     {
-        width: 100%;
-        background-color: darkslateblue;
-        color: white;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        position: static;
-        position: relative;
-        z-index: 1;
+        padding: 10px 2px;
+        margin: 0;
 
-        @media screen and (max-width: 600px)
+        @media screen and (max-width: 420px) 
         {
-            height: 64px;
-            
+            height: 100px;
+            text-align: center;
+            img
+            {
+                width: 100px;
+            }    
+
             #title
             {
-                width: 100%;
+                display: none;
+            }
+        }
+
+        @media screen and (min-width:421px) and (max-width: 600px)
+        {
+            img
+            {
+                width: 50px;
+                margin: 0;
+                padding: 0;
+                float: left;
+            }
+
+            #title
+            {
+                h1
+                {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 25px;
+                    line-height: 23px;
+                }
+            }
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 800px)
+        {
+            img
+            {
+                width: 80px;
+                margin: 0;
+                padding: 0;
+                float: left;
+            }
+
+            #title
+            {
                 h1
                 {
                     margin: 0;
                     padding: 0;
                     font-size: 40px;
-                    line-height: 32px;
-                    text-align: left;
+                    line-height: 36px;
                 }
-            }
-            
-            ul
-            {
-                display: none;
             }
         }
 
-        @media screen and(min-width:600px) and(max-width:1055px)
+        @media screen and (min-width: 801px)
         {
-            height: 120px;
-            height: auto;
-
-            #title
+            img
             {
-                width: auto;
-                h1
-                {
-                    font-size: 75px;
-                    line-height: 60px;
-                    margin: 0;
-                    padding: 0;
-                }
-            }
-            ul
-            {
-                display: none;
-            }
-        }
-
-        @media screen and(min-width:1056px)
-        {
-            height: 160px;
-
-            #title
-            {
-                width: 60%;
-                width: auto;
-                height: 160px;
+                width: 100px;
                 margin: 0;
                 padding: 0;
                 float: left;
+            }
+
+            #title
+            {
                 h1
                 {
                     margin: 0;
                     padding: 0;
-                    font-size: 100px;
-                    line-height: 80px;
-                    text-align: left;
-    
-                    &:hover
-                    {
-                        cursor: default;
-                    }
-                }
-            }
-
-            ul
-            {
-                float: right;
-                font-size: 18px;
-                margin: 20px 2px 0px 1px;
-                padding: 0;
-                width: 350px;
-                max-width: 400px;
-                
-                li
-                {
-                    text-align: right;
-                    list-style: none;
-                    float: left;
-                    margin: 30px 5px;
-
-                    a
-                    {
-                        color: white;
-                        cursor: pointer;
-                        &:hover
-                        {
-                            opacity: 80%;
-                            cursor: pointer;
-                        }
-                        &:active
-                        {
-                            opacity: 70%;
-                            cursor: pointer;
-                        }
-                    }
+                    font-size: 50px;
+                    line-height: 45px;
                 }
             }
         }
-            
     }
 
-    @media screen and (max-width:1055px) 
+    #menu-bar
     {
-        .acd-menu
+        width: 100%;
+        background-color: darkslateblue;
+        color: white;
+        padding: 10px;
+
+        table
+        {
+            width: 100%;
+            text-align: center;
+            label
+            {
+                color: white;
+                text-decoration: underline;
+
+                &:hover
+                {
+                    opacity: 0.8;
+                    cursor: pointer;
+                }
+                &:active
+                {
+                    opacity: 0.6;
+                }
+            }
+        }
+        a
         {
             color: white;
-            padding: 0;
-            width: 100%;
-            position: relative;
-
-            .acd-label
+            &:hover
             {
-                position: absolute;
-                right: 0;
-                top: 0;
-                margin: 0;
-                padding: 0 15px 0 5px;
-                background-color: darkslateblue;
-                text-align: right;
-                font-size: smaller;
-                transition: .5s;
-                z-index: 1;
+                opacity: 0.8;
             }
-            .acd-content
+            &:active
             {
-                margin: 0;
-                padding: 0;
-                padding-right: 30px;
-                text-align: right;
-                background-color: darkslateblue;
-                list-style: none;
-                transition: .5s;
-                z-index: 0;
-                a
+                opacity: 0.6;
+            }
+        }
+
+        @media screen and (max-width: 1000px)
+        {
+            #short-menu
+            {
+                height: auto;
+                padding: inherit;
+
+                #acd-check
                 {
-                    color: white;
-                    &:hover
-                    {
-                        opacity: 80%;
-                    }
-                    &:active
-                    {
-                        opacity: 70%;
-                    }
+                    display: none;
+                }
+
+                .stages-menu
+                {
+                    list-style: none;
+                    visibility: hidden;
+                    opacity: 0;
+                    height: 0;
+                    line-height: 0;
+                    margin: 0;
+                    transition: 0.5s;
+                }
+
+                #acd-check:checked + table + .stages-menu
+                {
+                    visibility: visible;
+                    opacity: 100%;
+                    height: 450px;
+                    line-height: 240%;
                 }
             }
-            #acd-check
+            
+            #long-menu
             {
                 display: none;
+            }
+        }
 
-                &:not(:checked) + .acd-label
+        @media screen and (min-width: 1001px)
+        {
+            #short-menu
+            {
+                display: none;
+            }
+
+            #long-menu
+            {
+                height: auto;
+                width: 100%;
+                padding: 0 inherit;
+
+                .acd-check
                 {
-                    width: 60px;
-                    line-height: 12px;
-                    transition-delay: .5s;
+                    display: none;
                 }
-                &:checked + .acd-label
+
+                .sections-menu
                 {
-                    width: 100%;
-                    padding-right: 30px;
-                    line-height: 250%;
-                    transition-delay: 0;
-                }
-                &:not(:checked) + .acd-label + .acd-content
-                {
-                    visibility: hidden;
                     height: 0;
-                    transition-delay: 0;
-                }
-                &:checked + .acd-label + .acd-content
-                {
-                    position: absolute;
-                    top: 25px;
-                    right: 0;
-                    visibility: visible;
                     width: 100%;
-                    height: 450px;
-                    line-height: 250%;
-                    transition-delay: .5s;
+                    margin: 0;
+                    padding: 0;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: 0.5s;
+                }
+
+                .acd-check:checked + .sections-menu
+                {
+                    height: 375px;
+                    visibility: visible;
+                    opacity: 1;
+                    margin-bottom: 5px;
+                    line-height: 240%;
                 }
             }
         }
     }
-    @media screen and (min-width:1056px) 
-    {
-        .acd-menu
-        {
-            display: none;
-        }
-    }
+
 
     main
     {
@@ -262,6 +261,27 @@ body
             {
                 text-align: center;
             }
+            .real-code
+            {
+                background-color: gainsboro;
+                border: solid 1px black;
+                border-radius: 5px;
+                margin: 2%;
+                padding: 2px;
+                overflow-x: scroll;
+                pre
+                {
+                    margin: 0;
+                    padding: 0 2%;
+                    width: 96%;
+                    overflow-x: scroll;
+
+                    code
+                    {
+                        overflow-x: scroll;
+                    }
+                }
+            }
             
             a
             {
@@ -284,7 +304,140 @@ body
                 margin: 0 5%;
                 text-align: center;
             }
+
+            .unagi
+            {
+                margin: 5%;
+                float: left;
+                width: 90%;
+                
+                
+                @media screen and (max-width:650px)
+                {
+                    text-align: center;
+
+                    img
+                    {
+                        margin: auto calc((100% - 100px)/2);
+                        padding: 0;
+                        width: 100px;
+                        clear: both;
+                    }
+
+                    .balloon
+                    {
+                        position: relative;
+                        display: inline-block;
+                        margin: 1.5em 0;
+                        padding: 7px 10px;
+                        max-width: 100%;
+                        color: #555;
+                        font-size: 16px;
+                        background: #FFF;
+                        border: solid 3px #555;
+                        box-sizing: border-box;
+                        border-radius: 2px;
+
+                        &:before
+                        {
+                            content: "";
+                            position: absolute;
+                            top: -24px;
+                            left: 50%;
+                            margin-left: -15px;
+                            border: 12px solid transparent;
+                            border-bottom: 12px solid #FFF;
+                            z-index: 2;
+                        }
+
+                        &:after
+                        {
+                            content: "";
+                            position: absolute;
+                            top: -30px;
+                            left: 50%;
+                            margin-left: -17px;
+                            border: 14px solid transparent;
+                            border-bottom: 14px solid #555;
+                            z-index: 1;
+                        }
+
+                        p
+                        {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                }
+
+                @media screen and (min-width:651px)
+                {
+                    img
+                    {
+                        margin: 0;
+                        padding: 0;
+                        width: 100px;
+                        float: left;
+                    }
+
+                    .balloon 
+                    {
+                        position: relative;
+                        display: inline-block;
+                        margin: 1.5em 0 1.5em 15px;
+                        padding: 7px 10px;
+                        max-width: calc(100% - 120px);
+                        color: #555;
+                        font-size: 16px;
+                        background: #FFF;
+                        border: solid 3px #555;
+                        box-sizing: border-box;
+                        border-radius: 2px;
+                        
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: -24px;
+                            margin-top: -12px;
+                            border: 12px solid transparent;
+                            border-right: 12px solid #FFF;
+                            z-index: 2;
+                        }
+                        
+                        &:after 
+                        {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: -30px;
+                            margin-top: -14px;
+                            border: 14px solid transparent;
+                            border-right: 14px solid #555;
+                            z-index: 1;
+                        }
+                        
+                        p {
+                          margin: 0;
+                          padding: 0;
+                        }
+                    } 
+                }
+            }
             
+            .sub-section
+            {
+                padding: 0;
+                margin: 10% 0;
+                width: 100%;
+            }
+
+            .snake-line
+            {
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
         }
         
         @media screen and (max-width: 600px)
@@ -342,7 +495,7 @@ body
         padding: 1px;
         color: white;
 
-        @media screen and(max-width: 1200px)  // for smartphones 
+        @media screen and(max-width: 1250px)  // for smartphones 
         {
             height: 250px;
 
@@ -378,7 +531,7 @@ body
             }
         }
 
-        @media screen and(min-width: 1200px) // for tablets and PCs
+        @media screen and(min-width: 1251px) // for tablets and PCs
         {
             height: 180px;
 

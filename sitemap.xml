@@ -7,54 +7,313 @@
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://Saito-Saito-Saito.github.io/chess/stage2/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage1</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage1/section1</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage1/section2</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage1/section3</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage2</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage2/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage2/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage2/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage2/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage3/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://Saito-Saito-Saito.github.io/chess/stage4-1/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage3/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://Saito-Saito-Saito.github.io/chess/stage4-2/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage3/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage4/section5/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage5/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section5/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage5/section6/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage6/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage6/section1</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage6/section2</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage6/section3</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage7/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section5/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section6/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section7/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section8/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage7/section9/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage8/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section5/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section6/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage8/section7/</loc>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://Saito-Saito-Saito.github.io/chess/stage9/</loc>
-        <lastmod>2020-06-29</lastmod>
+        <lastmod>2020-09-01</lastmod>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage9/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage9/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage9/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage9/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage10/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage10/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage10/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage10/section3/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage10/section4/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage11/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage11/section1/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://Saito-Saito-Saito.github.io/chess/stage11/section2/</loc>
+        <lastmod>2020-09-01</lastmod>
+        <priority>0.8</priority>
+    </url>
+
+
+
+
     <url>
         <loc>https://Saito-Saito-Saito.github.io/reversi</loc>
         <lastmod>2020-06-29</lastmod>

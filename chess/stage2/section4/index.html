@@ -1,0 +1,506 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 2-4</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、駒の動きを表す文字列をプレーヤーが理解できる形と機械が理解できる形で相互変換する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s2-4">
+            <h2>2-4　文字を変換する機能を設定する</h2>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/code/#IO" target="_blank">IO.py</a> ファイルをご覧ください。先頭のコメントの下に</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+from config import *
+                        </code>
+                    </pre>
+                </div>
+                <p>ってのがありますね。「config.py のファイルの中身は好き勝手つかっていいよ」って意味です。普通の import なら config. をつけなきゃいけないところを、一切つけなくていいんです。</p>
+                <p>特に a, b, c, ... って <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> 番号を表すアルファベットがあるでしょう？あんなもんに config. って一々つけてちゃ気が持ちませんよ。せっかくコードを書きやすく読みやすいように定数の名前つけたのに、 config.f - config.d とか、そんなん</p>
+                <p class="stress">書いてられっか。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>直下で 2-1 で作った setLogger 関数を使って local_logger というロガーを宣言しています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+local_logger = setLogger(__name__)
+                        </code>
+                    </pre>
+                </div>
+                <p>「このモジュール（ファイル）では原則 local_logger を使いましょう」という意図で宣言しています。引数の __name__ にはこのモジュールの名前がそのまま入ります。つまりロガーの名前は IO となります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>その下、 ToggleType 関数をご覧ください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def ToggleType(target, logger=local_logger):
+    # piece ID -> piece letter
+    if type(target) is int:
+        if target == EMPTY:
+            return ' '
+        elif target == P * BLACK:
+            return '♙'
+        elif target == R * BLACK:
+            return '♖'
+        elif target == N * BLACK:
+            return '♘'
+        elif target == B * BLACK:
+            return '♗'
+        elif target == Q * BLACK:
+            return '♕'
+        elif target == K * BLACK:
+            return '♔'
+        elif target == P * WHITE:
+            return '♟'
+        elif target == R * WHITE:
+            return '♜'
+        elif target == N * WHITE:
+            return '♞'
+        elif target == B * WHITE:
+            return '♝'
+        elif target == Q * WHITE:
+            return '♛'
+        elif target == K * WHITE:
+            return '♚'
+        # invalid target value
+        else:
+            logger.error('UNEXPECTED INPUT VALUE of A PIECE into IO.ToggleType')
+            return False
+
+    # str -> int
+    elif type(target) is str:
+        # a str number -> int
+        if target.isdecimal():
+            return int(target)
+        # file id
+        elif ord('a') &lt;= ord(target) &lt;= ord('h'):
+            return ord(target) - ord('a') + 1
+        # the kind of piece -> piece no.
+        elif target == 'P':
+            return P
+        elif target == 'R':
+            return R
+        elif target == 'N':
+            return N
+        elif target == 'B':
+            return B
+        elif target == 'Q':
+            return Q
+        elif target == 'K':
+            return K
+        # invalid character
+        else:
+            logger.error('UNEXPECTED INPUT into IO.ToggleType')
+            return False
+
+    # unexpected type
+    else:
+        logger.error('UNEXPECTED INPUT TYPE into IO.ToggleType')
+        return False
+                        </code>
+                    </pre>
+                </div>
+                <p>board の値から盤面を表示するときに使う '♟' などの特殊文字を出力したり、'K' などの駒を表す文字から駒の番号をリターンする機能、それから 'c3' など、マスの位置を表す文字を数字にする機能を実装しています。</p>
+                <p>基本的に盤面をプレーヤーに見せるときと、プレーヤーが入力した棋譜で「どの駒がどこに動いているかな」という情報を扱いやすい形にするのが主な役割となります。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def ToggleType(target, logger=local_logger):
+                        </code>
+                    </pre>
+                </div>
+                <p>引数の target が「board の値は何なの？」「どこのマスを指してるの？」といった情報を表します。一つの変数に複数の意味があると、</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>この target は何を表しているんだ？？</p>
+                    </div>
+                </div>
+                <p>となってしまいそうですが、target の型に応じて場合わけしていきますのでご心配なく。</p>
+                <p>それからもう一つ、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を引数にとっていますよね。これは「このロガーを使ってログをとってくれ」という要望に答えられるようにするためです。詳しくはこちらで力説されていますので、是非ご覧ください。</p>
+                <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701" target="_blank">ログ出力のための print と import logging はやめてほしい</a></p>
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function/#default" class="memo" target="_new">デフォルト引数</a>には早速 local_logger を採用しています。あの冒頭で宣言したやつね。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、関数の本題に入りましょう。まずは target が扱うものを一度整理しましょうか。</p>
+                <table width="90%" cellpadding="10" border="1" style="max-width: 650px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><td>board[<a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a>][<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a>] の値</td><td>駒はあるか、白黒どちらの駒か、駒の種類は何か</td><td>int</td></tr>
+                    <tr><td><a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を表す文字</td><td>ユーザーが入力したのはどの <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> か（1 スタート）</td><td>str</td></tr>
+                    <tr><td><a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> を表す文字</td><td>ユーザーが入力したのはどの <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> か（1 スタート）</td><td>str</td></tr>
+                    <tr><td>駒を表す文字</td><td>ユーザーが入力したのはどの駒か</td><td>str</td></tr>
+                </table>
+                <p>ユーザーからすれば<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/" class="memo" target="_new">リスト</a>の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>は 0 から始めなきゃいけないことなんて知ったこっちゃありませんから、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> も <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> も 1 スタートでお願いします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まずは int 型のときは駒情報しかないことを使って、board の値から駒の特殊文字をリターンする場合をコーディングしていきます。</p>
+                <p>幸い <a href="../../stage1/section2/index.html" target="_new">1-2</a> でうまく設定したおかげで board の値と白黒の各駒は 1 対 1 で対応してくれてます。プレーヤー、種類に応じて特殊文字を使い分けてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    # piece ID -> piece letter
+    if type(target) is int:
+        if target == EMPTY:
+            return ' '
+        elif target == P * BLACK:
+            return '♙'
+        elif target == R * BLACK:
+            return '♖'
+        elif target == N * BLACK:
+            return '♘'
+        elif target == B * BLACK:
+            return '♗'
+        elif target == Q * BLACK:
+            return '♕'
+        elif target == K * BLACK:
+            return '♔'
+        elif target == P * WHITE:
+            return '♟'
+        elif target == R * WHITE:
+            return '♜'
+        elif target == N * WHITE:
+            return '♞'
+        elif target == B * WHITE:
+            return '♝'
+        elif target == Q * WHITE:
+            return '♛'
+        elif target == K * WHITE:
+            return '♚'
+        # invalid target value
+        else:
+            logger.error('UNEXPECTED INPUT VALUE of A PIECE into IO.ToggleType')
+            return False
+                        </code>
+                    </pre>
+                </div>
+                <p>それと、私の実行環境では中抜きの方が黒く見えているのですが、そうでない場合は</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>中抜きは白の方がいいな</p>
+                    </div>
+                </div>
+                <p>とか、ご自分の実行環境に合わせてプログラミングしてください。</p>
+                <p>else で弾かれたところ、駒を表さない int はこの先出番はありませんから、この時点で「引数おかしい」False をリターンしてください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今度は str 型の target を場合わけしてコーディングします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    # str -> int
+    elif type(target) is str:
+        # a str number -> int
+        if target.isdecimal():
+            return int(target)
+        # file id
+        elif ord('a') &lt;= ord(target) &lt;= ord('h'):
+            return ord(target) - ord('a') + 1
+        # the kind of piece -> piece no.
+        elif target == 'P':
+            return P
+        elif target == 'R':
+            return R
+        elif target == 'N':
+            return N
+        elif target == 'B':
+            return B
+        elif target == 'Q':
+            return Q
+        elif target == 'K':
+            return K
+        # invalid character
+        else:
+            logger.error('UNEXPECTED INPUT into IO.ToggleType')
+            return False
+                        </code>
+                    </pre>
+                </div>
+                <p>まず数字が入力されたら、str を int にしてリターンしましょう。<a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> を表す分ですね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # a str number -> int
+        if target.isdecimal():
+            return int(target)
+                        </code>
+                    </pre>
+                </div>
+                <p>ここは</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/" class="memo" target="_new">リスト</a>のインデックスで使うために 1 を引いて...</p>
+                    </div>
+                </div>
+                <p>とか考えて今ここで下手に手を加えるよりも、このリターンされた数字を使うところでどのように手を加えるか判断するのが良さそうです。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> は a から h の小文字のアルファベットで表します。この範囲に target があるかは <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function/#ord" class="memo" target="_new">ord</a> 関数で UNICODE を取得して比較しています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # file id
+        elif ord('a') &lt;= ord(target) &lt;= ord('h'):
+            return ord(target) - ord('a') + 1
+                        </code>
+                    </pre>
+                </div>
+                <p>アルファベットの UNICODE はアルファベット順に付けられていますから、純粋に a の UNICODE から h の UNICODE までの間に入っていれば、target 自身も a から h の中にあることがわかります。</p>
+                <p>また UNICODE は 16 進数の数であらわされますから、二つの文字の差を取ればそのまま文字番号の差になってくれます。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>16 進数とかいうやつ、そのまま普通の数みたいに使ってええの？</p>
+                    </div>
+                </div>
+                <p>数の書き方が違うだけで数の意味は同じなので、全く問題ありません。ただし <a href="../../stage1/section2/index.html" target="_new">1-2</a> では a を 1 としていますから、計算するとき最後に +1 を忘れないこと。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>最後にユーザーが入力する駒を表す文字を判読します。具体的には</p>
+                <table border="1" cellpadding="10" style="max-width: 450px; margin: 0 5%;border: solid black 1px; border-collapse: collapse;">
+                <tr><td>ポーン：PAWN</td><td>P</td></tr>
+                <tr><td>ルーク：ROOK</td><td>R</td></tr>
+                <tr><td>ナイト：KNIGHT</td><td>N</td></tr>
+                <tr><td>ビショップ：BISHOP</td><td>B</td></tr>
+                <tr><td>クイーン：QUEEN</td><td>Q</td></tr>
+                <tr><td>キング：KING</td><td>K</td></tr>
+                </table>
+                <p>を判読して、2-2 で決めた駒の種類を表す数字に変換、リターンします。</p>
+                    <div class="unagi">
+                        <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                        <div class="balloon">
+                            <p>数字...？P とか R とかが？</p>
+                        </div>
+                    </div>
+                    <p><a href="../section2/index.html" target="_new">2-2</a> で値を入れてますよ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # the kind of piece -> piece no.
+        elif target == 'P':
+            return P
+        elif target == 'R':
+            return R
+        elif target == 'N':
+            return N
+        elif target == 'B':
+            return B
+        elif target == 'Q':
+            return Q
+        elif target == 'K':
+            return K
+                        </code>
+                    </pre>
+                </div>
+                <p>これにて target が正常な場合は終了です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、target がここまで残ったらもう手のつけようがございません。「引数の値がおかしい」ということで False をリターンします。</p>
+                <p>もっと言えば「型はあってるけど中身がおかしい」というのと「型の時点で受け付けられない」というのと、2 種類のエラーをログにとってあげるのが親切なんじゃないでしょうか。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # invalid character
+        else:
+            logger.error('UNEXPECTED INPUT into IO.ToggleType')
+            return False
+
+    # unexpected type
+    else:
+        logger.error('UNEXPECTED INPUT TYPE into IO.ToggleType')
+        return False
+                        </code>
+                    </pre>
+                </div>
+                <p>ここまでで ToggleType は終わりました。下に instruction が残っていますが、こちらは Stage 7 で扱います。</p>
+                <p>いや、「焦らすのはよくない」ってみんなさんおっしゃいますけどね、私こんな関数最初から考えてたんじゃないんですから、むしろ説明としては自然でしょうよ。</p>
+                <p class="stress">欲しがりはいけませんよ、奥さん。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../../stage3/index.html">NEXT　Stage 3　盤面のクラスの基本機能を作る</a></p>
+        </section>
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

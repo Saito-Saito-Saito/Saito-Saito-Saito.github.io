@@ -1,0 +1,510 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 6-3</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、チェックメイトやステイルメイトを受けているか判別する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        
+        <section id="s6-3">
+            <h1>Stage 6　勝敗を判定する</h1>
+            <h2>6-3　チェックメイト・ステイルメイトを判定する</h2>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>チェックメイトで勝ちたい。あわよくば相手や機械に『チェックメイト』と言わせてチヤホヤされてみたい</p>
+                    </div>
+                </div>
+                <p>チェスのゲームをやる人はみんなこういう頭をしています。その期待に応えてあげるのがゲームデザイナーの役目じゃないですか。応えてあげましょうよ。</p>
+                <p>ということで<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>を判別する機能をこしらえます。それが <a href="https://Saito-Saito-Saito.github.io/chess/code/#board" target="_new">board.py</a> の checkmatejudge <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>になります。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def checkmatejudge(self, matee, logger=None):
+        ### LOGGER SETTING
+        logger = logger or self.logger
+        
+
+        # COUNTING CHECK; if not checked, it is not checkmate
+        if self.checkcounter(matee) in [False, 0]:
+            logger.debug('NOT CHECKED; it is not checkmate')
+            return False
+        
+
+        # SEARCHING ALL THE MOVES MATEE CAN
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # cloning the board
+                            local_board = Board(board=self.board, target=self.ep_target, castl_k=self.castl_k, castl_q=self.castl_q, player=matee)
+                            # moving the local board and counting up check
+                            if local_board.move(frFILE, frRANK, toFILE, toRANK, Q) and local_board.checkcounter(matee) == 0:
+                                logger.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                    logger.debug('motion from "FR = {}, {}" is unavailable'.format(frFILE, frRANK))
+
+        # completing the loop, there is no way to flee
+        return True
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まずは引数です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def checkmatejudge(self, <span style="font-weight: bold;">matee</span>, logger=None):
+                        </code>
+                    </pre>
+                </div>
+                <p>引数の matee は<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a></p>
+                <p class="stress">される側</p>
+                <p>のプレーヤーです。お間違えなきよう。</p>
+                <p>まずはいつも通りロガーを設定しましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def checkmatejudge(self, matee, logger=None):
+        <span style="font-weight: bold;">### LOGGER SETTING</span>
+        <span style="font-weight: bold;">logger = logger or self.logger</span>
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>なんだよいつも通りって。しっかり説明せえよ</p>
+                    </div>
+                </div>
+                <p>なら <a href="../../stage4/section1/index.html" target="_new">4-1</a> でもみてみればいいんじゃないですか。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>というのは「すでに<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されていて、どの駒をどのように動かしても<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を逃れられない」状況ですよね。チェックされていなければそもそもチェックメイトではありません。</p>
+                <p>ですから<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の一番上では<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されていない状況に対して False をリターンしています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # COUNTING CHECK; if not checked, it is not checkmate
+        if self.checkcounter(matee) in [False, 0]:
+            logger.debug('NOT CHECKED')
+            return False
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ここから先のフローチャートを先に上げておきます。確認してください。</p>
+                <img src="cmfloatchart.png" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
+                <p>幾重もの for ループは「matee のすべての駒の正しい動かし方」をシラミつぶしに見ていることを意味します。まず外側の 2 つで移動元 fr となるマスをおさえます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # SEARCHING ALL THE MOVES MATEE CAN
+        <span style="font-weight: bold;">for frFILE in range(SIZE):</span>
+            <span style="font-weight: bold;">for frRANK in range(SIZE):</span>
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                        </code>
+                    </pre>
+                </div>
+                <p>それが matee の駒であれば、次の 2 重 for ループで駒の移動先 to をシラミつぶしに探します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # SEARCHING ALL THE MOVES MATEE CAN
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                <span style="font-weight: bold;">if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:</span>
+                    <span style="font-weight: bold;"># searching all TO the piece can reach</span>
+                    <span style="font-weight: bold;">for toFILE in range(SIZE):</span>
+                        <span style="font-weight: bold;">for toRANK in range(SIZE):</span>
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、移動元 fr と移動先 to が決まったところで、この後どうしましょうか。プログラムする人間の心理としては</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>現状の self から駒を動かして<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を回避できるか見てみたい</p>
+                    </div>
+                </div>
+                <p>と思っています。要はチェックを解消できる方法が一つでもあればチェックメイトじゃないわけですから。</p>
+                <p>ですが self で一度駒を動かしてしまうと再び元の状態に戻せない以上、この Board そのものに手をつけて駒を動かすのは禁忌です。言い換えると、このループの内側では</p>
+                <p>
+                    <ul>
+                        <li>self を完璧に再現して駒を動かしてみたい</li>
+                        <li>self 自体を触ることは許されない</li>
+                    </ul>
+                </p>
+                <p>というジレンマを抱えています。そこで local_board という、self を完コピした、まったく新しい<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#instance_v" class="memo" target="_new">インスタンス</a>を作ります。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>完コピ？どうやんの</p>
+                    </div>
+                </div>
+                <p>local_board を宣言するときの引数に self の情報をありったけ突っ込むんです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # cloning board
+                            <span style="font-weight: bold;">local_board = Board(board=self.board, target=self.ep_target, castl_k=self.castl_k, castl_q=self.castl_q, player=matee)</span>
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>影武者みたいなもんやな。でも最後の player は matee で self とは違うな</p>
+                    </div>
+                </div>
+                <p>ええ、ここだけは調節してください。駒を動かして<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を回避するのは<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されている側ですから。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>local_board を宣言したあとに local_board.move を発動して駒を動かします。移動元と移動先は for ループのパラメーターどおりです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                            # cloning board
+                            local_board = Board(board=self.board, target=self.ep_target, castl_k=self.castl_k, castl_q=self.castl_q, player=matee)
+                            # moving the local board and count up check
+                            if <span style="font-weight: bold;">local_board.move(frFILE, frRANK, toFILE, toRANK, Q)</span> and local_board.checkcounter(matee) == 0:
+                                logger.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/question.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>if の中で move を発動してるけど、これで実際に local_board の駒動いてんのか？</p>
+                    </div>
+                </div>
+                <p>大丈夫ですよ。move のリターン値「移動成功/失敗」というのを計算する過程で駒を動かしていますから。</p>
+                <p>ここで local_board について、</p>
+                <p>
+                    <ul>
+                        <li>move から True (移動成功)</li>
+                        <li>checkcounter から 0 (<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されていない)</li>
+                    </ul>
+                </p>
+                <p>が得られれば「移動して<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を回避できる」という意味になりますから、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>ではないということになります。False をリターンしてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                            # moving the local board and count up check
+                            if local_board.move(frFILE, frRANK, toFILE, toRANK, Q) and local_board.checkcounter(matee) == 0:
+                                logger.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                        </code>
+                    </pre>
+                </div>
+                <p>移動元 FR の駒をどうやって動かしてもチェックを回避できない時はロガーでその旨知らせてあげます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                            logger.debug('"FR = {}, {}" was unavailable'.format(frFILE, frRANK))
+                        </code>
+                    </pre>
+                </div>
+                <p>ループを抜けきってしまいますと、「どのように動かしても<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を免れることはできない」ということになってしまいますので、「<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>されてる」True をリターンしましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # completing the loop, there is no way to flee
+        return True
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今度は決着のつき方３つ目, <a href="https://Saito-Saito-Saito.github.io/chess/memo/#stalemate_v" class="memo" target="_new">ステイルメイト</a>です。stalematejudge <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で判別します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def stalematejudge(self, matee, logger=None):
+        ### LOGGER SETTING
+        logger = logger or self.logger
+        
+
+        ### COUNTING CHECKS; checked, it is not stalemate
+        if self.checkcounter(matee) not in [0, False]:
+            logger.debug('CHECKED; it is not stalemate')
+            return False
+
+
+        ### SEARCHING ALL THE MOVES MATEE CAN
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # cloning the board
+                            local_board = Board(board=self.board, target=self.ep_target, castl_k=self.castl_k, castl_q=self.castl_q, player=matee)
+                            # moving the local board and counting up check
+                            if local_board.move(frFILE, frRANK, toFILE, toRANK, Q) and local_board.checkcounter(matee) == 0:
+                                logger.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                    logger.debug('motion from "FR = {}, {}" is unavailable'.format(frFILE, frRANK))
+
+        # completing the loop, there is no way to avoid check when moving
+        logger.info('STALEMATE. {} cannot move'.format(self.player))
+        return True
+                        </code>
+                    </pre>
+                </div>
+                <p>相変わらず引数の matee は「<a href="https://Saito-Saito-Saito.github.io/chess/memo/#stalemate_v" class="memo" target="_new">ステイルメイト</a>される側」つまり動けなくなってしまったか確認したい方のプレーヤー番号です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def stalematejudge(self, <span style="font-weight: bold;">matee</span> , logger=None):
+                        </code>
+                    </pre>
+                </div>
+                <p>もう強調しなくていいでしょ？しましょうか？引数はステイルメイト</p>
+                <p class="stress">される側</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>やることはほぼほぼ<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>と変わりません。唯一の違いは、「現状で<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>を受けていない」ことです。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の頭で調べています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        ### LOGGER SETTING
+        logger = logger or self.logger
+        
+        <span style="font-weight: bold;">### COUNTING CHECKS; checked, it is not stalemate
+        if self.checkcounter(matee) not in [0, False]:
+            logger.debug('CHECKED')
+            return False</span> 
+                        </code>
+                    </pre>
+                </div>
+                <p><a href="../section2/index.html" target="_new">6-2</a> を確認すればわかりますが、もし checkcounter が 0 でも False でもなければ間違いなく<a href="https://Saito-Saito-Saito.github.io/chess/memo/#check_v" class="memo" target="_new">チェック</a>されていますから、<a href="https://Saito-Saito-Saito.github.io/chess/memo/#stalemate_v" class="memo" target="_new">ステイルメイト</a>とは言えません。</p>
+
+            </section>            
+            <p>この第一関門を突破したものだけが次なるステップへ進むことができます。4 重の for ループです。そう、6-3 の<a href="https://Saito-Saito-Saito.github.io/chess/memo/#checkmate_v" class="memo" target="_new">チェックメイト</a>とまったく同じことをします。コピペでいいですよ、コピペで。</p>
+            <div class="real-code">
+                <pre>
+                    <code>
+        ### SEARCHING ALL THE MOVES MATEE CAN
+        for frFILE in range(SIZE):
+            for frRANK in range(SIZE):
+                if fundam.PosNeg(self.board[frFILE][frRANK]) == matee:
+                    # searching all TO the piece can reach
+                    for toFILE in range(SIZE):
+                        for toRANK in range(SIZE):
+                            # cloning board
+                            local_board = Board(board=self.board, target=self.ep_target, castl_k=self.castl_k, castl_q=self.castl_q, player=matee)
+                            # moving the local board and count up check
+                            if local_board.move(frFILE, frRANK, toFILE, toRANK, Q) and local_board.checkcounter(matee) == 0:
+                                logger.info('THERE IS {}, {} -> {}, {}'.format(frFILE,frRANK,toFILE,toRANK))
+                                return False
+                    logger.debug('"FR = {}, {}" was unavailable'.format(frFILE, frRANK))
+        # completing the loop, there is no way to avoid check when moving
+        logger.info('STALEMATE. {} cannot move'.format(self.player))
+        return True
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section>
+            <p><a href="../../stage7/index.html">NEXT　Stage 7　入力の棋譜を駒の動きに変換する</a></p>
+        </section>
+    </main>
+    
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

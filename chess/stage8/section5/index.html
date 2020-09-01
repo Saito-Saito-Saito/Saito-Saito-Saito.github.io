@@ -1,0 +1,444 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 8-5</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、プレーヤーが途中で負けや引き分けを認めてゲームを終了するリザインの機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h1>Stage 8　ゲームを進行する</h1>
+            <h2>8-4　リザインを処理する</h2>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#resign_v" class="memo" target="_new">リザイン</a>のイベントコードの処理はこんなもん。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # resign code
+        if main_board.s in ['X', 'x']:
+            winner = -main_board.player
+            break
+                        </code>
+                    </pre>
+                </div>
+                <p>「1-0」とかで<a href="https://Saito-Saito-Saito.github.io/chess/memo/#resign_v" class="memo" target="_new">リザイン</a>できることを知らない人のために、脱出用のコマンド X を用意してあげています。</p>
+                <p>入力している人が負けを認める形にしたいので、winner は相手です。これがもし winner を自分にできるようにしてしまうと、ゲーム始まった瞬間に</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>はい俺の勝ちー</p>
+                    </div>
+                </div>
+                <p>とできてしまいますので。</p>
+                <p>break は大枠の while ループからの脱出。これでゲーム終了させます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>"Z" は Stage 9 でやります。</p>
+                <p class="stress">Stage 9 でやります。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>そんな突っかかるなって</p>
+                    </div>
+                </div>
+                <p>これ以外の正規の入力は s_analyze メソッドで対処できますね。対処できるように <a href="../../stage7/index.html" target="_new">Stage 7</a> であんなに頑張って s_analyze をコーディングしたんですから。</p>
+                <p>では一度ここから先のコードを見てみましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # motion detection
+        motion = main_board.s_analyze()
+        # game set (resign)
+        if type(motion) is int:
+            if motion == EMPTY:
+                # necessary to agree to end the game
+                if main_board.player == WHITE:
+                    print('Do you agree, BLACK (y/n)? >>>', end=' ')
+                elif main_board.player == BLACK:
+                    print('Do you agree, WHITE (y/n)? >>>', end=' ')
+                else:
+                    logger.error('UNEXPECTED VALUE of PLAYER in the while loop')
+                    print('SYSTEM ERROR')
+                    sys.exit('SYSTEM ERROR')
+                # when agreed
+                if input() in ['y', 'Y']:
+                    winner = EMPTY
+                    break
+                # when rejected
+                else:
+                    main_board.print(turnmode=turnmode, reverse=False)
+                    continue
+                    continue
+            elif motion == WHITE == -main_board.player:
+                winner = WHITE
+                break
+            elif motion == BLACK == -main_board.player:
+                winner = BLACK
+                break
+            else:
+                print('IVNALID INPUT')
+                continue
+        # invalid input (here, valid motion is conducted)
+        if motion == False or main_board.move(*motion) == False:
+            print('INVALID INPUT/MOTION')
+            continue
+
+        ...
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/cheating.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>相変わらずなげーな</p>
+                    </div>
+                </div>
+                <p>プレーヤーによって場合わけすることが多いので、見た目よりも記述量は少なく感じると思いますよ。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず s_analyze の結果を motion という変数に格納しています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        <span style="font-weight: bold;"># motion detection
+        motion = main_board.s_analyze()</span>
+        # game set (resign)
+        if type(motion) is int:
+            ...
+                        </code>
+                    </pre>
+                </div>
+                <p>s_analyze の返り値の型はこんな感じ。</p>
+                <table width="90%" cellpadding="10" border="1" style="max-width: 600px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><td>駒を動かす</td><td>list</td><td colspan="2">[frFILE, frRANK, toFILE, toRANK, promote]</td></tr>
+                    <tr><td rowspan="3">勝敗</td><td rowspan="3">int</td><td>白勝ち (1-0)</td><td>WHITE (== 1)</td></tr>
+                    <tr><td>黒勝ち (0-1)</td><td>BLACK (== -1)</td></tr>
+                    <tr><td>引き分け (1/2 - 1/2)</td><td>EMPTY (== 0)</td></tr>
+                    <tr><td>エラー</td><td>bool</td><td colspan="2">False</td></tr>
+                </table>
+                <p>したがって、motion からもリザインを判断できるようにしなければいけません。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>おいおい、1-0 ってちゃんと書いたのにゲーム終わんねーぞクソが</p>
+                    </div>
+                </div>
+                <p>とか言われないようにね。</p>
+                <p>表の通り、motion が int 型であればリザインですから、</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if type(motion) is int:
+                        </code>
+                    </pre>
+                </div>
+                <p>として判断します。</p>
+                <p>if の中身はイベントコードで "X" を入力した時と大体変わらないんですが、引き分けの時はしっかり相手の許可をとりましょう。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/cheating.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ちょっとこの感じ負ける気しかしないから引き分けにしとくわ</p>
+                    </div>
+                </div>
+                <p>って乱発されたらたまったもんじゃないでしょう。だから必ず相手に同意するか聞いてください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>では相手が同意するかお伺いをたてる機能を実装します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            if motion == EMPTY:
+                # necessary to agree to end the game
+                if main_board.player == WHITE:
+                    print('Do you agree, BLACK (y/n)? >>>', end=' ')
+                elif main_board.player == BLACK:
+                    print('Do you agree, WHITE (y/n)? >>>', end=' ')
+                else:
+                    logger.error('UNEXPECTED VALUE of PLAYER in the while loop')
+                    print('SYSTEM ERROR')
+                    sys.exit('SYSTEM ERROR')
+                # when agreed
+                if input() in ['y', 'Y']:
+                    winner = EMPTY
+                    break
+                # when rejected
+                else:
+                    main_board.print(turnmode=turnmode, reverse=False)
+                    continue
+                        </code>
+                    </pre>
+                </div>
+                <p>一つ一つみていきましょう。まず最初の if 分岐は「引き分けかどうか」です。引き分けでなければ相手の同意は不要でしょ？</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ダメだ。勝手に負けるのは許さん</p>
+                    </div>
+                </div>
+                <p>って、漫画とかならよくありそうですが現実ではあまり機会がないでしょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>その次は実際に相手プレーヤーにお伺いする文言です。「引き分けしたいって言ってますけど、よろしいですか？」ということ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                # necessary to agree to end the game
+                if main_board.player == WHITE:
+                    print('Do you agree, BLACK (y/n)? >>>', end=' ')
+                elif main_board.player == BLACK:
+                    print('Do you agree, WHITE (y/n)? >>>', end=' ')
+                else:
+                    logger.error('UNEXPECTED VALUE of PLAYER in the while loop')
+                    print('SYSTEM ERROR')
+                    sys.exit('SYSTEM ERROR')
+                        </code>
+                    </pre>
+                </div>
+                <p>もし答えが yes なら引き分けとしますので、winner を EMPTY にして全体を回してる while ループから脱出します。<a href="../section2/index.html" target="_new">8-2</a> からずっと回してるやつ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                # when agreed
+                if input() in ['y', 'Y']:
+                    winner = EMPTY
+                    break
+                        </code>
+                    </pre>
+                </div>
+                <p>それ以外ではもちろんゲームを終わらせるわけにはいきませんから、<a href="../section4/index.html" target="_new">8-4</a> のヘルプの後のように盤面を再表示して while 先頭に戻ります。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+                # when rejected
+                else:
+                    main_board.print(turnmode=turnmode, reverse=False)
+                    continue
+                        </code>
+                    </pre>
+                </div>
+                <p>ここまでで引き分けのリザインの実装は完了です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>負けを認める場合のコードも実装しますよ。てかそもそもこっちが本題。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            elif motion == WHITE == -main_board.player:
+                winner = WHITE
+                break
+            elif motion == BLACK == -main_board.player:
+                winner = BLACK
+                break
+                        </code>
+                    </pre>
+                </div>
+                <p>motion が WHITE であれば黒が負けを認めていますので、winner は WHITE, 逆も然りです。またリザインは必ず</p>
+                <p class="stress">自分が負けを認める</p>
+                <p>形でないといけませんから、motion が WHITE のときは player が BLACK か、逆なら逆かもみてあげる必要があります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>最後に motion が int でありながら、ここまでどこにも引っかかってこなかった可哀想な子たちをどうにかしてあげます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            else:
+                print('IVNALID INPUT')
+                continue
+                        </code>
+                    </pre>
+                </div>
+                <p>以上でリザインの処理は終了です。お疲れ様でした。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="../section6/index.html">NEXT　8-6　盤上で駒を動かす</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

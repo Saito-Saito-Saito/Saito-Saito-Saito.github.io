@@ -1,0 +1,485 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでチェスを作る 4-2</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、ポーンの動きを判定します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s4-2">
+            <h1>Stage 4　駒の動きを判定する</h1>
+            <h2>4-2　ポーンの動きを判定する</h2>
+            <section class="sub-section">
+                <p>ポーンは実に多彩な動きをみせてくれます。しかも白黒あわせて 16 個もありますからね、戦いにおいてもかなり重要な駒になるわけですよ。ええ、ですから、基本の動きに加えて例外などなどルールの量がめちゃめちゃ多い。まったく</p>
+                <p class="stress">無駄なもんばっか作りおって。</p>
+                <p>ということで、ルール自体は他の方のサイトに任せるとして、我々はさっさとコーディング進めてしまいましょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず基本となる動きです。ポーンは様々ルールはあれど、やはりいちばんよく使うのは「一歩前進」ですね。この動きができる条件は、</p>
+                <p>
+                    <ul>
+                        <li>横に動かない</li>
+                        <li>盤面の外に出ない</li>
+                        <li>前のマスに駒が置かれていない</li>
+                    </ul>
+                </p>
+                <p>でした。</p>
+                <img src="onestep-available.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>そして、いちばん相手側、盤面の端まで来たら必ずクイーン・ルーク・ナイト・ビショップのいずれかに<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>しなければいけません。</p>
+                <img src="promotion.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>キングとポーン以外の駒なら何にでもプロモーションできます。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>プロモーションも一緒に処理すんのか</p>
+                    </div>
+                </div>
+                <p>ではコードを見ていきましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # PAWN
+        elif piece == PAWN:
+            # not promoting at the edge
+            if (toRANK == 8 - 1 or toRANK == 1 - 1) and promote not in [R, N, B, Q]:
+                logger.info('NECESSARY TO PROMOTE')
+                return False
+            # normal motion (one step forward); the same FILE, appropriate RANK, TO = EMPTY
+            # NOTE: if player is WHITE (=1), the rank number has to increase. vice versa
+            if frFILE == toFILE and toRANK - frRANK == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # normal capturing; next FILE, appropriate RANK, TO = opponent
+            if abs(toFILE - frFILE) == 1 and toRANK - frRANK == player and fundam.PosNeg(self.board[toFILE][toRANK]) == -player:
+                return True
+            # first two steps; adequate frRANK the same FILE, appropriate RANK, passing squares are EMPTY
+            if ((player == WHITE and frRANK == 2 - 1) or (player == BLACK and frRANK == 7 - 1)) and frFILE == toFILE and toRANK - frRANK == 2 * player and self.board[frFILE][frRANK + player] == self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and toFILE == self.ep_target[FILE] and toRANK - self.ep_target[RANK] == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+            # all other pawn moves are invalid
+            logger.debug('INVALID MOTION of PAWN')
+            return False
+                        </code>
+                    </pre>
+                </div>
+                <p>先頭 elif となっているのは piece == EMPTY つまり移動元に駒がない場合に続けているからですね。</p>
+                <p>最上部の if 文は「端についたのに<a href="https://Saito-Saito-Saito.github.io/chess/memo/#promotion_v" class="memo" target="_new">プロモーション</a>してないロクデナシをしょっぴく」という意味です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # PAWN
+        elif piece == PAWN:
+            <span style="font-weight: bold;"># not promoting at the edge
+            if (toRANK == 8 - 1 or toRANK == 1 - 1) and promote not in [R, N, B, Q]:
+                logger.info('NECESSARY TO PROMOTE')
+                return False</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>プレーヤーの色で場合分けする必要はありません。白は第 1 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> に、黒は第 8 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> にポーンを置くことがありませんから。</p>
+                <p>次が基本動作のコーディング、ここで True を返す条件は、</p>
+                <p>
+                    <ul>
+                        <li><a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> が同じ</li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の移動が適切</li>
+                        <li>移動先に何もない</li>
+                    </ul>
+                </p>
+                <p>です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # normal motion (one step forward); the same FILE, appropriate RANK, TO = EMPTY
+            # NOTE: if player is WHITE (=1), the rank number has to increase. vice versa
+            if frFILE == toFILE and toRANK - frRANK == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>なんで rank の差をとって player と比較してんだ？</p>
+                    </div>
+                </div>
+                <p>実はこれ、ちょっとチートっぽい計算なんですよ。白の場合で考えてみましょう。白がポーンを進めるとき、rank の番号が 1 つ増えますから、toRANK - frRANK = 1 となります。一方で、<a href="../../stage2/section2/index.html" target="_new">2-2</a> で WHITE = 1 と定義していますよね。だから</p>
+                <div class="real-code">
+                    <pre style="width: 100%;">
+                        <code>
+            if frFILE == toFILE and toRANK - frRANK == player ...
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>として <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の移動が適切か確かめています。黒の場合は <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> の番号が 1 つ減りますし BLACK = -1 と定義しているので、同じように確認が取れます。嘘だと思います？いいですよご覧なさいよ。</p>
+                <img src="pawnmotion.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>次の elif 文は「相手の駒をとる通常の場合」について確かめています。True を返す条件は、</p>
+                <p>
+                    <ul>
+                    <li>ひとつ隣の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a></li>
+                    <li>(各方からみて)ひとつ前の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a></li>
+                    </ul>
+                </p>
+                <p>となりますね。</p>
+                <img src="capture.png" alt="UNAVAILABLE" width="90%" style="max-width: 200px;">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>通常っていっときながらナナメに動くの腹たつな</p>
+                    </div>
+                </div>
+                <p>ひとつ隣とは <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> の差が 1 か -1 かであることを意味しますから、絶対値 <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions/#abs" class="memo" target="_new">abs</a> を取れば両方 1 として処理できます。したがってコードはこう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # normal capturing; next FILE, appropriate RANK, TO = opponent
+            if abs(toFILE - frFILE) == 1 and toRANK - frRANK == player and fundam.PosNeg(self.board[toFILE][toRANK]) == -player:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>次いで最初の 2 マス移動です。初めて動かすポーンにかぎり発動するこの条件では、白なら第 2 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a>, 黒なら第 7 <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> にあるポーンを動かした時のみ player * 2 のぶん <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> が変化します。</p>
+                <img src="two-steps.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # first two steps; adequate frRANK the same FILE, appropriate RANK, passing squares are EMPTY
+            if ((player == WHITE and frRANK == 2 - 1) or (player == BLACK and frRANK == 7 - 1)) and frFILE == toFILE and toRANK - frRANK == 2 * player and self.board[frFILE][frRANK + player] == self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>ここではプレーヤーの色で場合分けが必要になりますよ。端からひとつ内側の <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> はどちらのポーンもいる可能性があるので。</p>
+                <p>それともうひとつ、移動先だけでなく通過するマスにもほかの駒があってはいけないことも忘れてはいけません。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # first two steps; adequate frRANK the same FILE, appropriate RANK, passing squares are EMPTY
+            if ((player == WHITE and frRANK == 2 - 1) or (player == BLACK and frRANK == 7 - 1)) and frFILE == toFILE and toRANK - frRANK == 2 * player and <span style="font-weight: bold;">self.board[frFILE][frRANK + player] == self.board[toFILE][toRANK] == EMPTY</span>:
+                return True
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ポーンの最後には厄介な<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>が残っています。なんでこんなルール作りおったんでしょうね。まったく</p>
+                <p class="stress">余計なことしてくれやがって。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>の条件をもう一度確認しましょう。</p>
+                <p>
+                    <ul>
+                        <li>相手がポーンを 2 マス動かした直後に</li>
+                        <li>相手から見てそのポーンの手前のマスに</li>
+                        <li>どの駒も置かれていないとき</li>
+                        <li>そのマスに</li>
+                        <li>そのポーンのすぐ隣にある自分のポーンを動かして</li>
+                        <li>相手のポーンをとることができる</li>
+                    </ul>
+                </p>
+                <img src="ep.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/sweat.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>これ全部コーディングすんのかよ</p>
+                    </div>
+                </div>
+                <p>さて、「相手が 2 マス前にポーンを動かした直後、そのポーンの...」ってどうやって検証します？しかも相手がポーンを動かした後、2 マス動かしていないポーンでは<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>できないので、どれが「その」ポーンか記録しておかなければいけません。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/cry.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>国語の問題かよ</p>
+                    </div>
+                </div>
+                <p>そこで一度この Board <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>に戻りましょう。board を定義した直後に ep_target というリストを宣言しています。これに</p>
+                <p class="stress">2 マス進んだ直後のポーンの座標</p>
+                <p>を格納します。例えば白が c2 から c4 にポーンを動かしたら、<code>ep_target = [c - 1, 4 - 1]</code> とします。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>前のターンでポーンを 2 マス進めなかったらどうすんの</p>
+                    </div>
+                </div>
+                <p>いいところに気がつきました。ここで使うのが OVERSIZE です。<a href="../../stage2/section2/index.html" target="_new">2-2</a> で出てきましたよ。</p>
+                <p>明らかに<a href="https://Saito-Saito-Saito.gothub.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に使えない数を使うことで</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>盤上に 2 マス進んだポーンはいねえよ</p>
+                    </div>
+                </div>
+                <p>ということを表してあげます。実際、ep_target を宣言しているところでは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function/#default" class="memo" target="_new">デフォルト引数</a>で [OVERSIZE, OVERSIZE] としていますよね。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>2 マス進んだポーンが盤上からはみ出る＝盤上にない</p>
+                    </div>
+                </div>
+                <p>例えば黒が f7 から f5 にポーンを動かしたら、</p>
+                <p class="code"><code>ep_target = [f - 1, 5 - 1]</code></p>
+                <p>ですが、この後白がポーンを 2 マス進めなかったら</p>
+                <p class="code"><code>ep_target = [OVERSIZE, OVERSIZE]</code></p>
+                <p>となるわけです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>の話に戻りましょう。先ほどお見せした図をもう一度ご覧ください。</p>
+                <img src="ep.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>この図だと ep_target に置いてあるのが白のポーン、その隣に黒のポーンがある構図になります。これをもとに<a href="https://Saito-Saito-Saito.github.io/chess/memo/#enpassan_v" class="memo" target="_new">アンパッサン</a>ができる条件を並べてみると</p>
+                <p>
+                    <ul>
+                        <li>ep_target のとなりに移動元</li>
+                        <li>ep_target の奥(rank が frRANK + player)に移動先</li>
+                        <li>移動先が EMPTY</li>
+                    </ul>
+                </p>
+                <p>となりますよね。コードと一緒に確認しましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and toFILE == self.ep_target[FILE] and toRANK - self.ep_target[RANK] == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>「隣に移動元」であれば <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> が一つぶんだけ違くて <a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は同じですから太字の通り。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if <span style="font-weight: bold;">abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK]</span> and toFILE == self.ep_target[FILE] and toRANK - self.ep_target[RANK] == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>移動先は ep_target と <a href="https://Saito-Saito-Saito.github.io/chess/memo/#file_v" class="memo" target="_new">file</a> が同じ。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and <span style="font-weight: bold;">toFILE == self.ep_target[FILE]</span> and toRANK - self.ep_target[RANK] == player and self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p><a href="https://Saito-Saito-Saito.github.io/chess/memo/#rank_v" class="memo" target="_new">rank</a> は一つ前に進んでいますから player が加わっていますね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and toFILE == self.ep_target[FILE] and <span style="font-weight: bold;">toRANK - self.ep_target[RANK] == player</span> and self.board[toFILE][toRANK] == EMPTY:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>そして「移動先が EMPTY」の判定もお忘れなく。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            # en passant; FR - ep_target, TO - ep_target, TO = EMPTY
+            if abs(self.ep_target[FILE] - frFILE) == 1 and frRANK == self.ep_target[RANK] and toFILE == self.ep_target[FILE] and toRANK - self.ep_target[RANK] == player and <span style="font-weight: bold;">self.board[toFILE][toRANK] == EMPTY</span>:
+                return True
+                        </code>
+                    </pre>
+                </div>
+                <p>さて、ここまででようやくポーンの判定が終わりました。もうポーンに許された動きは残っていませんから、ここまでリターンされなかったものを全て False「動かせない」でリターンしてください。</p>
+                <div class="unagi">
+                    <img src="../../unagi-purple483d8b/sweat.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>これでやっと駒１つかよ</p>
+                    </div>
+                </div>
+                <p>ここまで面倒なのはポーンくらいです。ルーク以降はかなり簡単にカタが着きますから、ここまでコーディングできれば軽快なステップで進めますよ。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="../section3/index.html">NEXT　4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
+        </ul>
+    </footer>
+
+    
+</body>
+</html>

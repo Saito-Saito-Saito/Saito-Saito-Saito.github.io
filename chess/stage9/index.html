@@ -10,125 +10,183 @@
     gtag('config', 'UA-166967736-1');
     </script>
     
+    <title>Pythonプログラミングでチェスを作る 9</title>
+
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で棋譜を使って実行できるチェスのゲームで、ゲームの進行を棋譜の形で記録する機能を実装します。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたもチェスが作れる 9</title>
-    <link rel="stylesheet" href="../stylesheet.css">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/chess/unagi-purple483d8b/normal.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/chess/stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなたも</h1>
-            <h1>チェスが作れる</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>チェスを作る</h1>
         </div>
-        <ul>
-            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
-            <li><a href="#">Stage 9</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/chess/code" target="_blank">Code</a></li>
-        </ul>
     </header>
 
-    <div class="acd-menu">
-        <input type="checkbox" id="acd-check">
-        <label for="acd-check" class="acd-label">MENU</label>
-        <ul class="acd-content">
-            <li><a href="https://saito-saito-saito.github.io/chess">Stage 0&1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage2">Stage 2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage3">Stage 3</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage4-1">Stage 4-1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage4-2">Stage 4-2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage5">Stage 5</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage6">Stage 6</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage7">Stage 7</a></li>
-            <li><a href="https://saito-saito-saito.github.io/chess/stage8">Stage 8</a></li>
-            <li><a href="#">Stage 9</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/chess/code" target="_blank">Code</a></li>
-        </ul>
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="code/index.html">CODE</a></td></tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><label for="acd-check7">Stage 7</label></td>
+                    <td><label for="acd-check8">Stage 8</label></td>
+                    <td><label for="acd-check9">Stage 9</label></td>
+                    <td><label for="acd-check10">Stage 10</label></td>
+                    <td><label for="acd-check11">Stage 11</label></td>
+                    <td><a href="code/index.html">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage1/index.html">Stage 1　プログラムの機能を考える</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section1/index.html">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section2/index.html">1-2　駒の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage1/section3/index.html">1-3　運営の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><span><a href="https://Saito-Saito-Saito.github.io/chess/stage2/index.html">Stage 2　プログラムの土台を作る</a></span></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section1/index.html">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section2/index.html">2-2　定数を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section3/index.html">2-3　インデックスが適正か判定する機能を設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage2/section4/index.html">2-4　文字を変換する機能を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section1/index.html">3-1　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage3/section2/index.html">3-2　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/index.html">Stage 4　駒の動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section1/index.html">4-1　全ての駒で不可能な動きを除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section2/index.html">4-2　ポーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section3/index.html">4-3　ルーク・ナイト・ビショップ・クイーンの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section4/index.html">4-4　キングの動きを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage4/section5/index.html">4-5　駒を飛び越える動きを除外する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/index.html">Stage 5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section1/index.html">5-1　動かせない場合を除外する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section2/index.html">5-2　キャスリングの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section3/index.html">5-3　アンパッサンの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section4/index.html">5-4　プロモーションの例外処理をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section5/index.html">5-5　駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage5/section6/index.html">5-6　パラメーター処理をする</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/index.html">Stage 6　勝敗を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section1//index.html">6-1　キングの位置を特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section2/index.html">6-2　チェックの数を数える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage6/section3/index.html">6-3　チェックメイト・ステイルメイトを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/index.html">Stage 7　入力の棋譜を駒の動きに変換する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section1/index.html">7-1　不要な文字を消去する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section2/index.html">7-2　正規表現でふるいにかける</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section3/index.html">7-3　動かす駒を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section4/index.html">7-4　移動元のマスのヒントを整理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section5/index.html">7-5　移動先とプロモーションを特定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section6/index.html">7-6　移動元の候補を列挙する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section7/index.html">7-7　移動元の候補を絞り込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section8/index.html">7-8　キャスリングの棋譜を処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage7/section9/index.html">7-9　勝敗の棋譜を処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check8" class="acd-check">
+            <ul id="s8-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/index.html">Stage 8　ゲームを進行する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section1/index.html">8-1　ゲームの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/sectino2/index.html">8-2　ゲームセットを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section3/index.html">8-3　駒の動きを入力する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section4/index.html">8-4　ヘルプを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section5.index.html">8-5　リザインを処理する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section6/index.html">8-6　盤上で駒を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage8/section7/index.html">8-7　ゲームセットを処理する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check9" class="acd-check">
+            <ul id="s9-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/index.html">Stage 9　ゲーム進行を記録する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section1/index.html">9-1　記録ファイルの初期設定をする</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section2/index.html">9-2　棋譜から余計な文字を削除する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage9/section4/index.html">9-4　ゲームで記録機能を運用する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check10" class="acd-check">
+            <ul id="s10-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/index.html">Stage 10　記録からゲームを進める</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section1/index.html">10-1　記録ファイルを読み込む</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section2/index.html">10-2　棋譜の内容を解読する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/section3/index.html">10-3　１手戻る機能を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage10/sectino4/index.html">10-4　棋譜からゲームを再現する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check11" class="acd-check">
+            <ul id="s11-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/index.html">Stage 11　全体の機能を統括する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section1/index.html">11-1　各種設定を変更させる</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/chess/stage11/section2/index.html">11-2　ウェルカムページを作る</a></li>
+            </ul>
+        </div>
     </div>
 
     <main>
-        <section id="s9">
-            <h1>Stage 9　記録からゲームをすすめる</h1>
-            <p>みなさま、ようこそ。チェスのプログラミング、最終の第 9 ステージです。やっと最後です。いや、長かった。とうとうここで私のコードの説明が終わります。最後です。だから最後だっていってるでしょ。</p>
-            <p>「フラグ」だなんて、あんた ONE PIECE の読みすぎですよ。ああ、フラグはエヴァで学んだんでしたか。失敬失敬。</p>
+        <section>
+            <h1>Stage 9　ゲーム進行を記録する</h1>
+            <p>チェスのプログラミング第 9 ステージ、ここではゲーム進行に基づいて棋譜を記録する機能を実装します。</p>
         </section>
-
         <section class="index">
-            <h2>目次</h2>
-            <p>
-                <ul>
-                    <li><a href="#s9-1">9-1　記録ファイルの読み込み</a></li>
-                    <li><a href="#s9-2">9-2　構文解析</a></li>
-                    <li><a href="#s9-3">9-3　戻る機能</a></li>
-                    <li><a href="#s9-4">9-4　読込モード</a></li>
-                    <li><a href="#s9-5">9-5　全体統括</a></li>
-                </ul>
-            </p>
+            <h2>MENU</h2>
+            <p><a href="section1/index.html">9-1　記録ファイルの初期設定をする</a></p>
+            <p><a href="section2/index.html">9-2　棋譜から余計な文字を削除する</a></p>
+            <p><a href="section3/index.html">9-3　記録ファイルに棋譜を書き込む</a></p>
+            <p><a href="section4/index.html">9-4　ゲームで記録機能を運用する</a></p>
         </section>
-
-        <section id="s9-1">
-            <h2>9-1　記録ファイルの読み込み</h2>
-            <p>これ以降は Board クラスの tracefile メソッドにコーディングします。指定のターン・プレーヤーの手番の直前までゲームを進める機能で、引数の destination_turn, destination_player, isrecwrite はそれぞれ指定ターン、指定プレーヤー、そして記録を書き換えるかを表しています。メソッド内で local_board という Board の影武者インスタンスを作成し、これをいじります。</p>
-            <p>まず第 1 ターンで白が駒を動かす直前で操作を止める場合、まだ駒は初期配置ですから、local_board を初期設定してすぐにリターンしてください。</p>
-            <p>そのほか駒の動きを要する場合は、まず SUBRECADDRESS を書き込みモードで開いた後すぐに閉じて初期化、ついで MAINRECADDRESS の中身をすべて line に読み取ってしまいます。同時に両端にある空白文字と改行文字を strip メソッドですべて消します。line には棋譜として意味のある文だけでなく、例えばターン番号を表す数字が入っているなど、無視しなければいけない文があります。無視すべき文を無視し、拾うべき文を拾う。これが tracefile に求められる機能です。</p>
-            <p>それでは local_board を宣言して一文一文に目を向けていきましょう。</p>
-        </section>
-
-        <section id="s9-2">
-            <h2>9-2　構文解析</h2>
-            <p>さて、構文解析の時間です。どうやるかって言いますと、for 文で 1 文字ずつ letter の中に line の文字を取り込んでいきます。とりあえず local_board.s (以下 loc...s) の中にブチ込んでって、空白や改行が割り込んだら打ち切り、loc...s に残った文字列が s_analyze にうまいこと引っかかってくれるかを見ます。打ち切ったのが if で条件分けしてるところ、loc...s に文字入れてくのが else で除外してるところです。</p>
-            <img src="traceforflowchart.jpg" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
-            <p>先に else (図の右上)の方を解説しましょう。''.join([loc...s, letter]) というのは loc...s と letter を、'' (空文字)を間に入れてつなげた文字列という意味です。つまりただ単に loc...s の後ろに letter をくっつけてるだけ。</p>
-            <p>逆に if で分けられた方は loc...s が出来上がってるはずですから、s_analyze を発動、motion に返り値を格納します。駒を動かすときは list, 勝敗がついたときは int がリターンされますから、それによって場合分けしています。</p>
-            <p>まずは駒を動かす場合です。実際に move メソッドで駒を動かし、記録を SUBRECADDRESS にとります。ここで、move におけるパラメーター変換の結果引数で要請されたターン、プレーヤーにたどり着いていれば、リターン作業に入ります。なお、isrecwrite が True の場合は MAINRECADDRESS に記録を転記しなければいけませんから、SUBRECADDRESS の内容をすべて MAINRECADDRESS へ書き込みます。そしてどちらの場合もリターンするのは local_board です。</p>
-            <p>一方決着がついていれば駒を動かすことも記録をとることもしません。isrecwrite で転記が必要と判断されたら転記します。そして</p>
-            <p class="stress">motion をリターン</p>
-            <p>します。つまり返り値は勝ったプレーヤー番号、型は int です。お間違えなきよう。</p>
-            <p>for 文を抜けた後にもう一度同じことをやります。リターンまで同じです。これをやらないと、最後の文が認識されない恐れがあります。嘘だと思うなら外して試してみな。</p>
-            <p>ここまででリターンされなかったら引数で要求されたところまで盤面の動きを再現できなかったことを意味しますから self を返します。そうです。self を返してるんです。False ではありません。いや、False でもいいのかもしれませんが、私がコーディングした時 False でバグった経緯がありますので self をリターンしているんです。これで False がいやになったでしょう。</p>
-        </section>
-
-        <section id="s9-3">
-            <h2>9-3　戻る機能</h2>
-            <p>これでようやく「ひとつ戻る」の機能を実装できますね。<a href="https://saito-saito-saito.github.io/chess/stage7#s7-4">7-4</a> で実装した部分、playmode で特殊イベントを扱ったところです。"X" や "H" の場合が書かれていますが、ここに "Z" の場合を追加します。</p>
-            <p>まず相手に確認をとります。本来こういうボードゲームでは待ったはなしなので、ここは外さないでください。もし了承しなければ当然 continue して同じプレーヤーにもう一度操作を考え直してもらいます。相手から了承 "y" が得られれば、new_board にひとつ前の自分のターンで駒を動かす直前の状態を代入します。ここまでの棋譜をもう一度はじめからたどって前の状態にするんです。</p>
-            <p>もしこれが main_board と同じであれば、tracefile は定義したクラスでいう self をリターンしたことになりますから失敗です。そのほかの場合は成功していますから、new_board に乗り換え、要は main_board へ new_board を代入します。そして BOARDprint を忘れずに。プレーヤーとしてはこれがないと「あれ、本当に戻ったのかな」と不安になってしまいます。</p>
-            <p>成功にせよ失敗にせよ、次の操作も同じ人が行いますので continue してループ先頭へ行ってください。</p>
-        </section>
-
-        <section id="s9-4">
-            <h2>9-4　読込モード</h2>
-            <p>次は readmode.py へ行ってもらいます。sys, config, board をインポートします。もちろん config.py の中身は config. を付けなくてもいいようにしてください。記述するのは readmode 関数の中です。</p>
-            <p>まずは読み取りモードを使うユーザーに心の準備をする時間をあげます。それが "ENTER TO START" の部分。これあったほうがいいですよ。main_board を初期化宣言したら while ループに入ります。</p>
-            <p>ループの最初では「第何ターンのどちらの番か」を明記してあげます。また new_board には手番が終わった後の状況を tracefile を使って代入します。ご注意いただきたいのは、あくまで「手番が終わった後の盤面」を代入する点です。白が手番を終えたところまで tracefile で遡りたければ、引数は main_board.turn, BLACK ですし、黒が終えたところまで遡りたければ引数は main_board.turn + 1, WHITE です。しっかり確認してください。</p>
-            <p>プレーヤーまで表示し終わったら new_board の型によって場合分けします。bool 型なら False 一択ですから、この時点で打ち切りです。必ず「もう続けられません」とユーザーに宣告してください。「おいおい、なんで勝手に終わってんだよ」とならないように。まあ、tracefile が bool を返すことは一応ないんですが、念には念を入れていいじゃないですか。new_board が int 型なら勝敗がついています。"1-0", "0-1" などの形でユーザーに勝敗を見せましょう。それ以外では駒を動かしている場合ですから、new_board を main_board に突っ込んでください。そして BOARDprint もお忘れなく。</p>
-            <p>ユーザーがトイレに行きたくなったとかいろんな理由をつけて途中退室することも考えられますので、終了コード "X" を用意してあげます。</p>
-            <p>関数を脱したところに if __name__ を書いて readmode だけをデバッグしたい場合に備えておきましょう。</p>
-        </section>
-
-        <section id="s9-5">
-            <h2>9-5　全体統括</h2>
-            <p>最後の仕上げです。main.py に入ります。いかにもメインの機能ですね。ここでは「対戦モードか読取モードか」を選ぶことしかしません。したがって playmode と readmode しかインポートしません。プレーヤーが対戦か読取か、どちらかの選択肢を選ぶまでずっと「どっちがいいですか」と聞くだけです。ちゃんと答えてくれたらお望みの機能を使わせてあげる。使い終わったら break して終わり。簡単でしょ。</p>
-            <p>これで私のチェスのコードは完装できました。お疲れ様でした。今日はお祝いにケーキ買って帰ってください。「体脂肪が」とか気にしないで。人間適度なご褒美は必要ですよ。ほら、あんた頭の糖分たりてないでしょ。</p>
-            <p>もし「おいおい、てめーのコードバグってんじゃねーか」という場合は、このページのフッター(一番下のところ)にリンクが貼ってありますのでそちらにお問い合わせいただければと思います。この解説に不備や不明な点がある場合でも結構です。本当に気軽に連絡くださって結構ですよ。いや、「ケーキ奢れ」はダメですけど。</p>
-            <p>我々はチェスのゲームを作るためにいろんなことを学びました。2 次元配列の扱い、オブジェクト指向、文字列操作、正規表現、ファイルの読み書きなどなど。「プログラミング初めてだった」なんて方もいるかもしれません。いや、ここまで読み切ってる人のなかにいるわけないか、そんな天才。とにかく苦労してこのコードを書き上げた皆さんは、書く前とは別人になっているはずです。大変だったでしょう。私ですか。大変でしたよ、この解説書くの。冗談ですって、チェスのコーディング大変でしたって。いや、解説も大変でしたけど。でもコーディングするの面白かったじゃないですか。ね、面白かったでしょ。面白かったよね。ね。いや、このご時世にパワハラなんてしませんよ。しませんって。してねーだろ、おい。</p>
-            <p>それと、他にもコード作って解説あげてますから、ぜひそちらもご覧ください。チェスなんかより断然簡単なものもあったりします。</p>
-            <p><a href="https://saito-saito-saito.github.io" target="_blank">これであなたもいろいろ作れる</a></p>
+        <section class="sub-section">
+            <p><a href="../stage10/index.html">NEXT　Stage 10　記録からゲームを進める</a></p>
         </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/29</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/01</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>
@@ -140,5 +198,7 @@
             </li>
         </ul>
     </footer>
+
+    
 </body>
 </html>
