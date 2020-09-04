@@ -9,162 +9,161 @@
 
     gtag('config', 'UA-166967736-1');
     </script>
+
+    <title>Pythonプログラミングでゲームを作る</title>
     
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作します。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたもいろいろ作れる</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="stylesheet.css">
-    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
 </head>
 <body>
     <header>
+        <img src="unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなたも</h1>
-            <h1>いろいろ作れる</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>ゲームを作る</h1>
         </div>
-        
-        <ul>
-            <li><a href="#chess">chess</a></li>
-            <li><a href="#reversi">reversi</a></li>
-            <li><a href="#website">website</a></li>
-            <li><a href="#game2048">2048</a></li>
-            <li><a href="#memorandom">memorandom</a></li>
-        </ul>
     </header>
-    
-    <div class="acd-menu">
-        <input type="checkbox" id="acd-check">
-        <label for="acd-check" class="acd-label">MENU</label>
-        <ul class="acd-content">
-            <li><a href="#chess">chess</a></li>
-            <li><a href="#reversi">reversi</a></li>
-            <li><a href="#website">website</a></li>
-            <li><a href="#game2048">2048</a></li>
-            <li><a href="#memorandom">memorandom</a></li>
-        </ul>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="#chess">CHESS</a></li>
+                <li><a href="#reversi">REVERSI</a></li>
+                <li><a href="#game2048">2048</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><a href="#chess">CHESS</a></td>
+                    <td><a href="#reversi">REVERSI</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code/index.html">CODE</a></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <main>
-        <section id="introduction">
-            <p>みなさま、ようこそ。</p>
-            <p>「とりあえずプログラミングを一通り覚えたけど、そのあと何すればいいかわからない」</p>
-            <p>こういう悩みに答えてくれる解説ってなかなか少ないですよね。プログラミング入門の解説は世の中腐る程あるのに。このサイトはそんな人に向けたものです。ですから、「えー、ことばがむずかしすぎてなにいってるかわかんないよー」という方、「ケッ、こんなお子ちゃまな解説で人をナメんのも大概にしろや」という方、両方いらっしゃると思います。</p>
-            <p>まず前者の方々は、下のリンク付近にある「必要な知識」というところを参考になさって、こうした知識を解説している参考書やサイトなどをご覧になってください。ある程度勉強したらこちらに再度いらっしゃって下さればよろしいかと思います。また、項目によってはこの解説の中で説明するものもございます。</p>
-            <p>「こんなの簡単すぎるぜ」という方々は、まずご自分でプログラムを組んでみてください。そして「ザマーみろ、オレのコードの方が優秀じゃねえか」と、優越感に浸る材料にしていただければと思います。そしてもし余力がございましたら、私が勉強するために少しレベルの高い解説を作っていただきたく存じます。</p>
-            <p>それではどうぞご覧ください。これであなたも いろいろ作れる。</p>
+        <section>
+            <section class="sub-section">
+                <p>プログラミングの入門まで終わった方々に向けて、ターミナル・コマンドプロンプト上で作動するゲームのプログラミングを制作・解説します。使用言語は Python で、</p>
+                <p>
+                    <ul>
+                        <li>フロー制御</li>
+                        <li>関数</li>
+                        <li>リスト</li>
+                        <li>クラスとオブジェクト</li>
+                    </ul>
+                </p>
+                <p>など、Python でプログラミングする上で基本的な知識が前提となります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>進んでいく中で</p>
+                <div class="unagi">
+                    <img src="unagi-green2f4f4f/green-question.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>何だこの言葉？訳わかんねぇ</p>
+                    </div>
+                </div>
+                <p>と感じたら、マウスをその言葉の上に当ててみてください。色が薄くなったら解説ページへジャンプできます。</p>
+                <img src="memo-cursor.png" alt="UNAVAILABLE" width="90%" style="max-width: 500px; border: solid black 2px;">
+                <p>スマホ・タブレットなど、小さい画面でご覧の方は色が薄くなっているリンクからジャンプできます。</p>
+                <img src="memo-phone.png" alt="UNAVAILABLE" width="90%" style="max-width: 500px; border: solid 2px black;">
+            </section>
         </section>
         
-        <section id="chess" class="index">
-            <h1>CHESS</h1>
+        <section id="chess">
+            <h2>CHESS</h2>
             <p>コマンド上でプレーのみならず棋譜の再現もできちゃいます。これで練習してヨーロッパ上流階級の優雅な遊びの心得を身につけましょう。</p>
-            <p>
-                <ul>
+            <div class="index">
+                <ul style="list-style: none;">
                     <li><a href="https://Saito-Saito-Saito.github.io/chess">コード解説</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/chess/code" target="_blank">ソースコード</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/chess/code" target="_new">ソースコード</a></li>
                 </ul>
-            </p>
-            <p>使用言語：Python</p>
+            </div>
             <p>ステージ数：11</p>
-            <p>必要な知識
+            <p>セクション数：49</p>
+            <p>必要な知識</p>
+            <p>
                 <ul>
                     <li>フロー制御</li>
                     <li>関数</li>
                     <li>リスト</li>
                     <li>文字列操作</li>
                     <li>クラスとオブジェクト</li>
-                    <li>正規表現 (Stage 5～)</li>
-                    <li>ファイルの読み書き (Stage 7～)</li>
+                    <li>正規表現 (Stage 7~)</li>
+                    <li>ファイルの読み書き (Stage 8~)</li>
                 </ul>
             </p>
         </section>
-        
-        <section id="reversi" class="index">
-            <h1>REVERSI</h1>
-            <p>コマンド上でプレーできます。オセロという名前はどうやら登録商標らしいですが、ゴタゴタあって<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%BB%E3%83%AD_(%E9%81%8A%E6%88%AF)" target="_blank">Wikipedia</a>でもちょっと面倒な扱いになってるようです。</p>
-            <p>
-                <ul>
+
+        <section id="reversi">
+            <h2>REVERSI</h2>
+            <p>コマンド上でプレーできます。オセロという名前はどうやら登録商標らしいですが、ゴタゴタあって<a href="https://ja.wikipedia.org/wiki/オセロ_(ボードゲーム)" target="_new">Wikipedia</a>でもちょっと面倒な扱いになってるようです。</p>
+            <p><span style="color: red;"><span style="font-weight: bold;">WARNING: 現在リニューアル準備中</span><br>近日中に内容や装いが大きく変わること、コードと解説の整合性が取れていないことをご承知おきください。</span></p>
+            <div class="index">
+                <ul style="list-style: none;">
                     <li><a href="https://Saito-Saito-Saito.github.io/reversi">コード解説</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/code" target="_blank">ソースコード</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/code" target="_new">ソースコード</a></li>
                 </ul>
-            </p>
-            <p>使用言語：Python</p>
-            <p>ステージ数：7</p>
-            <p>必要な知識
-                <ul>
-                    <li>フロー制御</li>
-                    <li>リストの制御</li>
-                    <li>文字列制御</li>
-                    <li>クラスの扱い</li>
-                </ul>
-            </p>
-        </section>
-
-        <section id="website" class="index">
-            <h1>WEBSITE</h1>
-            <p>GitHub Pages という GitHub でサイトを作る機能を使ってウェブサイトを公開するところまでやります。アップロードは GitHub アカウントを持っていれば無料でできます(つまりオール無料)。</p>
+            </div>
+            <p>ステージ数：??</p>
+            <p>セクション数：??</p>
+            <p>必要な知識</p>
             <p>
                 <ul>
-                    <li><a href="https://Saito-Saito-Saito.github.io/website">コード解説</a></li>
-                    <li><a href="https://github.com/Saito-Saito-Saito/Saito-Saito-Saito.github.io" target="_blank">ソースコード</a></li>
-                </ul>
-            </p>
-            <p>使用言語：HTML, CSS</p>
-            <p>ステージ数：5</p>
-            <p>必要な知識
-                <ul>
-                    <li>HTML ファイルの書き方</li>
-                    <li>CSS ファイルの書き方</li>
-                    <li>GitHub の使い方(Stage 5〜)</li>
+                    <li>フロー制御</li>
+                    <li>関数</li>
+                    <li>リスト</li>
+                    <li>文字列操作</li>
+                    <li>クラスとオブジェクト</li>
                 </ul>
             </p>
         </section>
 
-        <section id="game2048" class="index">
-            <h1>2048</h1>
+        <section id="game2048">
+            <h2>2048</h2>
             <p>コマンド上でプレーできる 2048 です。盤面のサイズ変更やゴールの変更などもできます。</p>
-            <p>
-                <ul>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048">コード解説</a></li>
-                    <li><a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">ソースコード</a></li>
+            <p><span style="color: red;"><span style="font-weight: bold;">WARNING: 現在リニューアル準備中</span><br>近日中に内容や装いが大きく変わること、コードと解説の整合性が取れていないことをご承知おきください。</span></p>
+            <div class="index">
+                <ul style="list-style: none;">
+                    <li><a href="https://Saito-Saito-Saito.github.io/2048/" target="_new">コード解説</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_new">ソースコード</a></li>
                 </ul>
-            </p>
-            <p>使用言語：Python</p>
-            <p>ステージ数：7</p>
-            <p>必要な知識
+            </div>
+            <p>ステージ数：??</p>
+            <p>セクション数：??</p>
+            <p>必要な知識</p>
+            <p>
                 <ul>
                     <li>フロー制御</li>
-                    <li>リストの制御</li>
-                    <li>文字列制御</li>
-                    <li>クラスの扱い</li>
+                    <li>関数</li>
+                    <li>リスト</li>
+                    <li>文字列操作</li>
+                    <li>クラスとオブジェクト</li>
                 </ul>
             </p>
         </section>
-
-        <section id="memorandom" class="index">
-            <h1>MEMORANDOM</h1>
-            <p>コードを書くに当たっての備忘録として上げておきます。決して初見さんが真っ先に見るものではありません。「この話の解説がないじゃないか」というのも、基本的には受け付けません。あくまでコーディングするに当たって「忘れたときのために」知識を残しておくものですからね。</p>
-            <p>
-                <ul>
-                    <li><a href="https://Saito-Saito-Saito.github.io/memorandom">統括ページはこちらから</a></li>
-                </ul>
-            </p>
-            <p>所用言語：CSS/SCSS, HTML, Python</p>
-            <p>備忘録作成にあたって、パソコン版の方は解説本文の中でも単語にカーソルを合わせると形が変わって文字の色が薄くなると思います。下の例だと "background-color" ってところですね。</p>
-            <img src="memo-cursor.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px; border: solid black 2px;">
-            <p>こうなったらクリックしてみてください。その言葉の解説にジャンプできます。</p>
-            <p>スマホ版ではこんな具合に若干薄く色がかかるようになっています。それを手掛かりに見ていただけるといいでしょう。</p>
-            <img src="memo-smp.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px; border: solid black 2px;">
-            <p>繰り返しになりますが、</p>
-            <p class="stress">初学者の見るものではありません。</p>
-            <p>その点お間違えなきよう。</p>
-        </section>
-        
         
     </main>
     
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/7/1</li>
+            <li>LAST UPDATE: 2020/09/05</li>
             <li><a href="#">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
