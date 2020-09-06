@@ -1,24 +1,73 @@
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングでゲームを作るメモ　乱数</title>
+    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作するときの、乱数にまつわる備忘録です。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも... 乱数のメモ</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/memorandom/unagi-skyblue5f9ea0/skyblue-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="../../../unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなあたも</h1>
-            <h1>... 乱数のメモ</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>乱数のメモ</h1>
         </div>
     </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <main>
         <section id="methods">
             <h2>各種メソッド</h2>
             <h3 id="random">random()</h3>
             <p>0 から 1 の間から float 型をランダムにリターンする。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 import random
@@ -27,7 +76,7 @@ for i in range(5):
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 0.7935651373830874
@@ -39,8 +88,8 @@ for i in range(5):
                 </pre>
             </div>
             <h3 id="choice">choice()</h3>
-            <p>list 型の引数の中にある要素からひとつランダムに選択してリターンする。</p>
-            <div class="code">
+            <p>list 型の引数の中にある<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>からひとつランダムに選択してリターンする。</p>
+            <div class="real-code">
                 <pre>
                     <code>
 import random
@@ -49,7 +98,7 @@ for i in range(5):
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 2
@@ -65,8 +114,8 @@ for i in range(5):
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/06</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

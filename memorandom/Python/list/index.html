@@ -1,27 +1,85 @@
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングでゲームを作るメモ　リスト</title>
+    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作するときの、リストにまつわる備忘録です。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも... リストのメモ</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/memorandom/unagi-skyblue5f9ea0/skyblue-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="../../../unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなあたも</h1>
-            <h1>... リストのメモ</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>リストのメモ</h1>
         </div>
     </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <main>
         <section class="index">
             <h2>目次</h2>
             <p>
                 <ul>
+                    <li><a href="#vocabulary">語彙</a></li>
                     <li><a href="#mutability">ミュータブル</a></li>
                     <li><a href="#methods">各種メソッド</a></li>
                 </ul>
             </p>
+        </section>
+
+        <section id="vocabulary">
+            <h2 id="element_v">要素</h2>
+            <p>リストに格納されている値一つ一つ</p>
+            <h2>語彙</h2>
+            <h3 id="index_v">インデックス</h3>
+            <p>リストの中で要素を格納している場所を表す番号。必ず 0 から始まる整数。</p>
         </section>
 
         <section id="mutability">
@@ -32,7 +90,7 @@
             <img src="list.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
             <p>じゃあ L の中身は残しておきたいと思ったときどうすればいいか。そのとき使うのが copy.deepcopy です。まあ 1 次元リストなら copy.copy でもいいんですが、こっちさえ覚えとけばってのは deepcopy の方ですね。M = copy.deepcopy(L) をやっとけば、M をいじっても L にはなんの支障もありません。ね、便利でしょ。</p>
             <p>「じゃあ int や str はどうなんだよ」とお思いでしょう。str については<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str#immutability">こちら</a>で解説しておりますから、int を例にあげましょうか。<code>x = 1</code>と int 型の変数を宣言したとします。x に格納されているのは 1 という値そのものです。したがって</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 x = 1
@@ -47,9 +105,9 @@ print('{}, {}'.format(x, y))
                 </pre>
             </div>
             <p>としたときに y に代入されるのは increase(1) です。increase の引数はあくまで 1 であり、x の参照ではありません。ですから結果は当然</p>
-            <p class="code"><code>1, 2</code></p>
+            <p class="real-code"><code>1, 2</code></p>
             <p>となります。比較のためにこれも実行してみましょう。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 x = [1]
@@ -66,7 +124,7 @@ print('{}, {}'.format(x, y))
             <p>x がリストになりました。リストは参照渡しでしたよね。ですから increase の引数は</p>
             <p class="stress">リストの参照</p>
             <p>ですよ。したがって increase 内部では x がマジで変更されています。したがって結果は</p>
-            <p class="code"><code>[2], 2</code></p>
+            <p class="real-code"><code>[2], 2</code></p>
             <p>となります。</p>
         </section>
 
@@ -74,7 +132,7 @@ print('{}, {}'.format(x, y))
             <h2>各種メソッド</h2>
             <h3 id="append_i">append()</h3>
             <p>リストの最後尾に引数を付け加える。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 li = ['A', 'b', '©']
@@ -83,14 +141,26 @@ print(li)
                     </code>
                 </pre>
             </div>
-            <p class="code"><code>['A', 'b', '©', 'd']</code></p>
+            <p class="real-code"><code>['A', 'b', '©', 'd']</code></p>
+            <h3 id="remove_i">remove()</h3>
+            <p>リストから指定された<a href="#element_v" class="memo" target="_new">要素</a>を削除する。同じ値が複数含まれる場合は最初だけ削除される。</p>
+            <div class="real-code">
+                <pre>
+                    <code>
+li = ['Alice', 'David', 'Bob', 'Charles', 'David']
+li.remove('David')
+print(li)
+                    </code>
+                </pre>
+            </div>
+            <p class="real-code"><code>['Alice', 'Bob', 'Charles', 'David']</code></p>
         </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/06</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

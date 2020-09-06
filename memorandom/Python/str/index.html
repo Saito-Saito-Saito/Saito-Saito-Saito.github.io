@@ -1,17 +1,66 @@
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングでゲームを作るメモ　文字列</title>
+    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作するときの、文字列にまつわる備忘録です。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも... 文字列のメモ</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/memorandom/unagi-skyblue5f9ea0/skyblue-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="../../../unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなあたも</h1>
-            <h1>... 文字列のメモ</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>文字列のメモ</h1>
         </div>
     </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <main>
         <section class="index">
@@ -27,7 +76,7 @@
         <section id="immutability">
             <h2>イミュータブルについて</h2>
             <p>試しに下のコードを動かしてみてください。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 s = 'abcdefg'
@@ -37,7 +86,7 @@ print(s)
                 </pre>
             </div>
             <p><code>'abcdefg'</code> という文字列の 3 文字目を 'x' に変えようと思ってこのコードを書いたのですが、エラーが出てこんな表示が出てくると思います。</p>
-            <p class="code"><code>'str' object does not support item assignment</code></p>
+            <p class="real-code"><code>'str' object does not support item assignment</code></p>
             <p>つまりは「str 型である s はその中身を変えることはできない」ってことが言いたいんです。これを「str 型はイミュータブルである」というふうに言います。だからもしこの文字列の 3 文字目を 'x' にしたいなら、後に出てくる replace メソッドなりなんなりを使わなければなりません。</p>
             <p>str 型がイミュータブルだということは結構様々な場面でお世話になると思いますので、是非頭に叩き込んでおいてください。</p>
         </section>
@@ -46,15 +95,15 @@ print(s)
             <h2>各種メソッド</h2>
             <h3>upper()</h3>
             <p>すべての文字を大文字にして文字列を返す。</p>
-            <p class="code"><code>print('Hello, World!'.upper())</code></p>
-            <p class="code"><code>HELLO, WORLD!</code></p>
+            <p class="real-code"><code>print('Hello, World!'.upper())</code></p>
+            <p class="real-code"><code>HELLO, WORLD!</code></p>
             <h3>lower()</h3>
             <p>すべての文字を小文字にして文字列を返す。</p>
-            <p class="code"><code>print('Hello, World!'.lower())</code></p>
-            <p class="code"><code>hello, world!</code></p>
+            <p class="real-code"><code>print('Hello, World!'.lower())</code></p>
+            <p class="real-code"><code>hello, world!</code></p>
             <h3>isupper()</h3>
             <p>1 文字以上のすべてのアルファベットが大文字なら True, それ以外では False をリターンする。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Hello'.isupper())
@@ -63,7 +112,7 @@ print('123'.isupper())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 False
@@ -74,7 +123,7 @@ False
             </div>
             <h3>islower()</h3>
             <p>1 文字以上のアルファベットがすべて小文字なら True, そうでなければ False をリターンする。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('hello,'.islower())
@@ -83,7 +132,7 @@ print('123'.islower())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -94,7 +143,7 @@ False
             </div>
             <h3>isalpha()</h3>
             <p>1 文字以上のアルファベットのみで構成されていれば True, それ以外は False をリターン。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Hello'.isalpha())
@@ -102,7 +151,7 @@ print('World!'.isalpha())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -112,7 +161,7 @@ False
             </div>
             <h3>isalnum()</h3>
             <p>1 文字以上のアルファベットか数字から構成されていれば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('1Hello'.isalnum())
@@ -121,7 +170,7 @@ print(' guys'.isalnum())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -132,7 +181,7 @@ False
             </div>
             <h3 id="isdecimal">isdecimal()</h3>
             <p>1 文字以上の数字のみから構成されていれば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('123'.isdecimal())
@@ -141,7 +190,7 @@ print('5!'.isdecimal())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -152,7 +201,7 @@ False
             </div>
             <h3>isspace()</h3>
             <p>スペース、タブ、改行のいずれかのみで構成されていれば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print(' \t\n'.isspace())
@@ -161,7 +210,7 @@ print('1\t'.isspace())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -172,7 +221,7 @@ False
             </div>
             <h3>istitle()</h3>
             <p>大文字始まりで他がすべて小文字の英単語から構成されていれば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Hello World'.istitle())
@@ -182,7 +231,7 @@ print('It is New World Order'.istitle())
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -194,7 +243,7 @@ False
             </div>
             <h3>startswith()</h3>
             <p>引数の文字列から始まれば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Hello, world!'.startswith('Hello'))
@@ -204,7 +253,7 @@ print('Hello, world!'.startswith('hello'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -216,7 +265,7 @@ False
             </div>
             <h3>endswith()</h3>
             <p>引数の文字列で終われば True</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Hello, world!'.endswith('world!'))
@@ -226,7 +275,7 @@ print('Hello, world!'.endswith('World!'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 True
@@ -236,9 +285,9 @@ False
                     </code>
                 </pre>
             </div>
-            <h3>join()</h3>
+            <h3 id="join">join()</h3>
             <p>引数の文字列のリストを一つに連結してリターンする。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print(', '.join(['dogs', 'cats', 'hamsters']))
@@ -246,7 +295,7 @@ print(' and '.join(['dogs', 'cats', 'hamsters']))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 dogs, cats, hamsters
@@ -256,7 +305,7 @@ dogs and cats and hamsters
             </div>
             <h3>split()</h3>
             <p>文字列を分割してリスト化したものをリターンする。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('I love NY'.split())
@@ -270,7 +319,7 @@ print(spam.split('\n'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 ['I', 'love', 'NY']
@@ -281,20 +330,20 @@ print(spam.split('\n'))
             </div>
             <h3 id="ljust">ljust()</h3>
             <p>引数の文字数内で左に寄せてリターンする。</p>
-            <p class="code"><code>print('O Romeo, Romeo,'.ljust(20) + 'wherefore art thou Romeo')</code></p>
-            <p class="code"><code>O Romeo, Romeo,     wherefore art thou Romeo</code></p>
+            <p class="real-code"><code>print('O Romeo, Romeo,'.ljust(20) + 'wherefore art thou Romeo')</code></p>
+            <p class="real-code"><code>O Romeo, Romeo,     wherefore art thou Romeo</code></p>
             </div>
             <h3 id="rjust">rjust()</h3>
             <p>引数の文字数内で右に寄せてリターンする。</p>
-            <p class="code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.rjust(50))</code></p>
-            <p class="code"><code>          O Romeo, Romeo, wherefore art thou Romeo</code></p>
+            <p class="real-code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.rjust(50))</code></p>
+            <p class="real-code"><code>          O Romeo, Romeo, wherefore art thou Romeo</code></p>
             <h3 id="center">center()</h3>
             <p>引数の文字数内で中央に寄せてリターンする。</p>
-            <p class="code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.center(50) + '?')</code></p>
-            <p class="code"><code>     O Romeo, Romeo, wherefore art thou Romeo     ?</code></p>
+            <p class="real-code"><code>print('O Romeo, Romeo, wherefore art thou Romeo'.center(50) + '?')</code></p>
+            <p class="real-code"><code>     O Romeo, Romeo, wherefore art thou Romeo     ?</code></p>
             <h3 id="strip">strip()</h3>
-            <p>引数の文字列を両端から削除し続けてリターンする。デフォルトは空白文字。</p>
-            <div class="code">
+            <p>引数の文字列を両端から削除し続けてリターンする。デフォルトは空白・改行・タブ文字。</p>
+            <div class="real-code">
                 <pre>
                     <code>
 print("   ...... Who's there!? ... \n".strip())
@@ -302,7 +351,7 @@ print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.strip('Kabaddi'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 ...... Who's there!? ...
@@ -312,7 +361,7 @@ TouchKabaddiCatching
             </div>
             <h3 id="lstrip">lstrip()</h3>
             <p>文字列左側から引数の文字列を削除し続ける。デフォルトは空白文字。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print("   ...... Who's there!? ... \n".lstrip())
@@ -320,7 +369,7 @@ print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.lstrip('Kabaddi'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 ...... Who's there!? ... 
@@ -331,7 +380,7 @@ TouchKabaddiCatchingKabbadi
             </div>
             <h3 id="rstrip">rstrip()</h3>
             <p>文字列右側から引数の文字列を削除し続ける。デフォルトは空白文字。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print("   ...... Who's there!? ... \n".rstrip())
@@ -339,7 +388,7 @@ print('KabaddiKabaddiKabaddiTouchKabaddiCatchingKabbadi'.rstrip('Kabaddi'))
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 ...... Who's there!? ...
@@ -349,15 +398,15 @@ KabaddiKabaddiKabaddiTouchKabaddiCatching
             </div>
             <h3 id="replace">replace()</h3>
             <p>第 1 引数の文字列を第 2 引数の文字列に置き換えてリターンする。</p>
-            <p class="code"><code>print('Do not enter while I am sleeping! Do not!'.replace('not', ''))</code></p>
-            <p class="code"><code>Do  enter while I am sleeping! Do !</code></p>
+            <p class="real-code"><code>print('Do not enter while I am sleeping! Do not!'.replace('not', 'please'))</code></p>
+            <p class="real-code"><code>Do please enter while I am sleeping! Do please!</code></p>
         </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/06</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

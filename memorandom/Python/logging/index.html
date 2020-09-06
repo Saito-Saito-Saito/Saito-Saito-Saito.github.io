@@ -1,17 +1,66 @@
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングでゲームを作るメモ　ログ</title>
+    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作するときの、ログにまつわる備忘録です。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも... ログのメモ</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/memorandom/unagi-skyblue5f9ea0/skyblue-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="../../../unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなあたも</h1>
-            <h1>... ログのメモ</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>ログのメモ</h1>
         </div>
     </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <main>
         <section class="index">
@@ -33,6 +82,10 @@
             <p>ログを分割してまとめ上げる<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
             <h3 id="handler_v">ハンドラー</h3>
             <p>ログを表示するターミナルやファイルなどの動態を記述する<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
+            <h3 id="filehandler_v">ファイルハンドラー</h3>
+            <p>テキストファイルなどの形でログを出力するための<a href="#handler_v" class="memo">ハンドラー</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
+            <h3 id="streamhandler_v">ストリームハンドラー</h3>
+            <p>ターミナルにログを表示するための<a href="#handler_v" class="memo">ハンドラー</a>。<a href="#logger">ロガーについての解説</a>参照。</p>
         </section>
 
         <section id="levels">
@@ -53,7 +106,7 @@
             <p>ログの機能は基本的にロガーという<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">インスタンス</a>を使って実装するのが望ましいとされています。というのは、ログを確認するときに用途別などカテゴライズができるからです。その有用性などについてはこちらのサイトで力説されていますので、ぜひ参考になさってください。</p>
             <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701">ログ出力のための print と import logging はやめてほしい</a></p>
             <p>ではどのようにロガーを使えばいいか。まずはこちらのコードをご覧ください。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 import logging
@@ -78,7 +131,7 @@ logger.warning('WARNING')
                 </pre>
             </div>
             <p>terminal</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 DEBUG
@@ -87,14 +140,14 @@ WARNING
                 </pre>
             </div>
             <p>log.txt</p>
-            <p class="code"><code>WARNING</code></p>
+            <p class="real-code"><code>WARNING</code></p>
             <p>基本の表し方はこの通りです。</p>
             <p>まずロガー本体を宣言します。getLogger の引数がログを表示して区別するときに確認できるロガーの名前となり、名前を logger1 としました。「でも logger1 なんて他にはどこにも出てきてないじゃん」となった方は、もう少し待っててください。ちゃんと説明します。</p>
             <p>その次の setLevel はロガーが受け付けるログの最低レベルを設定しています。ここでは「DEBUG 以上（つまり全部）のログを記録しておきますよ」ということ。</p>
             <p>その次が stream handler の設定です。コードの実行途中にターミナルで表示するログですね。setLevel でターミナルに表示するレベルの下限を設定します。addHandler でロガーに適用です。</p>
             <p>その後に file handler を設定します。別ファイルにログをまとめて書き出すものです。今回は log.txt というファイルに書き出します。もしその名前のファイルが存在しなければ新規作成します。残りは stream handler とほぼ同じですね。レベルだけは INFO 以上、つまり DEBUG を表示しないようにしています。ターミナルとファイルのそれぞれの結果をよく照らし合わせてください。</p>
             <p>これだけだとロガーの威力はほとんど感じられないでしょうから、もう一つ例を題しておきます。ちょいと長くなりますがその点はご勘弁を。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 import logging
@@ -128,7 +181,7 @@ logger2.critical('CRITICAL')
                 </pre>
             </div>
             <p>terminal</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 Logger1 - WARNING
@@ -137,7 +190,7 @@ Logger2 - CRITICAL
                 </pre>
             </div>
             <p>log.txt</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 2020-06-16 21:59:17,560 - DEBUG - Logger1 - DEBUG
@@ -152,8 +205,8 @@ Logger2 - CRITICAL
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/06</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>

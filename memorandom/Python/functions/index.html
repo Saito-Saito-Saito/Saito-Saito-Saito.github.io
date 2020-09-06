@@ -1,17 +1,66 @@
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングでゲームを作るメモ　関数</title>
+    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるいろいろなゲームを制作するときの、関数にまつわる備忘録です。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも... 関数のメモ</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/memorandom/unagi-skyblue5f9ea0/skyblue-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../../stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="../../../unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなあたも</h1>
-            <h1>... 関数のメモ</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>関数のメモ</h1>
         </div>
     </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td><td><label for="acd-check">CONTENTS</label></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom">HOME</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class">クラス</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions">関数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list">リスト</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging">ログ</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random">乱数</a></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str">文字列</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <main>
         <section class="index">
@@ -29,19 +78,19 @@
             <h2>インタプリタの関数</h2>
             <h3 id="abs">abs()</h3>
             <p>int/float の引数の絶対値をリターンする。</p>
-            <p class="code">print("{}, {}, {}".format(abs(-4), abs(1.56), abs(3 + 4j)))</p>
-            <p class="code">4, 1.56, 5.0</p>
+            <p class="real-code">print("{}, {}, {}".format(abs(-4), abs(1.56), abs(3 + 4j)))</p>
+            <p class="real-code">4, 1.56, 5.0</p>
             <h3 id="ord">ord()</h3>
             <p>str 型の引数 1 文字の Unicode コードポイントをリターンする。</p>
-            <p class="code">print(ord('$'))</p>
-            <p class="code">36</p>
+            <p class="real-code">print(ord('$'))</p>
+            <p class="real-code">36</p>
 
         </section>
 
         <section id="default">
             <h2>デフォルト引数</h2>
             <p>例えば引数の数字の値をふやす関数を作ったとします。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 def increase(target, sub):
@@ -50,7 +99,7 @@ def increase(target, sub):
                 </pre>
             </div>
             <p>「こんな単純な機能関数にしてんじゃねえよ」って、まあその通りなんですが、ならこれを動かしたらどうなるかは大体予想がつきますよね。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
     def increase(target, sub):
@@ -60,11 +109,11 @@ def increase(target, sub):
                     </code>
                 </pre>
             </div>
-            <p class="code">8</p>
+            <p class="real-code">8</p>
             <p>当然の結果すぎて何も言えませんが、話はここからです。この increase を使う場面では基本的に sub=1 で動かすことが多いとしましょう。そんな時、いちいち第 2 引数を入れるのは面倒ですよね。そこで</p>
-            <p class="code">def increase(target, sub=1):</p>
+            <p class="real-code">def increase(target, sub=1):</p>
             <p>と書きます。第 2 引数の後ろに "=1" がついただけです。どのような挙動を示すか見てみましょう。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
     def increase(target, sub=1):
@@ -74,7 +123,7 @@ def increase(target, sub):
                     </code>
                 </pre>
             </div>
-            <p class="code">4, 8</p>
+            <p class="real-code">4, 8</p>
             <p>つまり、</p>
             <p>
                 <ul>
@@ -88,7 +137,7 @@ def increase(target, sub):
         <section id="keyword">
             <h2>キーワード引数</h2>
             <p>まずはキーワード引数がどういうものかを体感していただくために例をあげましょう。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('This is a line.')
@@ -99,7 +148,7 @@ print('This is not a new line.')
                     </code>
                 </pre>
             </div>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 This is a line.
@@ -111,7 +160,7 @@ This is a line. This is not a new line.
                 </pre>
             </div>
             <p>このように print 関数は文字列などを引数にとって、それをコンソールに出力しますが、必ず改行します。しかし end='' とすることで「改行の代わりに空文字 '' を文末につけてくださいね」という指令になり、結果改行されなくなります。では</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 print('Is this OK?', '')
@@ -120,7 +169,7 @@ print('Is this a new line?')
                 </pre>
             </div>
             <p>を実行するとどうなるかというと、</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 Is this OK? 
@@ -130,7 +179,7 @@ Is this a new line?
             </div>
             <p>となって、結局改行されてしまいましたね。つまり end というキーワードがないと改行阻止はできないんですよ。</p>
             <p>キーワード変数がどういうものか見ていただいたところで、「自作の関数にもキーワード変数つけてみたいな」と思うかもしれません。もちろん実装可能です。一番簡単な例で言うとデフォルト引数です。この例をみてみましょう。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 def add(base, addition=1, repeat=5):
@@ -142,9 +191,9 @@ print(add(2, repeat=10))
                     </code>
                 </pre>
             </div>
-            <p class="code"><code>12</code></p>
+            <p class="real-code"><code>12</code></p>
             <p>必須となる引数の後にキーワードを入れ込んでいけばうまく作動するわけですね。また「キーワードをつけていないと使用を認めない」という場合には、こうすることでできます。</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 def add(base, *, addition=1, repeat=5):
@@ -155,9 +204,9 @@ def add(base, *, addition=1, repeat=5):
                 </pre>
             </div>
             <p>アスタリスク * 以降は全てキーワードを付けて引数に入れないといけなくなるので、例えば</p>
-            <p class="code"><code>print(add(2, 2, 3))</code></p>
+            <p class="real-code"><code>print(add(2, 2, 3))</code></p>
             <p>とすると結果は</p>
-            <div class="code">
+            <div class="real-code">
                 <pre>
                     <code>
 Traceback (most recent call last):
@@ -173,8 +222,8 @@ TypeError: add() takes 1 positional argument but 3 were given
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/6/28</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
+            <li>LAST UPDATE: 2020/09/06</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li>
                 <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
             </li>
