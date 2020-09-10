@@ -16,7 +16,7 @@ body
 
         @media screen and (max-width: 420px) 
         {
-            height: 100px;
+            height: 130px;
             text-align: center;
             img
             {
@@ -25,7 +25,9 @@ body
 
             #title
             {
-                display: none;
+                font-size: 6px;
+                text-align: center;
+                line-height: 90%;
             }
         }
 
