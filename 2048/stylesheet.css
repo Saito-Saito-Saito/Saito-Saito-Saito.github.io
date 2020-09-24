@@ -30,6 +30,7 @@ body header {
     width: 100px;
   }
   body header #title {
+    display: inline;
     font-size: 6px;
     text-align: center;
     line-height: 90%;
