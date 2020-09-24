@@ -9,48 +9,104 @@
 
     gtag('config', 'UA-166967736-1');
     </script>
+
+    <title>Pythonプログラミングで2048を作るコード</title>
     
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここではコードを全て掲載しています。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたも 2048...のコード</title>
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="../stylesheet.css">
 </head>
 <body>
     <header>
         <div id="title">
-            <h1>これであなたも</h1>
-            <h1>2048... のコード</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048を作るコード</h1>
         </div>
-
-        <ul>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
-            <li><a href="#">Code</a></li>
-        </ul>
     </header>
 
-    <div class="acd-menu">
-        <input type="checkbox" id="acd-check">
-        <label for="acd-check" class="acd-label">MENU</label>
-        <ul class="acd-content">
-            <li><a href="https://Saito-Saito-Saito.github.io/2048">Stage 0&1</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>            
-            <li><a href="#">Code</a></li>
-        </ul>
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
     </div>
 
     <main>
-        <a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">From GitHub</a>
+        <section>
+            <a href="https://github.com/Saito-Saito-Saito/2048" target="_blank">From GitHub</a>
+        </section>
 
         <section class="index">
             <h2>目次</h2>
@@ -64,13 +120,16 @@
             </p>
         </section>
 
-        <h1 id="config">config.py</h1>
-        <pre>
-            <code>
+        <section id="config">
+            <h1>config.py</h1>
+            <div class="real-code">
+                <pre>
+                    <code>
 #! usr/bin/env/ Python3
 # config.py
 # coded by Saito-Saito-Saito
-# last edited: 28 June 2020
+# last edited: 25 September 2020
+# explained on https://Saito-Saito-Saito.github.io/2048
 
 
 
@@ -91,7 +150,7 @@ DEFAULT_SHANDLER = StreamHandler()
 DEFAULT_SHANDLER.setFormatter(DEFAULT_LOG_FORMAT)
 DEFAULT_SHANDLER.setLevel(WARNING)
 
-# set up function
+# logger set up function
 def logger_setup(logger_name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_FILE_NAME, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=WARNING, streamformat=DEFAULT_LOG_FORMAT):
     logger = getLogger(logger_name)
     logger.setLevel(level)
@@ -142,53 +201,63 @@ DEFAULT_PROB4 = 1 / 8
 DEFAULT_SIZE = 4  # board size = 4 * 4
 DEFAULT_GOAL = 2048
 MAX_GOAL = 65536
-            </code>
-        </pre>
-        
-        <h1 id="board">board.py</h1>
-        <pre>
-            <code>
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section id="board">
+            <h1>board.py</h1>
+            <div class="real-code">
+                <pre>
+                    <code>
 #! usr/bin/env/ Python3
 # board.py
 # coded by Saito-Saito-Saito
-# last edited: 28 June 2020
-                
-                
+# last edited: 25 September 2020
+# explained on https://Saito-Saito-Saito.github.io/2048
+
+
 from config import *
 import copy
 import random
-                
-                
+
+
 local_logger = logger_setup(__name__, level=INFO)
-                
-                
-                
+
+
+
 class Board:
     def insert(self, *, logger=None):
         logger = logger or self.logger
+
         # searching for empty square
         emptied = []
         for row in range(self.size):
             for col in range(self.size):
                 if self.board[row][col] == EMPTY:
                     emptied.append([row, col])
+
         # when there is no empty square, you cannot insert a number
         if emptied == []:
             logger.info('there is no empty square')
             return FAILED
+
         # selecting an empty square randomly
         target = random.choice(emptied)
+
         # inserting 4 if random No &lt; prob4
         if random.random() &lt; self.prob4:
             self.board[target[ROW]][target[COL]] = 4
         else:
             self.board[target[ROW]][target[COL]] = 2
+
         logger.info('target {} &lt;- No. {}'.format(target, self.board[target[ROW]][target[COL]]))
         return SUCCEEDED
-                
-                
+
+
     def __init__(self, *, size=DEFAULT_SIZE, board=[], goal=DEFAULT_GOAL, logger=local_logger, prob4=DEFAULT_PROB4):
-        # copying the board
+        # copying the parameters
         self.size = size
         self.prob4 = prob4
         self.logger = logger
@@ -196,23 +265,26 @@ class Board:
             self.goal = MAX_GOAL
         else:
             self.goal = goal
+
+        # copying the board
         if len(board) == self.size:
             self.board = copy.deepcopy(board)
         else:
             self.board = [[EMPTY for col in range(self.size)] for row in range(self.size)]
             self.insert(logger=logger)
             self.insert(logger=logger)
+
         logger.debug('in {}, board is {}'.format(self, self.board))
-                    
-                    
+
+
     # checking whether index is in the board 
     def isInBoard(self, index:int):
         if 0 &lt;= index &lt; self.size:
             return True
         else:
             return False
-                    
-                    
+
+
     def print(self):
         print('\n-', end='')
         for row in range(self.size):
@@ -231,8 +303,8 @@ class Board:
             print('')  # to a new line
         print('')   # to a new line
         return SUCCEEDED
-                
-                
+
+
     def move(self, direction: list, *, logger=None):
         logger = logger or self.logger
         ever_moved = False
@@ -240,8 +312,8 @@ class Board:
         step = [1, -1]  # UP&LEFT: 1,  DOWN&RIGHT: -1
         stop = [self.size, -1]  # UP&LEFT: size,  DOWN&RIGHT: -1
         switch = (direction in [DOWN, RIGHT])   # UP&LEFT: False,  DOWN&RIGHT: True
-                            
-        # cf. move.py and https://Saito-Saito-Saito.github.io/2048/stage5
+        
+        # cf. move.py and https://Saito-Saito-Saito.github.io/2048/stage4
         root = [0, 0]
         for root[COL] in range(start[switch], stop[switch], step[switch]):
             for root[ROW] in range(start[switch], stop[switch], step[switch]):
@@ -266,15 +338,15 @@ class Board:
                     # either is zero
                     focused[ROW] -= direction[ROW]
                     focused[COL] -= direction[COL]
-                    
+
         if ever_moved == True:
             return SUCCEEDED
         else:
             # if no number was moved, it is game over
             logger.debug('ever_moved == False')
             return FAILED
-                
-                
+
+
     def isGoal(self, *, logger=None):
         logger = logger or self.logger
         for row in range(self.size):
@@ -284,8 +356,8 @@ class Board:
                     return True
         # there is no goaled square
         return False
-                
-                
+
+
     def isOver(self, *, logger=None):
         logger = logger or self.logger
         local_board = Board(size=self.size, board=self.board, goal=self.goal, logger=self.logger, prob4=self.prob4)
@@ -295,9 +367,9 @@ class Board:
                 return False
         # here, no move is available
         return True
-                
-                
-                
+
+
+
 if __name__ == "__main__":    
     test_board = Board(logger=local_logger)
     test_board.print()
@@ -307,16 +379,21 @@ if __name__ == "__main__":
     test_board.move(random.choice([UP, DOWN, LEFT, RIGHT]))
     test_board.insert()
     test_board.print()
-            </code>
-        </pre>
+                    </code>
+                </pre>
+            </div>
+        </section>
 
-        <h1 id="main">main.py</h1>
-        <pre>
-            <code>
+        <section id="main">
+            <h1>main.py</h1>
+            <div class="real-code">
+                <pre>
+                    <code>
 #! usr/bin/env/ Python3
 # main.py
 # coded by Saito-Saito-Saito
-# last edited: 28 June 2020
+# last edited: 25 September 2020
+# explained on https://Saito-Saito-Saito.github.io/2048
 
 
 from config import *
@@ -335,7 +412,7 @@ parameters = {'size': DEFAULT_SIZE, 'goal': DEFAULT_GOAL}
 
 
 ### SET UP
-def settings(command: str):
+def settings(command: str): # when command is X, change the parameters
     while command in ['x', 'X']:
         setcommand = input('ENTER THE COMMAND (BOARD SIZE: S,  GOAL: G,  EXIT: E) ---')
         while setcommand in ['s', 'S']:
@@ -367,6 +444,8 @@ def settings(command: str):
  
 def startmenu():
     command = input('''
+2048
+
 SETTINGS
     BOARD SIZE  {} * {}
     GOAL        {}
@@ -411,17 +490,22 @@ if __name__ == "__main__":
         
 
     logger.info('end')
-            </code>
-        </pre>
-        
-        <h1 id="move">move.py</h1>
-        <pre>
-            <code>
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section id="move">
+            <h1>move.py</h1>
+            <div class="real-code">
+                <pre>
+                    <code>
 #! usr/bin/env/ Python3
 # move.py
 # coded by Saito-Saito-Saito
-# last edited: 28 June 2020
+# last edited: 25 September 2020
 # CAUTION: THIS CODE IS ONLY FOR MEMORANDOM OF move METHOD. YOU CAN RUN main.py WITHOUT THIS MODULE.
+# explained on https://Saito-Saito-Saito.github.io/2048
 
 
 import board
@@ -443,13 +527,13 @@ class Move(board.Board):
                     while self.isInBoard(focused[ROW]):
                         # in case root == EMPTY      
                         if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
-                        # in case board[root]==board[focused] (!= 0)
+                        # in case board[root] == board[focused] (!= 0)
                         elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] *= 2
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
@@ -466,13 +550,13 @@ class Move(board.Board):
                     while self.isInBoard(focused[ROW]):
                         # in case root == EMPTY      
                         if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
-                        # in case board[root]==board[focused] (!= 0)
+                        # in case board[root] == board[focused] (!= 0)
                         elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] *= 2
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
@@ -481,7 +565,7 @@ class Move(board.Board):
                             break
                         focused[ROW] -= 1
         elif direction == LEFT:
-            logger.debug('direction is UP')
+            logger.debug('direction is LEFT')
             root = [0, 0]
             for root[ROW] in range(self.size):
                 for root[COL] in range(self.size):
@@ -489,13 +573,13 @@ class Move(board.Board):
                     while self.isInBoard(focused[COL]):
                         # in case root == EMPTY      
                         if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
-                        # in case board[root]==board[focused] (!= 0)
+                        # in case board[root] == board[focused] (!= 0)
                         elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] *= 2
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
@@ -504,7 +588,7 @@ class Move(board.Board):
                             break
                         focused[COL] += 1
         elif direction == RIGHT:
-            logger.debug('direction is UP')
+            logger.debug('direction is RIGHT')
             root = [0, 0]
             for root[ROW] in range(self.size):
                 for root[COL] in range(self.size - 1, -1, -1):
@@ -512,13 +596,13 @@ class Move(board.Board):
                     while self.isInBoard(focused[COL]):
                         # in case root == EMPTY      
                         if self.board[root[ROW]][root[COL]] == EMPTY != self.board[focused[ROW]][focused[COL]]:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] = self.board[focused[ROW]][focused[COL]]
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
                         # in case board[root]==board[focused] (!= 0)
                         elif self.board[root[ROW]][root[COL]] == self.board[focused[ROW]][focused[COL]] != 0:
-                            logger.info('{}, {} <- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
+                            logger.info('{}, {} &lt;- {}'.format(root[ROW], root[COL], self.board[focused[ROW]][focused[COL]]))
                             self.board[root[ROW]][root[COL]] *= 2
                             self.board[focused[ROW]][focused[COL]] = EMPTY
                             ever_moved = True
@@ -554,15 +638,15 @@ if __name__ == "__main__":
     test_board.board_move(RIGHT)
     test_board.insert()
     test_board.print()
-
-            </code>
-        </pre>
-
+                    </code>
+                </pre>
+            </div>
+        </section>
     </main>
 
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/7/20</li>
+            <li>LAST UPDATE: 2020/09/25</li>
             <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>

@@ -1,0 +1,306 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングで2048を作る　3-1</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここでは盤面に新しく数を挿入する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048を作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s3-3">
+            <h1>Stage 3　盤面のクラスの基本機能を作る</h1>
+            <h2>3-1　新しい数を挿入する</h2>
+            <section class="sub-section">
+                <p>さて、これからは <a href="https://Saito-Saito-Saito.github.io/2048/code/#board" target="_new">board.py</a> ファイルに移りましょう。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/sweat.JPG" alt="">
+                    <div class="balloon">
+                        <p>おいおい、ちょっとみてみたけどさ......</p>
+                    </div>
+                </div>
+                <p>いかがしました？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/cry.JPG" alt="">
+                    <div class="balloon">
+                        <p>こんな長いの全部コーディングすんの...?</p>
+                    </div>
+                </div>
+                <p>まあ何回かにわけてやりますから、安心してください。</p>
+                <p>まずはいろいろインポートして、このファイルのデフォルトの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を先ほど <a href="../../stage2/section1/index.html" target="_new">2-1</a> でセッティングした logger_setup 関数で local_logger を宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+from config import *
+import copy
+import random
+
+
+local_logger = logger_setup(__name__, level=INFO)
+                        </code>
+                    </pre>
+                </div>
+                <p>logger_setup の引数の __name__ は、このファイルの名前 board をそのまま入れてくれるものでしたね。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、ここからは Board という<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="new">クラス</a>に入っていきます。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="new">クラス</a>を使う理由はやはり「盤面の情報を一元管理しやすい」というのが大きいでしょうか。このようなゲームでは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="new">クラス</a>を使うのが常套手段と考えてもらってもいいくらいかもしれません。</p>
+                <p>で、</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>クラスの最初はコンストラクタっしょ</p>
+                    </div>
+                </div>
+                <p>と思われるかもしれませんが、よく考えてください。盤面は最初に 2 つ数字を入れるんでしたよね。<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>でその機能どうやって使うんですか？</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ということで盤面に新しい数を入れていく機能を先に作ります。insert <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def insert(self, *, logger=None):
+        logger = logger or self.logger
+
+        # searching for empty square
+        emptied = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] == EMPTY:
+                    emptied.append([row, col])
+
+        # when there is no empty square, you cannot insert a number
+        if emptied == []:
+            logger.info('there is no empty square')
+            return FAILED
+
+        # selecting an empty square randomly
+        target = random.choice(emptied)
+
+        # inserting 4 if random No &lt; prob4
+        if random.random() &lt; self.prob4:
+            self.board[target[ROW]][target[COL]] = 4
+        else:
+            self.board[target[ROW]][target[COL]] = 2
+
+        logger.info('target {} &lt;- No. {}'.format(target, self.board[target[ROW]][target[COL]]))
+        return SUCCEEDED
+                        </code>
+                    </pre>
+                </div>
+                <p>最初に引数から見ていきましょうか。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def insert(self, *, logger=None):
+                        </code>
+                    </pre>
+                </div>
+                <p>キーワード引数に logger を入れているのは</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>この関数はさっき作った local_logger じゃなくてこのロガーを使って欲しい</p>
+                    </div>
+                </div>
+                <p>と言われた時でも対応できるようにするためです。これ、バグチェック用にもう一つファイルを作ることになったときにすごく便利ですよ。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>中身ではまずは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>の整理をします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        logger = logger or self.logger
+                        </code>
+                    </pre>
+                </div>
+                <p>引数で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>が指定されたときは、指定の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>をそのまま使います。指定されていなければ引数には None が入っていますから、クラスで主に使う self.logger を使うようにしています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>続きをご覧ください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # searching for empty square
+        emptied = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] == EMPTY:
+                    emptied.append([row, col])
+                        </code>
+                    </pre>
+                </div>
+                <p>空のリスト emptied は「盤面の空いてるマスは全部ここに格納してやれ」っていうものです。2 重の for ループで巡回して空きマスがあったら <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list#append_i" class="memo" target="_new">append</a> メソッドで [<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#col" class="memo" target="_new">col</a>] の情報を次々入れていきます。</p>
+                <p>途中の self.board は盤上の数のリスト、self.size は盤面の大きさです。</p>
+                <p>そしてループを抜け切って、emptied に<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>が何もなかったら「数字の追加失敗」FAILED をリターンします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # when there is no empty square, you cannot insert a number
+        if emptied == []:
+            logger.info('there is no empty square')
+            return FAILED
+                        </code>
+                    </pre>
+                </div>
+                <p>空いてるところがなかったら追加もクソもないですからね。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>その次に target と題して、空きマスのリスト emptied の中からランダムに 1 つ選びます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # selecting an empty square randomly
+        target = random.choice(emptied)
+                        </code>
+                    </pre>
+                </div>
+                <p>ここで使っている <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random#chioce" class="memo" target="_new">random.choice</a> は、リストの中から一つ<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#element_v" class="memo" target="_new">要素</a>をランダムに選んでリターンしてくれるものです。</p>
+                <p>数字を入れるマスが決まったので、今度は入れる数字を決めます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # inserting 4 if random No &lt; prob4
+        if random.random() &lt; self.prob4:
+            self.board[target[ROW]][target[COL]] = 4
+        else:
+            self.board[target[ROW]][target[COL]] = 2
+                        </code>
+                    </pre>
+                </div>
+                <p>条件分岐の上側が 4 を、下が 2 を入れる場合ですね。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/random/#random" class="memo" target="_new">random.random</a> は 0 ~ 1 でランダムに数を出してくれる<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>です。</p>
+                <p>あとで self.prob4 と称し、盤面に 4 を挿入する確率を決めます。例えば self.prob4 == 1/4 であれば、random.random() &lt; self.prob4 となる確率が 1/4 ですから、このときに 4 を盤面に入れようとなるわけです。</p>
+            </section>  
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>全て終わったら「挿入成功」SUCCEEDED をリターンします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        logger.info('target {} &lt;- No. {}'.format(target, self.board[target[ROW]][target[COL]]))
+        return SUCCEEDED
+                        </code>
+                    </pre>
+                </div>
+                <p>これにて insert <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>はコーディング終了となります。お疲れ様でした。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../section2/index.html">NEXT　3-2　コンストラクタを作る</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

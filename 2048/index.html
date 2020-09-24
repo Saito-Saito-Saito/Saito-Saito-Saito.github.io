@@ -9,112 +9,181 @@
 
     gtag('config', 'UA-166967736-1');
     </script>
+
+    <title>Pythonプログラミングで 2048 を作る</title>
     
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048のゲームを制作します。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:creator" content="@zsops_n"/>
-    <meta name="twitter:title" content="これであなたも 2048 が作れる"/>
-    <meta name="twitter:description" content="Python で 2048 をプログラミングする"/>
-    <meta name="twitter:image" content="https://Saito-Saito-Saito.github.io/2048/icon.png"/>
-    <title>これであなたも 2048 が作れる</title>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/2048/unagi-pink800000/normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなたも</h1>
-            <h1>2048 が作れる</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048を作る</h1>
         </div>
-        
-        <ul>
-            <li><a href="#">Stage 0&1</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_blank">Code</a></li>
-        </ul>
     </header>
-    
-    <div class="acd-menu">
-        <input type="checkbox" id="acd-check">
-        <label for="acd-check" class="acd-label">MENU</label>
-        <ul class="acd-content">
-            <li><a href="#">Stage 0&1</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_blank">Code</a></li>
-        </ul>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
     </div>
 
     <main>
         <section>
-            <p>脱プログラミング入門を目指されるみなさま、ようこそ。2048 のプログラミングです。</p>
+            <section class="sub-section">
+                <p>プログラミングの入門まで終わった方々に向けて、ターミナル・コマンドプロンプト上で作動する 2048 のプログラミングを制作・解説します。使用言語は Python で、</p>
+                <p>
+                    <ul>
+                        <li>フロー制御</li>
+                        <li>関数</li>
+                        <li>リスト</li>
+                        <li>クラスとオブジェクト</li>
+                    </ul>
+                </p>
+                <p>についての知識が前提となります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>進んでいく中で</p>
+                <div class="unagi">
+                    <img src="unagi-pink800000/question.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>何だこの言葉？訳わかんねぇ</p>
+                    </div>
+                </div>
+                <p>と感じたら、マウスをその言葉の上に当ててみてください。色が薄くなったら解説ページへジャンプできます。</p>
+                <img src="memo-cursor.png" alt="UNAVAILABLE" width="90%" style="max-width: 500px; border: solid black 2px;">
+                <p>スマホ・タブレットなど、小さい画面でご覧の方は色が薄くなっているリンクからジャンプできます。</p>
+                <img src="memo-phone.png" alt="UNAVAILABLE" width="90%" style="max-width: 500px; border: solid 2px black;">
+            </section>
         </section>
         <section class="index">
-            <h2>目次</h2>
-            <p>
-                <ul>
-                    <li><a href="#s0">Stage 0　必要な知識を身につける</a></li>
-                    <li><a href="#s1">Stage 1　ルールを把握する</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの機能を考える</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　定数設定と新しい数の挿入</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　クラスの初期設定と補助機能を実装する</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　盤面を動かす</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム終了を判定する</a></li>
-                    <li><a href="https://Saito-Saito-Saito.github.io/2048/stage7">Stage 7　ゲームを進める</a></li>
-                </ul>
-            </p>
+            <h2>MENU</h2>
+            <section class="sub-section">
+                <h3><a href="https://Saito-Saito-Saito.github.io/2048/code" target="_new">Code</a></h3>
+                <p><a href="https://Saito-Saito-Saito.github.io/2048/code/#config" target="_new">config.py</a></p>
+                <p><a href="https://Saito-Saito-Saito.github.io/2048/code/#board" target="_new">board.py</a></p>
+                <p><a href="https://Saito-Saito-Saito.github.io/2048/code/#main" target="_new">main.py</a></p>
+                <p><a href="https://Saito-Saito-Saito.github.io/2048/code/#move" target="_new">move.py</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage1/index.html">Stage 1　プログラムの機能を考える</a></h3>
+                <p><a href="stage1/section1/index.html">1-1　盤面の機能を考える</a></p>
+                <p><a href="stage1/section2/index.html">1-2　動きの機能を考える</a></p>
+                <p><a href="stage1/section3/index.html">1-3　ゲーム進行の機能を考える</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage2/index.html">Stage 2　プログラムの土台を作る</a></h3>
+                <p><a href="stage2/section1/index.html">2-1　ロガーを設定する</a></p>
+                <p><a href="stage2/section2/index.html">2-2　定数を設定する</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage3/index.html">Stage 3　盤面のクラスの基本機能を作る</a></h3>
+                <p><a href="stage3/section1/index.html">3-1　新しい数を挿入する</a></p>
+                <p><a href="stage3/section2/index.html">3-2　コンストラクタを作る</a></p>
+                <p><a href="stage3/section3/index.html">3-3　インデックスが適正か判定する</a></p>
+                <p><a href="stage3/section4/index.html">3-4　盤面を表示する</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage4/index.html">Stage 4　盤面を動かす</a></h3>
+                <p><a href="stage4/section1/index.html">4-1　概観を把握する</a></p>
+                <p><a href="stage4/section2/index.html">4-2　4 通りの場合わけをして盤面を動かす</a></p>
+                <p><a href="stage4/section3/index.html">4-3　場合わけを統合したメソッドを実装する</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage5/index.html">Stage 5　ゲームの終了を判定する</a></h3>
+                <p><a href="stage5/section1/index.html">5-1　ゲームクリアを判定する</a></p>
+                <p><a href="stage5/section2/index.html">5-2　手詰まりを判定する</a></p>
+            </section>
+            <section class="sub-section">
+                <h3><a href="stage6/index.html">Stage 6　ゲーム進行を実装する</a></h3>
+                <p><a href="stage6/section1/index.html">6-1　ゴールやサイズの設定を変更する</a></p>
+                <p><a href="stage6/section2/index.html">6-2　スタートメニューを実装する</a></p>
+                <p><a href="stage6/section3/index.html">6-3　ゲーム進行を実装する</a></p>
+            </section>
         </section>
-
-        <section id="s0">
-            <h2>Stage 0　必要な知識を身につける</h2>
-            <p>このプログラムで必要になるのは</p>
-            <p>
-                <ul>
-                    <li>フロー制御</li>
-                    <li>関数</li>
-                    <li>リスト</li>
-                    <li>クラスとオブジェクト</li>
-                </ul>
-            </p>
-            <p>くらいでしょうかね。ここら辺の知識はどんなゲームを作るにしても割と必須ですので、「まったくわからねぇ」という方はぜひ勉強しに他のサイトさんへ足を運んでください。また、必要ではありませんが<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/loggong" class="memo" target="_new">ログ</a>をガンガン使っていきます。このサイトは</p>
-            <p class="stress">入門は終えたけど何やっていいかわからない</p>
-            <p>という方向けなので、こうした入門は他でお願いします。巷には私が説明するより遥かにわかりやすい解説がゴロゴロ転がっていますからね。</p>
-            <p>一応<a href="https://Saito-Saito-Saito.github.io/memorandom/Python" target="_new">備忘録</a>という形で経験者向けにメモ書きは残してあります。パソコンの方は「この言葉わかんねーな」というところにカーソルを置いてみると、色が薄くなるかもしれません。そのままクリックすると解説ページにジャンプすることができます。</p>
-            <img src="memo-cursor.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px; border: solid black 1px;">
-            <p>スマホの方は代わりに文字が薄くなっていますので、そちらをタップしていただければ同じように解説に飛べます。</p>
-            <img src="memo-smp.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px; border: solid black 1px;">
-            <p>繰り返しになりますが、</p>
-            <p class="stress">初見さんのみるものではありません。</p>
-            <p>どうぞよろしくお願いします。</p>
-        </section>
-
-        <section id="s1">
-            <h2>Stage 1　ルールを把握する</h2>
-            <p>コードを書くうえでルール知らないのは流石に大問題です。他所でしっかり身に付けてください。その時に必ず 2048 をプレーしてみること。自分で実際にやってみて「こういうルールがあったのか」と気づくことがあるかもしれません。</p>
-        </section>
-
-        <section>
-            <h2>次回予告</h2>
-            <p>今回はまったくと言っていいほど解説してませんが、次回からちゃんと説明が入ります。しっかり説明しますって。いや、大丈夫ですよ。そんな心配しなくても
-            </p>
-            <p class="stress">説明するって言ってんだろ</p>
-            <p>ということでお楽しみに。</p>
-            <p><a href="https://Saito-Saito-Saito.github.io/2048/stage2">次回　Stage 2　新しい数を入れる</a></p>
-        </section>
+        
     </main>
     
     <footer>
         <ul>
-            <li>LAST EDITED: 2020/7/20</li>
+            <li>LAST UPDATE: 2020/09/25</li>
             <li><a href="#">解説一覧</a></li>
             <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
             <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>

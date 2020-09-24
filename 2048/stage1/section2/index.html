@@ -1,0 +1,212 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングで2048を作る　1-2</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここでは盤面をどのように動かすか構想を練ります。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048 を作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s1-2">
+            <h1>Stage 1　プログラムの機能を考える</h1>
+            <h2>1-2　動きの機能を考える</h2>
+            <section class="sub-section">
+                <p>2048 のプログラミングで一番面倒な、盤面の操作について考えましょう。動かせる向きは上下左右の 4 方向、その方向に動くことで同じ数が足し合わされていきます。これをどうやって表現しましょうかね。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ただただ足してきゃいいんじゃねえの？</p>
+                    </div>
+                </div>
+                <p>その「ただただ」の 4 文字に相当するアルゴリズムを考えようって話です。我々人間からすれば大したことはないのですが、脳のない機械にそれをさせるってなると、少しは頭を抱えなければいけません。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>とりあえず盤面を上に動かす場合を例にとって考えてみましょう。この場合、盤面を上に動かしたらどうなるでしょうか。</p>
+                <img src="pre-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>全く難しい問題ではありませんが、これを機械にやらせるということを念頭に置いて、そのアルゴリズムを予想してみてください。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/dangerous.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ナメんのも大概にせぇ、キサマ</p>
+                    </div>
+                </div>
+                <p>とりあえず答えはこんなんですよね。まさか間違えるわけないとは思いますが。</p>
+                <img src="pro-move.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、これをどうやってプログラミングしましょうか。とりあえず移動前の一番左上のマス [<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">col</a>] = [0, 0] に数を持ってくることを考えて、まずはその直下のマス [1, 0] に注目します。</p>
+                <img src="pre-highlight.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>この状態で [1, 0] == EMPTY, [0, 0] != EMPTY ですから、[1, 0] から [0, 0] に数を移動させることはできません。</p>
+                <p>一般的に 2 マスの考えうる関係は</p>
+                <p>
+                    <ul>
+                        <li><code>[0, 0] == EMPTY and [1, 0] == EMPTY</code></li>
+                        <li><code>[0, 0] == EMPTY and [1, 0] != EMPTY</code></li>
+                        <li><code>[0, 0] != EMPTY and [1, 0] == EMPTY</code></li>
+                        <li><code>[0, 0] != EMPTY and [1, 0] == EMPTY</code></li>
+                    </ul>
+                </p>
+                <p>の 4 つですね。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>リストの一番上、両方とも EMPTY であれば数字の動かしようがありません。例えばこんな感じ。</p>
+                <img src="empty-empty.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>[1, 0] != EMPTY, [0, 0] == EMPTY の場合、数字を [0, 0] に持ってこなければなりません。</p>
+                <img src="empty-not.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"> 
+                <p>[1, 0] は数字がなくなるわけですから、当然 EMPTY にします。</p>
+                <p>リストアップした三番目、[0, 0] だけが EMPTY でない場合も何もする必要はありません。</p>
+                <img src="no-empty.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>問題は 4 番目です。こいつには</p>
+                <p>
+                    <ul>
+                        <li><code>0 != [0, 0] == [0, 1] != 0</code></li>
+                        <li><code>0 != [0, 0] != [0, 0] != 0</code></li>
+                    </ul>
+                </p>
+                <p>の 2 通りあり、対処も異なってきます。</p>
+                <p>両方の数が揃う場合は単純で、[0, 0] にある数を 2 倍、[1, 0] を EMPTY にすれば事足ります。</p>
+                <img src="no-no.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>一方で両方の数字が揃わない場合、この段階で特にやることはありませんが、こういう場合はどうでしょうか。</p>
+                <img src="up-exception-1.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>なんかおかしいとこあっか？</p>
+                    </div>
+                </div>
+                <p>まずは [1, 0] から [0, 0] に数を動かす場合を考えますね。</p>
+                <img src="up-exception-2.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>この次に [2, 0] と [0, 0] を比較して数字を移すか考えるわけですが、当然この二つの間で数のやりとりはできません。</p>
+                <img src="up-exception-3.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>もっと言えば、もし [3, 0] に 2 があっても [0, 0] とは数のやりとりはできませんから、[0, 0] に数字を持ってくる場合について考える必要はもうないことになります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ここまでのフローを示すとこうなりますね。</p>
+                <img src="flow.png" alt="UNAVAILABLE" width="90%" style="max-width: 600px;">
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/sweat.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>うわっっめんどっっくせ〜</p>
+                    </div>
+                </div>
+                <p>これ以上は Stage 4 で扱うことになりますが、一応大筋として頭の中に入れておいてください。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../section3/index.html">NEXT　1-3　ゲーム進行の機能を考える</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

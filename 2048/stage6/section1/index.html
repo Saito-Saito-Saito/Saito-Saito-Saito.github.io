@@ -1,0 +1,507 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングで2048を作る　6-1</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここではゴールやサイズの値を変更する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048を作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s6-1">
+            <h1>Stage 6　ゲーム進行を実装する</h1>
+            <h2>6-1　ゴールやサイズの設定を変更する</h2>
+            <section class="sub-section">
+                <p>これまで盤面の大きさやゴールになる数字は変更が効くように全て変数として扱ってきました。せっかくですのでプレーヤーでも変更できるようにしてさしあげようじゃないですか。</p>
+                <p>ただ、一応デフォルトを決めてありますから、辞書型でそれをセッティングしておきましょう。ということで <a href="https://Saito-Saito-Saito.github.io/2048/code/#main" target="_new">main.py</a> ファイルをご覧ください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### LOG SET UP
+logger = logger_setup(__name__, level=DEBUG)
+logger.info('start')
+
+
+
+parameters = {'size': DEFAULT_SIZE, 'goal': DEFAULT_GOAL}
+
+
+
+### SET UP
+def settings(command: str):
+    while command in ['x', 'X']:
+        setcommand = input('ENTER THE COMMAND (BOARD SIZE: S,  GOAL: G,  EXIT: E) ---')
+        while setcommand in ['s', 'S']:
+            size_command = input('NEW SIZE --- ')
+            if size_command.isdecimal() == True and int(size_command) >= 2:
+                parameters['size'] = int(size_command)
+                break
+            else:
+                print('INVALID INPUT')
+                continue
+        while setcommand in ['G', 'g']:
+            goal_command = input('NEW GOAL (8 ~ {}) ---'.format(MAX_GOAL))
+            if goal_command.isdecimal() == True:
+                if 8 &lt;= int(goal_command) &lt; MAX_GOAL:
+                    parameters['goal'] = int(goal_command)
+                    break
+                else:
+                    print('INVALID VALUE')
+                    continue
+            else:
+                print('INVALID INPUT')
+                continue
+        if setcommand in ['E', 'e']:
+           return
+        print('''SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}      '''.format(parameters['size'],parameters['size'],parameters['goal']))
+
+ 
+def startmenu():
+    command = input('''
+2048
+
+SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}
+    
+ENTER TO SART(X TO CHANGE THE SETTINGS) - - - '''.format(parameters['size'],parameters['size'],parameters['goal']))
+    
+    settings(command)
+
+
+
+if __name__ == "__main__":
+    startmenu()
+    main_board = board.Board(size=parameters['size'], goal=parameters['goal'])
+    main_board.print()
+
+    while True:
+        input_d = input('DIRECTION: UP-1, DOWN-2, LEFT-3, RIGHT-4 : ')
+        logger.debug('input_d = {}'.format(input_d))
+        if input_d in ['1', 'w', 'W']:
+            direction = UP
+        elif input_d in ['2', 's', 'S']:
+            direction = DOWN
+        elif input_d in ['3', 'a', 'A']:
+            direction = LEFT
+        elif input_d in ['4', 'd', 'D']:
+            direction = RIGHT
+        else:
+            print('INVALID INPUT')
+            continue
+        if main_board.move(direction) == FAILED:
+            print('INVALID DIRECTION')
+            continue
+        if main_board.insert() == FAILED or main_board.isOver():
+            main_board.print()
+            print('GAME OVER...')
+            break
+        if main_board.isGoal() == True:
+            main_board.print()
+            print('You WIN!')
+            break
+        main_board.print()
+        
+
+    logger.info('end')
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>おいおい、まあまあ長いじゃねぇか</p>
+                    </div>
+                </div>
+                <p>まあそうお気を悪くなさらず。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>とりあえずいつも通りいろいろインポートして、最初はこのファイルで扱う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を設定しています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+from config import *
+import board
+import random
+
+
+### LOG SET UP
+logger = logger_setup(__name__, level=DEBUG)
+logger.info('start')
+                        </code>
+                    </pre>
+                </div>
+                <p>で、この後先ほど申し上げた色々なパラメーターのデフォルトを記載している辞書型を宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+parameters = {'size': DEFAULT_SIZE, 'goal': DEFAULT_GOAL}
+                        </code>
+                    </pre>
+                </div>
+                <p>とりあえず変更しそうなパラメーターだけを用意しておきました。このデフォルトを変更する機能をコーディングします。その中で、この値をいじって Board の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#instance_v" class="memo" target="_new">インスタンス</a>を宣言しますから、そのつもりで。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>それでは settings 関数をご覧ください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### SET UP
+def settings(command: str): # when command is X, change the parameters
+    while command in ['x', 'X']:
+        setcommand = input('ENTER THE COMMAND (BOARD SIZE: S,  GOAL: G,  EXIT: E) ---')
+        while setcommand in ['s', 'S']:
+            size_command = input('NEW SIZE --- ')
+            if size_command.isdecimal() == True and int(size_command) >= 2:
+                parameters['size'] = int(size_command)
+                break
+            else:
+                print('INVALID INPUT')
+                continue
+        while setcommand in ['G', 'g']:
+            goal_command = input('NEW GOAL (8 ~ {}) ---'.format(MAX_GOAL))
+            if goal_command.isdecimal() == True:
+                if 8 &lt;= int(goal_command) &lt; MAX_GOAL:
+                    parameters['goal'] = int(goal_command)
+                    break
+                else:
+                    print('INVALID VALUE')
+                    continue
+            else:
+                print('INVALID INPUT')
+                continue
+        if setcommand in ['E', 'e']:
+           return
+        print('''SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}      '''.format(parameters['size'],parameters['size'],parameters['goal']))
+                        </code>
+                    </pre>
+                </div>
+                <p>引数には次回コーディングするスタートメニューでのコマンドを入れておきます。</p>
+                <img src="startmenu.png" alt="UNAVAILABLE" width="90%" style="max-width: 400px;">
+                <p>ここで X がコマンドに入れられていればパラメーターを変更する運びとなります。</p>
+                <img src="setting-screen1.png" alt="UNAVAILABLE" width="90%" style="max-width: 450px;"> 
+                <p>この画面にきたら</p>
+                <table cellpadding="10" border="1" style="max-width: 650px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><th>やりたいこと</th><th>コマンド</th></tr>
+                    <tr><td>サイズを変更したい</td><td>S</td></tr>
+                    <tr><td>ゴールを変更したい</td><td>G</td></tr>
+                    <tr><td>やっぱり変更しない</td><td>E</td></tr>
+                </table>
+                <p>という具合にコマンドを入れさせます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>それでは実際に関数の中身をコーディングしていきましょう。スタートメニューの command に X が入っていることが大前提となりますので、まず最初はこうします。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>え？S とか G とかのなかに X なんて入ってなかったよ</p>
+                    </div>
+                </div>
+                <p>それこの次の画面。人の話よく聴け。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def settings(command: str): # when command is X, change the parameters
+    while command in ['x', 'X']:
+        setcommand = input('ENTER THE COMMAND (BOARD SIZE: S,  GOAL: G,  EXIT: E) ---')
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんでわざわざ while なん？if でええやん</p>
+                    </div>
+                </div>
+                <p>例えば設定画面で何も気づかずそのまま ENTER キーを押してしまったとします。もし if ならそのままスタートメニューに戻ってしまいますが、while にすることでこのように何度でも「入力はまだですか？」とお伺いを立てられますね。</p>
+                <img src="setting-screen-again.png" alt="UNAVAILABLE" width="450px">
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>おっちょこちょいのための安全ネットみたいなもんか</p>
+                    </div>
+                </div>
+                <p>まあそういうことになります。</p>
+                <p>まずサイズを変更するのか、ゴールを変更するのか、はたまたやっぱり気が変わって何も変更しないのか、お伺いをたてます。</p>
+                <img src="setting-screen1.png" alt="UNAVAILABLE" width="90%" style="max-width: 450px;">
+                <p>この一番下の行ですね。サイズは S を、ゴールは G を、何も変更しないのは X をコマンドとします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>サイズを変更する場合、プレーヤーにサイズはいくつがいいか、お伺いをたてます。</p>
+                <img src="setting-size.png" alt="UNAVAILABLE" width="90%" style="max-width: 450px;">
+                <p>こうなるようにコーディングすると</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        while setcommand in ['s', 'S']:
+            size_command = input('NEW SIZE --- ')
+                        </code>
+                    </pre>
+                </div>
+                <p>こうなりますね。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>やっぱここでも if じゃなくて while なんやな</p>
+                    </div>
+                </div>
+                <p>そうですね。間違った入力した時に元の画面に戻っていると、ユーザーもびっくりしてしまいますから。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>あれ、なんで元の画面に戻っとるん？？</p>
+                    </div>
+                </div>
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/#isdecimal" class="memo" target="_new">isdecimal</a> メソッドを使って数字であると判定でき、またその値が 2 以上であることがわかったら、それを正式なサイズとして認めます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            if size_command.isdecimal() == True and int(size_command) >= 2:
+                parameters['size'] = int(size_command)
+                break
+                        </code>
+                    </pre>
+                </div>
+                <p>1 × 1 マスって、最初に 2 つ数字を入れることすらできませんからね。ちゃんと break してサイズを変更するループから脱出しましょう。</p>
+                <p>一方、入力値が数字でなかったり、適正な数字でなかったりしたら、「不適切な入力」ということでしっかりしたものを入れてくれるまで入力を要求し続けます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            else:
+                print('INVALID INPUT')
+                continue
+                        </code>
+                    </pre>
+                </div>
+                <p>continue することによって再度サイズを変更するループを繰り返すわけです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今度はゴールの設定に入りましょう。条件は command が G の場合ですね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        <span style="font-weight: bold;">while setcommand in ['G', 'g']:</span>
+            goal_command = input('NEW GOAL (8 ~ {}) ---'.format(MAX_GOAL))
+            if goal_command.isdecimal() == True:
+                ...
+                        </code>
+                    </pre>
+                </div>
+                <p>入力前から「8 ~ MAX_GOAL (ここにはしっかり具体的な数字を入れる)の間じゃないとダメですよ」という具合に、入力値の範囲を指定しておきます。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんでわざわざ 8 以上なん？</p>
+                    </div>
+                </div>
+                <p>ゲームが開始した瞬間からゴールして、結局プレーヤーが何もしていないのにクリアしてしまうという事態を避けるためです。ほら、2, 4 がゴールだったらスタートした時点で終了しちゃって</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>え？何が起こったの？なんか終わってるんだけど？？</p>
+                    </div>
+                </div>
+                <p>ってなるでしょ？</p>
+                <p>で、入力してもらったものがまずは数字であるか、先ほど同様に <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/str/#isdecimal" class="memo" target="_new">isdecimal</a> で判別します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            <span style="font-weight: bold;">if goal_command.isdecimal() == True:</span>
+                if 8 &lt;= int(goal_command) &lt; MAX_GOAL:
+                    parameters['goal'] = int(goal_command)
+                    break
+                else:
+                    print('INVALID VALUE')
+                    continue
+                        </code>
+                    </pre>
+                </div>
+                <p>数字だったら今度は適正な範囲、つまり 8 ~ MAX_GOAL の中にあるか、確認します。</p>
+                <p>この 2 つの基準をクリアしたら正式なゴールとして parameters に適用してください。そして break してゴール変更のループから脱出します。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>代入するやつ何か int (goal_command) ってなってんだけど<br>int っていらんくない？</p>
+                    </div>
+                </div>
+                <p>まあ整数が楽だから。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/dangerous.JPG" alt="">
+                    <div class="balloon">
+                        <p>ケッ、そんなしょうもない理由かよ<br>聞いて呆れるぜ</p>
+                    </div>
+                </div>
+                <p>入力値がマズかったら continue してもう一度ちゃんとした値を入れてもらいましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            if goal_command.isdecimal() == True:
+                if 8 &lt;= int(goal_command) &lt; MAX_GOAL:
+                    parameters['goal'] = int(goal_command)
+                    break
+                <span style="font-weight: bold;">else:
+                    print('INVALID VALUE')
+                    continue
+            else:
+                print('INVALID INPUT')
+                continue</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>上の else が数字なのに範囲内にない場合、下の else が数字ですらない場合です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>気が変わって何も変更しない場合、つまりコマンドが E の場合は何も考えずにリターンします。「もういじらなくていい」っておっしゃってんだから。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if setcommand in ['E', 'e']:
+           return
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>ここは while じゃないんだな</p>
+                    </div>
+                </div>
+                <p>while でも構いませんが、どうせリターンするんですからループしませんよ。</p>
+                <p>E をコマンドに入れず設定画面に残っている間は、いま設定がどうなっているか確認できるように表示してあげてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('''SETTINGS
+    BOARD SIZE  {} * {}
+    GOAL        {}      '''.format(parameters['size'],parameters['size'],parameters['goal']))
+                        </code>
+                    </pre>
+                </div>
+                <p>実際に動かしたときでいえばこの部分です。</p>
+                <img src="setting-status.png" alt="UNAVAILABLE" width="90%" style="max-width: 450px;">
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../section2/index.html">NEXT　6-2　スタートメニューを実装する</a></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

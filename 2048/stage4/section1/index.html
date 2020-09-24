@@ -1,0 +1,306 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングで2048を作る　4-1</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここでは盤面を動かすアルゴリズムの全体像を把握します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048を作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s5-1">
+            <h1>Stage 4　盤面を動かす</h1>
+            <h2>4-1　概観を把握する</h2>
+            <section class="sub-section">
+                <p>基本的には <a href="../../stage1/section2/index.html" target="_new">1-2</a> でご覧に入れたことを一般化します。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/dangerous.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんだ、あれそのまんまやるんなら概説もクソもいらねぇわ</p>
+                    </div>
+                </div>
+                <p>という猛者は早速 <a href="../section2/index.html">4-2</a> に飛んでいただいて結構です。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>もうちょい説明あったほうがいいな</p>
+                    </div>
+                </div>
+                <p>という方に向けて、以下では <a href="../../stage1/section2/index.html" target="_mew">1-2</a> を詳しくご説明してご覧に入れます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>盤面を動かす向きは上下左右の 4 通りです。<a href="../../stage1/section2/index.html" target="_new">1-2</a> では上、しかも [0, 0] から [1, 0] に数字を持ってくときだけを考えましたが、そのときこんなフローチャートをお見せしました。</p>
+                <img src="flow-up.png" alt="UNAVAILABLE" width="90%" style="max-width: 500px;">
+                <p>なんの説明もなしに <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> だの <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> だのという変数名を使っていましたが、ここで一度しっかりその役割をお見せしましょう。</p>
+                <p>例えば盤面を上に動かすとき、まずは [<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">column</a>] = [1, 0] にある数字を [0, 0] に移動させることを考えます。このときの [0, 0] が <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a>, [1, 0] が <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> です。要は <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> の数字を <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> に移動させます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>で、その root と focused ってどうやって決めんねん</p>
+                    </div>
+                </div>
+                <p>まずはこういう場合を考えてみましょう。</p>
+                <figure><img src="before.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <p>この左端の <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">column</a> では、最初どこの数字をどのマスに持ってくることを考えればいいでしょうか。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>上の 2 に下の 2 を持っていけばいいんじゃないか？</p>
+                    </div>
+                </div>
+                <p>まあ実際はそうするのですが、アルゴリズム的に考えてください。我々人間の目からしたら真ん中二つの数を弄るのは当然なのですが、機械からしたら 2 と 4 の違いなんて実際に比べてみるまでわかりませんからね。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>じゃあ上の 2 を上の 4 に持ってくって言えばいいの？</p>
+                    </div>
+                </div>
+                <p>そういうことになります。つまり一番最初、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == [0, 0] で <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [1, 0] となりますね。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、[0, 0] と [1, 0] を比べたときに違う数字が入っていますよね。</p>
+                <figure><img src="before.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <p>こんな場合は [1, 0] から [0, 0] に数字を移動させることはできませんから、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> や <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> の位置取りを変更しないといけませんね。</p>
+                <p>ここで <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [2, 0] の場合は結局 <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [1, 0] とやることが変わりませんから、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [3, 0] になるわけですが、さて [3, 0] の 4 という数字は [0, 0] に持ってくることはできるでしょうか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>できるわけないやないか</p>
+                    </div>
+                </div>
+                <p>つまり [1, 0] に [0, 0] とは違う数字が入っている時点で、もう <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == [0, 0] に数字を持ってくることはできないということがわかってたわけですよ。つまり 0 != <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> != <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> != 0 なら <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> を移動させないといけませんね？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>で、次は下の 2 を上の 2 に持ってくるから root == [1, 0] になるんやな</p>
+                    </div>
+                </div>
+                <p>その通りです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == [1, 0] としたら、最初の <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> はどこにしますか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>下の 2 を上に持ってくんだから [2, 0] やろ</p>
+                    </div>
+                </div>
+                <p>ええ、そうなります。</p>
+                <figure><img src="before.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <p>仰せの通りに [2, 0] の数字を [1, 0] に持ってくると、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> != 0 ですから二つの数が足し合わされて <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == 4 になりますね。この時点で左端の <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">column</a> はこうなっていますよね。</p>
+                <img src="processing.png" alt="" width="90%" style="max-width: 100px;">
+                <p>まだ <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == [1, 0], <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [2, 0] の状態ですよ。今度 <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> や <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> の位置はどう動かしましょうか。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>普通なら root を 1 個下にずらすんだろうけど、<br>さっきの「アルゴリズム的に考えて」を使えば root はそのままで focused を [3, 0] にするのがええんちゃうか？</p>
+                    </div>
+                </div>
+                <p>いい洞察力です。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>よっしゃ</p>
+                    </div>
+                </div>
+                <p>でもまだ甘いですよ。[3, 0] の数字って [1, 0] に持って来れそうですか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>へ？</p>
+                    </div>
+                </div>
+                <p>つまり、</p>
+                <figure><img src="before.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <p>この盤面を上に移動させたら、[1, 0] はどうなりますか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/dangerous.JPG" alt="">
+                    <div class="balloon">
+                        <p>あっ、無理や<br>テメェ騙したな</p>
+                    </div>
+                </div>
+                <p>そんなそんな。最終的に盤面はこうなりますよね。</p>
+                <figure><img src="after.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>じゃあ root はサッサとズラさないとあかんのか</p>
+                    </div>
+                </div>
+                <p>そういうことになります。まとめておくと、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> != 0 のときは数字を足し合わせて <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> を移動させなければいけません。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>今度は <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> と <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> をどこに持っていきますか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>アルゴリズム的に考えてぇ<br>root == [2, 0]<br>focused == [3, 0]<br>やろな</p>
+                    </div>
+                </div>
+                <p>その通りです。</p>
+                <img src="processing.png" alt="" width="90%" style="max-width: 100px;">
+                <p>この状態であれば [3, 0] にある 4 を [2, 0] に持ってくなんて余裕でしょ？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>まあ数移動させるだけだし</p>
+                    </div>
+                </div>
+                <p>ということで、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> == 0 != <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> であれば、数を移動させるだけとなります。この時は普通に <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> を移動させればいいでしょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>root 移動させちゃいけないのか？</p>
+                    </div>
+                </div>
+                <p>こんな盤面で右端一番上 [0, 3] を <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> にして考えましょう。</p>
+                <figure><img src="another-before.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;"><figcaption style="font-size: 10px; padding-left: 5%;">from https://glebbahmutov.com/2048/</figcaption></figure>
+                <p>とりあえず <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> == [1, 3] で 2 を [0, 3] に移しますよね。</p>
+                <img src="another-processing.png" alt="" width="90%" style="max-width: 100px;">
+                <p>このあと [3, 3] にある 2 ってどこ持ってきますか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>ああ、[0, 3] 持ってくから root を変えちゃいけないのか</p>
+                    </div>
+                </div>
+                <p>ということになります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>したがって、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> と <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> について一般的にこういうフローチャートができます。</p>
+                <img src="universal-flow.png" alt="" width="90%" style="max-width: 550px;">
+                <p>盤面を上に動かすときの <a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> と <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> の検討の順番はこんな感じでしょうか。</p>
+                <img src="up-squares.gif" alt="" width="90%" style="max-width: 300px;">
+                <p>他の方向でも同じです。盤面を下に動かす場合、<a href="https://Saito-Saito-Saito.github.io/2048/memo/#root_v" class="memo" target="_new">root</a> と <a href="https://Saito-Saito-Saito.github.io/2048/memo/#focused_v" class="memo" target="_new">focused</a> はこうなりますね。</p>
+                <img src="down-squares.gif" alt="" width="90%" style="max-width: 300px;">
+                <p>左であればこう。</p>
+                <img src="left-squares.gif" alt="" width="90%" style="max-width: 300px;">
+                <p>右ならこうなります。</p>
+                <img src="right-squares.gif" alt="" width="90%" style="max-width: 300px;">
+                <p>次回からこの面倒な移動をコーディングしていきますよ。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../section2/index.html">NEXT　4-2　4 通りの場合わけをして盤面を動かす</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

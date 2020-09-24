@@ -1,0 +1,262 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>Pythonプログラミングで2048を作る　2-2</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できる2048を制作します。ここではコード全体で多用する基本的な定数を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-green2f4f4f/green-normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>2048 を作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+            <input type="checkbox" id="acd-check">
+            <table>
+                <tr><td><a href="https://Saito-Saito-Saito.github.io/chess">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <ul class="stages-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                <tr>
+                    <td><a href="https://Saito-Saito-Saito.github.io/chess/">HOME</a></td>
+                    <td><label for="acd-check1">Stage 1</label></td>
+                    <td><label for="acd-check2">Stage 2</label></td>
+                    <td><label for="acd-check3">Stage 3</label></td>
+                    <td><label for="acd-check4">Stage 4</label></td>
+                    <td><label for="acd-check5">Stage 5</label></td>
+                    <td><label for="acd-check6">Stage 6</label></td>
+                    <td><a href="https://Saito-Saito-Saito.github.io/2048/code">CODE</a></td>
+                </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1">Stage 1　プログラムの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section1">1-1　盤面の機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section2">1-2　動きの機能を考える</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage1/section3">1-3　ゲーム進行の機能を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2">Stage 2　プログラムの土台を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section1">2-1　ロガーを設定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage2/section2">2-2　定数を設定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3">Stage 3　盤面のクラスの基本機能を作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section1">3-1　新しい数を挿入する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section2">3-2　コンストラクタを作る</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section3">3-3　インデックスが適正か判断する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage3/section4">3-4　盤面を表示する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4">Stage 4　盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section1">4-1　概観を把握する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section2">4-2　4 通りの場合わけをして盤面を動かす</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage4/section3">4-3　場合わけを統合したメソッドを実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5">Stage 5　ゲームの終了を判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section1">5-1　ゲームクリアを判定する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage5/section2">5-2　手詰まりを判定する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6">Stage 6　ゲーム進行を実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section1">6-1　ゴールやサイズの設定を変更する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section2">6-2　スタートメニューを実装する</a></li>
+                <li><a href="https://Saito-Saito-Saito.github.io/2048/stage6/section3">6-3　ゲーム進行を実装する</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s2-2">
+            <h1>Stage 2　プログラムの土台を作る</h1>
+            <h2>2-2　定数を設定する</h2>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>の設定が終わったところで、ここからは主にコード全体に関わる定数を宣言していきます。</p>
+                <p>まず、このコードではことあるごとに [<a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a>, <a href="https://Saito-Saito-Saito.github.io/2048/memo/#column_v" class="memo" target="_new">col</a>] という形のリストを使っていきます。その際にリストの<a href="https://Saito-Saito-Saito.gothub.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に名前あった方がわかりやすいでしょ？ということで<a href="https://Saito-Saito-Saito.gothub.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>にそれぞれ ROW, COL と名前をつけてあげてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### INDEXES
+ROW = 0
+COL = 1
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>実際これどうやって使うん？</p>
+                    </div>
+                </div>
+                <p>例えば A っていう変数が [row, col] で表されるとして、</p>
+                <p class="code"><code>A[ROW] += 2</code></p>
+                <p>とすれば、A が表すものの <a href="https://Saito-Saito-Saito.github.io/2048/memo/#row_v" class="memo" target="_new">row</a> の要素に 2 を加える、なんてことができるようになります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>マスに数字がない場合の値を EMPTY とします。board に入れる値ですね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### SQUARES STATUS
+EMPTY = 0
+                        </code>
+                    </pre>
+                </div>
+                <p>別に 0 でなくたって、盤面にあるはずのない数字であればなんだって構いませんよ。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>マスにない数字じゃなきゃダメか？<br>ダメだな</p>
+                    </div>
+                </div>
+                <p>はい、ダメです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>上下左右の方向にも名前をつけてあげます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### DIRECTIONS
+UP = [-1, 0]
+DOWN = [+1, 0]
+LEFT = [0, -1]
+RIGHT = [0, +1]
+                        </code>
+                    </pre>
+                </div>
+                <p>[row, col] のマスからある向きに動かしたいときは [row + direction[ROW], col + direction[COL]] とする、こんな形がいいんじゃないでしょうか。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ゴメン、何言ってっかわかんねーわ</p>
+                    </div>
+                </div>
+                <p>例えば [row, col] から上に行きたいときは</p>
+                <p class="code"><code>row -> row - 1</code></p>
+                <p>とすればできますよね？ここで UP = [-1, 0] にしたんですから、それを row, col に加えてやれば良いじゃないですか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>確かに。それな</p>
+                    </div>
+                </div>
+                <p>他の方向でも同じ話です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>次は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>の返り値に名前をつけます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### RETURN VALUES
+SUCCEEDED = True
+FAILED = False
+                        </code>
+                    </pre>
+                </div>
+                <p>「え？リターンって大体 True/False か数字くらいでしょ？なんで名前つけるの？」いい質問ですね。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>何こいつ、まだ何にも聞いてないんだけど</p>
+                    </div>
+                </div>
+                <p>後々 Stage 4 でお目にかかる move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>を例にとってみましょうか。こいつはその名の通り盤面を動かす機能なのですが、同時に「その盤面を動かすことができるか」というのも確認しています。例えばこんな場合。</p>
+                <img src="up-exception.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>この盤面を「左！」っていったところで、動かそうにも動かせませんよね。これを判定するのもゆくゆくは move <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#method_v" class="memo" target="_new">メソッド</a>の役割になります。</p>
+                <p>ではこんな時、何をリターンすればよろしいでしょう？Null ですか？はたまた 0？ここは False ですか？迷いますよね。しかもコーディングしていると</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/question.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>あれ、このメソッドでこうなった時、リターンは Null だっけ？ 0 だったかな？</p>
+                    </div>
+                </div>
+                <p>となってしまいます。バグの元ですよ、そんなの。</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/cry.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>じゃあどうすりゃ良いんだよ!?</p>
+                    </div>
+                </div>
+                <p>そこで FAILED という「リターン専用の」値を用意してあげることで、</p>
+                <div class="unagi">
+                    <img src="../../unagi-pink800000/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>あ、こいつ動かせなかったんだな</p>
+                    </div>
+                </div>
+                <p>と一目瞭然に結果がわかるようにしています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>最後にゲーム設定のデフォルトを書いておきましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### DEFAULT VALUES
+DEFAULT_PROB4 = 1 / 8
+DEFAULT_SIZE = 4  # board size = 4 * 4
+DEFAULT_GOAL = 2048
+MAX_GOAL = 65536
+                        </code>
+                    </pre>
+                </div>
+                <p>新しい数を入れていく中で 4 を出すのは 8 回に 1 回の確率、盤面のサイズは 4 × 4, デフォルトのアガリは 2048, そしてこのコードでは 5 桁までしか表示するスペースがないので 2 ^ 16 である 65536 を上限にとっています。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="../../stage3/index.html">NEXT　Stage 3　盤面のクラスの基本機能を作る</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
