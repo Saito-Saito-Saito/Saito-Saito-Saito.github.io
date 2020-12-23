@@ -10,107 +10,143 @@
     gtag('config', 'UA-166967736-1');
     </script>
     
+    <title>Pythonプログラミングでリバーシを作る 5</title>
+
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage5">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 5">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、石を裏返す機能を実装していきます。">
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、石を裏返す機能を実装していきます。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>これであなたもリバーシが作れる 5</title>
-    <link rel="stylesheet" href="../stylesheet.css">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
 </head>
 <body>
     <header>
+        <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-top.png" alt="" width="90px">
         <div id="title">
-            <h1>これであなたも</h1>
-            <h1>リバーシが作れる</h1>
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
         </div>
-
-        <ul>
-            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage3">Stage 3</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
-            <li><a href="#">Stage 5</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/reversi/code" target="_blank">Code</a></li>
-        </ul>
     </header>
 
-    <div class="acd-menu">
-        <input type="checkbox" id="acd-check">
-        <label for="acd-check" class="acd-label">MENU</label>
-        <ul class="acd-content">
-            <li><a href="https://saito-saito-saito.github.io/reversi">Stage 0&1</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage2">Stage 2</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage3">Stage 3</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage4">Stage 4</a></li>
-            <li><a href="#">Stage 5</a></li>
-            <li><a href="https://saito-saito-saito.github.io/reversi/stage6">Stage 6</a></li>
-            <li><a href="https://Saito-Saito-Saito.github.io/reversi/code" target="_blank">Code</a></li>
-        </ul>
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
     </div>
 
     <main>
-        <section id="s5">
-            <h1>Stage 5　パスと勝敗を判別する</h1>
-            <p>みなさま、ようこそ。リバーシのプログラミング第 5 ステージです。今回は Board クラスの中でも、あんまり出番がないようで実はめちゃめちゃ頑張ってる passjudge, gamesetjudge と、あんまり出番がないようでホントに出番が少ない countpiece の 3 つのメソッドを扱います。それぞれ「パスしなければいけないか」「決着がついたか」「石の数はそれぞれ何個か」を調べる機能です。これでようやく Board クラスのすべてのコーディングが終わりますよ。</p>
-        </section>
-
-        <section class="index">
-            <h2>目次</h2>
-            <p>
-                <ul>
-                    <li><a href="#s5-1">5-1　パスを判別する</a></li>
-                    <li><a href="#s5-2">5-2　石を数える</a></li>
-                    <li><a href="#s5-3">5-3　ゲームセットを判別する</a></li>
-                </ul>
-            </p>
-        </section>
-
-        <section id="s5-1">
-            <h2>5-1　パスを判別する</h2>
-            <p>リバーシにおいてパスというのはは「どこにも石を置けない」状態で避けては通れないものであり、またこの状況でないと許されないものでもあります。したがって「どこにも石を置けないか、実は置けるマスがあるのか」これを判別する機能が欲しいわけです。それをするのが passjudge メソッドというわけです。</p>
-            <p>やることはとても単純で、すべてのマスをシラミつぶしに眺めて石を置けないか確認しているだけです。とりあえず下に概略を書いておきましょう。</p>
-            <img src="PJflowchart.png" alt="UNAVAILABLE" width="90%" style="max-width: 350px;">
-            <p>もうこれでわかりましたよね。解説要りませんよね。要りますか。欲しがりですねぇ。</p>
-            <p>まず大外の 2 重 for ループですべてのマスをめぐっています。もし [row, col] に石があったら、そのマスには石をおくことができませんから continue しちゃってください。マスが空いていたら <a href="https://saito-saito-saito.github.io/reversi/stage4#s4-4">4-4</a> と同じ要領でマスに石を置けるか確認します。もし石が置けるようでしたら、「player はパスなんかしないでそこのマスに石置きなさい」ということになりますので、「パスはできない」Flaase をリターンです。</p>
-            <p>もしすべてのマスを巡って全部のループを抜けても、どこにも置き場所がないということになれば、「パスしないといけない」True をリターンしちゃってください。</p>
-        </section>
-
-        <section id="s5-2">
-            <h2>5-2　石を数える</h2>
-            <p>気が早いですがゲームセットになった時にお互いの石の数を数え上げる機能を作りましょう。countpiece メソッドですね。ホントに簡単です。ただただすべてのマスを巡って白黒の石の数を数え上げるだけですよ。宿題にしたって物足りないくらいですよね。</p>
-            <p>なお、リターンするのは [黒の石の数, 白の石の数] という形のリストです。流石にこれくらいは解説しとかないとスペースがもったいない。</p>
-        </section>
-
-        <section id="s5-3">
-            <h2>5-3　ゲームセットを判別する</h2>
-            <p>gamesetjudge メソッドに入りましょう。ゲームセットになるのは</p>
-            <p>
-                <ul>
-                    <li>マスが全部埋め尽くされたとき</li>
-                    <li>互いにどのマスにも石を置けないとき</li>
-                </ul>
-            </p>
-            <p>ですから、結局は「両方がパスしなければいけない場合」とまとめることができますね。いや、「互いにどのマスにも置けない」でいいんですけれども、私の説明の意図を考えてくださいよ。さっき作った passjudge 是非ともここで使いたいでしょ。</p>
-            <p>そうとわかればこんなに簡単なことはありません。どちらか一方でもパスできない状況にあれば False を、そうでなければ True をリターンですね。</p>
-            <p>クラスの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class#constructor_v" class="memo" target="_new">コンストラクタ</a>で game_status というのをこしらえてございますので、その値をいじくっておきましょう。「ゲームセット」って言ってんですから GAME_SET に書き換えるだけです。簡単でしょ。</p>
-        </section>
-
         <section>
-            <h2>次回予告</h2>
-            <p>今回ろくに解説することありませんでしたね。でもいいんですよ。「リバーシなんて作るの簡単じゃん。俺でもできるわ」っていう方が増えていただければ、私のコードなんか見なくても自分で作るようになりますから。そもそもこのサイトだって、「プログラミングの入門はできたけど、とりあえず何すればいいかわからない」という方に向けた材料提供に過ぎませんし。</p>
-            <p>次回で完結します。流石に今回ほど説明することがないとはいきませんが、気楽に見てってください。そんなもんでいいんです。プログラマーの体力はバグ直しに温存しておくものですよ。</p>
-            <p><a href="https://saito-saito-saito.github.io/reversi/stage6">次回　Stage 6　ゲームを運用する</a></p>
+            <h1>Stage 5　石を裏返す機能を実装する</h1>
+            <p>リバーシのプログラミング第 5 ステージ、ここでは石を裏返す機能を実装していきます。</p>
+        </section>
+        <section class="index">
+            <h2>MENU</h2>
+            <section class="sub-section">
+                <p><a href="section1/index.html">5-1　石を裏返す機能をデザインする</a></p>
+                <p><a href="section2/index.html">5-2　石を裏返す機能を実装する</a></p>
+            </section>
+        </section>
+        <section class="sub-section">
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/index.html">NEXT　Stage 6　パスと勝敗を判別する</a></p>
         </section>
     </main>
-    
-    
+
     <footer>
         <ul>
-            <li>LAST UPDATE: 2020/6/29</li>
-            <li><a href="https://saito-saito-saito.github.io" target="_blank">解説一覧</a></li>
-            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者の GitHub</a></li>
-            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者の Twitter</a></li>
-            <li><a href="#">トップへ</a></li>
+            <li>LAST UPDATE: 2020/09/10</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li>
+                <a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a>
+            </li>
+            <li>
+                <a href="#">トップに戻る</a>
+            </li>
         </ul>
     </footer>
+
+    
 </body>
 </html>

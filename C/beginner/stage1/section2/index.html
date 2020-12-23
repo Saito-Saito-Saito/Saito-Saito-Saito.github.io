@@ -1,0 +1,133 @@
+<html>
+    <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>プログラミング初心者のためのC言語入門 1-2</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/C/beginner/stage1/section2">
+    <meta property="og:title" content="プログラミング初心者のためのC言語入門 1-2">
+    <meta property="og:description" content="これからプログラミングを始める皆さまに向けたC言語の入門、ここでは「結局C言語って何？」という疑問を解決していきます。">
+    <meta name="description" content="これからプログラミングを始める皆さまに向けたC言語の入門、ここでは「結局C言語って何？」という疑問を解決していきます。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/C/beginner/unagi-blue708090/normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="../../unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>プログラミング初心者のための</h1>
+            <h1>C言語入門</h1>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h1>Stage 1　C言語プログラミングとは何か把握する</h1>
+            <h2>1-2　C言語とは？</h2>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>タイトルからずっと付き纏ってるこの C 言語ってやつ？<br>これ一体なんなのさ</p>
+                    </div>
+                </div>
+                <p>そうですね。その話をしないといけません。</p>
+                <p><a href="../section1/index.html" target="_new">1-1</a> では「プログラミングは人間の言葉を機械の言葉に翻訳すること」だということを抑えていただきました。ただ、人間の言葉にも日本語や英語、中国語などと種類があるのと同じように、機械の言葉にも種類があります。代表的なものを挙げてみると、大体こんなもんですかね。</p>
+                <p>
+                    <ul>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>Ruby</li>
+                        <li>...</li>
+                    </ul>
+                </p>
+                <p>日本語と英語で文法が全く違うのと同様に、こいつらの文法も大きく異なります。</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/sweat.JPG" alt="">
+                    <div class="balloon">
+                        <p>全部覚えんの...?</p>
+                    </div>
+                </div>
+                <p>使いたい言語は覚える必要がありますね。それこそ「中国語はやっておきたいけど、アラビア語はやらなくていっかな」みたいな感覚です。それに人間の言葉とは違って、機械の言葉は覚えなければいけないことが圧倒的に少ないですからご安心を。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>で、C言語ってどんな言語なん？</p>
+                    </div>
+                </div>
+                <p>一言で言うと、機械にとても優しい言語です。</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>いいねぇ「やさしい」って言葉好きよ</p>
+                    </div>
+                </div>
+                <p>裏を返せば、人間にとっては優しくない言葉です。</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/cry.JPG" alt="">
+                </div>
+                <p>C 言語と他の言語を比較すると、イメージで言えばこんな風になります。</p>
+                <p>
+                    <table width="90%" cellpadding="10" border="1" style="max-width: 450px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                        <tr><th>C言語</th><th>他の言語</th></tr>
+                        <tr><td>鍋に水張って</td><td rowspan="3">出汁とって</td></tr>
+                        <tr><td>出汁の顆粒入れて</td></tr>
+                        <tr><td>お玉でかき混ぜて</td></tr>
+                        <tr><td>野菜を包丁で切って</td><td rowspan="3">野菜煮立たせて</td></tr>
+                        <tr><td>野菜を鍋に入れて</td></tr>
+                        <tr><td>煮たつまで待って</td></tr>
+                        <tr><td>火止めて</td><td rowspan="2">火止めてから味噌とかして</td></tr>
+                        <tr><td>お玉で味噌溶かして</td></tr>
+                        <tr><td>火つけて</td><td rowspan="5">弱火で沸騰しない程度に煮込んで</td></tr>
+                        <tr><td>弱火にして</td></tr>
+                        <tr><td>お玉でかき混ぜて</td></tr>
+                        <tr><td>沸騰しそうになるまで待って</td></tr>
+                        <tr><td>火止めて</td></tr>
+                        <tr><td>汁椀によそって</td><td>汁椀によそって</td></tr>
+                    </table>
+                </p>
+                <p>逐一こうしろああしろと指令を出してあげる必要があるわけです。</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>初心者なんだから最初からこんなめんどくせーのやらなきゃいいじゃん</p>
+                    </div>
+                </div>
+                <p>と思われるかもしれませんが、実は言語によってこのレシピの省略の仕方が若干変わるんですよ。</p>
+            </section>
+        </section>
+        <section>
+            <p><a href="../section2/index.html">NEXT　1-2　C言語とは？</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

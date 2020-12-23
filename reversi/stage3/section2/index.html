@@ -1,0 +1,380 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 3-2</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage3/section2">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 3-2">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、盤面を表示する機能を実装します。">
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、盤面を表示する機能を実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h1>Stage 3　盤面を表すクラスの基本機能を作る</h1>
+            <h2>3-2　盤面を表示する機能を実装する</h2>
+            <section class="sub-section">
+                <p>さてここからは盤面を表示する機能を作っていきますよ。<a href="https://Saito-Saito-Saito.github.io/reversi/code/#board" target="_new">board.py</a> ファイルの BoardPrint <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>をコーディングしていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def BoardPrint(self, logger=None):
+        logger = logger or self.logger
+        
+        print('\n')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for row in range(SIZE):
+            print('\t{} |'.format(row + 1), end='')
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    print('   |', end='')
+                elif self.board[row][col] == WHITE:
+                    print(' ● |', end='')
+                elif self.board[row][col] == BLACK:
+                    print(' ○ |', end='')
+                else:
+                    logger.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    return False
+            print(' {}'.format(row + 1))
+            print('\t   -------------------------------')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>引数には<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>をとります。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    <span style="font-weight: bold;">def BoardPrint(self, logger=None):</span>
+        logger = logger or self.logger
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんでわざわざロガーなんか引数に入れんの</p>
+                    </div>
+                </div>
+                <p>この<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で主に使う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を自由に設定できるようにするためです。その意義についてはこちらのサイトで力説されていますので、是非ご覧ください。</p>
+                <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701">ログ出力のための print と import logging はやめてほしい</a></p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>でもロガーのデフォルトは None じゃん<br>ロガー設定する気ないじゃん</p>
+                    </div>
+                </div>
+                <p>def 文直下で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を設定します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def BoardPrint(self, logger=None):
+        <span style="font-weight: bold;">logger = logger or self.logger</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>やってることは <a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/index.html" target="_new">3-1</a> でロガーを設定した時と同じです。わからない方は戻って確認してください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>のゴタゴタした設定も終わったことですし、そろそろ本題の「盤面表示」に入りましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\n')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for row in range(SIZE):
+            print('\t{} |'.format(row + 1), end='')
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    print('   |', end='')
+                elif self.board[row][col] == WHITE:
+                    print(' ● |', end='')
+                elif self.board[row][col] == BLACK:
+                    print(' ○ |', end='')
+                else:
+                    logger.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    return False
+            print(' {}'.format(row + 1))
+            print('\t   -------------------------------')
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+                        </code>
+                    </pre>
+                </div>
+                <p>コードと一緒に完成図もご覧になっていただきましょうか。</p>
+                <img src="board.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>黒の背景に白の文字なので中抜きを黒にしていますが、これは実行環境によって変えてください。まあ実際のところ変えなくてもさして支障がないようには作ってありますが。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>じゃあ白黒変える必要ないじゃん</p>
+                    </div>
+                </div>
+                <p>一応ルール的には黒の石を右上と左下、白を左上と右下に置くことになっていますので、できればそれに合わせるのがいいでしょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>それではコーディングに入ります。まず最初に改行して盤面を見やすくしてあげます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        <span style="font-weight: bold;">print('\n')</span>
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')
+        for row in range(SIZE):
+            ...
+                        </code>
+                    </pre>
+                </div>
+                <p>すぐに <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> を表すアルファベットを振り、盤面の端となる線を入れていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\n')
+        <span style="font-weight: bold;">print('\t    a   b   c   d   e   f   g   h')
+        print('\t   -------------------------------')</span>
+        for row in range(SIZE):
+            ...
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>左端にタブ文字入ってんのか ...?</p>
+                    </div>
+                </div>
+                <p>よく気づきました。冒頭の開業と同じように、これも盤面を見やすくするために入れています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ここからは各 <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> ごとに作業していきます。for ループで回していきましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        for row in range(SIZE):
+            print('\t{} |'.format(row + 1), end='')
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    print('   |', end='')
+                elif self.board[row][col] == WHITE:
+                    print(' ● |', end='')
+                elif self.board[row][col] == BLACK:
+                    print(' ○ |', end='')
+                else:
+                    logger.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    return False
+            print(' {}'.format(row + 1))
+            print('\t   -------------------------------')
+                        </code>
+                    </pre>
+                </div>
+                <p>ループの中身、まずは <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> を表す数字を入れます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        for row in range(SIZE):
+            <span style="font-weight: bold;">print('\t{} |'.format(row + 1), end='')</span>
+            for col in range(SIZE):
+                ...
+                        </code>
+                    </pre>
+                </div>
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> は 0 から始まる<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>の値なので、画面に表示するときは 1 スタートになるよう 1 を加えてあげてください。</p>
+                <p>また、print はデフォルトで改行します。このあとは後ろにマスをつなげていくので、end='' を入れて改行しないようにしてあげましょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ここから先は、同じ <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> の中でさらに <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> ごとに作業します。こちらも for ループです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            for col in range(SIZE):
+                if self.board[row][col] == EMPTY:
+                    print('   |', end='')
+                elif self.board[row][col] == WHITE:
+                    print(' ● |', end='')
+                elif self.board[row][col] == BLACK:
+                    print(' ○ |', end='')
+                else:
+                    logger.critical('UNEXPECTED PLAYER VALUE in BoardPrint')
+                    return False
+                        </code>
+                    </pre>
+                </div>
+                <p>board[row][col] の値によって表示するものを変えます。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>EMPTY のときはいいとして、白と黒でなんで石の色逆にしてんの？</p>
+                    </div>
+                </div>
+                <p>これ見ればわかるでしょ？</p>
+                <img src="board.png" alt="UNAVAILABLE" width="300px">
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>ああ、さっき見たな</p>
+                    </div>
+                </div>
+                <p>さっきも申し上げましたが、背景が黒いから中抜きを黒にしているんです。この色はご自分の実行環境に合わせて調節してください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> を全て廻りきったら、盤面右端の <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> 番号を入れて改行、マスを区切る横線を入れてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        for row in range(SIZE):
+            print('\t{} |'.format(row + 1), end='')
+            for col in range(SIZE):
+                ...
+            <span style="font-weight: bold;">print(' {}'.format(row + 1))
+            print('\t   -------------------------------')</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>相変わらず <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> 番号は</p>
+                <p class="stress">row + 1</p>
+                <p>です。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> を回る for ループも抜けたら <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> 番号を盤面下にふって、改行してスペーシングしてください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        print('\t    a   b   c   d   e   f   g   h')
+        print('\n')
+                        </code>
+                    </pre>
+                </div>
+                <p>これにて盤面表示の機能は実装完了です。お疲れ様でした。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/index.html">NEXT　Stage 4　石をおけるか判別する機能を実装する</a></p>
+        </sectsection>
+    </main>
+
+    <footer id="footer">
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

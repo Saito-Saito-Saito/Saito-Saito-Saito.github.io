@@ -1,0 +1,265 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 7-5</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage7/section4">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 7-4">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、ゲームセットした後の機能を実装していきます。">
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、ゲームセットした後の機能を実装していきます。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+    
+    <main>
+        <section id="s4">
+            <h1>Stage 7　ゲーム進行をデザインする</h1>
+            <h2>7-5　ゲームセット後の操作を実装する</h2>
+            <section class="sub-section">
+                <p>さて、<a href="https://Saito-Saito-Saito.github.io/reversi/code/#main" target="_new">main.py</a> で、ゲームセットして while ループを離脱した後の機能をコーディングします。とりあえずコードを見てみましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+print('\nGAME SET')
+counter = main_board.countpiece()
+
+# in case of give up
+if main_board.game_status == GAME_PRC:
+    print('INTERRUPTION')
+    if main_board.winner == BLACK:
+        print('BLACK WINS')
+    elif main_board.winner == WHITE:
+        print('WHITE WINS')
+    else:
+        print('SYSTEM ERROR: DRAW')
+# the other cases of game set
+else:
+    counter = main_board.countpiece()
+    print('{} - {}'.format(counter[0], counter[1]))
+    if counter[0] == counter[1]:
+        print('DRAW')
+    elif counter[0] &gt; counter[1]:
+        print('○ WINS')
+    elif counter[0] &lt; counter[1]:
+        print('● WINS')
+    else:
+        logger.error('ILLOGICAL ATTITUDE out of the while loop')
+
+print('\nGAME OVER\n')
+                        </code>
+                    </pre>
+                </div>
+                <p>では早速コーディングします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>とりあえず「ゲーム終了」ということを知らせてあげましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+print('\nGAME SET')
+                        </code>
+                    </pre>
+                </div>
+                <p>とりあえずどっちかがギブアップした場合を考えましょう。この時</p>
+                <p class="stress">game_status は GAME_PRC</p>
+                <p>です。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>PRC って確か「進行中」だろ？ゲーム終わってねーじゃん</p>
+                    </div>
+                </div>
+                <p>ええ、終わってないのに while ループを抜けてるということは、順当な終わり方をしてないんですから、ギブアップしたとわかるわけです。</p>
+                <p>ではコーディングしましょう。まずは game_status が GAME_PRC であることを条件に入れておきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# in case of give up
+if main_board.game_status == GAME_PRC:
+    print('INTERRUPTION')
+                        </code>
+                    </pre>
+                </div>
+                <p>「中断されましたよ」って教えてあげるといいですね。</p>
+                <p>この条件のもとで、winner が BLACK であれば、石の数によらず黒の勝ちです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    <span style="font-weight: bold;">if main_board.winner == BLACK:
+        print('BLACK WINS')</span>
+    elif main_board.winner == WHITE:
+        print('WHITE WINS')
+    else:
+        print('SYSTEM ERROR: DRAW')
+                        </code>
+                    </pre>
+                </div>
+                <p>同様に winner が白なら黒の方が多くても白の勝ち。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>さて、今度は順当にゲームセットになった場合、つまり両方とも石をおけなくなった状態を考えてあげます。この時は純粋に石の多い方が勝ちですよね。</p>
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/index.html" target="_new">6-2</a> で実装した countpiece <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で白黒それぞれいくつずつ石があるか数えます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# the other cases of game set
+else:
+    counter = main_board.countpiece()
+    print('{} - {}'.format(counter[0], counter[1]))
+                        </code>
+                    </pre>
+                </div>
+                <p>ついでに黒と白が何対何だったかを今のうちに示してあげましょう。</p>
+                <p>さて、counter[0] が黒、counter[1] が白ですので、それに基づいて場合分けします。まずは引き分けから。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    if counter[0] == counter[1]:
+        print('DRAW')
+                        </code>
+                    </pre>
+                </div>
+                <p>ただただ「引き分け」と表示するだけです。</p>
+                <p>どっちかが勝っても同じこと。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    elif counter[0] &gt; counter[1]:
+        print('○ WINS')
+    elif counter[0] &lt; counter[1]:
+        print('● WINS')
+    else:
+        logger.error('ILLOGICAL ATTITUDE out of the while loop')
+                        </code>
+                    </pre>
+                </div>
+                <p>ラストに「ゲームおしまい」って書いて完成です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+print('\nGAME OVER\n')
+                        </code>
+                    </pre>
+                </div>
+                <p>長い長いコーディングもこれで終わりです。お疲れ様でした。</p>
+            </section>
+        </section>
+        
+    </main>
+    
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/12/23</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者の GitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者の Twitter</a></li>
+            <li><a href="#">トップへ</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

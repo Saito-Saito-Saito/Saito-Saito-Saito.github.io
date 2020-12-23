@@ -1,0 +1,441 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 2-2</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage2/section2">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 1-2">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、コード全体で非常に重要となる定数を宣言します。">
+    <meta property="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、コード全体で非常に重要となる定数を宣言します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s2-2">
+            <h1>Stage 2　プログラムの土台を作る</h1>
+            <h2>2-2　基本的な定数を宣言する</h2>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/index.html" target="_new">2-1</a> で<a href="https://Saito-Saito-Saito.github.io/memorandom/Pytthon/logging/#logger_v" class="memo" target="_new">ロガー</a>をコーディングした <a href="https://Saito-Saito-Saito.github.io/reversi/code/#config" target="_new">config.py</a> ファイルの残りの部分を片付けましょう。ここでは、コード全体に大きく関わるような各種定数を宣言していきます。</p>
+                <p>まずはコーディングする部分のコードを見ていただきましょうか。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+logger = setLogger(__name__)
+
+
+# board is 8 * 8
+SIZE = 8
+if int(SIZE / 2) != SIZE / 2:
+    logger.error('SIZE VALUE HAS TO BE EVEN')
+    print('SYSTEM ERROR')
+    sys.exit()
+
+
+# rows & columns index
+ROW = 0
+COL = 1
+
+
+# piece values
+EMPTY = 0
+B = BLACK = 1
+W = WHITE = -1
+
+
+# game proceeding/set
+GAME_PRC = 0
+GAME_SET = 1
+
+
+# for return
+SUCCEEDED = True
+FAILED = False
+
+
+# direction is represented as follows: [toROW - frROW, toCOL - frCOL]
+WHOLE_DIRECTION = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1], [0, 1],
+    [1, -1], [1, 0], [1, 1]
+]
+
+
+# whether the index is in the board
+def InBoard(subject):
+    if 0 <= subject < SIZE:
+        return True
+    else:
+        return False
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>おいおい待て待て、なんか地味になげーぞ</p>
+                    </div>
+                </div>
+                <p>やってることはただただ定数を代入しているだけです。何ら難しいこともありません。お気楽にご覧になってくださって結構です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず最初に、<a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/index.html" target="_new">2-1</a> で拵えたばかりの setLogger 関数を使ってこの config モジュール（ファイル）内で主に扱う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+logger = setLogger(__name__)
+                        </code>
+                    </pre>
+                </div>
+                <p>引数に <code>__name__</code> とあるのはモジュール名 'config' をそのままこの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>の名前にするためですね。</p>
+                <p>下に行って盤面の大きさを決めています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# board is 8 * 8
+<span style="font-weight: bold;">SIZE = 8</span>
+if int(SIZE / 2) != SIZE / 2:
+    logger.error('SIZE VALUE HAS TO BE EVEN')
+    print('SYSTEM ERROR')
+    sys.exit()
+                        </code>
+                    </pre>
+                </div>
+                <p>盤面が SIZE * SIZE つまり 8 * 8 の 64 マスであることがコーディングされています。</p>
+                <p>その下に if 文が続いていますよね。ここでは上記の SIZE が適正な値かを判断しています。というのも、SIZE が偶数でないと最初に 4 つ石を中央に並べるあの形が作れないんですよね。</p>
+                <p>具体的にはどう判断しているかというと、int(SIZE / 2) と SIZE / 2 の値を比べています。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# board is 8 * 8
+SIZE = 8
+<span style="font-weight: bold;">if int(SIZE / 2) != SIZE / 2:</span>
+    logger.error('SIZE VALUE HAS TO BE EVEN')
+    print('SYSTEM ERROR')
+    sys.exit()
+                        </code>
+                    </pre>
+                </div>
+                <p>もし SIZE が奇数であれば、SIZE / 2 は必ず 5.5 とか 3.5 と言った具合に整数になりません。したがって、int で整数にしてあげれば正しい値をとっているかわかるわけです。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>じゃあわざわざ変な式にしなくても SIZE % 2 == 0 で判断すればいいじゃん</p>
+                    </div>
+                </div>
+                <p>ええ、整数であればね。もし SIZE に 6.7 みたいな小数入れられたらどうするんですか？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>いや...まあそんなことありえんし...</p>
+                    </div>
+                </div>
+                <p>その通りですね。コードの SIZE をわざわざ変えられることを心配するのは杞憂ですね。ただコードを書いてしまった以上は杞憂を貫き通します。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんじゃそりゃ、変なの</p>
+                    </div>
+                </div>
+                <p>もし if の条件に適合して SIZE が適正な値ではないと判断された場合、先ほど用意した<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>で警告を出します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+if int(SIZE / 2) != SIZE / 2:
+    <span style="font-weight: bold;">logger.error('SIZE VALUE HAS TO BE EVEN')</span>
+    print('SYSTEM ERROR')
+    sys.exit()
+                        </code>
+                    </pre>
+                </div>
+                <p>またユーザーには「システムエラーが発生した」とだけ伝えて、sys.exit で強制終了させます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>お次はリストの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に名前をつけていきます。</p>
+                <p>このコードでは [row, col] の形で表されるリストがちょくちょく出てきます。例として A = [row, col] というリストを考えてみると、</p>
+                <p class="code"><code>A[0] += 1</code></p>
+                <p>とかされたら</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>これ row の値だっけ？column だっけ？</p>
+                    </div>
+                </div>
+                <p>と頭を抱えることになってしまいかねません。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>それで row と column のどっちのインデックスかわかりやすいように名前をつけるってわけね</p>
+                    </div>
+                </div>
+                <p>その通りでございます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# rows & columns index
+ROW = 0
+COL = 1
+                        </code>
+                    </pre>
+                </div>
+                <p>順番はどちらでも構いませんが、このコードでは ROW を 0, COL を 1 としておきます。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>実際どうやって使うん？</p>
+                    </div>
+                </div>
+                <p>そんなに難しいことはなくて、例えば先ほどの例で言えば A[ROW] += 1 みたいにします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/index.html" target="_new">1-2</a> で board に石を入れておこうという話になりましたが、その値にも名前をつけてあげましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# piece values
+EMPTY = 0
+B = BLACK = 1
+W = WHITE = -1
+                        </code>
+                    </pre>
+                </div>
+                <p>またこの値はプレーヤーを判断するのにも使います。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>どういうこと？</p>
+                    </div>
+                </div>
+                <p>例えば「プレーヤーが黒の時」みたいに場合わけしたければ</p>
+                <p class="code"><code>if player == BLACK:</code></p>
+                <p>のような形でコーディングするということです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ゲームが進行途中かゲームセットしているかもコーディングしておきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# game proceeding/set
+GAME_PRC = 0
+GAME_SET = 1
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>ゲームセットしたらすぐプログラム終了すりゃええねん<br>いらんやろこんなもん</p>
+                    </div>
+                </div>
+                <p>いえいえ、勝敗を判定するときに実は使えるんですよ。その真価を発揮するのは Stage 7 になりますかね。それまでどうぞお楽しみに。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の返り値にも名前をつけてあげます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# for return
+SUCCEEDED = True
+FAILED = False
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>普通に True と False でええやん<br>いらんよこんなん</p>
+                    </div>
+                </div>
+                <p>例えば石を裏返してくれる turn <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>というのがあったとします。もし石が裏返せなかったとしたら、そのときこの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の返り値はどうなりそうですか？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>False かな？いや、Null かもしれん</p>
+                    </div>
+                </div>
+                <p>そんな具合に返り値がなんだったか思い出す手間が出てきますし、何しろ間違った時のバグを考えたら恐ろしくてしょうがない。</p>
+                <p>ということで「失敗」となるようなときには FAILED をリターンし、「成功」となったら SUCCEEDED をリターンしてもらえるよう統一しようという魂胆です。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>上下左右斜めの方向も決めていきたいのですが、各方向に名前をつけたところで今回方向ごとに分ける場面がないので、「全方向をまとめたリスト」を用意します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# direction is represented as follows: [toROW - frROW, toCOL - frCOL]
+WHOLE_DIRECTION = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1], [0, 1],
+    [1, -1], [1, 0], [1, 1]
+]
+                        </code>
+                    </pre>
+                </div>
+                <p>for 文なんかで「全部の方向を見たい」となったときに</p>
+                <p class="code"><code>for direction in WHOLE_DIRECTION</code></p>
+                <p>とするような使い方をします。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>でも 1 とか -1 とか、そんなんでどうやって方向を表すん？</p>
+                    </div>
+                </div>
+                <p>では早速先ほど宣言したばかりの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>の名前を使ってご説明しましょう。</p>
+                <p>例えば [row, col] という位置に注目しているとして、ここから斜め右上に進みたいとなったら、<a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> は 1 引いて <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> は 1 足せばいいですよね？</p>
+                <img src="direction-motion.png" alt="UNAVAILABLE" width="90%" style="max-width: 250px;">
+                <p>そこで右上を表すリストを direction = [-1, +1] とすれば、</p>
+                <p class="code"><code>row += direction[ROW]</code></p>
+                <p class="code"><code>col += direction[COL]</code></p>
+                <p>とすることで右上に移動することができます。</p>
+                <p>これを上下左右と斜め全部で 8 方向に拡張すると、コードにあるリストの通りになりますから、全部まとめて WHOLE_DIRECTION としています。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>最後に定数の宣言ではありませんが、<a href="https://Saito-Saito-Saito.github.io/reversi/memo/#row_v" class="memo" target="_new">row</a> や <a href="https://Saito-Saito-Saito.github.io/reversi/memo/#column_v" class="memo" target="_new">column</a> に使う値が適正値になっているか判断する関数を実装しておきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# whether the index is in the board
+def InBoard(subject):
+    if 0 <= subject < SIZE:
+        return True
+    else:
+        return False
+                        </code>
+                    </pre>
+                </div>
+                <p>例えば SIZE が 8 なのに row == 10 とかされたらエラー出て大変ですよね。ということで 0 以上 SIZE 未満の値であれば True を、それ以外で False をリターンします。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>SIZE ってこんなか入っていないよね？なんで？？</p>
+                    </div>
+                </div>
+                <p>主にリストの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>に使うために実装しているからです。例えば board[SIZE] ってやったらエラー出るでしょ？</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/index.html">NEXT　Stage 3　盤面を表すクラスの基本機能を作る</a></p>
+        </sectsection>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 3-1</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage3/section1">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 3-1">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、盤面を表すクラスのコンストラクタを実装します。">
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、盤面を表すクラスのコンストラクタを実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h1>Stage 3　盤面を表すクラスの基本機能を作る</h1>
+            <h2>3-1　コンストラクタを実装する</h2>
+            <section class="sub-section">
+                <p>さて、今回から盤面をクラスで表す作業に入っていきます。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>またまた込み入ったことするねぇ</p>
+                    </div>
+                </div>
+                <p>いえいえ、ボードゲームは盤面をクラスで表すことが結構多いですよ。なんならチェスや 2048 といった他のボードゲームの解説でもクラスを実装しているので、<a href="#footer">フッター（ページ最下部）</a>からジャンプして確認できますから、そちらも参考になさってください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>それでは盤面の初期状態を作るコンストラクタを実装しましょう。その前にまずはクラスを擁するファイル <a href="https://Saito-Saito-Saito.github.io/reversi/code/#board" target="_new">board.py</a> の初期設定を施していきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+import copy
+
+from config import *
+
+local_logger = setLogger(__name__)
+                        </code>
+                    </pre>
+                </div>
+                <p>いろいろインポートしたら、<a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/index.html" target="_new">2-1</a> で実装した setLogger 関数を使って<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を宣言します。名前はこのモジュール（ファイル）に合わせておきます。__name__ としておけば勝手に board と変換してくれますからね。</p>
+                <p>それではクラスに入りましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+class Board:
+    def __init__(self, input_board=[], *, status=GAME_PRC, winner=EMPTY, logger=None):
+        if len(input_board) == SIZE:
+            self.board = copy.deepcopy(input_board)
+        else:
+            self.board = []
+            for row in range(SIZE):
+                self.board.append([0 for col in range(SIZE)])
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2) - 1] = WHITE
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2)] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2) - 1] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2)] = WHITE
+        # 0:進行中(途中)PRC　1:決着SET
+        self.game_status = status
+        self.winner = winner
+        self.logger = logger or local_logger
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず最初にクラスを宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+<span style="font-weight: bold;">class Board:</span> 
+    def __init__(self, input_board=[], *, status=GAME_PRC, winner=EMPTY, logger=None):
+        ...
+                        </code>
+                    </pre>
+                </div>
+                <p>名前はわかりやすく Board にしておきました。</p>
+                <p>今度は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>を宣言します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def __init__(self, input_board=[], *, status=GAME_PRC, winner=EMPTY, logger=None):
+        ...
+                        </code>
+                    </pre>
+                </div>
+                <p>各引数を見ていきましょう。</p>
+                <table width="90%" cellpadding="10" border="1" style="max-width: 450px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><td>input_board</td><td>引き継ぎたい盤面のリスト board</td></tr>
+                    <tr><td>status</td><td>ゲームが進行中か終了しているか</td></tr>
+                    <tr><td>winner</td><td>勝者（ゲーム途中では EMPTY）</td></tr>
+                    <tr><td>logger</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>内部で主に使う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a></td></tr>
+                </table>
+                <p>まず input_board には、引き継ぎたい盤面の board を入れます。デフォルトでは空のリストですね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>どうやって使うん？</p>
+                    </div>
+                </div>
+                <p>例えば盤面を複製したいときなんかは</p>
+                <p class="code" style="text-align: left;"><code>MainBoard = Board()</code></p>
+                <p class="code" style="text-align: left;"><code>CopiedBoard = Board(MainBoard.board)</code></p>
+                <p>みたいな形にします。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>status はゲームが進行中かどうか判断するための bool 型変数です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def __init__(self, input_board=[], *, <span style="font-weight: bold;">status=GAME_PRC</span>, winner=EMPTY, logger=None):
+                        </code>
+                    </pre>
+                </div>
+                <p>ここに入るのは</p>
+                <p>
+                    <ul>
+                        <li>ゲーム進行中 GAME_PRC</li>
+                        <li>ゲーム終了　 GAME_SET</li>
+                    </ul>
+                </p>
+                <p>のいずれかです。<a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/index.html" target="_new">2-2</a> で両方とも定義していますので、忘れた方は再度確認してください。</p>
+                <p>winner は勝者を表します。決着がついていない間は公平を期すため EMPTY を入れておきますが、GAME_SET となってどちらかに勝敗が決した場合はその勝者を入れます。引き分けなら EMPTY です。</p>
+                <p>logger にはこの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class" class="memo" target="_new">クラス</a>で主に扱う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を入れます。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>デフォルト None だけどなんで？</p>
+                    </div>
+                </div>
+                <p>ではその説明も兼ねて<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>の中身に入りましょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず最初に盤面の設定から入ります。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんだよ、ロガーの話じゃねえんかよ</p>
+                    </div>
+                </div>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if len(input_board) == SIZE:
+            self.board = copy.deepcopy(input_board)
+        else:
+            self.board = []
+            for row in range(SIZE):
+                self.board.append([0 for col in range(SIZE)])
+                        </code>
+                    </pre>
+                </div>
+                <p>初めの if は引数 input_board に盤面が代入されたときの話です。この時盤面を表すリストの長さは SIZE と一致するはずですよね？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>確かにな</p>
+                    </div>
+                </div>
+                <p>と言うことで、この時は self.board に input_board を完全にコピーします。そのため copy モジュールの deepcopy <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッドを使ってあげてください。</a></p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        if len(input_board) == SIZE:
+            <span style="font-weight: bold;">self.board = copy.deepcopy(input_board)</span>
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>なんでわざわざそんなことせなあかんの</p>
+                    </div>
+                </div>
+                <p>リストは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#mutability" target="_new">ミュータブル</a>なので、下手に</p>
+                <p class="code"><code>self.board = input_board</code></p>
+                <p>とかやってしまうと self.board の変更がそのまま input_board にも及んでしまうからです。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                </div>
+                <p>わからないようであれば上のリンクから解説へ飛んで勉強してきてください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>一方で input_board に何も入れられなかった場合を考えます。つまり else の分岐先ですね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        else:
+            self.board = []
+            for row in range(SIZE):
+                self.board.append([0 for col in range(SIZE)])
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2) - 1] = WHITE
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2)] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2) - 1] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2)] = WHITE
+                        </code>
+                    </pre>
+                </div>
+                <p>まず最初に盤面を<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list" class="memo" target="_new">リスト</a>として宣言します。</p>
+                <div class="real-code">
+                    <pre><code>
+        else:
+            <span style="font-weight: bold;">self.board = []</span>
+            for row in range(SIZE):
+                ...
+                    </code></pre>
+                </div>
+                <p>次いで SIZE × SIZE のマスを作って中身を全て 0 つまり EMPTY にします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        else:
+            self.board = []
+            <span style="font-weight: bold;">for row in range(SIZE):
+                self.board.append([0 for col in range(SIZE)])</span>
+                        </code>
+                    </pre>
+                </div>
+                <p>これで SIZE × SIZE の何も置いていない盤面が出来上がりました。リバーシは最初こんな形で白黒の石が合計 4 つ置かれている状態からスタートします。</p>
+                <img src="board.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>と言うことで、まっさらな self.board に 4 つ石を置いていきましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2) - 1] = WHITE
+            self.board[int(SIZE / 2) - 1][int(SIZE / 2)] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2) - 1] = BLACK
+            self.board[int(SIZE / 2)][int(SIZE / 2)] = WHITE
+                        </code>
+                    </pre>
+                </div>
+                <p>石の位置が真ん中になるように、リストの<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/list/#index_v" class="memo" target="_new">インデックス</a>には注意してください。</p>
+            </section>
+            <section class="sub-section">
+                <p>あとは諸々のパラメーターを設定しておきましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # 0:進行中(途中)PRC　1:決着SET
+        self.game_status = status
+        self.winner = winner
+        self.logger = logger or local_logger
+                        </code>
+                    </pre>
+                </div>
+                <p>上から順に</p>
+                <p>
+                    <ul>
+                        <li>進行中かゲームセットしたか</li>
+                        <li>勝者はだれか</li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>は何か</li>
+                    </ul>
+                </p>
+                <p>を設定していますね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>結局ロガー何やってんのかわかんねえんだけど</p>
+                    </div>
+                </div>
+                <p>では引数の logger に何か入れられた場合と何も入れられなかった場合で分けて考えてみましょう。</p>
+                <p>引数に何か入れられたら、</p>
+                <p class="code"><code>logger or local_logger</code></p>
+                <p>って何表します？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>logger の中身がそのまんま self.logger に代入されんのか</p>
+                    </div>
+                </div>
+                <p>その通りですね。一方、引数 logger に何にも入れられなかった場合、こいつはデフォルトでは None ですから</p>
+                <p class="code"><code>logger or local_logger == local_logger</code></p>
+                <p>となります。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>それでデフォルトでは local_logger をそのまんまロガーに使おうってわけか。めんどくせーことすんなよ</p>
+                    </div>
+                </div>
+                <p>これで<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#constructor_v" class="memo" target="_new">コンストラクタ</a>は実装完了です。お疲れ様でした。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/index.html">NEXT　3-2　盤面を表示する機能を実装する</a></p>
+        </sectsection>
+    </main>
+
+    <footer id="footer">
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 2-1</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage2/section1">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 2-1">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、コード全体でしようするロガーを実装します。">
+    <meta property="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、コード全体でしようするロガーを実装します。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s2-1">
+            <h1>Stage 2　プログラムの土台を作る</h1>
+            <h2>2-1　ロガーの設定をする</h2>
+            <section class="sub-section">
+                <p>まずはコードの <a href="https://Saito-Saito-Saito.github.io/reversi/code/#config" target="_new">config.py</a> というファイルをご覧ください。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+#! /usr/bin/env python3
+# config.py
+# programmed by Saito-Saito-Saito
+# explained in https://Saito-Saito-Saito.github.io/reversi
+# last update: 2/7/2020
+
+
+import sys
+from logging import getLogger, StreamHandler, FileHandler, Formatter, DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+
+### LOG SETTINGS
+DEFAULT_LOG_ADDRESS = 'log.txt'
+DEFAULT_LOG_FORMAT = Formatter('%(asctime)s - %(levelname)s - logger:%(name)s - %(filename)s - L%(lineno)d - %(funcName)s - %(message)s')
+
+# set up function
+def setLogger(name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+    logger = getLogger(name)
+    logger.setLevel(level)
+    
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+    
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+    
+    return logger
+
+
+logger = setLogger(__name__)
+
+
+# board is 8 * 8
+SIZE = 8
+if int(SIZE / 2) != SIZE / 2:
+    logger.error('SIZE VALUE HAS TO BE EVEN')
+    print('SYSTEM ERROR')
+    sys.exit()
+
+
+# rows & columns index
+ROW = 0
+COL = 1
+
+
+# piece values
+EMPTY = 0
+B = BLACK = 1
+W = WHITE = -1
+
+
+# game proceeding/set
+GAME_PRC = 0
+GAME_SET = 1
+
+
+# for return
+SUCCEEDED = True
+FAILED = False
+
+
+# direction is represented as follows: [toROW - frROW, toCOL - frCOL]
+WHOLE_DIRECTION = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1], [0, 1],
+    [1, -1], [1, 0], [1, 1]
+]
+
+
+# whether the index is in the board
+def InBoard(subject):
+    if 0 <= subject < SIZE:
+        return True
+    else:
+        return False
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>クソなげーなおい</p>
+                    </div>
+                </div>
+                <p>冒頭でいろいろインポートしていますね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+import sys
+from logging import getLogger, StreamHandler, FileHandler, Formatter, DEBUG, INFO, WARNING, ERROR, CRITICAL
+                        </code>
+                    </pre>
+                </div>
+                <p>下段の <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">logging</a> からのインポートについては、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">logger</a> と <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">logging</a> の違いを明確にするために、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">logging</a> という文字を書かなくていいようにしています。その意義についてはこちらの記事で大いに力説されていますので、是非ご覧ください。</p>
+                <p><a href="https://qiita.com/amedama/items/b856b2f30c2f38665701" target="_blank">ログ出力のための print と import logging はやめてほしい</a></p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まずは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>の設定をします。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### LOG SETTINGS
+DEFAULT_LOG_ADDRESS = 'log.txt'
+DEFAULT_LOG_FORMAT = Formatter('%(asctime)s - %(levelname)s - logger:%(name)s - %(filename)s - L%(lineno)d - %(funcName)s - %(message)s')
+
+# set up function
+def setLogger(name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+    logger = getLogger(name)
+    logger.setLevel(level)
+    
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+    
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+    
+    return logger
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/sweat.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>こんなに長いの何やるんだよ</p>
+                    </div>
+                </div>
+                <p>大したことないですって。見てけばわかりますから。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>はじめに<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>を出力するデフォルトのファイルの名前、フォーマットを設定しておきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+### LOG SETTINGS
+DEFAULT_LOG_ADDRESS = 'log.txt'
+DEFAULT_LOG_FORMAT = Formatter('%(asctime)s - %(levelname)s - logger:%(name)s - %(filename)s - L%(lineno)d - %(funcName)s - %(message)s')
+                        </code>
+                    </pre>
+                </div>
+                <p>今後<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>は基本的にこのデフォルトに従って出力します。</p>
+                <p>下に行くと関数がありますよね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+# set up function
+def setLogger(name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+    logger = getLogger(name)
+    logger.setLevel(level)
+    
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+    
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+    
+    return logger
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>なんでわざわざ関数なんか作んなあかんの？</p>
+                    </div>
+                </div>
+                <p>今後各ファイルで<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を作ることになるわけですが、いちいち「<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を宣言して、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#handler_v" class="memo">ハンドラー</a>を宣言して、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>に加えて、...」っていうのはあまりにも面倒。そこで「いっそのこと<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を作る機能を全部まとめちゃおうじゃないか」という魂胆です。楽になりますよ。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/function#default" class="memo" target="_new">デフォルトの引数</a>を順に見ていきましょう。</p>
+                <table width="90%" cellpadding="10" border="1" style="max-width: 750px; margin: 0 5%; border: solid black 1px; border-collapse: collapse;">
+                    <tr><th></th><th>内容</th><th>デフォルト</th></tr>
+                    <tr><td>name</td><td>新設する<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>の名前</td><td>'default'</td></tr>
+                    <tr><td>level</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>のレベル</td><td>DEBUG</td></tr>
+                    <tr><td>fhandler</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a></td><td>None</td></tr>
+                    <tr><td>fhandler_level</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a>に記載する最低レベル</td><td>DEBUG</td></tr>
+                    <tr><td>filename</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging" class="memo" target="_new">ログ</a>を出力するファイルの名前</td><td>DEFAULT_LOG_FILE_NAME</td></tr>
+                    <tr><td>filemode</td><td>ファイルの書き込みモード（新規書き込み 'w' / 上書き 'a'）</td><td>'w'</td></tr>
+                    <tr><td>fileformat</td><td>ファイルに記録するフォーマット</td><td>DEFAULT_LOG_FORMAT</td></tr>
+                    <tr><td>shandler</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>の<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#streamhandler_v" class="memo" target="_new">ストリームハンドラー</a></td><td>None</td></tr>
+                    <tr><td>shandler_level</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#streamhandler_v" class="memo" target="_new">ストリームハンドラー</a>で記録する最低レベル</td><td>WARNING</td></tr>
+                    <tr><td>streamformat</td><td><a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#streamhandler_v" class="memo" target="_new">ストリームハンドラー</a>で記録するフォーマット</td><td>DEFAULT_LOG_FORMAT</td></tr>
+                </table>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/cry.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>さっぱり意味わかんねぇ...</p>
+                    </div>
+                </div>
+                <p>所々にリンクを隠していますので、わからない言葉に当たったら都度解説をご覧ください。なんならここを飛ばして 2-2 に行ってしまうのもアリです。</p>
+                <p>引数の途中にアスタリスク * が一人でいるのは、後続の引数を<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/functions/#keyword" class="memo" target="_new">キーワード引数</a>にするためです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def setLogger(name='default', level=DEBUG, <span style="font-weight: bold;">*</span>, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+                        </code>
+                    </pre>
+                </div>
+                <p>実際に引数を入れるときは <code>setLogger(filemode='a')</code> のように、キーワードと一緒に書く必要があります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>関数の中身に入ります。まずは getLogger で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>を取得。getLogger の引数は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging#logger_v" class="memo" target="_new">ロガー</a>につける名前ですから、setLogger の引数にした name を入れるんですね。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+def setLogger(name='default', level=DEBUG, *, fhandler=None, fhandler_level=DEBUG, filename=DEFAULT_LOG_ADDRESS, filemode='w', fileformat=DEFAULT_LOG_FORMAT, shandler=None, shandler_level=CRITICAL, streamformat=DEFAULT_LOG_FORMAT):
+    <span style="font-weight: bold;">logger = getLogger(name)</span>
+    logger.setLevel(level)
+                        </code>
+                    </pre>
+                </div>
+                <p>直下で logger に setLevel を使ってレベルを設定しています。</p>
+                <p>今度は<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a>の設定です。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    # file handler
+    fhandler = fhandler or FileHandler(filename, mode=filemode)
+    fhandler.setLevel(fhandler_level)
+    fhandler.setFormatter(fileformat)
+    logger.addHandler(fhandler)
+                        </code>
+                    </pre>
+                </div>
+                <p>もし引数の時点で使う<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a>が指定されていれば、それをそのまま fhandler に代入します。一方引数に何も入れられていなければ fhandler は None の状態ですから、FileHandler <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a>を新設するという仕組みになっています。</p>
+                <p>その下でフォーマットを設定します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    fhandler.setLevel(fhandler_level)
+    <span style="font-weight: bold;">fhandler.setFormatter(fileformat)</span>
+    logger.addHandler(fhandler)
+                        </code>
+                    </pre>
+                </div>
+                <p>設定が終われば addHandler で logger に適用しましょう。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>ラストは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#streamhandler_v" class="memo" target="_new">ストリームハンドラー</a>を設定しますよ。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>ターミナルとかに出力されるやつやろ</p>
+                    </div>
+                </div>
+                <p>よく勉強してらっしゃるじゃないですか。その通りです。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>イヤミかクソ</p>
+                    </div>
+                </div>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    # stream handler
+    shandler = shandler or StreamHandler()
+    shandler.setLevel(shandler_level)
+    shandler.setFormatter(streamformat)
+    logger.addHandler(shandler)
+                        </code>
+                    </pre>
+                </div>
+                <p>やることは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#filehandler_v" class="memo" target="_new">ファイルハンドラー</a>でやったのと同じです。引数で<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#streamhandler_v" class="memo" target="_new">ストリームハンドラー</a>が指定されていればそれを使いますし、指定されていなければ shandler は None ですから、StreamHandler <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で新設します。</p>
+                <p>レベルとフォーマットを設定したら、やはり logger に適用しましょう。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    shandler.setFormatter(streamformat)
+    <span style="font-weight: bold;">logger.addHandler(shandler)</span>
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>これで logger は出来上がりました。この setLogger <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>を使って<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を作りたいわけですから、リターンするのは<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>がいいですね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="UNAVAILABLE">
+                    <div class="balloon">
+                        <p>logger = setLogger(...) みたいにしたいってことやろ？</p>
+                    </div>
+                </div>
+                <p>その通りです。ということで、<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>の最後には</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    return logger
+                        </code>
+                    </pre>
+                </div>
+                <p>を入れておきます。</p>
+            </section>
+        </section>
+        
+        <section>
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/index.html">NEXT　2-2　定数を設定する</a></p>
+        </sectsection>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

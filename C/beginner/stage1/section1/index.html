@@ -1,0 +1,121 @@
+<html>
+    <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+
+    <title>プログラミング初心者のための C 言語入門 1-1</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/C/beginner/stage1/section1">
+    <meta property="og:title" content="プログラミング初心者のためのC言語入門 1-1">
+    <meta property="og:description" content="これからプログラミングを始める皆さまに向けたC言語の入門、ここでは「プログラミングってそもそも何？」という疑問を解決していきます。">
+    <meta name="description" content="これからプログラミングを始める皆さまに向けたC言語の入門、ここでは「プログラミングってそもそも何？」という疑問を解決していきます。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/C/beginner/unagi-blue708090/normal.JPG">
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="../../stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="../../unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>プログラミング初心者のための</h1>
+            <h1>C言語入門</h1>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h1>Stage 1　C言語プログラミングとは何か把握する</h1>
+            <h2>1-1　プログラミングとは？</h2>
+            <section class="sub-section">
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>プログラミング勉強しなきゃとは思ってんだけど<br>そもそもプログラミングって何かよくわかっとらんのよね</p>
+                    </div>
+                </div>
+                <p>そうですよね。皆さんの考えているプログラミングのイメージってこうでしょ？</p>
+                <img src="" alt="UNAVAILABLE">
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>せや、そんなんだわ</p>
+                    </div>
+                </div>
+                <p>でもこれ「プログラミング」じゃなくて「プログラミングやってる人」のイメージだから、結局プログラミングが何かわからないって状態ですよね？</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まず根本的なところから確認していきましょう。プログラミングって何に対してするものなんでしょうか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>パソコンとかロボットとかにやるイメージはあるな</p>
+                    </div>
+                </div>
+                <p>その認識で大丈夫です。要は機械全般ですよね。</p>
+                <p>例えばルンバなんかを考えてみましょう。</p>
+                <img src="" alt="UNAVAILABLE">
+                <p>こいつ、目の前に障害物あったら避けますよね？「障害物がある」とか「避ける」とか、どうやって判断してるんでしょうか？まさかルンバの中に小人がいて操縦桿握ってるわけじゃあるまいし。</p>
+                <img src="" alt="UNAVAILABLE">
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>実は中に小人いるんじゃね？</p>
+                    </div>
+                </div>
+                <p>冗談はさておき</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/dangerous.JPG" alt="">
+                    <div class="balloon">
+                        <p>無視すんなよコラ</p>
+                    </div>
+                </div>
+                <p>例えば「壁センサーが反応したら一旦停止して、ちょっと左に曲がって進んでみろ」っていう命令を予めルンバの中に仕込んでおけば、うまくいきそうじゃないですか？</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>それな</p>
+                    </div>
+                </div>
+                <p>ここで登場するのがプログラミングです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>パソコンとかロボットってあれだけ頭良さそうな形してんのに人間の言葉全然理解してないんですよ。試しにパソコンに向かって「近くのコッテリ系ラーメン屋ググって」って言ってみてください。</p>
+                <div class="unagi">
+                    <img src="../../unagi-blue708090/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>狂人かよ</p>
+                    </div>
+                </div>
+                <p>本格的に人間の言葉を多少なりとも理解する機械が誰でも手に入れられるようになったのが Siri 以降って考えたら、物凄い最近の話なんですよね。</p>
+                <p>だから「壁センサーが反応したら一旦停止して、ちょっと左に曲がって進んでみろ」って命令するにしても、機械が理解できる「機械語」に翻訳しないといけない。この翻訳こそがプログラミングです。</p>
+                <p class="stress">プログラミング＝人間の言葉を機械の言葉に翻訳すること</p>
+            </section>
+        </section>
+        <section>
+            <p><a href="../section2/index.html">NEXT　1-2　C言語とは？</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/09/25</li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者のGitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者のTwitter</a></li>
+            <li><a href="#">トップに戻る</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

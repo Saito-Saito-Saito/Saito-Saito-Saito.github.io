@@ -1,0 +1,362 @@
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166967736-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166967736-1');
+    </script>
+    
+    <title>Pythonプログラミングでリバーシを作る 6-2</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="https://Saito-Saito-Saito.github.io/chess/stage6/section2">
+    <meta property="og:title" content="Pythonプログラミングでリバーシを作る 6-2">
+    <meta property="og:description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、勝敗を判定する機能をデザインしていきます。">
+    <meta name="description" content="Pythonプログラミングによって、ターミナル上で実行できるリバーシのゲームで、勝敗を判定する機能をデザインしていきます。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://Saito-Saito-Saito.github.io/unagi-study.JPG">
+    <meta name="google-site-verification" content="d3cz5KLnsS_25m1Shebvuyb3C4FfyoFNlPXdQ3z_oXg" />
+
+    <link rel="icon" href="https://Saito-Saito-Saito.github.io/icon.png">
+    <link rel="stylesheet" href="https://Saito-Saito-Saito.github.io/reversi/stylesheet.css">
+</head>
+<body>
+    <header>
+        <img src="https://Saito-Saito-Saito.github.io/unagi-top.png" alt="" width="90px">
+        <div id="title">
+            <h1>Pythonプログラミングで</h1>
+            <h1>リバーシを作る</h1>
+        </div>
+    </header>
+
+    <div id="menu-bar">
+        <div id="short-menu">
+                    <input type="checkbox" id="acd-check">
+                    <table>
+                        <tr><td><a href="https://Saito-Saito-Saito.github.io/reversi">HOME</a></td><td><label for="acd-check">STAGES</label></td><td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td></tr>
+                    </table>
+                    <ul class="stages-menu">
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></li>
+                        <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></li>
+                    </ul>
+        </div>
+        <div id="long-menu">
+            <table>
+                    <tr>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/">HOME</a></td>
+                            <td><label for="acd-check1">Stage 1</label></td>
+                            <td><label for="acd-check2">Stage 2</label></td>
+                            <td><label for="acd-check3">Stage 3</label></td>
+                            <td><label for="acd-check4">Stage 4</label></td>
+                            <td><label for="acd-check5">Stage 5</label></td>
+                            <td><label for="acd-check6">Stage 6</label></td>
+                            <td><label for="acd-check7">Stage 7</label></td>
+                            <td><a href="https://Saito-Saito-Saito.github.io/reversi/code">CODE</a></td>
+                    </tr>
+            </table>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <ul id="s1-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/">Stage 1　プログラムの機能を考える</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section1/">1-1　盤面の機能を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section2/">1-2　石の操作を考える</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage1/section3/">1-3　ゲーム進行を考える</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check2" class="acd-check">
+            <ul id="s2-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/">Stage 2　プログラムの土台を作る</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section1/">2-1　ロガーの設定をする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage2/section2/">2-2　基本的な定数を宣言する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check3" class="acd-check">
+            <ul id="s3-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/">Stage 3　盤面を表すクラスの基本機能を作る</a></span></li> 
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section1/">3-1　コンストラクタを実装する</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage3/section2/">3-2　盤面を表示する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check4" class="acd-check">
+            <ul id="s4-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/">Stage 4　石をおけるか判別する機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section1/">4-1　石をおけるか判別する機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage4/section2/">4-2　石をおけるか判別する機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check5" class="acd-check">
+            <ul id="s5-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/">Stage 5　石を裏返す機能を実装する</a></span></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section1/">5-1　石を裏返す機能をデザインする</a></li>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage5/section2/">5-2　石を裏返す機能を実装する</a></li>
+            </ul>
+            <input type="checkbox" id="acd-check6" class="acd-check">
+            <ul id="s6-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/">Stage 6　パスと勝敗を判定する</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/">6-1　パスを判定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section2/">6-2　勝敗を判定する機能を実装する</a></p>
+            </ul>
+            <input type="checkbox" id="acd-check7" class="acd-check">
+            <ul id="s7-menu" class="sections-menu">
+                    <li><span><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/">Stage 7　ゲーム進行をデザインする</a></span></h3>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section1/">7-1　初期設定する機能を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section2/">7-2　各種判定機能を運用する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section3/">7-3　入力文字列をマス目の情報に変換する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section4/">7-4　入力処理を実装する</a></p>
+                    <li><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/section5/">7-5　ゲームセット後の操作を実装する</a></p>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section id="s4">
+            <h1>Stage 6　パスと勝敗を判定する</h1>
+            <h2>6-2　勝敗を判定する機能を実装する</h2>
+            <section class="sub-section">
+                <p>さて、ゲーム中の動作について、あとは UI (ユーザーに見える部分) 以外に特にいじるものはないのですが、ゲームが終わった後のことを考えないといけませんね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>は？どういうこと？</p>
+                    </div>
+                </div>
+                <p>ゲームが終わったら「あなたの勝ちです!!」みたいなの必要だと思いませんか？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>ああ、そういうことね。言ってる意味がわからんかった。</p>
+                    </div>
+                </div>
+                <p>ということで、今回は勝敗を判定する機能を実装していきます。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>とはいえ勝敗以前にそもそもゲームが終了したかを判別できないといけませんから、まずはその機能を実装していきます。ゲーム終了の条件は</p>
+                <p>
+                    <ul>
+                        <li>両者とも石を置けるマスがない場合</li>
+                        <li>どちらかが負けを認めた場合</li>
+                    </ul>
+                </p>
+                <p>のいずれかですよね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>上のやつってさ、要は盤面全部埋まった場合だよな</p>
+                    </div>
+                </div>
+                <p>いえ、そうとも限りません。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>は？</p>
+                    </div>
+                </div>
+                <p>こういう場合ですよ。</p>
+                <img src="umputable.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>気持ちわる。なんだこの盤面</p>
+                    </div>
+                </div>
+                <p>まあそうなるのもわかりますが、これだとまだ盤面埋まっていないのに両方とも石おけませんよね。</p>
+                <p>ということで、両方とも石を置けない場合を確かめるときは、ちゃんと全ての空いているマスを調べてあげないといけないことになります。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>とはいえ、実はあまり新しい<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>を作ってあげる必要もないんです。ここでは <a href="https://Saito-Saito-Saito.github.io/reversi/stage6/section1/index.html" target="_new">6-1</a> で作った passjudge を応用してあげます。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>ゲームセットなのに、パス？</p>
+                    </div>
+                </div>
+                <p>ええ、passjudge <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>で調べたのって「player はどこかに石を置くことができるか」ってことでしたよね。つまり</p>
+                <p class="stress">両方ともパスしないといけない状態</p>
+                <p>であればゲームセットなのわかります？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/question.JPG" alt="">
+                    <div class="balloon">
+                        <p>もうちょい馬鹿でもわかるように言ってくれよ</p>
+                    </div>
+                </div>
+                <p>この場合を考えてあげましょうか。</p>
+                <img src="umputable.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>これで黒番だったら、パスですよね。</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>まあ置くところないもんな</p>
+                    </div>
+                </div>
+                <p>で、白のターンになりますが、白はパスですか？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>だからゲームセットなの？</p>
+                    </div>
+                </div>
+                <p>そういうことです。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>では実際にコーディングしていきましょう。まずは <a href="https://Saito-Saito-Saito.github.io/reversi/code/#board" target="_new">board.py</a> ファイルの gamesetjudge <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>から見ていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def gamesetjudge(self, logger=None):
+        logger = logger or self.logger
+        
+        # if either can put, it's not gameset
+        if self.passjudge(BLACK) == False or self.passjudge(WHITE) == False:
+            logger.debug('either can put yet')
+            return False
+        else:
+            self.game_status = GAME_SET
+            return True
+                        </code>
+                    </pre>
+                </div>
+                <p>説明いらないくらいわかりやすいでしょ？</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>いや、説明せぇよ、テメェの仕事やろ</p>
+                    </div>
+                </div>
+                <p>いつも通り<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を設定します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def gamesetjudge(self, logger=None):
+        logger = logger or self.logger
+                        </code>
+                    </pre>
+                </div>
+                <p>自分か相手のどっちかがパスしなくていい時は「ゲームセットでない」False をリターンです。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # if either can put, it's not gameset
+        if self.passjudge(BLACK) == False or self.passjudge(WHITE) == False:
+            logger.debug('either can put yet')
+            return False
+                        </code>
+                    </pre>
+                </div>
+                <p>それ以外では「ゲームセットである」True をリターンするのですが、その前に game_status という変数を GAME_SET にしておきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        else:
+            self.game_status = GAME_SET
+            return True
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>これ何やってんの</p>
+                    </div>
+                </div>
+                <p>ゲームの進行状況を「進行中」GAME_PRC から「ゲーム終了」GAME_SET に変更しているんです。Stage 7 でやりますが、この機能によって勝敗の判別が分かれたりするので、忘れずに入れておいてください。</p>
+            </section>
+            <p class="snake-line">~~~~~~~~~~~~~~~</p>
+            <section class="sub-section">
+                <p>まだ終わりませんよ。今度は countpiece <a href="https://Saito-Saito-Saito.github.io/memorandom/Python/class/#method_v" class="memo" target="_new">メソッド</a>を実装します。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def countpiece(self, logger=None):
+        logger = logger or self.logger
+        
+        # count up all pieces
+        self.b_count = 0
+        self.w_count = 0
+        for row in range(SIZE):
+            for col in range(SIZE):
+                if self.board[row][col] == BLACK:
+                    self.b_count += 1
+                elif self.board[row][col] == WHITE:
+                    self.w_count += 1
+        return [self.b_count, self.w_count]
+                        </code>
+                    </pre>
+                </div>
+                <p>それぞれのプレーヤーの石の数を数え上げてリストにしてリターンするだけです。説明なんて</p>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/dangerous.JPG" alt="">
+                    <div class="balloon">
+                        <p>しろ</p>
+                    </div>
+                </div>
+                <p>...すいませんでした。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+    def countpiece(self, logger=None):
+        logger = logger or self.logger
+                        </code>
+                    </pre>
+                </div>
+                <p>最初は例の如く<a href="https://Saito-Saito-Saito.github.io/memorandom/Python/logging/#logger_v" class="memo" target="_new">ロガー</a>を設定します。</p>
+                <p>そのあとは b_count に黒の石の数を、w_count に白の石の数をカウントしていきます。</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        # count up all pieces
+        self.b_count = 0
+        self.w_count = 0
+        for row in range(SIZE):
+            for col in range(SIZE):
+                if self.board[row][col] == BLACK:
+                    self.b_count += 1
+                elif self.board[row][col] == WHITE:
+                    self.w_count += 1
+                        </code>
+                    </pre>
+                </div>
+                <div class="unagi">
+                    <img src="https://Saito-Saito-Saito.github.io/reversi/unagi-yellow696969/normal.JPG" alt="">
+                    <div class="balloon">
+                        <p>これ最後のは elif じゃなくて else じゃダメなの？</p>
+                    </div>
+                </div>
+                <p>ダメです。board[row][col] の状態は WHITE, BLACK とあと EMPTY がありますから、else にすると石を置いていないマス目も数えてしまうことになります。</p>
+                <img src="umputable.png" alt="UNAVAILABLE" width="90%" style="max-width: 300px;">
+                <p>こういう時とか空いてるマス数えちゃダメでしょ？</p>
+                <div class="real-code">
+                    <pre>
+                        <code>
+        return [self.b_count, self.w_count]
+                        </code>
+                    </pre>
+                </div>
+                <p>最後にカウントをリストにまとめ上げてリターンすれば終了です。</p>
+            </section>
+        </section>
+
+        <section>
+            <p><a href="https://Saito-Saito-Saito.github.io/reversi/stage7/index.html">NEXT　Stage 7　ゲーム進行をデザインする</a></p>
+        </section>
+    </main>
+    
+    <footer>
+        <ul>
+            <li>LAST UPDATE: 2020/12/23</li>
+            <li><a href="https://Saito-Saito-Saito.github.io" target="_blank">解説一覧</a></li>
+            <li><a href="https://github.com/Saito-Saito-Saito" target="_blank">このページの作成者の GitHub</a></li>
+            <li><a href="https://twitter.com/zsops_n" target="_blank">このページの作成者の Twitter</a></li>
+            <li><a href="#">トップへ</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
